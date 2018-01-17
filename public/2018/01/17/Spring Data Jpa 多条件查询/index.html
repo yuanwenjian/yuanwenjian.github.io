@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Spring data Jpa返回Map对象">
+<meta name="description" content="类似 select * from user where name = &apos;&apos; and (email = &apos;&apos; or phone = &quot;&quot;)">
 <meta name="keywords" content="Spring,Spring Data">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Data Jpa返回List&lt;Map&lt;String,Object&gt;&gt; 对象">
-<meta property="og:url" content="http://yoursite.com/2018/01/15/Spring Data Jpa返回map对象/index.html">
+<meta property="og:title" content="Spring Data Jpa多条件查询 and or组合查询">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/Spring Data Jpa 多条件查询/index.html">
 <meta property="og:site_name" content="苑文建">
-<meta property="og:description" content="Spring data Jpa返回Map对象">
+<meta property="og:description" content="类似 select * from user where name = &apos;&apos; and (email = &apos;&apos; or phone = &quot;&quot;)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T15:39:42.527Z">
+<meta property="og:updated_time" content="2018-01-17T13:42:40.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Data Jpa返回List&lt;Map&lt;String,Object&gt;&gt; 对象">
-<meta name="twitter:description" content="Spring data Jpa返回Map对象">
+<meta name="twitter:title" content="Spring Data Jpa多条件查询 and or组合查询">
+<meta name="twitter:description" content="类似 select * from user where name = &apos;&apos; and (email = &apos;&apos; or phone = &quot;&quot;)">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/15/Spring Data Jpa返回map对象/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/Spring Data Jpa 多条件查询/"/>
 
 
 
 
 
-  <title>Spring Data Jpa返回List<Map<String,Object>> 对象 | 苑文建</title>
+  <title>Spring Data Jpa多条件查询 and or组合查询 | 苑文建</title>
   
 
 
@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/Spring Data Jpa返回map对象/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/Spring Data Jpa 多条件查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="苑文建">
@@ -288,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Data Jpa返回List<Map<String,Object>> 对象</h1>
+          <h1 class="post-title" itemprop="name headline">Spring Data Jpa多条件查询 and or组合查询</h1>
         
 
         <div class="post-meta">
@@ -300,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T13:32:26+08:00">
-                2018-01-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T21:14:54+08:00">
+                2018-01-17
               </time>
             
 
@@ -330,17 +330,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Web</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -358,7 +347,7 @@
 
           
               <div class="post-description">
-                  Spring data Jpa返回Map对象
+                  类似 select * from user where name = '' and (email = '' or phone = "")
               </div>
           
 
@@ -375,10 +364,9 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Spring Data Jpa通常会只取几个字段值而不是全部字段,类似于<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> u.name ,u.email <span class="keyword">from</span> t_user ;</span><br></pre></td></tr></table></figure></p>
-<p>在Jpa 中如何实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原生sql返回结果为Object[]数组</span></span><br><span class="line"><span class="meta">@Query</span>(<span class="string">"select u.name ,u.email from t_user"</span>,nativeQuery=<span class="keyword">true</span>)</span><br><span class="line">List&lt;Map&lt;String,Object&gt;&gt; findUser();</span><br><span class="line"></span><br><span class="line"><span class="comment">//正确用法 </span></span><br><span class="line"><span class="meta">@Query</span>(<span class="string">"select new map (u.name as name,u.email as email) from User"</span>)</span><br><span class="line">List&lt;Map&lt;String,Object&gt;&gt; findUser();</span><br></pre></td></tr></table></figure>
-
+        <h2 id="构建多条件查询"><a href="#构建多条件查询" class="headerlink" title="构建多条件查询"></a>构建多条件查询</h2><p>首先Repository 继承JpaSpecificationExecutor 构建查询代码如下</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Page&lt;User&gt; UserPage = userRepository.findAll(<span class="keyword">new</span> Specification() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder)</span> </span>&#123;</span><br><span class="line">        List&lt;Predicate&gt; predicates = <span class="keyword">new</span> ArrayList&lt;Predicate&gt;();</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(database))&#123;</span><br><span class="line">            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(<span class="string">"name"</span>),database)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(search))&#123;</span><br><span class="line">            Predicate pred=criteriaBuilder.and(criteriaBuilder.or(criteriaBuilder.like(root.get(<span class="string">"email"</span>),<span class="string">"%"</span>+search+<span class="string">"%"</span>),</span><br><span class="line">                            criteriaBuilder.or(criteriaBuilder.like(root.get(<span class="string">"phone"</span>),<span class="string">"%"</span>+search+<span class="string">"%"</span>))));</span><br><span class="line">            predicates.add(pred);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> criteriaBuilder.and(predicates.toArray(<span class="keyword">new</span> Predicate[predicates.size()]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,pageRequest);</span><br></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Page&lt;User&gt; UserPage = userRepository.findAll(<span class="keyword">new</span> Specification() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder)</span> </span>&#123;</span><br><span class="line">        Predicate predicate = criteriaBuilder.conjunction();</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(database))&#123;</span><br><span class="line">            predicate = criteriaBuilder.and(criteriaBuilder.equal(root.get(<span class="string">"name"</span>),database));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(search))&#123;</span><br><span class="line">            predicate = criteriaBuilder.and(predicate,criteriaBuilder.or(criteriaBuilder.like(root.get(<span class="string">"email"</span>),search),</span><br><span class="line">            criteriaBuilder.like(root.get(<span class="string">"phone"</span>),<span class="string">"%"</span>+search+<span class="string">"%"</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> predicate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,pageRequest);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -410,15 +398,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/16/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/15/Hexo-添加标签及分类/" rel="prev" title="Hexo 使用">
-                Hexo 使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建多条件查询"><span class="nav-number">1.</span> <span class="nav-text">构建多条件查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></div>
             
 
           </div>

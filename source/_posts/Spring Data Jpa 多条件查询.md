@@ -1,6 +1,7 @@
 ---
 title: Spring Data Jpa多条件查询 and or组合查询
 description:  类似 select * from user where name = '' and (email = '' or phone = "")
+date: 2018-01-17 21:43:00
 tags: 
     - Spring 
     - Spring Data
