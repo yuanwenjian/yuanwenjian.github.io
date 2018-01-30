@@ -2,6 +2,7 @@
 title: Spring为每个请求添加请求头
 description:  Spring mvc 通过filter为每个请求添加请求头
 date: 2018-01-30 21:43:00
+comments: true
 tags: 
     - Spring  
 categories:
@@ -16,6 +17,7 @@ categories:
 
 每个方法都可以实现,根据自己需求实现,我需求只有几个请求需要,所以采用第二种,代码如下所示
 
+## 代码实现
 ```java
 public class CustomRequestWrapper extends HttpServletRequestWrapper {
 

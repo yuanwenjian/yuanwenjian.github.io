@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="blog,hexo," />
+  <meta name="keywords" content="Spring,Spring Data," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Hexo添加标签">
-<meta name="keywords" content="blog,hexo">
+<meta name="description" content="类似 select * from user where name = &apos;&apos; and (email = &apos;&apos; or phone = &quot;&quot;)">
+<meta name="keywords" content="Spring,Spring Data">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 使用">
-<meta property="og:url" content="http://yoursite.com/2018/01/15/Hexo-添加标签及分类/index.html">
+<meta property="og:title" content="Spring Data Jpa多条件查询 and or组合查询">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/Spring Data Jpa 多条件查询/index.html">
 <meta property="og:site_name" content="祭酒郭奉孝">
-<meta property="og:description" content="Hexo添加标签">
+<meta property="og:description" content="类似 select * from user where name = &apos;&apos; and (email = &apos;&apos; or phone = &quot;&quot;)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T15:39:42.527Z">
+<meta property="og:updated_time" content="2018-01-23T13:38:51.264Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 使用">
-<meta name="twitter:description" content="Hexo添加标签">
+<meta name="twitter:title" content="Spring Data Jpa多条件查询 and or组合查询">
+<meta name="twitter:description" content="类似 select * from user where name = &apos;&apos; and (email = &apos;&apos; or phone = &quot;&quot;)">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/15/Hexo-添加标签及分类/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/20/Spring Data Jpa 多条件查询/"/>
 
 
 
 
 
-  <title>Hexo 使用 | 祭酒郭奉孝</title>
+  <title>Spring Data Jpa多条件查询 and or组合查询 | 祭酒郭奉孝</title>
   
 
 
@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/Hexo-添加标签及分类/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/Spring Data Jpa 多条件查询/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="祭酒郭奉孝">
@@ -288,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo 使用</h1>
+          <h1 class="post-title" itemprop="name headline">Spring Data Jpa多条件查询 and or组合查询</h1>
         
 
         <div class="post-meta">
@@ -300,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T13:32:26+08:00">
-                2018-01-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T21:43:00+08:00">
+                2018-01-20
               </time>
             
 
@@ -323,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo配置/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo配置</span>
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
                   </a>
                 </span>
 
@@ -341,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/15/Hexo-添加标签及分类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/01/15/Hexo-添加标签及分类/" itemprop="commentsCount"></span>
+                <a href="/2018/01/20/Spring Data Jpa 多条件查询/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/01/20/Spring Data Jpa 多条件查询/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,7 +357,7 @@
 
           
               <div class="post-description">
-                  Hexo添加标签
+                  类似 select * from user where name = '' and (email = '' or phone = "")
               </div>
           
 
@@ -374,11 +374,9 @@
       
 
       
-        <h1 id="Hexo-添加标签"><a href="#Hexo-添加标签" class="headerlink" title="Hexo 添加标签"></a>Hexo 添加标签</h1><p>在新建的文章里配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> title: 标题</span><br><span class="line"> tags:</span><br><span class="line">- tag1</span><br><span class="line">- tag2</span><br><span class="line">...</span><br><span class="line"> categories: </span><br><span class="line">- 分类1</span><br><span class="line">- 分类2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h1 id="部署及更新Hexo"><a href="#部署及更新Hexo" class="headerlink" title="部署及更新Hexo"></a>部署及更新Hexo</h1><p>部署至github<br>1.hexo d  部署到github</p>
-<p>本地运行查看效果<br>2.hexo g<br>3.hext s</p>
-
+        <h2 id="构建多条件查询"><a href="#构建多条件查询" class="headerlink" title="构建多条件查询"></a>构建多条件查询</h2><p>首先Repository 继承JpaSpecificationExecutor 构建查询代码如下</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Page&lt;User&gt; UserPage = userRepository.findAll(<span class="keyword">new</span> Specification() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder)</span> </span>&#123;</span><br><span class="line">        List&lt;Predicate&gt; predicates = <span class="keyword">new</span> ArrayList&lt;Predicate&gt;();</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(database))&#123;</span><br><span class="line">            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(<span class="string">"name"</span>),database)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(search))&#123;</span><br><span class="line">            Predicate pred=criteriaBuilder.and(criteriaBuilder.or(criteriaBuilder.like(root.get(<span class="string">"email"</span>),<span class="string">"%"</span>+search+<span class="string">"%"</span>),</span><br><span class="line">                            criteriaBuilder.or(criteriaBuilder.like(root.get(<span class="string">"phone"</span>),<span class="string">"%"</span>+search+<span class="string">"%"</span>))));</span><br><span class="line">            predicates.add(pred);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> criteriaBuilder.and(predicates.toArray(<span class="keyword">new</span> Predicate[predicates.size()]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,pageRequest);</span><br></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Page&lt;User&gt; UserPage = userRepository.findAll(<span class="keyword">new</span> Specification() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder)</span> </span>&#123;</span><br><span class="line">        Predicate predicate = criteriaBuilder.conjunction();</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(database))&#123;</span><br><span class="line">            predicate = criteriaBuilder.and(criteriaBuilder.equal(root.get(<span class="string">"name"</span>),database));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotBlank(search))&#123;</span><br><span class="line">            predicate = criteriaBuilder.and(predicate,criteriaBuilder.or(criteriaBuilder.like(root.get(<span class="string">"email"</span>),search),</span><br><span class="line">            criteriaBuilder.like(root.get(<span class="string">"phone"</span>),<span class="string">"%"</span>+search+<span class="string">"%"</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> predicate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,pageRequest);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -395,9 +393,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag"><i class="fa fa-tag"></i> blog</a>
+            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+            <a href="/tags/Spring-Data/" rel="tag"><i class="fa fa-tag"></i> Spring Data</a>
           
         </div>
       
@@ -410,14 +408,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/18/Spring Data Jpa返回map对象/" rel="next" title="Spring Data Jpa返回List<Map<String,Object>> 对象">
+                <i class="fa fa-chevron-left"></i> Spring Data Jpa返回List<Map<String,Object>> 对象
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/16/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/23/linux无法连接push到github/" rel="prev" title="linux 无法push 代码到github解决方案">
+                linux 无法push 代码到github解决方案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -560,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-添加标签"><span class="nav-number">1.</span> <span class="nav-text">Hexo 添加标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署及更新Hexo"><span class="nav-number">2.</span> <span class="nav-text">部署及更新Hexo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建多条件查询"><span class="nav-number">1.</span> <span class="nav-text">构建多条件查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">1.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">1.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></div>
             
 
           </div>
