@@ -10,7 +10,7 @@ categories:
 ---
 
 # Spring为每个请求添加请求头
-## 需求描述
+## 需求描述1
 部分请求需要添加token请求头,此时有两个方法实现该需求
 1. 请求获取token,然后在前台加上token,ps:可以保存在cookie
 2. 通过filter添加
