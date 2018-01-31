@@ -94,11 +94,7 @@
 <meta property="og:site_name" content="祭酒郭奉孝">
 <meta property="og:description" content="浏览器可正常访问github,提交代码时timeout，使用ssh -Tv git@github.com 卡在expecting SSH2_MSG_KEX_DH_GEX_GROUP">
 <meta property="og:locale" content="zh-Hans">
-<<<<<<< HEAD
-<meta property="og:updated_time" content="2018-01-23T13:38:51.259Z">
-=======
 <meta property="og:updated_time" content="2018-01-29T09:56:16.164Z">
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 无法push 代码到github解决方案">
 <meta name="twitter:description" content="浏览器可正常访问github,提交代码时timeout，使用ssh -Tv git@github.com 卡在expecting SSH2_MSG_KEX_DH_GEX_GROUP">
@@ -340,7 +336,6 @@
 
           
             
-<<<<<<< HEAD
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
@@ -351,8 +346,6 @@
                 </a>
               </span>
             
-=======
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
           
 
           
@@ -461,22 +454,44 @@
           
 
   
-<<<<<<< HEAD
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-=======
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      theme: myTheme,
+      owner: '',
+      repo: '',
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
 
   
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
         </div>
         
           
@@ -525,11 +540,7 @@
               
                 <a href="/archives/">
               
-<<<<<<< HEAD
                   <span class="site-state-item-count">7</span>
-=======
-                  <span class="site-state-item-count">6</span>
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -777,7 +788,6 @@
 
 
 
-<<<<<<< HEAD
 <!-- LOCAL: You can save these files to your site and update links -->
     
         
@@ -815,8 +825,6 @@
     
 
 
-=======
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
 
 
 

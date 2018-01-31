@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="祭酒郭奉孝">
 <meta property="og:description" content="Hexo-Next 添加gitment评论功能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-30T15:34:19.214Z">
+<meta property="og:updated_time" content="2018-01-31T01:18:05.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo-Next 添加gitment评论功能">
 <meta name="twitter:description" content="Hexo-Next 添加gitment评论功能">
@@ -466,11 +466,40 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      theme: myTheme,
+      owner: '',
+      repo: '',
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
 
   
 

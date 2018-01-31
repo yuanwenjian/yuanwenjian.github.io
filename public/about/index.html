@@ -295,17 +295,42 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      theme: myTheme,
+      owner: '',
+      repo: '',
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
 
   
-<<<<<<< HEAD
-=======
-
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
 
 
         </div>
@@ -347,11 +372,7 @@
               
                 <a href="/archives/">
               
-<<<<<<< HEAD
                   <span class="site-state-item-count">7</span>
-=======
-                  <span class="site-state-item-count">6</span>
->>>>>>> 918d915447fd2c06bbce3caf2a95e8192301f10a
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
