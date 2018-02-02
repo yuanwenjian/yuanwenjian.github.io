@@ -49,9 +49,14 @@ hexo g -d
 <font color=red >注意
 有时本地修改后无效，但是部署到github生效，启动本地无效的话可以部署到github重新观察，有时会Not Found Error 或者评论未开启，不要着急，过段时间再使用
 </font>
+
+## 注意
+有时本地修改后无效，但是部署到github生效，启动本地无效的话可以部署到github重新观察，如果部署后发现ERRER:NOT FOUND错误，参考[修改hexo gitment error not found问题][1]
+
 ## 参考链接
 [Hexo-Next 添加 Gitment 评论系统](https://ryanluoxu.github.io/2017/11/27/Hexo-Next-%E6%B7%BB%E5%8A%A0-Gitment-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/)
 
 [Gitment：使用 GitHub Issues 搭建评论系统](https://imsun.net/posts/gitment-introduction/)
 
 
+[1]: https://yuanwenjian.github.io/2018/02/03/修改Gitment%20error%20NOT%20FOUND/

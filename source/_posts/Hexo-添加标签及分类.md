@@ -6,7 +6,7 @@ tags:
 	- hexo
 description: "Hexo添加标签"
 categories:
-	- Hexo配置
+	- Hexo
 ---
 
 # Hexo 添加标签

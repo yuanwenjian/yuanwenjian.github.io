@@ -73,10 +73,10 @@
     $("#gitment_title").attr("style", "display:none");
     $("#container").attr("style", "").addClass("gitment_container");
     var gitment = new Gitment({
-      id: window.location.pathname,
+      id: '{{ page.title }}',
       theme: myTheme,
-      owner: '{{ theme.gitment.owner }}',
-      repo: '{{ theme.gitment.repo }}',
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
       oauth: {
         client_id: '{{ theme.gitment.client_id }}',
         client_secret: '{{ theme.gitment.client_secret }}'
