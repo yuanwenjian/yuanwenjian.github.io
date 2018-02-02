@@ -75,8 +75,8 @@
     var gitment = new Gitment({
       id: window.location.pathname,
       theme: myTheme,
-      owner: '{{ theme.gitment.owner }}',
-      repo: '{{ theme.gitment.repo }}',
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
       oauth: {
         client_id: '{{ theme.gitment.client_id }}',
         client_secret: '{{ theme.gitment.client_secret }}'
