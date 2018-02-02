@@ -1,3 +1,4 @@
 public/
 db.*
 .deploy_git/
+.vscode/
