@@ -74,3 +74,26 @@ unrar x file.rar -w path 解压到指定目录
 rar a file.rar path 将path目录压缩
 rar a -df file.rar path 压缩并删除原始文件
 ```
+
+将/etc/passwd 的内容列出并且打印行号，同时，请将2-5行删除
+
+在第二行后（即第三行）加上“drink tea?”
+
+插入两行呢？
+
+整行取代，我想将2-5行的内容取代为“No 2-5 number”
+
+仅列出第5-7行
+
+取出本机ip地址：
+
+删除注释
+sed '/^#/d' f
+删除空白行
+sed '/^$/d' file
+在regular_express.txt文件末尾加入一行# hello world
+sed '$a #helloword' 在regular_express.txt
+
+处理/etc/passwd 为一个新的文件，方式为：删除第四行，第六行则替换成“no six line”
+
+sed '4d' | sed '6c no six line' passwd > fileName

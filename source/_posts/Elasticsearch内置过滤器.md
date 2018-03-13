@@ -61,4 +61,4 @@ categories:
 
 
 [音节省略]:https://zh.wikipedia.org/wiki/%E9%9F%B3%E7%AF%80%E7%9C%81%E7%95%A5
-[hashmin]:[http://jm.taobao.org/2012/10/29/minhash-intro/]
+[hashmin]:http://jm.taobao.org/2012/10/29/minhash-intro/

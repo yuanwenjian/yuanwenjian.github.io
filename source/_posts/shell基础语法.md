@@ -1,6 +1,6 @@
 ---
-title: linux基本语法
-description:  linux基本语法
+title: shell基础语法
+description:  shell基础语法
 date: 2018-02-26 20:40:00
 comments: true
 tags: 
