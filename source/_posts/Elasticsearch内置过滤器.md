@@ -28,7 +28,7 @@ categories:
 |Word Delimiter | word_delimiter| 将单词分解为子词| 。。。|
 |Word Delimiter Graph | word_delimiter_graph| | |
 |Stemmer  | stemmer | 通过单个统一接口提供（几乎）所有可用的词干词元过滤器的访问 | name | 
-|Stemmer Override | stemmer_override |通过应用自定义映射来覆盖词干算法，然后保护这些术语不被词干修改。 必须放置在任何词干过滤器之前| rules && rules_path|
+|Stemmer Override | stemmer_override |通过应用自定义映射来覆盖词干算法，然后保护这些术语不被修改词干。 必须放置在任何词干过滤器之前| rules && rules_path|
 |Keyword Marker|keyword_marker|保护词语不被词干分析器修改。 必须放置在任何词干过滤器之前|keywords&& keywords_path &&keywords_pattern ignore_case|
 |Keyword Repeat| keyword_repeat | 索引两边token，一个为原始，一个为词根，所以需要添加unique过滤器，并且设置only_on_same_position  为true| 无| 
 |KStem | kstem  | 用于英语的高性能过滤器 |无|
@@ -36,4 +36,29 @@ categories:
 |Phonetic | phonetic| analysis-phonetic 插件提供。| 无| 
 |Synonym | synonym | 分析过程中轻松处理同义词。 同义词使用配置文件配置 | synonyms_path && synonyms ignore_case && expand  |
 |Synonym Graph | synonym_graph | 实验版，| 无| 
-|Compound Word | hyphenation\_decompounder \|dictionary_decompounder| word_list && word_list_path &&min_word_size &&only_longest_match 
+|Compound Word | hyphenation\_decompounder \|dictionary_decompounder| word_list && word_list_path &&min_word_size &&only_longest_match | 无|
+|Reverse | reverse | 将每个token反转| 无| 
+|Elision | elision | [音节省略][音节省略]| articles 设置停用词|
+|Truncate | truncate | 将token截取为固定长度| length 默认为10| 
+|Unique | unique | 在索引分析时仅索引唯一的token,默认为所有词条|only_on_same_position 设为true,只删除同一位置的token|
+|Pattern Capture | pattern_capture| | preserve\_original true返回原始token&& patterns|
+|Pattern Replace| pattern_replace| 基于正则替换| 
+|Limit Token | limit | 限制每篇文档和字段索引的token数| max_token\_count 默认为1 ;consume_all_tokens,如果为ture,超出限制也会最大程度处理token|
+|Trim| trim | 去掉空白| 无|
+|Hunspell Token| hunspell | 用法暂时不明 | |
+|Common Grams|common_grams | 保留常用词语| common_grams; 常用词common_words_path;ignore_case;query_mode|
+|Normalization | | | |
+|CJK Width  | cjk_width| | |
+|CJK Bigram | cjk_bigram| | |
+|Delimited Payload|delimited_payload_filter| 每当发现分隔符时，将标记分成标记和有效载荷。|delimiter 分隔符;encoding 负载类型|
+|Keep Words | keep | 只保留具有预定义单词集中的文本的token| keep_words保留列表;keep_words_path;keep_words_case 忽略大小写|
+|Keep Types | keep_types| 只保留定义集合中的token| types|
+|Apostrophe | apostrophe | 过滤撇号后面字符,包括撇号|无|
+|Classic | classic| 对Classic Tokenizer生成词元进行处理,从token删除后面所有权,删除省略符标点|无|
+|Decimal Digit | decimal_digit | 将unicode数字转化为0-9| 无|
+|Fingerprint | fingerprint|  排序token,删除重复token,连接返回单个token| separator;max_output_size 如果连接的指纹增长大于max_output_size ，则过滤器将退出并且不会发出token|
+|Minhash|min\_hash|将token流中每个token一一哈希，并将生成的哈希值分成buckets，以保持每bucket最低值的散列值。 然后将这些哈希值作为token(词元)返回。[minhash原理][hashmin]|hash_count;bucket_count;hash_set_size;with_rotation|
+
+
+[音节省略]:https://zh.wikipedia.org/wiki/%E9%9F%B3%E7%AF%80%E7%9C%81%E7%95%A5
+[hashmin]:[http://jm.taobao.org/2012/10/29/minhash-intro/]
