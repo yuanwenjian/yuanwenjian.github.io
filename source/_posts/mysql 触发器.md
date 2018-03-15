@@ -1,18 +1,20 @@
 ---
-title: Mysql触发器
-description:  在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。
+title: Mysql触发器及视图
+description:  触发器在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。
 date: 2018-03-15 20:40:00
 comments: true
 tags: 
     - Trigger
+    - View
     - Mysql  
 categories:
     - Mysql
 ---
-# 说明
+# 触发器
+## 说明
 在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。
 
-# Trigger语法
+## Trigger语法
 
 ```sql
 DELIMITER $$
@@ -83,4 +85,62 @@ END IF;
 END;
 $$
 
+```
+
+# 视图
+## 描述
+视图是基于SQL SELECT query和JOIN的。视图和表很相似，它也包含行和列，所以可以直接对它进行查询操作
+
+## 创建视图语法
+```sql
+CREATE
+    [OR REPLACE]
+    [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+    [DEFINER = { user | CURRENT_USER }]
+    [SQL SECURITY { DEFINER | INVOKER }]
+    VIEW view_name [(column_list)]
+    AS select_statement
+    [WITH [CASCADED | LOCAL] CHECK OPTION]
+```
+**CREATE VIEW** 创建新的视图
+
+**view_name**  视图名称
+
+**select_statement** 基于SELETE提供视图的定义，select_statement可以从表或其他的视图获取
+
+**OR REPLACE** 可选，如果视图存在则覆盖，如果不存在则新建
+
+## 创建视图示例
+```sql
+CREATE VIEW view_bookmast AS
+SELECT * 
+FROM book_mast
+WHERE pub_id='P001' UNION
+SELECT * 
+FROM book_mast	
+WHERE book_name BETWEEN 'A' AND 'G' UNION
+SELECT *
+FROM book_mast 
+WHERE no_page IN(165,250,350,400,510);
+```
+
+## 修改视图
+修改视图语法与创建视图类似
+```sql
+ ALTER 
+    [OR REPLACE]
+    [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+    [DEFINER = { user | CURRENT_USER }]
+    [SQL SECURITY { DEFINER | INVOKER }]
+    VIEW view_name [(column_list)]
+    AS select_statement
+    [WITH [CASCADED | LOCAL] CHECK OPTION]
+```
+
+## 删除视图
+语法
+```sql
+DROP VIEW [IF EXISTS]      
+    view_name [, view_name] ...      
+[RESTRICT | CASCADE]
 ```
