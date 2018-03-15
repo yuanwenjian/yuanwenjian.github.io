@@ -2,3 +2,4 @@ public/
 db.*
 .deploy_git/
 .vscode/
+node_modules/

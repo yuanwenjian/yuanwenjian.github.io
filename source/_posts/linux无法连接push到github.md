@@ -7,7 +7,7 @@ tags:
     - gitub 
     - Linux
 categories:
-    - 问题
+    - 黑科技
 ---
 
 # 问题描述
