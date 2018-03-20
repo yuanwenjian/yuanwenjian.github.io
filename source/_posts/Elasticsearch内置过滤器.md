@@ -1,6 +1,6 @@
 ---
 title: Elasticsearch内置过滤器
-description:  Elasticsearch过滤器
+description:  字符过滤器接收原始文本作为字符流，并可以通过添加、删除和更改字符来转换流。例如，可以使用字符过滤器将印度-阿拉伯数字（0123456789）转换成阿拉伯-拉丁语中的（0123456789），或从流中剥离HTML元素。分析器可能有零个或多个字符过滤器，它们会按顺序应用。
 date: 2018-03-12 22:15:00
 comments: true
 tags: 
@@ -10,7 +10,7 @@ categories:
     - 后端
 ---
 # 概念介绍
-具体请参考[elasticsearch内置分词器及字符过滤器]()
+具体请参考[elasticsearch内置分词器及字符过滤器][概念介绍]
 # es内置词元过滤器(Token Filter)
 | Token Filter  | 简称| 描述 | 可支持参数|
 | -|-|-| -|
@@ -59,6 +59,11 @@ categories:
 |Fingerprint | fingerprint|  排序token,删除重复token,连接返回单个token| separator;max_output_size 如果连接的指纹增长大于max_output_size ，则过滤器将退出并且不会发出token|
 |Minhash|min\_hash|将token流中每个token一一哈希，并将生成的哈希值分成buckets，以保持每bucket最低值的散列值。 然后将这些哈希值作为token(词元)返回。[minhash原理][hashmin]|hash_count;bucket_count;hash_set_size;with_rotation|
 
-
+## stop过滤器支持的语言过滤如下
+```
+_arabic_, _armenian_, _basque_, _brazilian_, _bulgarian_, _catalan_, _czech_, _danish_, _dutch_, _english_, _finnish_, _french_, _galician_, _german_, _greek_, _hindi_, _hungarian_, _indonesian_, _irish_, _italian_, _latvian_, _norwegian_, _persian_, _portuguese_, _romanian_, _russian_, _sorani_, _spanish_, _swedish_, _thai_, _turkish_.
+如果禁用停词,使用_none_
+```
 [音节省略]:https://zh.wikipedia.org/wiki/%E9%9F%B3%E7%AF%80%E7%9C%81%E7%95%A5
 [hashmin]:http://jm.taobao.org/2012/10/29/minhash-intro/
+[概念介绍]:https://yuanwenjian.github.io/2018/03/09/elasticsearch%E5%86%85%E7%BD%AE%E5%88%86%E8%AF%8D%E5%99%A8%E5%8F%8A%E5%AD%97%E7%AC%A6%E8%BF%87%E6%BB%A4%E5%99%A8/

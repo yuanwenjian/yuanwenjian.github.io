@@ -129,3 +129,13 @@ sed '$a hello world' fileName
 处理/etc/passwd 为一个新的文件，方式为：删除第四行，第六行则替换成“no six line”
 sed '4d'  |sed '6c noSix'  passwd > fileName
 ```
+### sort命令
+
+|参数| 描述|
+|-|-|
+|-t|指定分隔符|
+|-n|按照数值排序|
+|-r|倒序|
+|-k|指定按照第几列|
+|-u| 去重| 
+|-f|忽略大小写|
