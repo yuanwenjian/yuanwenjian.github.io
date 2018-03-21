@@ -81,6 +81,32 @@ swagger:
         license:
         licenseUrl:
 ```
+## 控制器应用
+```java
+@RestController
+@RequestMapping(value = "/api/v1/login")
+@Api(tags = "外部操作api")
+public class LoginResource {
+
+    @Inject
+    private TokenService tokenService;
+
+    @RequestMapping(value = "login")
+    @ApiOperation(value = "用户登录")
+    public String login(String userName,String password){
+        User user =new User();
+        user.setId(1l);
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setRealName("yuanwj");
+        UserAuthentication authentication = tokenService.createToken(user);
+        String token = authentication.getJwtToken();
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return token;
+    }
+}
+
+```
 
 ## 常用注解
 ```
@@ -95,3 +121,4 @@ swagger:
  http://ip:port/swagger-ui.html
 
 ## 效果
+![swagger效果图](/images/swagger.png)
