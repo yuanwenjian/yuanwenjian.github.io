@@ -41,7 +41,7 @@ categories:
 ![SpringBoot执行流程](/images/SpringBoot执行流程.jpg)
 
 # 源码对应上述流程
-## 第一步源码
+## new SpringApplication(Application.class)源码
 ```java
 package org.springframework.boot.SpringApplication;
 
@@ -61,12 +61,45 @@ public SpringApplication(ResourceLoader resourceLoader, Object... sources) {
             this.sources.addAll(Arrays.asList(sources));
         }
 
-        this.webEnvironment = this.deduceWebEnvironment(); //判断是否为Web环境 根据"javax.servlet.Servlet", "org.springframework.web.context.ConfigurableWebApplicationContext"判断
-        this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
-        this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
-        this.mainApplicationClass = this.deduceMainApplicationClass();
+        this.webEnvironment = this.deduceWebEnvironment(); //判断是否为Web环境 根据"javax.servlet.Servlet", "org.springframework.web.context.ConfigurableWebApplicationContext"判断 对应1-1
+        this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class)); //对应1-2
+        this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class)); 
+        this.mainApplicationClass = this.deduceMainApplicationClass(); //上面两行对应1-3 加载listener并推断main的定义类
     }
-````
+```
+## springApplication.run()
+```java
+public ConfigurableApplicationContext run(String... args) {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        ConfigurableApplicationContext context = null;
+        Object analyzers = null;
+        this.configureHeadlessProperty();
+        SpringApplicationRunListeners listeners = this.getRunListeners(args); //
+        listeners.started();
+
+        try {
+            DefaultApplicationArguments ex = new DefaultApplicationArguments(args);
+            ConfigurableEnvironment environment = this.prepareEnvironment(listeners, ex);
+            Banner printedBanner = this.printBanner(environment);
+            context = this.createApplicationContext();
+            new FailureAnalyzers(context);
+            this.prepareContext(context, environment, listeners, ex, printedBanner);
+            this.refreshContext(context);
+            this.afterRefresh(context, ex);
+            listeners.finished(context, (Throwable)null);
+            stopWatch.stop();
+            if(this.logStartupInfo) {
+                (new StartupInfoLogger(this.mainApplicationClass)).logStarted(this.getApplicationLog(), stopWatch);
+            }
+
+            return context;
+        } catch (Throwable var9) {
+            this.handleRunFailure(context, listeners, (FailureAnalyzers)analyzers, var9);
+            throw new IllegalStateException(var9);
+        }
+    }
+```
 
 ~~~源码对应上述过程~~
 
