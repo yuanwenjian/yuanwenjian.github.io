@@ -1,6 +1,6 @@
 ---
-title: SpringCloud Config文档
-description: Spring Cloud Config为分布式系统中的外部化配置提供服务器和客户端支持
+title: SpringApplication执行流程
+description: SpringApplication执行流程
 date: 2018-03-26 22:48:00
 comments: true
 tags: 
@@ -75,7 +75,7 @@ public ConfigurableApplicationContext run(String... args) {
         ConfigurableApplicationContext context = null;
         Object analyzers = null;
         this.configureHeadlessProperty();
-        SpringApplicationRunListeners listeners = this.getRunListeners(args); //
+        SpringApplicationRunListeners listeners = this.getRunListeners(args); //获取所有的listener 通过getSpringFactoriesInstances()方法，
         listeners.started();
 
         try {
