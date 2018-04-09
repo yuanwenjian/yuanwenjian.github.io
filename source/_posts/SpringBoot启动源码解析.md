@@ -1,6 +1,6 @@
 ---
-title: SpringApplication执行流程
-description: SpringApplication执行流程
+title: SpringApplication源码解析
+description: SpringApplication源码解析,记录自己的理解
 date: 2018-03-31 13:59:00
 comments: true
 tags: 
@@ -12,8 +12,7 @@ categories:
 ---
 
 # SpringBoot启动源码解析
-## 总结
-SpringBoot启动时会扫描classpath下所有的META-INF/spring.factories文件，通过SpringFactoriesLoader.loadFactoryNames(Class<?> factoryClass, ClassLoader classLoader)获取类的名称全称，在通过反射创建配置的类
+
 ## SpringApplication创建源码解析
 ```java
 package org.springframework.boot.SpringApplication;
@@ -124,8 +123,6 @@ public static List<String> loadFactoryNames(Class<?> factoryClass, ClassLoader c
     }
 ```
 
-## 
-
 ## SpringBoot jar包中spring.factories文件中
 ```
 # Application Listeners
@@ -150,3 +147,5 @@ org.springframework.boot.SpringApplicationRunListener=\
 org.springframework.boot.context.event.EventPublishingRunListener
 ```
 
+## 总结
+SpringBoot启动时会扫描classpath下所有的META-INF/spring.factories文件，通过SpringFactoriesLoader.loadFactoryNames(Class<?> factoryClass, ClassLoader classLoader)获取类的名称全称，在通过反射创建配置的类
