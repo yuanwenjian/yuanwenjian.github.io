@@ -28,6 +28,7 @@ categories:
 # 部署及更新Hexo
 部署至github
 1.hexo d  部署到github
+注意第一次部署之前需要添加npm install hexo-deployer-heroku --save
 
 本地运行查看效果
 2.hexo g

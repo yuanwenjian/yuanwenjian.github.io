@@ -79,7 +79,8 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/yuanwenjian/yuanwenjian.github.io
+  # repo: https://github.com/yuanwenjian/yuanwenjian.github.io
+  repo: https://yuanwenjian:wen19930929@github.com/yuanwenjian/yuanwenjian.github.io.git
 
 menu:
   home: /

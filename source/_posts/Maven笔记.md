@@ -178,7 +178,7 @@ mvn clean install -Dmaven.test.skip=true
 [maven官网][maven]
 [maven源码][maven_github]
 
-[scopeType]: ../images/scope.jpg
+[scopeType]: /images/scope.jpg
 [phase]:https://github.com/apache/maven/blob/master/maven-core/src/main/resources/META-INF/plexus/components.xml
 [plugin]:https://github.com/apache/maven/blob/master/maven-core/src/main/resources/META-INF/plexus/default-bindings.xml
 [maven]:https://maven.apache.org/

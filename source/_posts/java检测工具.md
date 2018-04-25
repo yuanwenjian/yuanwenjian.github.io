@@ -31,5 +31,5 @@ categories:
 [importNew][import]
 
 [内置工具]: https://www.ibm.com/developerworks/cn/java/j-lo-performance-analysissy-tools2/index.html
-[jps]: ../images/jdk/jps_mlv.jpg
+[jps]: /images/jdk/jps_mlv.jpg
 [import]:http://www.importnew.com/17308.html
