@@ -25,6 +25,7 @@ categories:
 5. jcmd PID VM.version  //查看jvm版本
 
 6. jcmd process_id VM.system_properties //查看JVM系统属性
+
 ## 参考
 
 [Java 内置监控工具][内置工具]

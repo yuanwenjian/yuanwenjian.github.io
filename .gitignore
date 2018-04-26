@@ -3,3 +3,4 @@ db.*
 .deploy_git/
 .vscode/
 node_modules/
+package.json
