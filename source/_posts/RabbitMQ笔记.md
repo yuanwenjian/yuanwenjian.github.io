@@ -1,5 +1,5 @@
 ---
-title: RabbitMQ
+title: RabbitMQ笔记
 description: RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。
 date: 2018-05-08 12:30:00
 comments: true
@@ -82,7 +82,7 @@ rabbitmq的message model实际上消息不直接发送到queue中，中间有一
 
 # SpringBoot与RabbitMQ整合Demo
 
-[github源码 spring-mq][github]
+[SpringBoot整合MQ Demo][github]
 # 参考
 [RabbitMQ中文文档][rabbit官网]
 [Spring 集成 RabbitMQ 与其概念，消息持久化，ACK机制等][Spring整合RabbitMQ]
