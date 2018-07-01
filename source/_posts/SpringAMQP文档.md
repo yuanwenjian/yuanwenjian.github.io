@@ -23,6 +23,7 @@ Spring AMQP由少数几个模块组成，每个模块在分发中都由JAR表示
 ```java
 public class Message {
 
+
     private final MessageProperties messageProperties;
 
     private final byte[] body;
@@ -161,15 +162,127 @@ ConnectionFactory参数可用于通过某种逻辑区分目标连接名称。默
 
 ## Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂
 
-### 
+## Routing Connection Factory
+
+从1.3版本开始,引入了AbstractRoutingConnectionFactory.这提供了一种机制来配置多个ConnectionFactories的映射,并通过在运行时使用lookupKey来决定目标ConnectionFactory.
+
+通常,实现会检查线程绑定上下文. 为了方便, Spring AMQP提供了SimpleRoutingConnectionFactory, 它会从SimpleResourceHolder中获取当前线程绑定的lookupKey:
+
+```xml
+<bean id="connectionFactory"
+      class="org.springframework.amqp.rabbit.connection.SimpleRoutingConnectionFactory">
+	<property name="targetConnectionFactories">
+		<map>
+			<entry key="#{connectionFactory1.virtualHost}" ref="connectionFactory1"/>
+			<entry key="#{connectionFactory2.virtualHost}" ref="connectionFactory2"/>
+		</map>
+	</property>
+</bean>
+
+<rabbit:template id="template" connection-factory="connectionFactory" />
+```
+```java
+public class MyService {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    public void service(String vHost, String payload) {
+        SimpleResourceHolder.bind(rabbitTemplate.getConnectionFactory(), vHost);
+        rabbitTemplate.convertAndSend(payload);
+        SimpleResourceHolder.unbind(rabbitTemplate.getConnectionFactory());
+    }
+
+}
+```
+使用后解除资源绑定很重要。有关更多信息，请参阅AbstractRoutingConnectionFactory的JavaDocs。
+
+从版本1.4开始，RabbitTemplate支持SpEL sendConnectionFactorySelectorExpression和receiveConnectionFactorySelectorExpression属性，用来对AMPQ操作时如send，sendAndReceive，receive或receiveAndReply,进行解析并提供AbstractRoutingConnectionFactory所需的lookupKey值，例如"@vHostResolver.getVHost(#root)"可以在表达式中使用，send操作，被发送的Message是评估的对象，对于revice操作，queueName是评估的对象
+
+路由算法是：如果选择器表达式为空，或者评估为null，或者提供的ConnectionFactory不是AbstractRoutingConnectionFactory的实例，则依赖于提供的ConnectionFactory实现，所有工作都像以前一样。如果评估结果不为null，但是没有该lookupKey指向的ConnectionFactory，并且AbstractRoutingConnectionFactory配置为lenientFallback = true，则会发生同样的情况，当然，在AbstractRoutingConnectionFactory的情况下，它会根据determineCurrentLookupKey（）回退到它的路由实现。但是，如果lenientFallback = false，则会引发IllegalStateException。源码如下所示
+
+```java
+//spring-rabbit-1.6.1.RELEASE.jar中
+//\org\springframework\amqp\rabbit\connection\AbstractRoutingConnectionFactory.class
+protected ConnectionFactory determineTargetConnectionFactory() {
+        Object lookupKey = this.determineCurrentLookupKey();
+        ConnectionFactory connectionFactory = null;
+        if (lookupKey != null) {
+            connectionFactory = (ConnectionFactory)this.targetConnectionFactories.get(lookupKey);
+        }
+
+        if (connectionFactory == null && (this.lenientFallback || lookupKey == null)) {
+            connectionFactory = this.defaultTargetConnectionFactory;
+        }
+
+        if (connectionFactory == null) {
+            throw new IllegalStateException("Cannot determine target ConnectionFactory for lookup key [" + lookupKey + "]");
+        } else {
+            return connectionFactory;
+        }
+    }
+```
+
+XML配置<rabbit：template>组件上提供了send-connection-factory-selector-expression和receive-connection-factory-selector-expression属性。
+
+从版本1.4开始，您可以在侦听器容器中配置路由连接工厂。在这种情况下，队列名称列表将用作查找键。例如，如果使用setQueueNames（“foo”，“bar”）配置容器，则查找键为“[foo，bar]”（不包含空格）。
+
+从版本1.6.9开始，您可以使用侦听器容器上的setLookupKeyQualifier将限定符添加到查找键，一旦这样启用，示例，将会监听相同名称的队列，即使不在同一虚拟主机
+例如，当 qualifier设为foo,并且队列名为foo，您将注册目标连接工厂的查找键为foo [bar]。
+
+## Sending messages
+
+### 介绍
+可以使用以下任何一种方法用来发送消息
+```java
+void send(Message message) throws AmqpException;
+
+void send(String routingKey, Message message) throws AmqpException;
+
+void send(String exchange, String routingKey, Message message) throws AmqpException;
+```
+
+我们可以用上面列出的最后一种方法开始讨论，因为它实际上是最明确的。它允许在运行时提供AMQP Exchange及routing key。最后一个参数是负责实际创建Message实例的回调。使用此方法发送消息的示例可能如下所示
+```java
+amqpTemplate.send("marketData.topic", "quotes.nasdaq.FOO",new Message("12.34".getBytes(), someProperties));
+```
+
+如果您计划使用该模板实例在大多数或所有时间发送到同一个交换，则可以在模板上设置“exchange”属性。如下所示
+```java
+amqpTemplate.setExchange("marketData.topic");
+amqpTemplate.send("quotes.nasdaq.FOO", new Message("12.34".getBytes(), someProperties));
+```
+
+如果在模板上设置了“exchange”和“routingKey”属性，则可以使用仅接受消息的方法
+```java
+amqpTemplate.setExchange("marketData.topic");
+amqpTemplate.setRoutingKey("quotes.nasdaq.FOO");
+amqpTemplate.send(new Message("12.34".getBytes(), someProperties));
+```
+比较好的想法是显示指定方法参数属性覆盖提供的默认值，实际上，即使您没有明确地在模板上设置这些属性，也总是有默认值。在这两种情况下，默认都是空字符串，但这实际上是一个合理的默认值。就routing key而言，首先并不总是必需的（例如扇出交换）。此外，队列可能会绑定到一个空字符串的Exchange。这些都是依赖于模板的路由关键字属性的默认空字符串值的合法方案。就交换名称而言，空字符串是非常常用的，因为AMQP规范将“默认交换”定义为没有名称.由于所有队列都使用其名称作为绑定值自动绑定到默认Exchange（它是一个Direct Exchange），因此上述第二种方法可用于通过默认Exchange进行的任何队列的简单点对点消息传递。只需通过在运行时提供method参数，将队列名称作为“routingKey”提供：
+```java
+RabbitTemplate template = new RabbitTemplate(); // using default no-name Exchange
+template.send("queue.helloWorld", new Message("Hello World".getBytes(), someProperties));
+```
+或者，如果您更愿意创建将用于主要或专门发布到单个队列的模板，则以下内容非常合理：
+```java
+RabbitTemplate template = new RabbitTemplate(); // using default no-name Exchange
+template.setRoutingKey("queue.helloWorld"); // but we'll always send to this Queue
+template.send(new Message("Hello World".getBytes(), someProperties));
+```
+
 
 # 参考
 [SpringAMPQ官方文档][SpringAMPQ官方文档]
 
 [SpringAMPQ官方API][SpringAMPQ官方API]
 
+[中文翻译][中文翻译]
+
 [SpringAMPQ官方文档]:https://docs.spring.io/spring-amqp/docs/1.7.8.RELEASE/reference/html/_reference.html
 
 [SpringAMPQ官方API]:https://docs.spring.io/spring-amqp/docs/1.7.8.RELEASE/api/
 
 [rabbitMq命名空间]:http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd
+
+[中文翻译]:https://www.aliyun.com/jiaocheng/820430.html
