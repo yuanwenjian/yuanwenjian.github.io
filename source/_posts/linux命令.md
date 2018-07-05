@@ -74,7 +74,7 @@ unrar x file.rar -w path 解压到指定目录
 rar a file.rar path 将path目录压缩
 rar a -df file.rar path 压缩并删除原始文件
 ```
-### sed常用命令
+## sed常用命令
 命令格式
 > sed [options] 'command' file(s)
 
@@ -129,7 +129,7 @@ sed '$a hello world' fileName
 处理/etc/passwd 为一个新的文件，方式为：删除第四行，第六行则替换成“no six line”
 sed '4d'  |sed '6c noSix'  passwd > fileName
 ```
-### sort命令
+## sort命令
 
 |参数| 描述|
 |-|-|
@@ -139,3 +139,38 @@ sed '4d'  |sed '6c noSix'  passwd > fileName
 |-k|指定按照第几列|
 |-u| 去重| 
 |-f|忽略大小写|
+
+## 端口开放及关闭
+
+### 查看开放端口
+```bash
+/etc/sysconfig/iptables 
+```
+### 开放端口
+1. 命令开启端口
+```bash 
+iptables -I INPUT -p tcp --dport 80 -j accpet --写入要开放的端口
+/etc/init.d/iptables save --保存修改
+/etc/sysconfig/iptables restart -- 重启防火墙
+或者用命令:service iptables restart重启防火墙
+```
+2. 修改iptables文件
+```bash
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+service iptables restart 重启防火墙
+```
+
+### 关闭端口
+
+1. 命令行关闭
+```bash
+iptables -I INPUT -p tcp --dport 80 -j DROP--写入修改
+/etc/init.d/iptables save --保存修改
+service iptables restart --重启防火墙
+```
+
+2. 修改iptables文件
+```bash
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
+service iptables restart 重启防火墙
+```
