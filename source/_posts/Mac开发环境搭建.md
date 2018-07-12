@@ -35,3 +35,14 @@ export PATH
 
 ## 测试
 java -version 
+
+# office安装
+## office 官网下载地址
+https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/OfficeMac/Microsoft_Office_2016_16.15.18070902_Installer.pkg
+
+## 破解软件
+[破解链接参考][office破解]
+
+[office破解]:https://www.jianshu.com/p/3c5dc4f3c96e
+[jdk7下载地址]:http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
+[jdk8下载地址]:http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
