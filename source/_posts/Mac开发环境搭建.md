@@ -8,6 +8,9 @@ categories:
     - Mac
 ---
 
+# 描述
+记录Mac软件下载地址机及安装方法，方便以后下载
+
 # JDK
 
 ## jdk下载
@@ -42,7 +45,69 @@ https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F
 
 ## 破解软件
 [破解链接参考][office破解]
+## Navicat破解版安装
 
+[Navicate下载目录][Navicat]
+
+下载后安装即可
+
+[Navicat]:http://160721.16.unicom.data.tv002.com:443/down/c04e6a65c4e70f6eca654e26a49476d5-101555179/NavicatPremium1128.dmg?cts=wt-f-D125A34A83A225F24ea3&ctp=125A34A83A225&ctt=1531538800&limit=1&spd=85000&ctk=d94cacb99e2db3acc1a95f66a5e300aa&chk=c04e6a65c4e70f6eca654e26a49476d5-101555179&mtd=1
+
+## Mysql安装
+
+[Mysql下载目录][Mysql]
+
+### 配置mysql环境变量
+将mysql添加到环境变量，以便使用命令行
+```bash
+cd ~/
+vim .bash_profile
+# 添加环境变量
+PATH=$PATH:/usr/local/mysql/bin
+```
+
+### 重置密码
+1. 关闭mysql 
+    - 使用命令关闭 sudo /usr/local/mysql/support-files/mysql.server stop
+    - 系统设置 -》mysql -> Stop mysql server
+
+2. 使用root进入mysql目录并重启
+```bash
+sudo -i 
+cd /usr/local/mysql/bin
+./mysqld_safe --skip-grant-tables &
+```
+
+3. 新开终端
+
+4. 登录mysql 
+```bash
+mysql -uroot -p
+```
+密码随便输入
+
+5. 获取权限
+flush privileges;
+
+6. 设置新密码
+```bash
+set password for 'root'@'localhost'=password('新密码');
+```
+
+## Maven配置
+
+### maven下载
+[maven下载地址][maven]
+
+### 配置
+将下载解压，配置到环境变量中
+
+
+
+
+[maven]:http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+[Mysql]:https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.22-macos10.13-x86_64.dmg
 [office破解]:https://www.jianshu.com/p/3c5dc4f3c96e
 [jdk7下载地址]:http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
 [jdk8下载地址]:http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+
