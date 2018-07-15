@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mysql,Trigger,View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="触发器在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。">
+<meta name="keywords" content="Mysql,Trigger,View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql触发器及视图">
+<meta property="og:url" content="http://yoursite.com/2018/03/15/mysql 触发器/index.html">
+<meta property="og:site_name" content="祭酒郭奉孝">
+<meta property="og:description" content="触发器在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T05:45:04.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mysql触发器及视图">
+<meta name="twitter:description" content="触发器在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/15/mysql 触发器/"/>
+
+
+
+
+
+  <title>Mysql触发器及视图 | 祭酒郭奉孝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">祭酒郭奉孝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/15/mysql 触发器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sanguosha.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="祭酒郭奉孝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mysql触发器及视图</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-15T20:40:00+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/15/mysql 触发器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/15/mysql 触发器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  触发器在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>在指定表上，(insert(插入)、update(跟新)、delete(删除))事件动作,触发（After(之后)时机,Before(之前)），执行指定的一群或一个sql语句。</p>
+<h2 id="Trigger语法"><a href="#Trigger语法" class="headerlink" title="Trigger语法"></a>Trigger语法</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span>  <span class="keyword">Trigger</span> trigger_name trigger_time trigger_event <span class="keyword">ON</span> table_name <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">begin</span> </span><br><span class="line">trigger_body</span><br><span class="line"><span class="keyword">end</span>$$</span><br></pre></td></tr></table></figure>
+<p><strong>trigger_time</strong> 触发器执行时间 可选值 AFTER,Before</p>
+<p><strong>trigger_event</strong> 激活触发器动作 可选值 update,insert,delete</p>
+<p><strong>trigger_body</strong> 触发器激活执行的动作 由Begin…End包裹</p>
+<h2 id="New-与OLD关键字"><a href="#New-与OLD关键字" class="headerlink" title="New 与OLD关键字"></a>New 与OLD关键字</h2><p>在触发器主题中,可以使用New和Old访问受触发器影响的数据</p>
+<ol>
+<li>忽略大小写</li>
+<li>在insert触发器中只有New可用</li>
+<li>在update触发器中New,Old都可使用</li>
+<li>在delete触发器中只有Old可用</li>
+<li>old.column只能查看,不能修改,但是new可以更改,这意味着在before的触发器中你可以使用set New.column=value,比如在before update使用,你可以修改要更新的值,这样的set语句在AFTER触发器不起作用,因为行已经发生改变</li>
+</ol>
+<p>示例:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> <span class="string">`emp_details_BINS`</span> </span><br><span class="line"><span class="keyword">BEFORE</span> <span class="keyword">INSERT</span> </span><br><span class="line"><span class="keyword">ON</span> emp_details <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="comment">-- Edit trigger body code below this line. Do not edit lines above this one</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> NEW.FIRST_NAME = <span class="keyword">TRIM</span>(NEW.FIRST_NAME);</span><br><span class="line"><span class="keyword">SET</span> NEW.LAST_NAME = <span class="keyword">TRIM</span>(NEW.LAST_NAME);</span><br><span class="line"><span class="keyword">SET</span> NEW.JOB_ID = <span class="keyword">UPPER</span>(NEW.JOB_ID);<span class="keyword">END</span>;</span><br><span class="line">$$</span><br><span class="line">//在更新时去掉空格</span><br></pre></td></tr></table></figure></p>
+<h2 id="完整示例"><a href="#完整示例" class="headerlink" title="完整示例"></a>完整示例</h2><p>每个科目分数全部或的,现在我们将更新表格的总分数，总分数和分数平均分,</p>
+<ol>
+<li>PER_MARKS&gt;90等级为EXCELLENT,</li>
+<li>PER_MARKS&gt;=75 AND PER_MARKS&lt;90 为’VERY GOOD’,</li>
+<li>PER_MARKS&gt;=60 AND PER_MARKS<75 -=""> ‘GOOD’</75></li>
+<li>PER_MARKS&gt;=40 AND PER_MARKS<60 -=""> ‘AVERAGE’</60></li>
+<li>PER_MARKS<40-> ‘NOT PROMOTED’</40-></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>STUDENT_ID</th>
+<th>NAME</th>
+<th>SUB1</th>
+<th>SUB2</th>
+<th>SUB3</th>
+<th>SUB4</th>
+<th>SUB5</th>
+<th>TOTAL</th>
+<th>PER_MARKS</th>
+<th>GRADE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Steven King</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER </span><br><span class="line">$$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> <span class="string">`student_marks_BUPD`</span> </span><br><span class="line"><span class="keyword">BEFORE</span> <span class="keyword">UPDATE</span> </span><br><span class="line"><span class="keyword">ON</span> student_marks <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span> </span><br><span class="line"><span class="keyword">SET</span> NEW.TOTAL = NEW.SUB1 + NEW.SUB2 + NEW.SUB3 + NEW.SUB4 + NEW.SUB5; </span><br><span class="line"><span class="keyword">SET</span> NEW.PER_MARKS = NEW.TOTAL/<span class="number">5</span>;</span><br><span class="line">IF NEW.PER_MARKS &gt;=90 THEN</span><br><span class="line"><span class="keyword">SET</span> NEW.GRADE = <span class="string">'EXCELLENT'</span>;</span><br><span class="line">ELSEIF NEW.PER_MARKS&gt;=75 AND NEW.PER_MARKS&lt;90 THEN</span><br><span class="line"><span class="keyword">SET</span> NEW.GRADE = <span class="string">'VERY GOOD'</span>;</span><br><span class="line">ELSEIF NEW.PER_MARKS&gt;=60 AND NEW.PER_MARKS&lt;75 THEN</span><br><span class="line"><span class="keyword">SET</span> NEW.GRADE = <span class="string">'GOOD'</span>;</span><br><span class="line">ELSEIF NEW.PER_MARKS&gt;=40 AND NEW.PER_MARKS&lt;60 THEN</span><br><span class="line"><span class="keyword">SET</span> NEW.GRADE = <span class="string">'AVERAGE'</span>;</span><br><span class="line">ELSESET NEW.GRADE = 'NOT PROMOTED';</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>视图是基于SQL SELECT query和JOIN的。视图和表很相似，它也包含行和列，所以可以直接对它进行查询操作</p>
+<h2 id="创建视图语法"><a href="#创建视图语法" class="headerlink" title="创建视图语法"></a>创建视图语法</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span></span><br><span class="line">    [<span class="keyword">OR</span> <span class="keyword">REPLACE</span>]</span><br><span class="line">    [ALGORITHM = &#123;UNDEFINED | <span class="keyword">MERGE</span> | TEMPTABLE&#125;]</span><br><span class="line">    [DEFINER = &#123; <span class="keyword">user</span> | <span class="keyword">CURRENT_USER</span> &#125;]</span><br><span class="line">    [<span class="keyword">SQL</span> <span class="keyword">SECURITY</span> &#123; DEFINER | INVOKER &#125;]</span><br><span class="line">    <span class="keyword">VIEW</span> view_name [(column_list)]</span><br><span class="line">    <span class="keyword">AS</span> select_statement</span><br><span class="line">    [<span class="keyword">WITH</span> [<span class="keyword">CASCADED</span> | <span class="keyword">LOCAL</span>] <span class="keyword">CHECK</span> <span class="keyword">OPTION</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>CREATE VIEW</strong> 创建新的视图</p>
+<p><strong>view_name</strong>  视图名称</p>
+<p><strong>select_statement</strong> 基于SELETE提供视图的定义，select_statement可以从表或其他的视图获取</p>
+<p><strong>OR REPLACE</strong> 可选，如果视图存在则覆盖，如果不存在则新建</p>
+<h2 id="创建视图示例"><a href="#创建视图示例" class="headerlink" title="创建视图示例"></a>创建视图示例</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_bookmast <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> * </span><br><span class="line"><span class="keyword">FROM</span> book_mast</span><br><span class="line"><span class="keyword">WHERE</span> pub_id=<span class="string">'P001'</span> <span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> * </span><br><span class="line"><span class="keyword">FROM</span> book_mast	</span><br><span class="line"><span class="keyword">WHERE</span> book_name <span class="keyword">BETWEEN</span> <span class="string">'A'</span> <span class="keyword">AND</span> <span class="string">'G'</span> <span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> book_mast </span><br><span class="line"><span class="keyword">WHERE</span> no_page <span class="keyword">IN</span>(<span class="number">165</span>,<span class="number">250</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">510</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h2><p>修改视图语法与创建视图类似<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> </span><br><span class="line">   [<span class="keyword">OR</span> <span class="keyword">REPLACE</span>]</span><br><span class="line">   [ALGORITHM = &#123;UNDEFINED | <span class="keyword">MERGE</span> | TEMPTABLE&#125;]</span><br><span class="line">   [DEFINER = &#123; <span class="keyword">user</span> | <span class="keyword">CURRENT_USER</span> &#125;]</span><br><span class="line">   [<span class="keyword">SQL</span> <span class="keyword">SECURITY</span> &#123; DEFINER | INVOKER &#125;]</span><br><span class="line">   <span class="keyword">VIEW</span> view_name [(column_list)]</span><br><span class="line">   <span class="keyword">AS</span> select_statement</span><br><span class="line">   [<span class="keyword">WITH</span> [<span class="keyword">CASCADED</span> | <span class="keyword">LOCAL</span>] <span class="keyword">CHECK</span> <span class="keyword">OPTION</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h2><p>语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> [<span class="keyword">IF</span> <span class="keyword">EXISTS</span>]      </span><br><span class="line">    view_name [, view_name] ...      </span><br><span class="line">[RESTRICT | <span class="keyword">CASCADE</span>]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"><i class="fa fa-tag"></i> Mysql</a>
+          
+            <a href="/tags/Trigger/" rel="tag"><i class="fa fa-tag"></i> Trigger</a>
+          
+            <a href="/tags/View/" rel="tag"><i class="fa fa-tag"></i> View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/14/Mysql创建存储过程(procedure)/" rel="next" title="Mysql存储过程">
+                <i class="fa fa-chevron-left"></i> Mysql存储过程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/26/SpringBoot启动流程/" rel="prev" title="SpringApplication执行流程">
+                SpringApplication执行流程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: 'Mysql触发器及视图',
+      theme: myTheme,
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/sanguosha.jpg"
+                alt="祭酒郭奉孝" />
+            
+              <p class="site-author-name" itemprop="name">祭酒郭奉孝</p>
+              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#触发器"><span class="nav-number">1.</span> <span class="nav-text">触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trigger语法"><span class="nav-number">1.2.</span> <span class="nav-text">Trigger语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#New-与OLD关键字"><span class="nav-number">1.3.</span> <span class="nav-text">New 与OLD关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整示例"><span class="nav-number">1.4.</span> <span class="nav-text">完整示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图"><span class="nav-number">2.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">2.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建视图语法"><span class="nav-number">2.2.</span> <span class="nav-text">创建视图语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建视图示例"><span class="nav-number">2.3.</span> <span class="nav-text">创建视图示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改视图"><span class="nav-number">2.4.</span> <span class="nav-text">修改视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除视图"><span class="nav-number">2.5.</span> <span class="nav-text">删除视图</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">祭酒郭奉孝</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: 'Mysql触发器及视图', 
+            owner: 'yuanwenjian',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
+            
+                client_id: '21bb0ade50d6f2c9707b'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+</html>
