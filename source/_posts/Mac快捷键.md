@@ -26,3 +26,10 @@ categories:
 
 8. 合并代码  Command+ +
 9. 展开代码 Command + -
+
+10. 移动代码块  shift+command+上箭头/下箭头
+11. 移动单词开头 option + <- 
+12. 移动单词结尾 option + ->
+13. 选中光标所在的单词 option + 上箭头
+14. 调出终端 commend + F12  或者view -> Tool windows,里面可以查看各个模块，并提供对应的快捷键
+

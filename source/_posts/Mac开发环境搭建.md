@@ -11,7 +11,7 @@ categories:
 # 描述
 记录Mac软件下载地址机及安装方法，方便以后下载
 
-# JDK
+# #JDK
 
 ## jdk下载
 下载之前需要注册Oracle账号
@@ -39,7 +39,7 @@ export PATH
 ## 测试
 java -version 
 
-# office安装
+## office安装
 ## office 官网下载地址
 https://officecdn-microsoft-com.akamaized.net/pr/C1297A47-86C4-4C1F-97FA-950631F94777/OfficeMac/Microsoft_Office_2016_16.15.18070902_Installer.pkg
 
@@ -102,6 +102,16 @@ set password for 'root'@'localhost'=password('新密码');
 ### 配置
 将下载解压，配置到环境变量中
 
+## oh my zsh安装
+
+## 安装
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+## 改默认shell
+echo $SHELL   查看当前终端
+
+chsh -s /bin/zsh  修改
+重启终端
 
 
 
