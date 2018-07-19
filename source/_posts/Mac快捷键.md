@@ -31,5 +31,17 @@ categories:
 11. 移动单词开头 option + <- 
 12. 移动单词结尾 option + ->
 13. 选中光标所在的单词 option + 上箭头
-14. 调出终端 commend + F12  或者view -> Tool windows,里面可以查看各个模块，并提供对应的快捷键
+15. 打开文件 shift+command+o
+
+16. 版本还原 shift+command+z
+
+
+## 终端快捷键
+1. 调至行首 ctrl + a
+2. 调至行尾 ctrl + e
+3. 删除单词 ctrl + w
+4. 调至前/后一单词 option+<- /option + ->
+5. 插入最近删除的单词或语句  ctrl+y
+6. 删除光标处到行尾部分 ctrl+k 
+7. 删除当前行 ctrl + u
 
