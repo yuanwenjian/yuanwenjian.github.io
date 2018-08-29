@@ -174,3 +174,12 @@ service iptables restart --重启防火墙
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP
 service iptables restart 重启防火墙
 ```
+
+## vim 命令
+
+###全局替换
+```bash
+1,20s/old/new/g  //1-20行替换
+n,$/old/new/g    //n到文件结尾替换
+%/old/new/g      //全局替换
+```

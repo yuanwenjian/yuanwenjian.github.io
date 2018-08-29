@@ -192,6 +192,18 @@ END$$
 存储过程及视图允许使用DEFINER属性指定所属用户
 只有拥有SUPER权限时，才能指定除自己帐户以外的DEFINER值
 
+# Mysql 查看日志
+
+## 查看日志是否开启
+```sql
+SHOW VARIABLES LIKE 'general%';
+```
+
+## 开启日志
+```sql
+set GLOBAL general_log='ON';
+```
+
 # 参考文献
 [MySQL Procedure][资源]
 
