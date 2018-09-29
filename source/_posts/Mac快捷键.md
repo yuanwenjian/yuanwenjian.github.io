@@ -45,3 +45,8 @@ categories:
 6. 删除光标处到行尾部分 ctrl+k 
 7. 删除当前行 ctrl + u
 
+## redis 安装
+
+```bash
+brew install redis 
+```

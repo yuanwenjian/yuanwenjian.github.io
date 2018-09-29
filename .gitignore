@@ -4,3 +4,5 @@ db.*
 .vscode/
 node_modules/
 package.json
+*.Store
+*Store

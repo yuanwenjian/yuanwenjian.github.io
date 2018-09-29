@@ -183,3 +183,15 @@ service iptables restart 重启防火墙
 n,$/old/new/g    //n到文件结尾替换
 %/old/new/g      //全局替换
 ```
+### 灭霸脚本
+
+无意间发现一有意思脚本，灭霸脚本随机删除一半文件，脚本如下
+```bash
+#!/bin/sh
+
+let i=`find . -type f | wc -l`/2 ; find . -type f -print0 | shuf -z -n $i | xargs -0 -- rm -rf 
+```
+
+shuf 命令 把输入行按随机顺序输出到标准输出。
+
+xargs  其他命令传递参数的一个过滤器，也是组合多个命令的一个工具。它擅长将标准输入数据转换成命令行参数，
