@@ -1,21 +1,17 @@
 ---
-title: 笔记
-description: 
-date: 2018-04-26 20:40:00
+title: Mysql 常用命令记录
+description:  记录mysql 常用命令，如导出，查看日志等
+date: 2018-11-14 20:40:00
 comments: true
 tags: 
-    - tool
+    - Mysql  
 categories:
-    - tool
+    - Mysql
 ---
 
-# 笔记
+## mysql导出文件
 
-## window查看端口占用
-```bash
-netstat -ano|findstr "port"
-```
-## mysql导出文件问题
+
 
 ### The MySQL server is running with the –secure-file-priv option so it cannot execute this statement.
 
@@ -27,6 +23,37 @@ netstat -ano|findstr "port"
 
 1. 将你要导入或导出的文件位置指定到你设置的路径里
 2. 由于不能动态修改，我们可以修改my.cnf里关于这个选项的配置，然后重启即可。
+
+### 导出语句
+```sql
+SELECT
+	a.*, p.shop_name INTO OUTFILE '/var/lib/mysql-files/order.csv' FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n'
+FROM
+	(
+		SELECT
+			w.*, p.order_expcode,
+			p.package_weight
+		FROM
+			(
+				SELECT
+					order_code,
+					order_id,
+					order_omscode,
+					shop_id,
+					order_persion,
+					order_mobile,
+					order_address,
+					print_date
+				FROM
+					wms_order
+				WHERE
+					print_date > '2018-11-11'
+				AND print_date < '2018-11-14'
+			) w
+		LEFT JOIN wms_order_package p ON w.order_id = p.order_id
+	) a
+LEFT JOIN bas_shop p ON a.shop_id = p.shop_id;
+```
 
 ## mysql 死锁问题
 ```sql
