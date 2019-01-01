@@ -91,10 +91,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔记">
 <meta property="og:url" content="http://yoursite.com/2018/04/26/笔记/index.html">
-<meta property="og:site_name" content="祭酒郭奉孝">
+<meta property="og:site_name" content="问问苑大宝">
 <meta property="og:description" content="笔记window查看端口占用1netstat -ano|findstr &quot;port&quot; mysql导出文件问题The MySQL server is running with the –secure-file-priv option so it cannot execute this statement.问题产生原因为导入文件路径与mysql限制路径不符 –secure-file-priv这个参数，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T05:45:04.694Z">
+<meta property="og:updated_time" content="2019-01-01T14:15:46.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔记">
 <meta name="twitter:description" content="笔记window查看端口占用1netstat -ano|findstr &quot;port&quot; mysql导出文件问题The MySQL server is running with the –secure-file-priv option so it cannot execute this statement.问题产生原因为导入文件路径与mysql限制路径不符 –secure-file-priv这个参数，">
@@ -133,7 +133,7 @@
 
 
 
-  <title>笔记 | 祭酒郭奉孝</title>
+  <title>笔记 | 问问苑大宝</title>
   
 
 
@@ -164,7 +164,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">祭酒郭奉孝</span>
+        <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -274,13 +274,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="name" content="问问苑大宝">
     </span>
 
     
@@ -378,6 +378,12 @@
 <li>将你要导入或导出的文件位置指定到你设置的路径里</li>
 <li>由于不能动态修改，我们可以修改my.cnf里关于这个选项的配置，然后重启即可。</li>
 </ol>
+<h2 id="mysql-死锁问题"><a href="#mysql-死锁问题" class="headerlink" title="mysql 死锁问题"></a>mysql 死锁问题</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询是否锁表</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">OPEN</span> <span class="keyword">TABLES</span> <span class="keyword">where</span> In_use &gt; <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看正在锁的事务</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> INFORMATION_SCHEMA.INNODB_LOCKS;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看等待锁的事务</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> INFORMATION_SCHEMA.INNODB_LOCK_WAITS;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看正在提交的事物</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> information_schema.innodb_trx;</span><br></pre></td></tr></table></figure>
+<h2 id="mysql-开启日志"><a href="#mysql-开启日志" class="headerlink" title="mysql 开启日志"></a>mysql 开启日志</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看日志目录</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'general_log%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 开启日志</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log = <span class="keyword">on</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 关闭日志</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> general_log=<span class="keyword">off</span>;</span><br></pre></td></tr></table></figure>
+<p>mac的终端下面使用ssh user@localhost输入密码不能正常登录解决</p>
+<p>只要清除老的公钥信息就可以了。</p>
+<p>解决方法：</p>
+<p>ssh-keygen -R 192.168.1.203(你远程服务器的IP)</p>
 
       
     </div>
@@ -523,9 +529,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/sanguosha.jpg"
-                alt="祭酒郭奉孝" />
+                alt="问问苑大宝" />
             
-              <p class="site-author-name" itemprop="name">祭酒郭奉孝</p>
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
           </div>
 
@@ -536,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#笔记"><span class="nav-number">1.</span> <span class="nav-text">笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#window查看端口占用"><span class="nav-number">1.1.</span> <span class="nav-text">window查看端口占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql导出文件问题"><span class="nav-number">1.2.</span> <span class="nav-text">mysql导出文件问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-MySQL-server-is-running-with-the-–secure-file-priv-option-so-it-cannot-execute-this-statement"><span class="nav-number">1.2.1.</span> <span class="nav-text">The MySQL server is running with the –secure-file-priv option so it cannot execute this statement.</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#笔记"><span class="nav-number">1.</span> <span class="nav-text">笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#window查看端口占用"><span class="nav-number">1.1.</span> <span class="nav-text">window查看端口占用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql导出文件问题"><span class="nav-number">1.2.</span> <span class="nav-text">mysql导出文件问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-MySQL-server-is-running-with-the-–secure-file-priv-option-so-it-cannot-execute-this-statement"><span class="nav-number">1.2.1.</span> <span class="nav-text">The MySQL server is running with the –secure-file-priv option so it cannot execute this statement.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-死锁问题"><span class="nav-number">1.3.</span> <span class="nav-text">mysql 死锁问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-开启日志"><span class="nav-number">1.4.</span> <span class="nav-text">mysql 开启日志</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -611,11 +617,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">祭酒郭奉孝</span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
 
   
 </div>

@@ -91,10 +91,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql存储过程">
 <meta property="og:url" content="http://yoursite.com/2018/03/14/Mysql创建存储过程(procedure)/index.html">
-<meta property="og:site_name" content="祭酒郭奉孝">
+<meta property="og:site_name" content="问问苑大宝">
 <meta property="og:description" content="Procedure 是一个具有名称,参数列表,sql语句组成类似常规计算机语言的子程序,所有关系型数据库都支持存储过程,Mysql5 开始引入存储过程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T05:45:04.689Z">
+<meta property="og:updated_time" content="2018-11-06T13:24:20.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql存储过程">
 <meta name="twitter:description" content="Procedure 是一个具有名称,参数列表,sql语句组成类似常规计算机语言的子程序,所有关系型数据库都支持存储过程,Mysql5 开始引入存储过程">
@@ -133,7 +133,7 @@
 
 
 
-  <title>Mysql存储过程 | 祭酒郭奉孝</title>
+  <title>Mysql存储过程 | 问问苑大宝</title>
   
 
 
@@ -164,7 +164,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">祭酒郭奉孝</span>
+        <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -274,13 +274,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/Mysql创建存储过程(procedure)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="name" content="问问苑大宝">
     </span>
 
     
@@ -426,6 +426,8 @@
 </blockquote>
 <h1 id="修改存储过程-ALTER-PROCEDURE"><a href="#修改存储过程-ALTER-PROCEDURE" class="headerlink" title="修改存储过程 ALTER PROCEDURE"></a>修改存储过程 ALTER PROCEDURE</h1><p>可以更改存储过程的特征,但是无法更改存储的实体及参数,如果想修改,可以使用drop再重新创建</p>
 <h1 id="存储过程权限"><a href="#存储过程权限" class="headerlink" title="存储过程权限"></a>存储过程权限</h1><p>存储过程及视图允许使用DEFINER属性指定所属用户<br>只有拥有SUPER权限时，才能指定除自己帐户以外的DEFINER值</p>
+<h1 id="Mysql-查看日志"><a href="#Mysql-查看日志" class="headerlink" title="Mysql 查看日志"></a>Mysql 查看日志</h1><h2 id="查看日志是否开启"><a href="#查看日志是否开启" class="headerlink" title="查看日志是否开启"></a>查看日志是否开启</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'general%'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="开启日志"><a href="#开启日志" class="headerlink" title="开启日志"></a>开启日志</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">GLOBAL</span> general_log=<span class="string">'ON'</span>;</span><br></pre></td></tr></table></figure>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://www.w3resource.com/mysql/mysql-procedure.php" target="_blank" rel="noopener">MySQL Procedure</a></p>
 
       
@@ -574,9 +576,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/sanguosha.jpg"
-                alt="祭酒郭奉孝" />
+                alt="问问苑大宝" />
             
-              <p class="site-author-name" itemprop="name">祭酒郭奉孝</p>
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
           </div>
 
@@ -587,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存储过程简介"><span class="nav-number">1.</span> <span class="nav-text">存储过程简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建存储过程"><span class="nav-number">2.</span> <span class="nav-text">创建存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">2.2.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OUT参数示例"><span class="nav-number">2.3.</span> <span class="nav-text">OUT参数示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INOUT参数示例"><span class="nav-number">2.4.</span> <span class="nav-text">INOUT参数示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程控制"><span class="nav-number">3.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明-1"><span class="nav-number">3.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IF流程控制"><span class="nav-number">3.2.</span> <span class="nav-text">IF流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Case流程控制"><span class="nav-number">3.3.</span> <span class="nav-text">Case流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ITERATE-Statement"><span class="nav-number">3.4.</span> <span class="nav-text">ITERATE Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">3.4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-2"><span class="nav-number">3.4.2.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LEAVE-Statement"><span class="nav-number">3.5.</span> <span class="nav-text">LEAVE Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-3"><span class="nav-number">3.5.2.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LOOP-Statement"><span class="nav-number">3.6.</span> <span class="nav-text">LOOP Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-4"><span class="nav-number">3.6.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用-2"><span class="nav-number">3.6.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-3"><span class="nav-number">3.6.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHILE-Statement"><span class="nav-number">3.7.</span> <span class="nav-text">WHILE Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-5"><span class="nav-number">3.7.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-4"><span class="nav-number">3.7.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改存储过程-ALTER-PROCEDURE"><span class="nav-number">4.</span> <span class="nav-text">修改存储过程 ALTER PROCEDURE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储过程权限"><span class="nav-number">5.</span> <span class="nav-text">存储过程权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#存储过程简介"><span class="nav-number">1.</span> <span class="nav-text">存储过程简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建存储过程"><span class="nav-number">2.</span> <span class="nav-text">创建存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">2.1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">2.2.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OUT参数示例"><span class="nav-number">2.3.</span> <span class="nav-text">OUT参数示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INOUT参数示例"><span class="nav-number">2.4.</span> <span class="nav-text">INOUT参数示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程控制"><span class="nav-number">3.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明-1"><span class="nav-number">3.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IF流程控制"><span class="nav-number">3.2.</span> <span class="nav-text">IF流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Case流程控制"><span class="nav-number">3.3.</span> <span class="nav-text">Case流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ITERATE-Statement"><span class="nav-number">3.4.</span> <span class="nav-text">ITERATE Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">3.4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-2"><span class="nav-number">3.4.2.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LEAVE-Statement"><span class="nav-number">3.5.</span> <span class="nav-text">LEAVE Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用-1"><span class="nav-number">3.5.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-3"><span class="nav-number">3.5.2.</span> <span class="nav-text">语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LOOP-Statement"><span class="nav-number">3.6.</span> <span class="nav-text">LOOP Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-4"><span class="nav-number">3.6.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用-2"><span class="nav-number">3.6.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-3"><span class="nav-number">3.6.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHILE-Statement"><span class="nav-number">3.7.</span> <span class="nav-text">WHILE Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-5"><span class="nav-number">3.7.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-4"><span class="nav-number">3.7.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改存储过程-ALTER-PROCEDURE"><span class="nav-number">4.</span> <span class="nav-text">修改存储过程 ALTER PROCEDURE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#存储过程权限"><span class="nav-number">5.</span> <span class="nav-text">存储过程权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mysql-查看日志"><span class="nav-number">6.</span> <span class="nav-text">Mysql 查看日志</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看日志是否开启"><span class="nav-number">6.1.</span> <span class="nav-text">查看日志是否开启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启日志"><span class="nav-number">6.2.</span> <span class="nav-text">开启日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -662,11 +664,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">祭酒郭奉孝</span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
 
   
 </div>

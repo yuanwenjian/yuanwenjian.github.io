@@ -91,10 +91,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux 命令">
 <meta property="og:url" content="http://yoursite.com/2018/02/02/linux命令/index.html">
-<meta property="og:site_name" content="祭酒郭奉孝">
+<meta property="og:site_name" content="问问苑大宝">
 <meta property="og:description" content="linux 命令记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T05:45:04.693Z">
+<meta property="og:updated_time" content="2018-11-06T13:24:20.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux 命令">
 <meta name="twitter:description" content="linux 命令记录">
@@ -133,7 +133,7 @@
 
 
 
-  <title>linux 命令 | 祭酒郭奉孝</title>
+  <title>linux 命令 | 问问苑大宝</title>
   
 
 
@@ -164,7 +164,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">祭酒郭奉孝</span>
+        <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -274,13 +274,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/linux命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="祭酒郭奉孝">
+      <meta itemprop="name" content="问问苑大宝">
     </span>
 
     
@@ -508,6 +508,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP</span><br><span class="line">service iptables restart 重启防火墙</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h2 id="vim-命令"><a href="#vim-命令" class="headerlink" title="vim 命令"></a>vim 命令</h2><p>###全局替换<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,20s/old/new/g  //1-20行替换</span><br><span class="line">n,$/old/new/g    //n到文件结尾替换</span><br><span class="line">%/old/new/g      //全局替换</span><br></pre></td></tr></table></figure></p>
+<h3 id="灭霸脚本"><a href="#灭霸脚本" class="headerlink" title="灭霸脚本"></a>灭霸脚本</h3><p>无意间发现一有意思脚本，灭霸脚本随机删除一半文件，脚本如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> i=`find . -<span class="built_in">type</span> f | wc -l`/2 ; find . -<span class="built_in">type</span> f -print0 | shuf -z -n <span class="variable">$i</span> | xargs -0 -- rm -rf</span><br></pre></td></tr></table></figure></p>
+<p>shuf 命令 把输入行按随机顺序输出到标准输出。</p>
+<p>xargs  其他命令传递参数的一个过滤器，也是组合多个命令的一个工具。它擅长将标准输入数据转换成命令行参数，</p>
 
       
     </div>
@@ -550,8 +554,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/03/hexo 添加gitment踩到的坑/" rel="prev" title="hexo 添加gitment踩到的坑">
-                hexo 添加gitment踩到的坑 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/02/Linux发送邮件/" rel="prev" title="使用linux 命令行发送邮件">
+                使用linux 命令行发送邮件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,9 +659,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/sanguosha.jpg"
-                alt="祭酒郭奉孝" />
+                alt="问问苑大宝" />
             
-              <p class="site-author-name" itemprop="name">祭酒郭奉孝</p>
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
           </div>
 
@@ -668,7 +672,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -723,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-自用命令记录"><span class="nav-number">1.</span> <span class="nav-text">linux 自用命令记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">awk 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk与if合用"><span class="nav-number">1.1.1.</span> <span class="nav-text">awk与if合用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取文件列数"><span class="nav-number">1.2.</span> <span class="nav-text">获取文件列数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk内置常用变量"><span class="nav-number">1.3.</span> <span class="nav-text">awk内置常用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口号占用的进程"><span class="nav-number">1.4.</span> <span class="nav-text">查看端口号占用的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩解压命令"><span class="nav-number">1.5.</span> <span class="nav-text">压缩解压命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar解压tar-zx文件"><span class="nav-number">1.5.1.</span> <span class="nav-text">tar解压tar.zx文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩成tar-zx文件"><span class="nav-number">1.5.2.</span> <span class="nav-text">压缩成tar.zx文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unzip命令"><span class="nav-number">1.6.</span> <span class="nav-text">unzip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解压指定目录"><span class="nav-number">1.6.1.</span> <span class="nav-text">解压指定目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip压缩指定文件名"><span class="nav-number">1.6.2.</span> <span class="nav-text">zip压缩指定文件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rar-解压"><span class="nav-number">1.6.3.</span> <span class="nav-text">rar 解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rar-压缩"><span class="nav-number">1.6.4.</span> <span class="nav-text">rar 压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed常用命令"><span class="nav-number">1.7.</span> <span class="nav-text">sed常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort命令"><span class="nav-number">1.8.</span> <span class="nav-text">sort命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口开放及关闭"><span class="nav-number">1.9.</span> <span class="nav-text">端口开放及关闭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看开放端口"><span class="nav-number">1.9.1.</span> <span class="nav-text">查看开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放端口"><span class="nav-number">1.9.2.</span> <span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭端口"><span class="nav-number">1.9.3.</span> <span class="nav-text">关闭端口</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux-自用命令记录"><span class="nav-number">1.</span> <span class="nav-text">linux 自用命令记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk-常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">awk 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk与if合用"><span class="nav-number">1.1.1.</span> <span class="nav-text">awk与if合用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取文件列数"><span class="nav-number">1.2.</span> <span class="nav-text">获取文件列数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk内置常用变量"><span class="nav-number">1.3.</span> <span class="nav-text">awk内置常用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口号占用的进程"><span class="nav-number">1.4.</span> <span class="nav-text">查看端口号占用的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩解压命令"><span class="nav-number">1.5.</span> <span class="nav-text">压缩解压命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tar解压tar-zx文件"><span class="nav-number">1.5.1.</span> <span class="nav-text">tar解压tar.zx文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩成tar-zx文件"><span class="nav-number">1.5.2.</span> <span class="nav-text">压缩成tar.zx文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unzip命令"><span class="nav-number">1.6.</span> <span class="nav-text">unzip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解压指定目录"><span class="nav-number">1.6.1.</span> <span class="nav-text">解压指定目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip压缩指定文件名"><span class="nav-number">1.6.2.</span> <span class="nav-text">zip压缩指定文件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rar-解压"><span class="nav-number">1.6.3.</span> <span class="nav-text">rar 解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rar-压缩"><span class="nav-number">1.6.4.</span> <span class="nav-text">rar 压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed常用命令"><span class="nav-number">1.7.</span> <span class="nav-text">sed常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort命令"><span class="nav-number">1.8.</span> <span class="nav-text">sort命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口开放及关闭"><span class="nav-number">1.9.</span> <span class="nav-text">端口开放及关闭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看开放端口"><span class="nav-number">1.9.1.</span> <span class="nav-text">查看开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放端口"><span class="nav-number">1.9.2.</span> <span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭端口"><span class="nav-number">1.9.3.</span> <span class="nav-text">关闭端口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim-命令"><span class="nav-number">1.10.</span> <span class="nav-text">vim 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#灭霸脚本"><span class="nav-number">1.10.1.</span> <span class="nav-text">灭霸脚本</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -743,11 +747,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">祭酒郭奉孝</span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
 
   
 </div>
