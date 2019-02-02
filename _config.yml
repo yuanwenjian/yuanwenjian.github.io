@@ -88,3 +88,7 @@ menu:
   archives: /archives
   tags: /tags
 
+leancloud_visitors:
+  enable: true
+  app_id: UgWpICsq0u75MxqCtwhd8QqC-gzGzoHsz
+  app_key: 8MCdC1IGNs2tDTHM0P4bmdKT

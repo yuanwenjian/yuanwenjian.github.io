@@ -34,3 +34,4 @@ set smtp-auth=login
 ```
 echo 'test' | mail -s 'test' xxxx@qq.cn
 ```
+
