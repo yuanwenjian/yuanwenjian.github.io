@@ -114,6 +114,14 @@ chsh -s /bin/zsh  修改
 重启终端
 
 
+## 安装redis
+```bash
+brew install redis 
+```
+修改redis密码
+```bash
+onfig set requirepass passwords
+```
 
 [maven]:http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
 [Mysql]:https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.22-macos10.13-x86_64.dmg
