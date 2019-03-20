@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="服务器部署">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器部署">
+<meta property="og:url" content="http://yoursite.com/2018/03/26/WMS服务器部署/index.html">
+<meta property="og:site_name" content="问问苑大宝">
+<meta property="og:description" content="服务器部署">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/03/26/images/redisError1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/26/images/redisError2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/26/images/fixError.png">
+<meta property="og:updated_time" content="2019-03-07T06:51:48.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="服务器部署">
+<meta name="twitter:description" content="服务器部署">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/26/images/redisError1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/26/WMS服务器部署/"/>
+
+
+
+
+
+  <title>服务器部署 | 问问苑大宝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">问问苑大宝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/WMS服务器部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="问问苑大宝">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sanguosha.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="问问苑大宝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">服务器部署</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T22:48:00+08:00">
+                2018-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/26/WMS服务器部署/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/26/WMS服务器部署/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  服务器部署
+              </div>
+          
+
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装必备软件"><a href="#安装必备软件" class="headerlink" title="安装必备软件"></a>安装必备软件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install -y lrzsz <span class="comment"># 安装rz,sz上传下载文件</span></span><br><span class="line"></span><br><span class="line">yum install -y wget <span class="comment">#安装wget</span></span><br><span class="line"></span><br><span class="line">yum install -y vim <span class="comment">#安装vim</span></span><br><span class="line"></span><br><span class="line">yum install -y unzip zip <span class="comment">#安装压缩、解压缩</span></span><br></pre></td></tr></table></figure>
+<h1 id="上传软件包至服务器-tools目录"><a href="#上传软件包至服务器-tools目录" class="headerlink" title="上传软件包至服务器 ~/tools目录"></a>上传软件包至服务器 ~/tools目录</h1><h1 id="安装配置JDK"><a href="#安装配置JDK" class="headerlink" title="安装配置JDK"></a>安装配置JDK</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf jdk-7u79-linux-x64.tar.gz -C /usr/lib/   <span class="comment"># 解压</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置JDK</span></span><br><span class="line">vim /etc/profile.d/java.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jdk1.7.0_79</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载环境变量</span></span><br><span class="line">/etc/profile.d/</span><br><span class="line"><span class="built_in">source</span> java.sh</span><br></pre></td></tr></table></figure>
+<h1 id="安装配置tomcat"><a href="#安装配置tomcat" class="headerlink" title="安装配置tomcat"></a>安装配置tomcat</h1><ol>
+<li>tar -zxvf apache-tomcat-7.0.68.tar.gz -C /var/lib/</li>
+<li>cd /var/lib/</li>
+<li><p>mv apache-tomcat-7.0.68/ tomcat7</p>
+</li>
+<li><p>上传配置文件tomcat到/etc/init.d/目录下</p>
+</li>
+<li><p>cd /etc/init.d/</p>
+</li>
+<li>chmod a+x tomcat</li>
+</ol>
+<p>chkconfig –add tomcat</p>
+<h1 id="安装配置redis"><a href="#安装配置redis" class="headerlink" title="安装配置redis"></a>安装配置redis</h1><ol>
+<li><p>tar -zxvf redis-3.0.7.tar.gz -C /usr/local/ </p>
+</li>
+<li><p><del>可能需要安装gcc<br>yum -y install gcc</del></p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/redis-3.0.7</span><br><span class="line">make</span><br><span class="line">make  MALLOC=libc</span><br><span class="line"><span class="built_in">cd</span> src/</span><br><span class="line">make  <span class="built_in">test</span>  <span class="comment">#(make test遇到You need tcl 8.5 or newer in order to run the Redis test错误，需要安装tcl</span></span><br><span class="line"><span class="comment"># 安装tcl ， </span></span><br><span class="line">yum install tcl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误解决 如果遇到以下错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果装完redis， 运行make test 报了这样的一个错误：</span><br><span class="line">!!! WARNING The following tests failed:</span><br><span class="line"></span><br><span class="line">*** [err]: Test replication partial resync: ok psync (diskless: yes, reconnect: 1) in tests/integration/replication-psync.tcl</span><br><span class="line">Expected condition &apos;[s -1 sync_partial_ok] &gt; 0&apos; to be true ([s -1 sync_partial_ok] &gt; 0)</span><br><span class="line">Cleanup: may take some time... OK</span><br><span class="line">make[1]: *** [test] Error 1</span><br><span class="line">make[1]: Leaving directory `/usr/local/src/redis-3.2.1/src&apos;</span><br><span class="line">make: *** [test] Error 2</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="../images/redisError1.png" alt="redisError1"></p>
+<p><img src="../images/redisError2.png" alt="redisErrro2"><br>更改 tests/integration/replication-psync.tcl 文件</p>
+<p>vi tests/integration/replication-psync.tcl<br>把对应报错的那段代码中的 after后面的数字，从100改成 500。我个人觉得，这个参数貌似是等待的毫秒数。<br><img src="../images/fixError.png" alt="fixError"></p>
+<ol>
+<li><p>make install</p>
+</li>
+<li><p>添加service服务</p>
+<ul>
+<li>复制</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将redis_init_script拷贝到init.d/redis下</span></span><br><span class="line">cp ./utils/redis_init_script /etc/rc.d/init.d/redis</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改部分脚本 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.d/init.d/redis</span><br><span class="line">原文件是没有以下第2行的内容的，添加(带<span class="comment">#号)</span></span><br><span class="line"><span class="comment">#chkconfig: 2345 80 90 </span></span><br><span class="line">redis开启的命令，以后台运行的方式执行。</span><br><span class="line"><span class="variable">$EXEC</span> <span class="variable">$CONF</span> &amp;  </span><br><span class="line">原文件EXEC、CLIEXEC参数，也是有所更改。 </span><br><span class="line">EXEC=/usr/<span class="built_in">local</span>/redis/bin/redis-server   </span><br><span class="line">CLIEXEC=/usr/<span class="built_in">local</span>/redis/bin/redis-cli </span><br><span class="line"></span><br><span class="line">新建目录存放配置文件</span><br><span class="line">mkdir /etc/redis</span><br><span class="line">mkdir /var/redis</span><br><span class="line">mkdir /var/redis/<span class="built_in">log</span></span><br><span class="line">mkdir /var/redis/run</span><br><span class="line">mkdir /var/redis/6379</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>添加redis配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cp  /usr/<span class="built_in">local</span>/redis-3.0.7/redis.conf  /etc/redis/6379.conf</span><br><span class="line"><span class="comment"># 修改配置</span></span><br><span class="line">requirepass  123456  <span class="comment">#设置redis数据库连接密码</span></span><br><span class="line">daemonize yes    <span class="comment">#以后台daemon方式运行redis</span></span><br><span class="line">pidfile /var/redis/run/redis_6379.pid   <span class="comment">#redis后台运行，默认pid文件路径/var/run/redis.pid</span></span><br><span class="line">logfile /var/redis/<span class="built_in">log</span>/redis_6379.log  <span class="comment">#可以指定日志文件路径</span></span><br><span class="line">dir /var/redis/6379    <span class="comment">#本地快照数据库存放目录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chkconfig  --add  redis</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">service redis start</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="安装rabbit-mq"><a href="#安装rabbit-mq" class="headerlink" title="安装rabbit-mq"></a>安装rabbit-mq</h1><ol>
+<li><p>安装软件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su -c <span class="string">'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm'</span></span><br><span class="line">yum  install erlang</span><br><span class="line">wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.0.2/rabbitmq-server-3.0.2-1.noarch.rpm</span><br><span class="line">yum localinstall rabbitmq-server-3.0.2-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/sbin/</span><br><span class="line">vim /etc/rabbitmq/rabbitmq.config</span><br><span class="line"><span class="comment"># 再rabbitmq.config添加</span></span><br><span class="line">[ </span><br><span class="line">&#123;rabbit, [&#123;tcp_listeners, [5672]&#125;, &#123;loopback_users, [<span class="string">"mquser"</span>]&#125;]&#125; </span><br><span class="line">].</span><br><span class="line"></span><br><span class="line">vim /etc/rabbitmq/rabbitmq-env.conf</span><br><span class="line"><span class="comment"># 添加以下内容</span></span><br><span class="line">NODENAME=rabbitmq@localhost</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动rabbit服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service rabbitmq-server start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加用户,并赋予权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/sbin/</span><br><span class="line">service rabbitmq-server start</span><br><span class="line"><span class="comment">#创建管理员用户，负责整个MQ的运维</span></span><br><span class="line">sudo ./rabbitmqctl add_user mquser 123456</span><br><span class="line"><span class="comment">#赋予其administrator角色</span></span><br><span class="line">sudo ./rabbitmqctl set_user_tags mquser administrator </span><br><span class="line"><span class="comment"># 该命令使用户mquser具有/这个virtual host中所有资源的配置、写、读权限以便#管理其中的资源</span></span><br><span class="line">sudo ./rabbitmqctl set_permissions -p / mquser <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></span><br><span class="line">sudo ./rabbitmq-server start &amp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置开机自启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig rabbitmq-server on</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="安装zookeeper"><a href="#安装zookeeper" class="headerlink" title="安装zookeeper"></a>安装zookeeper</h1><ol>
+<li><p>解压到 /usr/local下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf zookeeper-3.4.9.tar.gz  -C /usr/<span class="built_in">local</span>/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conf/目录下有个zoo_sample.cfg，是样板配置文件</span><br><span class="line">复制一份成zoo.cfg在当前目录下</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/zookeeper-3.4.9/conf/</span><br><span class="line">cp zoo_sample.cfg  zoo.cfg</span><br><span class="line">里面有两个比较重要的配置：</span><br><span class="line">dataDir=/var/lib/zookeeper <span class="comment"># 数据存放位置，可根据需要修改</span></span><br><span class="line">clientPort=2181 <span class="comment"># 服务监听端口，可根据需要修改</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传配置文件zookeeper到/etc/init.d/，修改配置路径和参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/zookeeper</span><br><span class="line">修改配置文件中的参数  bin/zkServer.sh start &amp;</span><br><span class="line"></span><br><span class="line">修改执行权限 chmod a+x zookeeper</span><br><span class="line">添加到开机启动项chkconfig  --add  zookeeper</span><br><span class="line"></span><br><span class="line">服务器重启之后需要重启一下zookeeper服务</span><br><span class="line">service zookeeper stop </span><br><span class="line">service zookeeper start</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#安装Mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">需要首先删除系统自动的mysql</span><br><span class="line">rpm -qa|grep mysql</span><br><span class="line"></span><br><span class="line">rpm -e mysql-libs --nodeps</span><br><span class="line"></span><br><span class="line">解压缩文件</span><br><span class="line"><span class="built_in">cd</span> /root/tools</span><br><span class="line">tar -xvf mysql-5.7.11-1.el6.x86_64.rpm-bundle.tar</span><br><span class="line"></span><br><span class="line">本地安装</span><br><span class="line">yum localinstall mysql-community-libs-5.7.11-1.el6.x86_64.rpm mysql-community-common-5.7.11-1.el6.x86_64.rpm mysql-community-client-5.7.11-1.el6.x86_64.rpm mysql-community-server-5.7.11-1.el6.x86_64.rpm </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">启动mysql服务</span><br><span class="line">service mysqld start</span><br><span class="line"></span><br><span class="line">生成<span class="built_in">log</span>文件，包含临时密码</span><br><span class="line">grep <span class="string">"password"</span> /var/<span class="built_in">log</span>/mysqld.log</span><br><span class="line">记录临时密码4o(frDfe*I&amp;k</span><br><span class="line">用临时密码登录后修改密码</span><br><span class="line">step 1: SET PASSWORD = PASSWORD(<span class="string">'Ss-wms123456'</span>);</span><br><span class="line">设置密码永不过期</span><br><span class="line">step 2: ALTER USER <span class="string">'root'</span>@<span class="string">'localhost'</span> PASSWORD EXPIRE NEVER;</span><br><span class="line">step 3: flush privileges;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">替换 /etc/my.cnf</span><br><span class="line">修改中间的路径参数</span><br></pre></td></tr></table></figure></p>
+<h1 id="挂载磁盘修改配置文件"><a href="#挂载磁盘修改配置文件" class="headerlink" title="挂载磁盘修改配置文件"></a>挂载磁盘修改配置文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1. 使用 fdisk -l  查看哪个磁盘没有挂载</span><br><span class="line">fdisk –l</span><br><span class="line">df -h就是查看磁盘容量的使用情况。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4.将未挂载磁盘挂载到mysql数据路径下</span><br><span class="line">挂载命令</span><br><span class="line">mkfs.ext4 /dev/vdb 将/dev/vdb格式化为ext4类型  （不明确类型，可能报：mount: you must specify the filesystem <span class="built_in">type</span>的错误）</span><br><span class="line"></span><br><span class="line">mount /dev/vdb /data</span><br><span class="line"></span><br><span class="line">5. 开机自动挂载</span><br><span class="line">在/etc/fstab 添加以下命令</span><br><span class="line">/dev/vdb              /home                  ext4    defaults        0 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql挂载后：对应修改my.cnf信息：</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/data/lib/mysql</span><br><span class="line">socket=/data/lib/mysql/mysql.sock</span><br><span class="line">[client]</span><br><span class="line">port		= 3306</span><br><span class="line">socket	= /data/lib/mysql/mysql.sock</span><br><span class="line">对服务器和客户均指定路径名，使得它们都使用同一个套接字文件。如果你只为服务器设置路径，客户程序将仍然期望在原位置执行套接字，在修改后重启服务器，使它在新位置创建套接字</span><br></pre></td></tr></table></figure>
+<h1 id="上传shell"><a href="#上传shell" class="headerlink" title="上传shell"></a>上传shell</h1><p>上传两个配置文件dubboconfig.zip    shells.zip到 /root/tools/ 下<br>该shell，可能具体内部路径需要根据实际路径修改，如备份文件放置目录等。<br>需要修改dbconfig文件，配置当前数据库的host、用户名、密码。</p>
+<h1 id="防止误删除操作"><a href="#防止误删除操作" class="headerlink" title="防止误删除操作"></a>防止误删除操作</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir –p /root/.trash/</span><br><span class="line"><span class="built_in">cd</span> /root/shells/</span><br><span class="line">cp rmcmd.sh /etc/profile.d/</span><br><span class="line"><span class="built_in">source</span> /etc/profile.d/rmcmd.sh</span><br></pre></td></tr></table></figure>
+<h1 id="文件夹创建"><a href="#文件夹创建" class="headerlink" title="文件夹创建"></a>文件夹创建</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /root/setup</span><br><span class="line">mkdir -p /bootapps/logs/</span><br></pre></td></tr></table></figure>
+<h1 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h1><p>防火墙（谨慎设置，容易把自己挡在系统外）</p>
+<ol>
+<li>修改 vim /etc/sysconfig/iptables,在22端口配置下，加入开放80,8080端口</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<ol>
+<li>重启防火墙<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="自定义快捷命令"><a href="#自定义快捷命令" class="headerlink" title="自定义快捷命令"></a>自定义快捷命令</h1><ol>
+<li><p>修改  /root/.bashrc 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim root/.bashrc</span><br><span class="line"><span class="built_in">alias</span> tailtomcat=<span class="string">'tail -n 100 -f /var/lib/tomcat7/logs/catalina.out'</span></span><br><span class="line"><span class="built_in">alias</span> cdtomcatc=<span class="string">'cd /var/lib/tomcat7/webapps/ecloud-wms/WEB-INF/classes'</span></span><br><span class="line"><span class="built_in">alias</span> cdtomcat=<span class="string">'cd /var/lib/tomcat7/bin'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载配置  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /root/.bashrc</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="tomcat相关配置"><a href="#tomcat相关配置" class="headerlink" title="tomcat相关配置"></a>tomcat相关配置</h1><ol>
+<li><p>修改server.xml<br>在server.xml 文件中添加\之前添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">docBase</span>=<span class="string">"/var/resources/wmsfile"</span>  <span class="attr">reloadable</span>=<span class="string">"true"</span>  <span class="attr">debug</span>=<span class="string">"0"</span> <span class="attr">path</span>=<span class="string">"/wmsfile"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改启动参数</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/tomcat7/bin/</span><br><span class="line">vim catalina.sh</span><br><span class="line"><span class="comment"># 添加以下内容</span></span><br><span class="line">JAVA_OPTS=<span class="string">"-server -Xms4048m -Xmx4048m -Xss512k -XX:PermSize=256m -XX:MaxPermSize=512m"</span></span><br></pre></td></tr></table></figure>
+<h1 id="15、服务启动"><a href="#15、服务启动" class="headerlink" title="15、服务启动"></a>15、服务启动</h1><p>启动服务:shells 文件夹下执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./dubboDeploy.sh 将项目全部部署</span><br><span class="line">./dubboStartup.sh 重新编译edb_wms.war 主业务</span><br><span class="line">tomcat下，/bin  ./startup.sh 启动tomcat</span><br><span class="line">正常情况，操作启动tomcat即可</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/26/Spring事物传播/" rel="next" title="Spring事物传播">
+                <i class="fa fa-chevron-left"></i> Spring事物传播
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/26/SpringBoot启动流程/" rel="prev" title="SpringApplication执行流程">
+                SpringApplication执行流程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: '服务器部署',
+      theme: myTheme,
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/sanguosha.jpg"
+                alt="问问苑大宝" />
+            
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
+              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装必备软件"><span class="nav-number">1.</span> <span class="nav-text">安装必备软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传软件包至服务器-tools目录"><span class="nav-number">2.</span> <span class="nav-text">上传软件包至服务器 ~/tools目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置JDK"><span class="nav-number">3.</span> <span class="nav-text">安装配置JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置tomcat"><span class="nav-number">4.</span> <span class="nav-text">安装配置tomcat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置redis"><span class="nav-number">5.</span> <span class="nav-text">安装配置redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装rabbit-mq"><span class="nav-number">6.</span> <span class="nav-text">安装rabbit-mq</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装zookeeper"><span class="nav-number">7.</span> <span class="nav-text">安装zookeeper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#挂载磁盘修改配置文件"><span class="nav-number">8.</span> <span class="nav-text">挂载磁盘修改配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传shell"><span class="nav-number">9.</span> <span class="nav-text">上传shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防止误删除操作"><span class="nav-number">10.</span> <span class="nav-text">防止误删除操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件夹创建"><span class="nav-number">11.</span> <span class="nav-text">文件夹创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置防火墙"><span class="nav-number">12.</span> <span class="nav-text">配置防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义快捷命令"><span class="nav-number">13.</span> <span class="nav-text">自定义快捷命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tomcat相关配置"><span class="nav-number">14.</span> <span class="nav-text">tomcat相关配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#15、服务启动"><span class="nav-number">15.</span> <span class="nav-text">15、服务启动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: '服务器部署', 
+            owner: 'yuanwenjian',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
+            
+                client_id: '21bb0ade50d6f2c9707b'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+</body>
+</html>

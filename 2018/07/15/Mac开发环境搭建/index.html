@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="问问苑大宝">
 <meta property="og:description" content="记录Mac开发环境搭建,以免忘记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T07:04:43.152Z">
+<meta property="og:updated_time" content="2019-02-26T14:15:12.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac开发环境搭建记录">
 <meta name="twitter:description" content="记录Mac开发环境搭建,以免忘记">
@@ -415,6 +415,8 @@
 <h2 id="oh-my-zsh安装"><a href="#oh-my-zsh安装" class="headerlink" title="oh my zsh安装"></a>oh my zsh安装</h2><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>sh -c “$(curl -fsSL <a href="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh" target="_blank" rel="noopener">https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh</a>)”</p>
 <h2 id="改默认shell"><a href="#改默认shell" class="headerlink" title="改默认shell"></a>改默认shell</h2><p>echo $SHELL   查看当前终端</p>
 <p>chsh -s /bin/zsh  修改<br>重启终端</p>
+<h2 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install redis</span><br></pre></td></tr></table></figure>
+<p>修改redis密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onfig <span class="built_in">set</span> requirepass passwords</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -573,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +586,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -595,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -628,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK"><span class="nav-number">2.</span> <span class="nav-text">#JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk下载"><span class="nav-number">2.1.</span> <span class="nav-text">jdk下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量配置"><span class="nav-number">2.3.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#office安装"><span class="nav-number">2.5.</span> <span class="nav-text">office安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#office-官网下载地址"><span class="nav-number">2.6.</span> <span class="nav-text">office 官网下载地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解软件"><span class="nav-number">2.7.</span> <span class="nav-text">破解软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navicat破解版安装"><span class="nav-number">2.8.</span> <span class="nav-text">Navicat破解版安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql安装"><span class="nav-number">2.9.</span> <span class="nav-text">Mysql安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置mysql环境变量"><span class="nav-number">2.9.1.</span> <span class="nav-text">配置mysql环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重置密码"><span class="nav-number">2.9.2.</span> <span class="nav-text">重置密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven配置"><span class="nav-number">2.10.</span> <span class="nav-text">Maven配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maven下载"><span class="nav-number">2.10.1.</span> <span class="nav-text">maven下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.10.2.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oh-my-zsh安装"><span class="nav-number">2.11.</span> <span class="nav-text">oh my zsh安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-1"><span class="nav-number">2.12.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改默认shell"><span class="nav-number">2.13.</span> <span class="nav-text">改默认shell</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDK"><span class="nav-number">2.</span> <span class="nav-text">#JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk下载"><span class="nav-number">2.1.</span> <span class="nav-text">jdk下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量配置"><span class="nav-number">2.3.</span> <span class="nav-text">环境变量配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">2.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#office安装"><span class="nav-number">2.5.</span> <span class="nav-text">office安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#office-官网下载地址"><span class="nav-number">2.6.</span> <span class="nav-text">office 官网下载地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#破解软件"><span class="nav-number">2.7.</span> <span class="nav-text">破解软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navicat破解版安装"><span class="nav-number">2.8.</span> <span class="nav-text">Navicat破解版安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql安装"><span class="nav-number">2.9.</span> <span class="nav-text">Mysql安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置mysql环境变量"><span class="nav-number">2.9.1.</span> <span class="nav-text">配置mysql环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重置密码"><span class="nav-number">2.9.2.</span> <span class="nav-text">重置密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven配置"><span class="nav-number">2.10.</span> <span class="nav-text">Maven配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maven下载"><span class="nav-number">2.10.1.</span> <span class="nav-text">maven下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.10.2.</span> <span class="nav-text">配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oh-my-zsh安装"><span class="nav-number">2.11.</span> <span class="nav-text">oh my zsh安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-1"><span class="nav-number">2.12.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改默认shell"><span class="nav-number">2.13.</span> <span class="nav-text">改默认shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装redis"><span class="nav-number">2.14.</span> <span class="nav-text">安装redis</span></a></li></ol></li></ol></div>
             
 
           </div>
