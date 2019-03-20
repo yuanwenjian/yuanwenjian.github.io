@@ -9,6 +9,11 @@ categories:
 ---
 
 # 快捷键
+
+## Mac快捷键
+1. 显示聚焦窗口 command + 空格
+2. finder 显示聚焦 shift +command + 空格ß
+
 ## finder快捷键
 1. finder 跳转家目录  Command-Shift-H
 2. finder 跳转xx的Mac ommand-Shift-C
@@ -34,7 +39,9 @@ categories:
 15. 打开文件 shift+command+o
 
 16. 版本还原 shift+command+z
-
+17. 断点下一步 f8,全部跳过 alt+command+R
+18. 选中到行首 shift+command+ 左箭头，行尾 shift +command +右箭头
+19. 合并代码 shift+command+[-],放开代码 shit+command +[+]
 
 ## 终端快捷键
 1. 调至行首 ctrl + a
@@ -45,6 +52,11 @@ categories:
 6. 删除光标处到行尾部分 ctrl+k 
 7. 删除当前行 ctrl + u
 
+## Navcate 快捷键
+1. 新建查询窗口 command + y
+2. 执行查询 command + R
+3. 执行已选择语句  shift+command+R
+4. 执行当前语句 shift+command+E
 ## redis 安装
 
 ```bash
