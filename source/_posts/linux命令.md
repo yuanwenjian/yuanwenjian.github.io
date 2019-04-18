@@ -180,8 +180,8 @@ service iptables restart 重启防火墙
 ###全局替换
 ```bash
 1,20s/old/new/g  //1-20行替换
-n,$/old/new/g    //n到文件结尾替换
-%/old/new/g      //全局替换
+n,$s/old/new/g    //n到文件结尾替换
+%s/old/new/g      //全局替换
 ```
 ### 灭霸脚本
 
