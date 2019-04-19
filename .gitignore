@@ -6,3 +6,6 @@ node_modules/
 package.json
 *.Store
 *Store
+WMS服务器部署.md
+fixError.png
+redisError*.png
