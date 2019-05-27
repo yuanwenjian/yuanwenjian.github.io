@@ -221,6 +221,23 @@ broker 会丢失持久化消息，如果 broker 在将上述消息写入磁盘�
 ## Delivery Tag
 递送标签是一个64位长的值，因此其最大值为9223372036854775807.由于Delivery Tag的范围是按每个通道划分的，因此发布商或消费者在实践中不太可能运行该值。
 
+# 确认机制总结
+
+## 生产者确认 ConfirmCallback
+```java
+
+```
+
+生产者发送至exchange或者queue成功后
+
+## 消费者确认 ReturnCallback
+
+```java
+
+```
+
+
+
 # 参考
 [RabbitMQ确认机制][确认机制]
 

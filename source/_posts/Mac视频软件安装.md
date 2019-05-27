@@ -40,6 +40,11 @@ ffmpeg -i 文件名 -vf delogo=x=1050:y=20:w=200:h=130 输出文件名  中间�
 ffplay 未安装
 brew reinstall --with-sdl2 ffmpeg //重新安装ffmpeg 
 
+# Mac隐私安全设置显示允许所有来源安装
+```bash
+sudo spctl --master-disable //输入密码，重新打开设置
+```
+
 
 [IINA]:https://lhc70000.github.io/iina/zh-cn/
 [annie]:https://github.com/iawia002/annie

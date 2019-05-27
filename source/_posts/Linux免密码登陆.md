@@ -20,3 +20,10 @@ ssh-keygen  //一路回车
 ssh-copy-id -i ~/.ssh/id_rsa.pub remote-host
 ```
 输入密码，配置完成
+
+
+# 清除服务端秘钥
+```bash
+ssh-keygen -R 149.28.120.236 ## 远程ip
+```
+189 1145 3870 sy
