@@ -17,13 +17,13 @@ ssh-keygen  //一路回车
 
 ## 第二步： 用ssh-copy-id将公钥复制到远程机器中
 ```bash
-ssh-copy-id -i ~/.ssh/id_rsa.pub remote-host
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-host
 ```
 输入密码，配置完成
 
 
 # 清除服务端秘钥
 ```bash
-ssh-keygen -R 149.28.120.236 ## 远程ip
+ssh-keygen -R remote-host ## user@remote-host
 ```
 189 1145 3870 sy
