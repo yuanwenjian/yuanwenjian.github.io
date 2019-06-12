@@ -638,6 +638,6 @@ AnnotationConfigEmbeddedWebApplicationContext构造方法如下 ,通过以下代
 ```
 
 
-[initializer]:../images/springboot/initializer.png
-[Listener]:../images/springboot/SpringBootApplicationListener.png
-[webapplication]:../images/springboot/webApplicationContext.jpg
+[initializer]:/images/springboot/initializer.png
+[Listener]:/images/springboot/SpringBootApplicationListener.png
+[webapplication]:/images/springboot/webApplicationContext.jpg
