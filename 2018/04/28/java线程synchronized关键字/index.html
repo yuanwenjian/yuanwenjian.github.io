@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Spring,SpringBoot," />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -86,20 +86,18 @@
 
 
 
-<meta name="description" content="SpringBoot对象实例化步骤">
-<meta name="keywords" content="Spring,SpringBoot">
+<meta name="description" content="synchronized原理Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的。但是监视器锁本质又是依赖于底层的操作系统的互斥锁（Mutex Lock）来实现的。而操作系统实现线程之间的切换这就需要从用户态转换到核心态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。这种依赖于操作系统互斥锁（Mutex Lock">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot对象实例化步骤">
-<meta property="og:url" content="http://yoursite.com/2018/05/03/SpringBoot实例化对象过程/index.html">
+<meta property="og:title" content="JAVA多线程synchronized关键字">
+<meta property="og:url" content="http://yoursite.com/2018/04/28/java线程synchronized关键字/index.html">
 <meta property="og:site_name" content="问问苑大宝">
-<meta property="og:description" content="SpringBoot对象实例化步骤">
+<meta property="og:description" content="synchronized原理Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的。但是监视器锁本质又是依赖于底层的操作系统的互斥锁（Mutex Lock）来实现的。而操作系统实现线程之间的切换这就需要从用户态转换到核心态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。这种依赖于操作系统互斥锁（Mutex Lock">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/webapplication.png">
-<meta property="og:updated_time" content="2018-07-15T05:45:04.691Z">
+<meta property="og:updated_time" content="2019-06-12T14:56:13.665Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot对象实例化步骤">
-<meta name="twitter:description" content="SpringBoot对象实例化步骤">
-<meta name="twitter:image" content="http://yoursite.com/images/webapplication.png">
+<meta name="twitter:title" content="JAVA多线程synchronized关键字">
+<meta name="twitter:description" content="synchronized原理Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的。但是监视器锁本质又是依赖于底层的操作系统的互斥锁（Mutex Lock）来实现的。而操作系统实现线程之间的切换这就需要从用户态转换到核心态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。这种依赖于操作系统互斥锁（Mutex Lock">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/03/SpringBoot实例化对象过程/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/28/java线程synchronized关键字/"/>
 
 
 
 
 
-  <title>SpringBoot对象实例化步骤 | 问问苑大宝</title>
+  <title>JAVA多线程synchronized关键字 | 问问苑大宝</title>
   
 
 
@@ -273,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/SpringBoot实例化对象过程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/28/java线程synchronized关键字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
@@ -290,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringBoot对象实例化步骤</h1>
+          <h1 class="post-title" itemprop="name headline">JAVA多线程synchronized关键字</h1>
         
 
         <div class="post-meta">
@@ -302,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T13:59:00+08:00">
-                2018-05-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T20:40:00+08:00">
+                2018-04-28
               </time>
             
 
@@ -325,19 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring/SpringBoot/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringBoot</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -354,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/03/SpringBoot实例化对象过程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/03/SpringBoot实例化对象过程/" itemprop="commentsCount"></span>
+                <a href="/2018/04/28/java线程synchronized关键字/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/28/java线程synchronized关键字/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -368,10 +355,6 @@
 
           
 
-          
-              <div class="post-description">
-                  SpringBoot对象实例化步骤
-              </div>
           
 
           
@@ -388,13 +371,12 @@
       
 
       
-        <p>SpringBoot 1.5.7</p>
-<ol>
-<li>创建ConfigurableApplicationContext 对象<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SpringApplication <span class="number">315</span>行</span><br><span class="line"><span class="function"><span class="keyword">protected</span> ConfigurableApplicationContext <span class="title">createApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Class&lt;?&gt; contextClass = <span class="keyword">this</span>.applicationContextClass;</span><br><span class="line">    <span class="keyword">if</span> (contextClass == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            contextClass = Class.forName(<span class="keyword">this</span>.webEnvironment ? <span class="string">"org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext"</span> : <span class="string">"org.springframework.context.annotation.AnnotationConfigApplicationContext"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException var3) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Unable create a default ApplicationContext, please specify an ApplicationContextClass"</span>, var3);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (ConfigurableApplicationContext)BeanUtils.instantiate(contextClass);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>创建context类型为AnnotationConfigEmbeddedWebApplicationContext,内置beanfactory为DefaultListableBeanFactory<br>类图如下<br><img src="/images/webapplication.png" alt="webapplication"><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">类图中GenericApplicationContext无参构造方法如下所示</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">GenericApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.customClassLoader = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.refreshed = <span class="keyword">new</span> AtomicBoolean();</span><br><span class="line">    <span class="keyword">this</span>.beanFactory = <span class="keyword">new</span> DefaultListableBeanFactory();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">步骤    行数    方法名</span><br><span class="line">SpringApplication</span><br><span class="line"><span class="number">1</span>. <span class="number">147</span>   SpringApplication.run()   </span><br><span class="line"><span class="number">2</span>. <span class="number">163</span>   SpringApplication.refreshContext(context)</span><br><span class="line"><span class="number">3</span>. <span class="number">211</span>   <span class="keyword">this</span>.refresh(context);</span><br><span class="line"><span class="number">4</span>. <span class="number">427</span>   ((AbstractApplicationContext)applicationContext).refresh()</span><br><span class="line"></span><br><span class="line">AbstractApplicationContext</span><br><span class="line"><span class="number">5</span>. <span class="number">269</span>   <span class="keyword">this</span>.finishBeanFactoryInitialization(beanFactory);</span><br><span class="line"><span class="number">6</span>. <span class="number">477</span>   <span class="keyword">this</span>.getBean(weaverAwareName);</span><br><span class="line"><span class="number">7</span>. <span class="number">586</span>   <span class="keyword">this</span>.getBeanFactory().getBean(name);</span><br><span class="line"></span><br><span class="line">AbstractBeanFactory</span><br><span class="line"><span class="number">8</span>. <span class="number">97</span> <span class="keyword">this</span>.doGetBean(name, (Class)<span class="keyword">null</span>, (Object[])<span class="keyword">null</span>, <span class="keyword">false</span>)</span><br><span class="line"><span class="number">9</span>. <span class="number">1123</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> Object <span class="title">createBean</span><span class="params">(String var1, RootBeanDefinition var2, Object[] var3)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">AbstractAutowireCapableBeanFactory</span></span><br><span class="line"><span class="function">10. 306 <span class="keyword">this</span>.<span class="title">doCreateBean</span><span class="params">(beanName, mbdToUse, args)</span></span></span><br><span class="line"><span class="function">11. 321 <span class="keyword">this</span>.<span class="title">createBeanInstance</span><span class="params">(beanName, mbd, args)</span></span></span><br><span class="line"><span class="function">12. 731  autowireNecessary ? <span class="keyword">this</span>.<span class="title">autowireConstructor</span><span class="params">(beanName, mbd, (Constructor[])</span><span class="keyword">null</span>, <span class="params">(Object[])</span><span class="keyword">null</span>) : <span class="keyword">this</span>.<span class="title">instantiateBean</span><span class="params">(beanName, mbd)</span></span>;</span><br><span class="line"><span class="number">13</span>. <span class="number">783</span> (<span class="keyword">new</span> ConstructorResolver(<span class="keyword">this</span>)).autowireConstructor(beanName, mbd, ctors, explicitArgs)</span><br><span class="line"></span><br><span class="line">ConstructorResolver</span><br><span class="line"><span class="number">14</span>. <span class="number">203</span> <span class="keyword">this</span>.beanFactory.getInstantiationStrategy().instantiate(mbd, beanName, <span class="keyword">this</span>.beanFactory, constructorToUse, argsToUse);</span><br><span class="line"></span><br><span class="line">SimpleInstantiationStrategy</span><br><span class="line"><span class="number">15</span>. <span class="number">82</span>  BeanUtils.instantiateClass(ctor, args)</span><br><span class="line"></span><br><span class="line">BeanUtils</span><br><span class="line"><span class="number">16</span>. <span class="number">76</span> ctor.newInstance(args)</span><br></pre></td></tr></table></figure>
+        <h1 id="synchronized原理"><a href="#synchronized原理" class="headerlink" title="synchronized原理"></a>synchronized原理</h1><p>Synchronized是通过对象内部的一个叫做监视器锁（monitor）来实现的。但是监视器锁本质又是依赖于底层的操作系统的互斥锁（Mutex Lock）来实现的。而操作系统实现线程之间的切换这就需要从用户态转换到核心态，这个成本非常高，状态之间的转换需要相对比较长的时间，这就是为什么Synchronized效率低的原因。这种依赖于操作系统互斥锁（Mutex Lock）所实现的锁我们称之为“重量级锁”</p>
+<h1 id="synchronized用法"><a href="#synchronized用法" class="headerlink" title="synchronized用法"></a>synchronized用法</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*获取对象锁*/</span></span><br><span class="line"><span class="comment">//这个用法就是使用了obj的锁，来锁定一个代码块。</span></span><br><span class="line"><span class="keyword">synchronized</span>(obj)&#123;</span><br><span class="line">    <span class="comment">// some code...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//对整个方法上锁</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">aMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// some code...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这个时候它使用的是当前实例this的锁，相当于下面的模式：</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">aMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>)&#123;</span><br><span class="line">        <span class="comment">// some code...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*获取类锁*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">synchronized</span>(Class.class)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="两个代码块的互斥"><a href="#两个代码块的互斥" class="headerlink" title="两个代码块的互斥"></a>两个代码块的互斥</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">do1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"-do1-"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">do2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"-do2-"</span> + i);</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建一个实例，开启两个线程，分别调用do1(),do2()方法，这两个方法也是互斥的，即使访问的是两个线程访问的是两个方法，也是互斥的，因为决定是否同时访问的是根据对象锁来的，这两个调用使用的是同一个对象锁</p>
+<p>#总结</p>
+<p> synchronized关键字加在方法上还是对象上，如果它作用的对象是非静态的，则它取得的锁是对象；如果synchronized作用的对象是一个静态方法或一个类，则它取得的锁是对类，该类所有的对象同一把锁。 </p>
 
       
     </div>
@@ -412,9 +394,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-          
-            <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
         </div>
       
@@ -490,7 +470,7 @@
     $("#gitment_title").attr("style", "display:none");
     $("#container").attr("style", "").addClass("gitment_container");
     var gitment = new Gitment({
-      id: 'SpringBoot对象实例化步骤',
+      id: 'JAVA多线程synchronized关键字',
       theme: myTheme,
       owner: "yuanwenjian",
       repo: "gitment-comments",
@@ -526,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -546,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +546,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -568,7 +557,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -591,6 +580,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronized原理"><span class="nav-number">1.</span> <span class="nav-text">synchronized原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronized用法"><span class="nav-number">2.</span> <span class="nav-text">synchronized用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两个代码块的互斥"><span class="nav-number">3.</span> <span class="nav-text">两个代码块的互斥</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -794,7 +799,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: 'SpringBoot对象实例化步骤', 
+            id: 'JAVA多线程synchronized关键字', 
             owner: 'yuanwenjian',
             repo: 'gitment-comments',
             

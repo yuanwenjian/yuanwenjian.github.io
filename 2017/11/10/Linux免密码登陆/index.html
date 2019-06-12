@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="问问苑大宝">
 <meta property="og:description" content="经常登陆服务器，如果每次输入都需要输入密码会很浪费时间，而且有时会在脚本中访问服务器，此时无法手动输入密码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T05:45:04.688Z">
+<meta property="og:updated_time" content="2019-06-12T14:56:13.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux免密码登陆">
 <meta name="twitter:description" content="经常登陆服务器，如果每次输入都需要输入密码会很浪费时间，而且有时会在脚本中访问服务器，此时无法手动输入密码">
@@ -388,8 +388,10 @@
       
         <h1 id="第一步-在本地机器上使用ssh-keygen产生公钥私钥对"><a href="#第一步-在本地机器上使用ssh-keygen产生公钥私钥对" class="headerlink" title="第一步:在本地机器上使用ssh-keygen产生公钥私钥对"></a>第一步:在本地机器上使用ssh-keygen产生公钥私钥对</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  //一路回车</span><br></pre></td></tr></table></figure>
 <p>执行完会在~/.ssh/目录下生成两个文件 id_rsa.pub和id_rsa</p>
-<h2 id="第二步：-用ssh-copy-id将公钥复制到远程机器中"><a href="#第二步：-用ssh-copy-id将公钥复制到远程机器中" class="headerlink" title="第二步： 用ssh-copy-id将公钥复制到远程机器中"></a>第二步： 用ssh-copy-id将公钥复制到远程机器中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub remote-host</span><br></pre></td></tr></table></figure>
+<h2 id="第二步：-用ssh-copy-id将公钥复制到远程机器中"><a href="#第二步：-用ssh-copy-id将公钥复制到远程机器中" class="headerlink" title="第二步： 用ssh-copy-id将公钥复制到远程机器中"></a>第二步： 用ssh-copy-id将公钥复制到远程机器中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-host</span><br></pre></td></tr></table></figure>
 <p>输入密码，配置完成</p>
+<h1 id="清除服务端秘钥"><a href="#清除服务端秘钥" class="headerlink" title="清除服务端秘钥"></a>清除服务端秘钥</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -R remote-host <span class="comment">## user@remote-host</span></span><br></pre></td></tr></table></figure>
+<p>189 1145 3870 sy</p>
 
       
     </div>
@@ -548,7 +550,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -559,7 +561,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -570,7 +572,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -603,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步-在本地机器上使用ssh-keygen产生公钥私钥对"><span class="nav-number">1.</span> <span class="nav-text">第一步:在本地机器上使用ssh-keygen产生公钥私钥对</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：-用ssh-copy-id将公钥复制到远程机器中"><span class="nav-number">1.1.</span> <span class="nav-text">第二步： 用ssh-copy-id将公钥复制到远程机器中</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步-在本地机器上使用ssh-keygen产生公钥私钥对"><span class="nav-number">1.</span> <span class="nav-text">第一步:在本地机器上使用ssh-keygen产生公钥私钥对</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：-用ssh-copy-id将公钥复制到远程机器中"><span class="nav-number">1.1.</span> <span class="nav-text">第二步： 用ssh-copy-id将公钥复制到远程机器中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#清除服务端秘钥"><span class="nav-number">2.</span> <span class="nav-text">清除服务端秘钥</span></a></li></ol></div>
             
 
           </div>

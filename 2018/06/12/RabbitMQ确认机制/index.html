@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="问问苑大宝">
 <meta property="og:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T05:45:04.689Z">
+<meta property="og:updated_time" content="2019-05-26T12:10:14.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ消息确认">
 <meta name="twitter:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
@@ -445,6 +445,9 @@
 </ol>
 <p>此时，客户可以合理地认为该消息将再次发送。但是重新启动导致代理丢失消息。为了保证持久性，客户应该使用确认,如果发布者的频道处于确认模式，则发布者不会收到丢失消息的确认（因为消息尚未写入磁盘）。</p>
 <h1 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h1><h2 id="Delivery-Tag"><a href="#Delivery-Tag" class="headerlink" title="Delivery Tag"></a>Delivery Tag</h2><p>递送标签是一个64位长的值，因此其最大值为9223372036854775807.由于Delivery Tag的范围是按每个通道划分的，因此发布商或消费者在实践中不太可能运行该值。</p>
+<h1 id="确认机制总结"><a href="#确认机制总结" class="headerlink" title="确认机制总结"></a>确认机制总结</h1><h2 id="生产者确认-ConfirmCallback"><a href="#生产者确认-ConfirmCallback" class="headerlink" title="生产者确认 ConfirmCallback"></a>生产者确认 ConfirmCallback</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>生产者发送至exchange或者queue成功后</p>
+<h2 id="消费者确认-ReturnCallback"><a href="#消费者确认-ReturnCallback" class="headerlink" title="消费者确认 ReturnCallback"></a>消费者确认 ReturnCallback</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.rabbitmq.com/confirms.html" target="_blank" rel="noopener">RabbitMQ确认机制</a></p>
 
       
@@ -606,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -617,7 +620,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -628,7 +631,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -661,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消费端确认"><span class="nav-number">2.</span> <span class="nav-text">消费端确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Delivery-Tags"><span class="nav-number">2.1.</span> <span class="nav-text">Delivery Tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费端确认模式与数据安全注意事项"><span class="nav-number">2.2.</span> <span class="nav-text">消费端确认模式与数据安全注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#积极确认"><span class="nav-number">2.3.</span> <span class="nav-text">积极确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次确认多次"><span class="nav-number">2.4.</span> <span class="nav-text">一次确认多次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消极确认和重新入队列"><span class="nav-number">2.5.</span> <span class="nav-text">消极确认和重新入队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#channel设置预读取限制"><span class="nav-number">2.6.</span> <span class="nav-text">channel设置预读取限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者确认模式，预取和吞吐量"><span class="nav-number">2.7.</span> <span class="nav-text">消费者确认模式，预取和吞吐量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者失败或失去连接时：自动重新进入队列"><span class="nav-number">2.8.</span> <span class="nav-text">消费者失败或失去连接时：自动重新进入队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端错误：双重确认和未知标签"><span class="nav-number">2.9.</span> <span class="nav-text">客户端错误：双重确认和未知标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生产端确认"><span class="nav-number">3.</span> <span class="nav-text">生产端确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反向确认"><span class="nav-number">3.1.</span> <span class="nav-text">反向确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#broker将何时确定消息？"><span class="nav-number">3.2.</span> <span class="nav-text">broker将何时确定消息？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化信息延迟"><span class="nav-number">3.3.</span> <span class="nav-text">持久化信息延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者确认顺序"><span class="nav-number">3.4.</span> <span class="nav-text">生产者确认顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认并保证投放"><span class="nav-number">3.5.</span> <span class="nav-text">确认并保证投放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#限制"><span class="nav-number">4.</span> <span class="nav-text">限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Delivery-Tag"><span class="nav-number">4.1.</span> <span class="nav-text">Delivery Tag</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消费端确认"><span class="nav-number">2.</span> <span class="nav-text">消费端确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Delivery-Tags"><span class="nav-number">2.1.</span> <span class="nav-text">Delivery Tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费端确认模式与数据安全注意事项"><span class="nav-number">2.2.</span> <span class="nav-text">消费端确认模式与数据安全注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#积极确认"><span class="nav-number">2.3.</span> <span class="nav-text">积极确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次确认多次"><span class="nav-number">2.4.</span> <span class="nav-text">一次确认多次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消极确认和重新入队列"><span class="nav-number">2.5.</span> <span class="nav-text">消极确认和重新入队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#channel设置预读取限制"><span class="nav-number">2.6.</span> <span class="nav-text">channel设置预读取限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者确认模式，预取和吞吐量"><span class="nav-number">2.7.</span> <span class="nav-text">消费者确认模式，预取和吞吐量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者失败或失去连接时：自动重新进入队列"><span class="nav-number">2.8.</span> <span class="nav-text">消费者失败或失去连接时：自动重新进入队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端错误：双重确认和未知标签"><span class="nav-number">2.9.</span> <span class="nav-text">客户端错误：双重确认和未知标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生产端确认"><span class="nav-number">3.</span> <span class="nav-text">生产端确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反向确认"><span class="nav-number">3.1.</span> <span class="nav-text">反向确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#broker将何时确定消息？"><span class="nav-number">3.2.</span> <span class="nav-text">broker将何时确定消息？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化信息延迟"><span class="nav-number">3.3.</span> <span class="nav-text">持久化信息延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者确认顺序"><span class="nav-number">3.4.</span> <span class="nav-text">生产者确认顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认并保证投放"><span class="nav-number">3.5.</span> <span class="nav-text">确认并保证投放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#限制"><span class="nav-number">4.</span> <span class="nav-text">限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Delivery-Tag"><span class="nav-number">4.1.</span> <span class="nav-text">Delivery Tag</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确认机制总结"><span class="nav-number">5.</span> <span class="nav-text">确认机制总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者确认-ConfirmCallback"><span class="nav-number">5.1.</span> <span class="nav-text">生产者确认 ConfirmCallback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者确认-ReturnCallback"><span class="nav-number">5.2.</span> <span class="nav-text">消费者确认 ReturnCallback</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
