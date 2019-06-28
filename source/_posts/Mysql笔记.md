@@ -82,3 +82,25 @@ set global general_log = on;
 
 set global general_log=off;
 ```
+
+## 数据导出
+
+```sql
+SELECT
+	p.order_expcode,
+	o.order_code,
+	s.sku_code,
+	s.sku_name,
+	d.order_buynum
+INTO OUTFILE '/var/lib/mysql-files/order0521.csv' FIELDS TERMINATED BY ',' LINES TERMINATED BY '\r\n'
+FROM
+	`temp` t
+JOIN wms_order_package p ON t.exp_code = p.order_expcode
+JOIN wms_order o ON p.order_id = o.order_id
+JOIN wms_order_detail d ON o.order_id = d.order_id
+JOIN bas_sku s ON d.product_id = s.sku_id;
+```
+
+SHOW VARIABLES LIKE '%max_allowed_packet%';
+
+SET GLOBAL max_allowed_packet=268435456;
