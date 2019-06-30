@@ -5,8 +5,10 @@ date: 2019-05-14 20:40:00
 comments: true
 tags: 
     - Java  
+    - Mybatis
 categories:
     - Mybatis
+    - Java
 ---
 1. resource目录下新建文件generatorConfig.xml
 ```xml
