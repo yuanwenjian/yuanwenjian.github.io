@@ -201,4 +201,4 @@ public class PropertyParser {
     }
 ```
 
-[parsing]:../images/mybatis/parsing.png
+[parsing]:/images/mybatis/parsing.png
