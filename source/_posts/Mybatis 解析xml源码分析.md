@@ -5,8 +5,10 @@ date: 2018-11-14 20:40:00
 comments: true
 tags: 
     - Java  
+    - Mybatis
 categories:
     - Mybatis
+    - Java
 ---
 
 # mybatis-config xml配置及java解析

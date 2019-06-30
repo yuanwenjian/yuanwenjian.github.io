@@ -5,8 +5,10 @@ date: 2018-05-05 20:40:00
 comments: true
 tags: 
     - Java  
+    - Mybatis
 categories:
     - Mybatis
+    - Java 
 ---
 
 # Java方法调用mapper方法,代码如下所示
