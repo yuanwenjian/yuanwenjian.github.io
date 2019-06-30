@@ -96,14 +96,14 @@ mybatis解析核心位于parsing包，如下图
 
 ```java
     //上述代码调用方法  位于XNode
-    public XNode evalNode(String expression) {
+    public XNode evalNode(String expression) {//通过节点名解析
         return this.xpathParser.evalNode(this.node, expression);
     }
 
     // XPathParser.class
     public XNode evalNode(Object root, String expression) {
         Node node = (Node)this.evaluate(expression, root, XPathConstants.NODE);
-        return node == null ? null : new XNode(this, node, this.variables);
+        return node == null ? null : new XNode(this, node, this.variables);//生成XNode
     }
 
     // XPathParser.class 新建XNode
@@ -136,7 +136,7 @@ public class PropertyParser {
 
     public static String parse(String string, Properties variables) {
         PropertyParser.VariableTokenHandler handler = new PropertyParser.VariableTokenHandler(variables);
-        GenericTokenParser parser = new GenericTokenParser("${", "}", handler);
+        GenericTokenParser parser = new GenericTokenParser("${", "}", handler);// 通过GenericTokenParser解析
         return parser.parse(string);
     }
 

@@ -1,7 +1,7 @@
 ---
 title: Mybatis源码阅读
 description:  Mybatis源码阅读
-date: 2018-11-14 20:40:00
+date: 2019-04-23 20:40:00
 comments: true
 tags: 
     - Java  
@@ -10,7 +10,8 @@ categories:
 ---
 
 # Mybatis-config配置源码
-源码基于mybatis3.4.6版本
+
+MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。源码基于mybatis3.4.6版本,并且以下源码仅为mybatis单独使用，不包括与spring整合，spring整合mybatis还得考虑mapper配置装载到容器等，后续再进行分析
 
 ## 代码应用
 ```java
@@ -96,8 +97,8 @@ categories:
     public SqlSessionFactory build(Reader reader, String environment, Properties properties) {
         SqlSessionFactory var5;
         try {
-            XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);
-            var5 = this.build(parser.parse());//关键方法
+            XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);//创建XMLConfigBuilder
+            var5 = this.build(parser.parse());//关键方法用来解析配置
         } catch (Exception var14) {
             throw ExceptionFactory.wrapException("Error building SqlSession.", var14);
         } finally {
@@ -116,15 +117,15 @@ categories:
     // parse核心方法 位于XMLConfigBuilder
 
     public Configuration parse() {
-        if (this.parsed) {
+        if (this.parsed) {//如果已经解析过了抛异常
             throw new BuilderException("Each XMLConfigBuilder can only be used once.");
         } else {
             this.parsed = true;
-            this.parseConfiguration(this.parser.evalNode("/configuration"));
+            this.parseConfiguration(this.parser.evalNode("/configuration"));// 解析configuration节点
             return this.configuration;
         }
     }
-    //这一步与之前configuration规定子节点对应
+    //这一步与之前configuration规定子节点对应，该方法逐步解析各个节点
     private void parseConfiguration(XNode root) {
         try {
             this.propertiesElement(root.evalNode("properties")); //解析properties文件
@@ -163,14 +164,14 @@ properties属性，可外部配置且可动态替换的，既可以在典型的 
             Properties defaults = context.getChildrenAsProperties(); //该方法为读取配置 及读取properties节点下的属性
             String resource = context.getStringAttribute("resource"); //改行与下一行为读取resource，url属性
             String url = context.getStringAttribute("url");
-            if (resource != null && url != null) {
+            if (resource != null && url != null) {//如果两个都未配置抛异常
                 throw new BuilderException("The properties element cannot specify both a URL and a resource based property file reference.  Please specify one or the other.");
             }
             //如果不为空，读取配置，假如与之前properties有相同的配置，则覆盖，与上面优先级对应
             if (resource != null) {
-                defaults.putAll(Resources.getResourceAsProperties(resource));
+                defaults.putAll(Resources.getResourceAsProperties(resource));//参数为resource时解析
             } else if (url != null) {
-                defaults.putAll(Resources.getUrlAsProperties(url));
+                defaults.putAll(Resources.getUrlAsProperties(url)); //url 解析
             }
 
             Properties vars = this.configuration.getVariables();
@@ -207,7 +208,7 @@ properties属性，可外部配置且可动态替换的，既可以在典型的 
     
     private Properties settingsAsProperties(XNode context) {
         if (context == null) {
-            return new Properties();
+            return new Properties(); //未配置返回空
         } else {
             Properties props = context.getChildrenAsProperties();
             MetaClass metaConfig = MetaClass.forClass(Configuration.class, this.localReflectorFactory);
@@ -220,8 +221,8 @@ properties属性，可外部配置且可动态替换的，既可以在典型的 
                 }
 
                 key = var4.next();
-            } while(metaConfig.hasSetter(String.valueOf(key)));  //判断是否有配置参数的set方法
-
+            } while(metaConfig.hasSetter(String.valueOf(key)));  //判断是否有配置参数的set方法，这段代码判断Configuration.class是否存在
+            //如果设置中参数中不存在setter方法，抛异常
             throw new BuilderException("The setting " + key + " is not known.  Make sure you spelled it correctly (case sensitive).");
         }
     }
@@ -238,20 +239,20 @@ properties属性，可外部配置且可动态替换的，既可以在典型的 
 
     // DefaultReflectorFactory 类
     public Reflector findForClass(Class<?> type) {
-        if (this.classCacheEnabled) {
+        if (this.classCacheEnabled) {// 猜测为缓存，具体没有研究
             Reflector cached = (Reflector)this.reflectorMap.get(type);
             if (cached == null) {
-                cached = new Reflector(type);
-                this.reflectorMap.put(type, cached);
+                cached = new Reflector(type);//调用构造方法
+                this.reflectorMap.put(type, cached); //放入缓存？
             }
 
             return cached;
         } else {
-            return new Reflector(type);
+            return new Reflector(type);//调用构造方法
         }
     }
 
-    // Reflector类 此时泛型为Configuration.class ，
+    // Reflector类 构造方法 此时泛型为Configuration.class ，
     public Reflector(Class<?> clazz) {
         this.type = clazz;
         this.addDefaultConstructor(clazz);
@@ -320,7 +321,7 @@ xml配置如下
     // XMLConfigBuilder
     private void typeAliasesElement(XNode parent) {
         if (parent != null) {
-            Iterator i$ = parent.getChildren().iterator();
+            Iterator i$ = parent.getChildren().iterator();//获取子节点
 
             while(i$.hasNext()) {
                 XNode child = (XNode)i$.next();
@@ -333,13 +334,13 @@ xml配置如下
                     String type = child.getStringAttribute("type");
 
                     try {
-                        Class<?> clazz = Resources.classForName(type);
+                        Class<?> clazz = Resources.classForName(type);//获取类名
                         if (alias == null) {
-                            this.typeAliasRegistry.registerAlias(clazz);
+                            this.typeAliasRegistry.registerAlias(clazz);//未设置别名，使用类名代替
                         } else {
                             this.typeAliasRegistry.registerAlias(alias, clazz);//注册alias
                         }
-                    } catch (ClassNotFoundException var7) {
+                    } catch (ClassNotFoundException var7) { //未找到抛异常
                         throw new BuilderException("Error registering typeAlias for '" + alias + "'. Cause: " + var7, var7);
                     }
                 }
@@ -354,13 +355,13 @@ xml配置如下
 
     public void registerAliases(String packageName, Class<?> superType) {
         ResolverUtil<Class<?>> resolverUtil = new ResolverUtil();
-        resolverUtil.find(new IsA(superType), packageName);
+        resolverUtil.find(new IsA(superType), packageName);//获取package下所有类
         Set<Class<? extends Class<?>>> typeSet = resolverUtil.getClasses(); //反射获取包下所有class
         Iterator i$ = typeSet.iterator();
 
         while(i$.hasNext()) {
             Class<?> type = (Class)i$.next();
-            if (!type.isAnonymousClass() && !type.isInterface() && !type.isMemberClass()) {
+            if (!type.isAnonymousClass() && !type.isInterface() && !type.isMemberClass()) { //如果不是匿名类，不是接口，不是成员类，添加
                 this.registerAlias(type); //注册 查看registerAlias(Class<?> type)方法调用
             }
         }
@@ -368,8 +369,8 @@ xml配置如下
 
     public void registerAlias(Class<?> type) {
         String alias = type.getSimpleName();//获取类名
-        Alias aliasAnnotation = (Alias)type.getAnnotation(Alias.class);//如果有注解，别名会被注解名称替换
-        if (aliasAnnotation != null) {
+        Alias aliasAnnotation = (Alias)type.getAnnotation(Alias.class);//获取Alias注解
+        if (aliasAnnotation != null) {//如果有注解，别名会被注解名称替换
             alias = aliasAnnotation.value();
         }
 
@@ -381,7 +382,7 @@ xml配置如下
             throw new TypeException("The parameter alias cannot be null");
         } else {
             String key = alias.toLowerCase(Locale.ENGLISH);//改为小写
-            if (this.TYPE_ALIASES.containsKey(key) && this.TYPE_ALIASES.get(key) != null && !((Class)this.TYPE_ALIASES.get(key)).equals(value)) {
+            if (this.TYPE_ALIASES.containsKey(key) && this.TYPE_ALIASES.get(key) != null && !((Class)this.TYPE_ALIASES.get(key)).equals(value)) {//如果已经别名已经被使用，抛异常
                 throw new TypeException("The alias '" + alias + "' is already mapped to the value '" + ((Class)this.TYPE_ALIASES.get(key)).getName() + "'.");
             } else {
                 this.TYPE_ALIASES.put(key, value);//放入TYPE_ALIASES,TYPE_ALIASES类型为Map,以下代码可查看内置别名，与官网对应
@@ -541,13 +542,25 @@ java实现代码
             //JNDI – 这个数据源的实现是为了能在如 EJB 或应用服务器这类容器中使用，容器可以集中或在外部配置数据源，然后放置一个 JNDI 上下文的引用。
             String type = context.getStringAttribute("type"); 
             Properties props = context.getChildrenAsProperties();
-            DataSourceFactory factory = (DataSourceFactory)this.resolveClass(type).newInstance(); // 通过反射生成DatasourceFactory，本文以PooledDataSourceFactory为例，查看代码
+            DataSourceFactory factory = (DataSourceFactory)this.resolveClass(type).newInstance(); // 通过反射生成mybatis 内置UNPOOLED，POOLED,JNDI，分别对应不同DatasourceFactory，本文以PooledDataSourceFactory为例，查看代码
             factory.setProperties(props); //设置属性
             return factory;
         } else {
             throw new BuilderException("Environment declaration requires a DataSourceFactory.");
         }
     }    
+    //通过别名生成class，
+    protected Class<?> resolveClass(String alias) {
+        if (alias == null) {
+            return null;
+        } else {
+            try {
+                return this.resolveAlias(alias);
+            } catch (Exception var3) {
+                throw new BuilderException("Error resolving class. Cause: " + var3, var3);
+            }
+        }
+    }
 //PooledDataSourceFactory.class 继承于UnpooledDataSourceFactory
 public class PooledDataSourceFactory extends UnpooledDataSourceFactory {
     //构造方法
@@ -580,7 +593,7 @@ public class PooledDataSourceFactory extends UnpooledDataSourceFactory {
                 }
 
                 value = (String)properties.get(propertyName);
-                Object convertedValue = this.convertValue(metaDataSource, propertyName, value);
+                Object convertedValue = this.convertValue(metaDataSource, propertyName, value);//转换属性值
                 metaDataSource.setValue(propertyName, convertedValue); //设置属性
             }
         }
@@ -592,6 +605,317 @@ public class PooledDataSourceFactory extends UnpooledDataSourceFactory {
     }
 ```
 
+
+
+### 1.7 mappers节点
+
+我们现在就要定义 SQL 映射语句了。 但是首先我们需要告诉 MyBatis 到哪里去找到这些语句。 Java 在自动查找这方面没有提供一个很好的方法，所以最佳的方式是告诉 MyBatis 到哪里去找映射文件。本文只解析配置mapper加载过程，至于如何通过mapper访问数据库，后续再分析，配置mapper，结果简单形容为，将mapper类设置到configuration中this.knownMappers参数中，后续执行时再从knownMappers中获取对应的mapper
+
+xml配置
+
+```xml
+    <!-- 使用相对于类路径的资源引用 -->
+    <mappers>
+        <mapper resource="mybatis/mapper/PhoneImeiMapper.xml"/>
+    </mappers>
+
+    <!-- 使用完全限定资源定位符（URL） -->
+    <mappers>
+        <mapper url="file:///mybatis/mapper/PhoneImeiMapper.xml"/>
+    </mappers>
+    <!-- 使用映射器接口实现类的完全限定类名 -->
+    <mappers>
+        <mapper class="mybatis/mapper/PhoneImeiMapper.xml"/>
+    </mappers>
+
+    <!-- 将包内的映射器接口实现全部注册为映射器 -->
+    <mappers>
+         <package name="mybatis.mapper"/>
+    </mappers>
+
+```
+
+java实现
+```java
+    //XMLConfigBuilder.class 解析mapper节点
+    private void mapperElement(XNode parent) throws Exception {
+        if (parent != null) {
+            Iterator var2 = parent.getChildren().iterator();
+
+            while(true) {
+                while(var2.hasNext()) {
+                    XNode child = (XNode)var2.next(); //遍历所有子节点
+                    String resource;
+                    if ("package".equals(child.getName())) { // 如果配置package,扫描包下所有class添加到configuration mappers
+                        resource = child.getStringAttribute("name");
+                        this.configuration.addMappers(resource); //将配置包的mapper添加到configuration中、具体实现下面配置添加到configuration中
+                    } else {
+                        resource = child.getStringAttribute("resource");//不同参数，使用不同方法,主要分析参数为resource与url源码实现
+                        String url = child.getStringAttribute("url");
+                        String mapperClass = child.getStringAttribute("class");
+                        XMLMapperBuilder mapperParser;
+                        InputStream inputStream;
+                        if (resource != null && url == null && mapperClass == null) {//参数为resource
+                            ErrorContext.instance().resource(resource);
+                            inputStream = Resources.getResourceAsStream(resource);
+                            mapperParser = new XMLMapperBuilder(inputStream, this.configuration, resource, this.configuration.getSqlFragments());//创建XMLMapperBuilder,设置对应属性，用来解析mapper
+                            mapperParser.parse();//关键方法，解析mapper
+                        } else if (resource == null && url != null && mapperClass == null) {//参数为url与解析resource类型
+                            ErrorContext.instance().resource(url);
+                            inputStream = Resources.getUrlAsStream(url);
+                            mapperParser = new XMLMapperBuilder(inputStream, this.configuration, url, this.configuration.getSqlFragments());//创建XMLMapperBuilder,用来解析mapper
+                            mapperParser.parse();//解析mapper
+                        } else {
+                            if (resource != null || url != null || mapperClass == null) { //参数为class
+                                throw new BuilderException("A mapper element may only specify a url, resource or class, but not more than one.");
+                            }
+
+                            Class<?> mapperInterface = Resources.classForName(mapperClass);
+                            this.configuration.addMapper(mapperInterface); //与解析package类似，直接放入configuration
+                        }
+                    }
+                }
+
+                return;
+            }
+        }
+    }
+```
+
+配置添加到configuration中 源码
+
+```java
+    //Configuration.class
+    public void addMappers(String packageName) {
+        this.mapperRegistry.addMappers(packageName);
+    }
+    //MapperRegistry.class
+    public void addMappers(String packageName) {
+        this.mapperRegistry.addMappers(packageName);
+    }
+    public void addMappers(String packageName, Class<?> superType) {
+        ResolverUtil<Class<?>> resolverUtil = new ResolverUtil();
+        resolverUtil.find(new IsA(superType), packageName);
+        Set<Class<? extends Class<?>>> mapperSet = resolverUtil.getClasses();//获取package下所有mapper class
+        Iterator var5 = mapperSet.iterator();
+
+        while(var5.hasNext()) { //遍历
+            Class<?> mapperClass = (Class)var5.next();
+            this.addMapper(mapperClass); // 添加到配置中
+        }
+    }
+
+
+    public <T> void addMapper(Class<T> type) {
+        if (type.isInterface()) {
+            if (this.hasMapper(type)) { //如果当前已有类型，抛异常
+                throw new BindingException("Type " + type + " is already known to the MapperRegistry.");
+            }
+
+            boolean loadCompleted = false;
+
+            try {
+                this.knownMappers.put(type, new MapperProxyFactory(type)); //生成MapperProxyFactory放入knownMappers中，执行时根据类名取出
+                MapperAnnotationBuilder parser = new MapperAnnotationBuilder(this.config, type);
+                parser.parse();
+                loadCompleted = true;
+            } finally {
+                if (!loadCompleted) {
+                    this.knownMappers.remove(type);
+                }
+
+            }
+        }
+//MapperProxyFactory 类是 生产 Mapper 代理类的工厂，用 Java 动态代理实现：
+public class MapperProxyFactory<T> {
+    private final Class<T> mapperInterface;
+    private final Map<Method, MapperMethod> methodCache = new ConcurrentHashMap();
+
+    public MapperProxyFactory(Class<T> mapperInterface) {//构造方法，参数mapperInterface 值为对应的mapper.class,获取mapper实例时需要
+        this.mapperInterface = mapperInterface;
+    }
+
+    public Class<T> getMapperInterface() {
+        return this.mapperInterface;
+    }
+
+    public Map<Method, MapperMethod> getMethodCache() {
+        return this.methodCache;
+    }
+
+    protected T newInstance(MapperProxy<T> mapperProxy) {
+        return Proxy.newProxyInstance(this.mapperInterface.getClassLoader(), new Class[]{this.mapperInterface}, mapperProxy);
+    }
+
+    public T newInstance(SqlSession sqlSession) {
+        MapperProxy<T> mapperProxy = new MapperProxy(sqlSession, this.mapperInterface, this.methodCache);
+        return this.newInstance(mapperProxy);
+    }
+}
+
+```
+
+mapper参数为resource或url解析源码，创建XMLMapperBuilder并解析mapper源码，
+```java
+    //XMLMapperBuilder.class XMLMapperBuilder构造方法，并设置几个属性
+    private XMLMapperBuilder(XPathParser parser, Configuration configuration, String resource, Map<String, XNode> sqlFragments) {
+        super(configuration);
+        this.builderAssistant = new MapperBuilderAssistant(configuration, resource);
+        this.parser = parser;
+        this.sqlFragments = sqlFragments;
+        this.resource = resource;
+    }
+
+    //XMLMapperBuilder.class 解析mapper
+    public void parse() {
+        if (!this.configuration.isResourceLoaded(this.resource)) { //如果之前未加载，则解析
+            this.configurationElement(this.parser.evalNode("/mapper"));//解析mapper节点，
+            this.configuration.addLoadedResource(this.resource);//添加到configuration中
+            this.bindMapperForNamespace();//通过namespace绑定到configuration中kows_mapper中
+        }
+
+        //以下通过方法名推断为解析待处理resultmap,缓存等，具体实现未研究
+        this.parsePendingResultMaps();
+        this.parsePendingCacheRefs();
+        this.parsePendingStatements();
+    }
+
+    //解析mapper节点
+    private void configurationElement(XNode context) {
+        try {
+            String namespace = context.getStringAttribute("namespace");
+            // 以下为解析mapper
+            if (namespace != null && !namespace.equals("")) {
+                this.builderAssistant.setCurrentNamespace(namespace);//设置namespace
+                this.cacheRefElement(context.evalNode("cache-ref"));//解析cache-ref
+                this.cacheElement(context.evalNode("cache"));
+                this.parameterMapElement(context.evalNodes("/mapper/parameterMap"));
+                this.resultMapElements(context.evalNodes("/mapper/resultMap"));
+                this.sqlElement(context.evalNodes("/mapper/sql"));
+                this.buildStatementFromContext(context.evalNodes("select|insert|update|delete")); //解析sql语句
+            } else {
+                throw new BuilderException("Mapper's namespace cannot be empty");
+            }
+        } catch (Exception var3) {
+            throw new BuilderException("Error parsing Mapper XML. The XML location is '" + this.resource + "'. Cause: " + var3, var3);
+        }
+    }
+
+    //将配置好的mapper设置到configuration中，通过namespace绑定
+    private void bindMapperForNamespace() {
+        String namespace = this.builderAssistant.getCurrentNamespace();//获取之前绑定namespace
+        if (namespace != null) {
+            Class boundType = null;
+
+            try {
+                boundType = Resources.classForName(namespace); //获取类名
+            } catch (ClassNotFoundException var4) {
+                ;
+            }
+
+            if (boundType != null && !this.configuration.hasMapper(boundType)) {//如果不为空，且当前配置不含这个mapper,添加，添加方法与配置添加到configuration中 源码一样
+                this.configuration.addLoadedResource("namespace:" + namespace); //添加resource
+                this.configuration.addMapper(boundType);  //将当前mapper添加到knownMappers中
+            }
+        }
+
+    }
+```
+
+mapper解析sql语句
+
+```java
+
+    //XMLMapperBuilder.class 
+    private void buildStatementFromContext(List<XNode> list) {
+        if (this.configuration.getDatabaseId() != null) {
+            this.buildStatementFromContext(list, this.configuration.getDatabaseId());
+        }
+
+        this.buildStatementFromContext(list, (String)null);
+    }
+
+    //XMLMapperBuilder.class 
+    private void buildStatementFromContext(List<XNode> list, String requiredDatabaseId) {
+        Iterator var3 = list.iterator();
+
+        while(var3.hasNext()) {
+            XNode context = (XNode)var3.next();
+            XMLStatementBuilder statementParser = new XMLStatementBuilder(this.configuration, this.builderAssistant, context, requiredDatabaseId);
+
+            try {
+                statementParser.parseStatementNode();
+            } catch (IncompleteElementException var7) {
+                this.configuration.addIncompleteStatement(statementParser);
+            }
+        }
+
+    }
+
+    //XMLStatementBuilder
+    public void parseStatementNode() {
+        String id = this.context.getStringAttribute("id");
+        String databaseId = this.context.getStringAttribute("databaseId");
+        if (this.databaseIdMatchesCurrent(id, databaseId, this.requiredDatabaseId)) {
+            Integer fetchSize = this.context.getIntAttribute("fetchSize");
+            Integer timeout = this.context.getIntAttribute("timeout");
+            String parameterMap = this.context.getStringAttribute("parameterMap");
+            String parameterType = this.context.getStringAttribute("parameterType");
+            Class<?> parameterTypeClass = this.resolveClass(parameterType);
+            String resultMap = this.context.getStringAttribute("resultMap");
+            String resultType = this.context.getStringAttribute("resultType");
+            String lang = this.context.getStringAttribute("lang");
+            LanguageDriver langDriver = this.getLanguageDriver(lang);
+            Class<?> resultTypeClass = this.resolveClass(resultType);
+            String resultSetType = this.context.getStringAttribute("resultSetType");
+            StatementType statementType = StatementType.valueOf(this.context.getStringAttribute("statementType", StatementType.PREPARED.toString()));
+            ResultSetType resultSetTypeEnum = this.resolveResultSetType(resultSetType);
+            String nodeName = this.context.getNode().getNodeName();
+            SqlCommandType sqlCommandType = SqlCommandType.valueOf(nodeName.toUpperCase(Locale.ENGLISH));
+            boolean isSelect = sqlCommandType == SqlCommandType.SELECT;
+            boolean flushCache = this.context.getBooleanAttribute("flushCache", !isSelect);
+            boolean useCache = this.context.getBooleanAttribute("useCache", isSelect);
+            boolean resultOrdered = this.context.getBooleanAttribute("resultOrdered", false);
+            XMLIncludeTransformer includeParser = new XMLIncludeTransformer(this.configuration, this.builderAssistant);
+            includeParser.applyIncludes(this.context.getNode());
+            this.processSelectKeyNodes(id, parameterTypeClass, langDriver);
+            SqlSource sqlSource = langDriver.createSqlSource(this.configuration, this.context, parameterTypeClass);
+            String resultSets = this.context.getStringAttribute("resultSets");
+            String keyProperty = this.context.getStringAttribute("keyProperty");
+            String keyColumn = this.context.getStringAttribute("keyColumn");
+            String keyStatementId = id + "!selectKey";
+            keyStatementId = this.builderAssistant.applyCurrentNamespace(keyStatementId, true);
+            Object keyGenerator;
+            if (this.configuration.hasKeyGenerator(keyStatementId)) {
+                keyGenerator = this.configuration.getKeyGenerator(keyStatementId);
+            } else {
+                keyGenerator = this.context.getBooleanAttribute("useGeneratedKeys", this.configuration.isUseGeneratedKeys() && SqlCommandType.INSERT.equals(sqlCommandType)) ? Jdbc3KeyGenerator.INSTANCE : NoKeyGenerator.INSTANCE;
+            }
+
+            this.builderAssistant.addMappedStatement(id, sqlSource, statementType, sqlCommandType, fetchSize, timeout, parameterMap, parameterTypeClass, resultMap, resultTypeClass, resultSetTypeEnum, flushCache, useCache, resultOrdered, (KeyGenerator)keyGenerator, keyProperty, keyColumn, databaseId, langDriver, resultSets);
+        }
+    }
+
+
+    // 添加到configuration
+    public MappedStatement addMappedStatement(String id, SqlSource sqlSource, StatementType statementType, SqlCommandType sqlCommandType, Integer fetchSize, Integer timeout, String parameterMap, Class<?> parameterType, String resultMap, Class<?> resultType, ResultSetType resultSetType, boolean flushCache, boolean useCache, boolean resultOrdered, KeyGenerator keyGenerator, String keyProperty, String keyColumn, String databaseId, LanguageDriver lang, String resultSets) {
+        if (this.unresolvedCacheRef) {
+            throw new IncompleteElementException("Cache-ref not yet resolved");
+        } else {
+            id = this.applyCurrentNamespace(id, false);
+            boolean isSelect = sqlCommandType == SqlCommandType.SELECT;
+            org.apache.ibatis.mapping.MappedStatement.Builder statementBuilder = (new org.apache.ibatis.mapping.MappedStatement.Builder(this.configuration, id, sqlSource, sqlCommandType)).resource(this.resource).fetchSize(fetchSize).timeout(timeout).statementType(statementType).keyGenerator(keyGenerator).keyProperty(keyProperty).keyColumn(keyColumn).databaseId(databaseId).lang(lang).resultOrdered(resultOrdered).resultSets(resultSets).resultMaps(this.getStatementResultMaps(resultMap, resultType, id)).resultSetType(resultSetType).flushCacheRequired((Boolean)this.valueOrDefault(flushCache, !isSelect)).useCache((Boolean)this.valueOrDefault(useCache, isSelect)).cache(this.currentCache);
+            ParameterMap statementParameterMap = this.getStatementParameterMap(parameterMap, parameterType, id);
+            if (statementParameterMap != null) {
+                statementBuilder.parameterMap(statementParameterMap);
+            }
+
+            MappedStatement statement = statementBuilder.build();
+            this.configuration.addMappedStatement(statement);
+            return statement;
+        }
+    }
+```
 # 参考
 
 1. [mybatis官网][mybatis官网]
