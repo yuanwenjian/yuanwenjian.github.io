@@ -168,7 +168,7 @@ org.springframework.boot.logging.LoggingApplicationListener
         FailureAnalyzers analyzers = null;
         this.configureHeadlessProperty();
         SpringApplicationRunListeners listeners = this.getRunListeners(args); //加载Listeners
-        listeners.starting(); //listeners启动
+        listeners.starting(); //listeners启动 这一步发布ApplicationStartedEvent
 
         try {
             ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
@@ -378,6 +378,7 @@ org.springframework.boot.context.event.EventPublishingRunListener
         ConfigurableEnvironment environment = this.getOrCreateEnvironment();
         this.configureEnvironment((ConfigurableEnvironment)environment, applicationArguments.getSourceArgs());
         listeners.environmentPrepared((ConfigurableEnvironment)environment);  //注意 配置
+        // 此时发布ApplicationEnvironmentPreparedEvent事件，这一步读取配置文件
         if (!this.webEnvironment) {
             environment = (new EnvironmentConverter(this.getClassLoader())).convertToStandardEnvironmentIfNecessary((ConfigurableEnvironment)environment);
         }
