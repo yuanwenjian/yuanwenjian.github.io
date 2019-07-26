@@ -1,7 +1,7 @@
 ---
 title: Mybatis 解析xml源码
 description:  Mybatis通过xml来配置数据源，别名，环境等一系列配置，再初始化时，会加载配置文件并解析，xml配置如何转换为我们需要的值
-date: 2018-11-14 20:40:00
+date: 2018-04-29 20:40:00
 comments: true
 tags: 
     - Java  

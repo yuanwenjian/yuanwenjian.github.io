@@ -197,6 +197,7 @@ org.springframework.boot.logging.LoggingApplicationListener
 ```java
     private SpringApplicationRunListeners getRunListeners(String[] args) {
         Class<?>[] types = new Class[]{SpringApplication.class, String[].class};
+        // 传入SpringApplicationRunListener 
         return new SpringApplicationRunListeners(logger, this.getSpringFactoriesInstances(SpringApplicationRunListener.class, types, this, args));
     }
 ```
@@ -210,8 +211,22 @@ org.springframework.boot.context.event.EventPublishingRunListener
 ### EventPublishingRunListener作用
 
 ```java
-    //EventPublishingRunListener 类方法
-    //ventPublishingRunListener构造方法，将SpringApplication中的**所有**ApplicationListener保存下来
+    //EventPublishingRunListener 类方法,该类实现SpringApplicationRunListener 接口
+
+public interface SpringApplicationRunListener {
+    void starting(); //在run方法业务逻辑执行、应用上下文初始化前调用此方法
+
+    void environmentPrepared(ConfigurableEnvironment var1); //当环境准备完成，应用上下文被创建之前调用此方法 读取配置文件在这个步骤进行
+
+    void contextPrepared(ConfigurableApplicationContext var1); //在应用上下文被创建和准备完成之后，但上下文相关代码被加载执行之前调用。
+    //因为上下文准备事件和上下文加载事件难以明确区分，所以这个方法一般没有具体实现。
+
+    void contextLoaded(ConfigurableApplicationContext var1); //当上下文加载完成之后，自定义bean完全加载完成之前调用此方法。
+
+    void finished(ConfigurableApplicationContext var1, Throwable var2); //当run方法执行完成，或执行过程中发现异常时调用此方法。
+}
+
+    //EventPublishingRunListener构造方法，将SpringApplication中的**所有**ApplicationListener放入ApplicationEventMulticaster广播器
     public EventPublishingRunListener(SpringApplication application, String[] args) {
         this.application = application;
         this.args = args;

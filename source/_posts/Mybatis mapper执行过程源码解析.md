@@ -1,7 +1,7 @@
 ---
 title: Mybatis mapper执行sql源码过程分析
 description:  在Mybatis开发过程中，使用sqlSession.getMapper(mapper.class)即可获取mapper接口，并可以直接调用其方法进行sql增删改查，本文分析这一步源码是怎么运行的
-date: 2018-05-05 20:40:00
+date: 2019-05-05 20:40:00
 comments: true
 tags: 
     - Java  
@@ -13,8 +13,21 @@ categories:
 
 # Java方法调用mapper方法,代码如下所示
 ```java
-    PhoneImeiMapper mapper = sqlSession.getMapper(PhoneImeiMapper.class); //通过mapper.class获取
-    List<PhoneImei> phoneImeiList = mapper.selectAll(); //调用查询方法
+    public static void init() {
+        String resource = "mybatis-config.xml";
+        try {
+            Reader reader = Resources.getResourceAsReader(resource);
+            sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder(); //创建sqlSessionFactoryBuilder
+            sqlSessionFactory = sqlSessionFactoryBuilder.build(reader);  //配置
+            SqlSession sqlSession = sqlSessionFactory.openSession(); //获取session
+            PhoneImeiMapper mapper = sqlSession.getMapper(PhoneImeiMapper.class); // 通过session获取mapper
+            List<PhoneImei> phoneImeiList = mapper.selectAll(); //查询
+            System.out.println(phoneImeiList.size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 ```
 
 # 获取maaper代理类源码分析, 以下代码只分析其主要方法，不重要的忽略，
@@ -185,4 +198,12 @@ mapper执行sql语句
 
 # 总结
 
+
+
 总结下映射器的调用过程，返回的Mapper对象是代理对象，当调用它的某个方法时，其实是调用MapperProxy#invoke方法，而映射器的XML文件的命名空间对应的就是这个接口的全路径，会根据全路径和方法名，便能够绑定起来，定位到sql，最后会使用SqlSession接口的方法使它能够执行查询。
+
+1. 解析：XMLMapperBuilder 解析标签<mapper>标签内容，与XMLConfigBuilder类似，XMLConfigBuilder解析<configtion>标签
+
+2. 将mapper与configuration绑定：通过XMLMapperBuilder.configurationElement()解析mapper内容，并生成 MapperStatement 添加到 Configuration 中；使用namespace名称通过bindMapperForNamespace(),将mapper绑定到Configuration中mapperRegistry参数中,MapperRegistry 类是一个 Mapper 类注册工厂，把与 MapperProxyFactory 映射过的 Mapper 类添加到它的属性 knownMappers 中；,类型为Map<Class<?>, MapperProxyFactory<?>> knownMappers = new HashMap();
+
+3. 获取mapper：当调用session.getMapper(Class<T> type)方法时，实际调用的是MapperRegisty注册工厂，通过class获取的MapperProxyFactory，并通过反射与session关联生成mapper代理类，所以调用mapper所有方法都会调用MapperProxy.invoke(),再根据sql配置进行对应sql执行
