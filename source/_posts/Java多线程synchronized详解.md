@@ -1,7 +1,7 @@
 ---
 title: Java synchronized关键字
 description: 在Java中，synchronized关键字是用来控制线程同步的，就是在多线程的环境下，控制synchronized代码段不被多个线程同时执行。synchronized既可以加在一段代码上，也可以加在方法上
-date: 2018-05-24 20:40:00
+date: 2019-06-24 20:40:00
 comments: true
 tags: 
     - Java
@@ -80,7 +80,7 @@ ACC_SYNCHRONIZED标识
 JVM就是根据该标示符来实现方法的同步的：当方法调用时，调用指令将会检查方法的 ACC_SYNCHRONIZED 访问标志是否被设置，如果设置了，执行线程将先获取monitor，获取成功之后才能执行方法体，方法执行完后再释放monitor。在方法执行期间，其他任何线程都无法再获得同一个monitor对象。 其实本质上没有区别，只是方法的同步是一种隐式的方式来实现，无需通过字节码来完成。
 
 ### 总结
-synchronized 修改普通类及对象时，获取的是对象的monitor,修饰静态类及Class获取的是类对象的monitor。所以多个不同对象实例，访问同步普通方法时，会出问题
+synchronized 修饰普通类及对象时，获取的是对象的monitor,修饰静态类及Class获取的是类对象的monitor。所以多个不同对象实例，访问同步普通方法时，会出问题
 
 [syncDemo]:/images/sync/syncDemo.png
 [staticSycnDemo]:/images/sync/staticSycnDemo.png
