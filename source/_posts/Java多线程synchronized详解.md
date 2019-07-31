@@ -82,7 +82,7 @@ JVM就是根据该标示符来实现方法的同步的：当方法调用时，�
 ### 总结
 synchronized 修改普通类及对象时，获取的是对象的monitor,修饰静态类及Class获取的是类对象的monitor。所以多个不同对象实例，访问同步普通方法时，会出问题
 
-[syncDemo]:../images/sync/syncDemo.png
-[staticSycnDemo]:../images/sync/staticSycnDemo.png
-[syncDemoMethod]:../images/sync/syncDemoMethod.png
-[syncClassDemo]:../images/sync/syncClassDemo.png
+[syncDemo]:/images/sync/syncDemo.png
+[staticSycnDemo]:/images/sync/staticSycnDemo.png
+[syncDemoMethod]:/images/sync/syncDemoMethod.png
+[syncClassDemo]:/images/sync/syncClassDemo.png
