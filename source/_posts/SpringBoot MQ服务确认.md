@@ -32,11 +32,7 @@ confirm模式最大的好处在于他是异步的，一旦发布一条消息，�
 
 在channel 被设置成 confirm 模式之后，所有被 publish 的后续消息都将被 confirm（即 ack） 或者被nack一次。但是没有对消息被 confirm 的快慢做任何保证，并且同一条消息不会既被 confirm又被nack （注：已经在transaction事务模式的channel是不能再设置成confirm模式的，即这两种模式是不能共存的）
 
-confrim 分为两部分，一种情况为生产者到exchange,另一种为exchange到队列，以下为SpringBoot 代码
-```
 
-
-```
 
 # 消费者确认
 
@@ -53,3 +49,102 @@ RabbitMQ不会为未确认的消息设置过期时间，它判断此消息是否
 
 
 如果消息消费失败，也可以调用Basic.Reject或者Basic.Nack来拒绝当前消息而不是确认，如果只是简单的拒绝那么消息会丢失，需要将相应的requeue参数设置为true，那么RabbitMQ会重新将这条消息存入队列，以便可以发送给下一个订阅的消费者。如果requeue参数设置为false的话，RabbitMQ立即会把消息从队列中移除，而不会把它发送给新的消费者。
+
+# spring boot代码示例
+
+confrim 分为两部分，一种情况为生产者到exchange,另一种为exchange到队列，以下为SpringBoot 代码
+
+
+spring boot配置
+```yml
+spring:
+    rabbitmq:
+        addresses: localhost
+        port: 5672
+        username: guest
+        password: guest
+        publisher-confirms: true # 开启消息至exchange确认
+        publisherReturns: true # 开启消息到quene确认
+        listener:
+          simple:
+            acknowledge-mode: manual # 将消费者确认改为手动
+        virtual-host: /yuanwj
+```
+配置RabbitTemplate 注意将mandatory 设为ture.该标志设为true时,如果无法找到合适queue时,会将消息返回生成者,为false时,会直接丢弃
+```java
+    @Bean 
+    public RabbitTemplate rabbitTemplate(CachingConnectionFactory connectionFactory) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setConfirmCallback(confirmCallback);
+        template.setReturnCallback(returnCallback);
+        template.setMandatory(true);
+        return template;
+    }
+```
+
+配置confirm
+
+```java
+public class MqConfirmCallback implements RabbitTemplate.ConfirmCallback {
+    private static final Logger LOG = LoggerFactory.getLogger(MqConfirmCallback.class);
+    @Override
+    public void confirm(CorrelationData correlationData, boolean ack, String s) {
+        if (ack){
+            LOG.debug("消息id为{}发送成功",correlationData);
+        }else {
+
+            LOG.debug("消息id为{}发送失败,原因为{}",correlationData,s);
+        }
+    }
+}
+```
+
+配置return
+```java
+public class MqReturnCallback implements RabbitTemplate.ReturnCallback {
+    private static final Logger LOG = LoggerFactory.getLogger(MqReturnCallback.class);
+
+    private RabbitTemplate rabbitTemplate;
+
+    @Override
+    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
+
+        LOG.info("消息发送失败,replyCode:{},replyText:{},exchange:{},routingKey:{}",
+                replyCode, replyText,exchange,routingKey);
+    }
+}
+```
+消费者确认
+```java
+    @RabbitListener(queues = "yuanwj")
+    public void receiver(Message message, Channel channel) throws Exception{
+        System.out.println(Thread.currentThread().getName()+"=============");
+        String key = message.getMessageProperties().getReceivedRoutingKey();
+        LOG.debug("yuanwj消费成功,{},{}", key,"aaaaaaa");
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), true); //手动确认,参数一为消息tag,参数二为是否将这个tag之前标记,
+
+    }
+```
+## 测试
+测试方法,在发送消息前断点,然后通过mq管理台,删除exchange或队列,观察方法
+
+情况一 正常操作
+```
+2019-08-01 14:12:45.907 DEBUG 7340 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功
+
+```
+到达exchange,并且ack 为true,并且队列确认没有执行
+
+情况一 删除交换机
+
+```
+2019-08-01 14:11:43.708 DEBUG 7009 --- [nectionFactory1] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送失败,原因为channel error; protocol method: #method<channel.close>(reply-code=404, reply-text=NOT_FOUND - no exchange 'yuanwj' in vhost '/yuanwj', class-id=60, method-id=40)
+```
+
+未到达exchange ,ack为false
+情况二 删除队列
+```
+2019-08-01 14:00:12.563  INFO 3927 --- [ 127.0.0.1:5672] c.y.springmq.config.MqReturnCallback     : 消息发送失败,replyCode:312,replyText:NO_ROUTE,exchange:yuanwj,routingKey:lazy.orange.fox
+2019-08-01 14:00:12.568 DEBUG 3927 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功
+```
+说明消息到达exchange,但是并未到达队列
