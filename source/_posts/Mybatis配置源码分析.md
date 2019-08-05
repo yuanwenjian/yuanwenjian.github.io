@@ -544,7 +544,7 @@ java实现代码
             //JNDI – 这个数据源的实现是为了能在如 EJB 或应用服务器这类容器中使用，容器可以集中或在外部配置数据源，然后放置一个 JNDI 上下文的引用。
             String type = context.getStringAttribute("type"); 
             Properties props = context.getChildrenAsProperties();
-            DataSourceFactory factory = (DataSourceFactory)this.resolveClass(type).newInstance(); // 通过反射生成mybatis 内置UNPOOLED，POOLED,JNDI，分别对应不同DatasourceFactory，本文以PooledDataSourceFactory为例，查看代码
+            DataSourceFactory factory = (DataSourceFactory)this.resolveClass(type).newInstance(); // 通过反射生成mybatis 内置UNPOOLED，POOLED,JNDI，分别对应UnpooledDataSourceFactory,PooledDataSourceFactory,JndiDataSourceFactory，本文以PooledDataSourceFactory为例，查看代码
             factory.setProperties(props); //设置属性
             return factory;
         } else {
