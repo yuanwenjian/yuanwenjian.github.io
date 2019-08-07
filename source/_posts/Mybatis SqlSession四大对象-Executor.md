@@ -1,6 +1,6 @@
 ---
-title: Mybatis Executor 详解
-description:  Mybatis Executor 详解
+title: Mybatis SqlSession 四大对象 Executor 详解
+description:  Mybatis通过SqlSession进行sql的执行,sql执行过程中涉及四种对象,及Executor,StatementHandler,ParameterHandler,ResultHandler.其中ParameterHandler处理sql参数,StatementHandler调用数据库statement执行,ResultHandler 对返回值封装,Executor mybatis执行器,统一对另三个对象就行调度
 date: 2019-08-04 16:31:00
 comments: true
 tags: 
@@ -22,6 +22,9 @@ ExecutorType 有三种类型 分别为
 SIMPLE, SimpleExecutor 简单执行器,每次执行都会新建Statement 
 REUSE,ReuseExecutor 重复利用之前创建好的Statement的对象,如果sql语句相同的话
 BATCH,BatchExecutor 批量执行所有更新语句
+类图如下所示
+
+![executor][executor]
 # 创建Configuration 与SqlSession 源码分析
 程序中创建Sqlsession并执行查询示例,
 ```java 
@@ -104,7 +107,7 @@ BATCH,BatchExecutor 批量执行所有更新语句
     }
 ```
 
-# Executor配置解析并关联到Sqlssion 并在查询中使用中
+# Executor 通过配置创建并关联到Sqlssion 并在查询中使用中
 上面分析创建SqlSessionFactory与SqlSession 的过程,那下面分析配置的defaultExecutorType如何添加到SqlSession中
 ```java 
 // ExecutorType 枚举,执行时判断使用哪个Executor
@@ -385,3 +388,11 @@ BatchExecutor#doUpdate()
         return -2147482646;
     }
 ```
+# 总结
+
+1. mybatis 通过在<setting>节点配置defaultExecutorType,
+2. 在创建Configuration ,解析defaultExecutorType ,创建对应的ExecutorType作为configuration中ExecutorType 属性,默认为SIMPLE
+3. 创建SqlSession 过程是通过configuration 属性ExecutorType  ,创建对应的Executor类型作为executor属性
+4. 在Sqlsession 执行sql实际调用属性executor对应方法
+
+[executor]:../images/mybatis/executor.png
