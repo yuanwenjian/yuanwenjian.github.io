@@ -573,10 +573,13 @@ AnnotationConfigEmbeddedWebApplicationContext 类图如下所示
 AnnotationConfigEmbeddedWebApplicationContext构造方法如下 ,通过以下代码得知，只是为成员变量赋值
 ```java
     public AnnotationConfigEmbeddedWebApplicationContext() {
-        this.reader = new AnnotatedBeanDefinitionReader(this);
+        this.reader = new AnnotatedBeanDefinitionReader(this); 
         this.scanner = new ClassPathBeanDefinitionScanner(this);
     }
 ```
+AnnotatedBeanDefinitionReader 解析并读取BeanDefinition
+ClassPathBeanDefinitionScanner 用于扫描classpath目录下带注解的beanclass
+
 
 ## 接着上面prepareContext方法
 ```java
