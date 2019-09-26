@@ -74,6 +74,9 @@ select * from information_schema.innodb_trx;
 ```sql
 -- 查看日志目录
 show variables like 'general_log%';
+-- 慢日志
+show variables like 'slow_query_log';
+
 
 -- 开启日志
 set global general_log = on;
