@@ -43,6 +43,7 @@ categories:
 18. 选中到行首 shift+command+ 左箭头，行尾 shift +command +右箭头
 19. 合并代码 shift+command+[-],放开代码 shit+command +[+]
 20. 显示类结构图 command+option+U
+21. 跳到指定行 command+L
 ## 终端快捷键
 1. 调至行首 ctrl + a
 2. 调至行尾 ctrl + e

@@ -77,6 +77,7 @@ show variables like 'general_log%';
 -- 慢日志
 show variables like 'slow_query_log';
 
+show variables like 'slow_query%';
 
 -- 开启日志
 set global general_log = on;
@@ -104,6 +105,42 @@ JOIN wms_order_detail d ON o.order_id = d.order_id
 JOIN bas_sku s ON d.product_id = s.sku_id;
 ```
 
-SHOW VARIABLES LIKE '%max_allowed_packet%';
+## mysql查询优化
+1. 避免使用数据类型隐形转换查询
+比如 where id ='11'
 
-SET GLOBAL max_allowed_packet=268435456;
+2. 禁止使用select * 
+原因为
+消耗更多的 CPU 和 IO 以网络带宽资源
+无法使用覆盖索引
+可减少表结构变更带来的影响
+
+3. 避免使用子查询,尽量优化成join查询,
+原因:
+子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不会存在索引，所以查询性能会受到一定的影响。特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大。
+
+由于子查询会产生大量的临时表也没有索引，所以会消耗过多的 CPU 和 IO 资源，产生大量的慢查询。
+
+4. 避免使用 JOIN 关联太多的表 
+同一个 SQL 多关联（join）一个表，就会多分配一个关联缓存，如果在一个 SQL 中关联的表越多，所占用的内存也就越大。
+
+如果程序中大量的使用了多表关联的操作，同时 join_buffer_size 设置的也不合理的情况下，就容易造成服务器内存溢出的情况，就会影响到服务器数据库性能的稳定性。
+
+同时对于关联操作来说，会产生临时表操作，影响查询效率，MySQL 最多允许关联 61 个表，建议不超过 5 个。
+5.  对应同一列进行 or 判断时，使用 in 代替 or
+in 的值不要超过 500 个，in 操作可以更有效的利用索引，or 大多数情况下很少能利用到索引。
+
+6. 禁止使用 order by rand() 进行随机排序
+
+7. WHERE 从句中禁止使用函数
+对列进行函数转换或计算时会导致无法使用索引
+
+
+
+
+innodb与mysiam区别
+1. 事务:innodb支持事务,MyISAM不支持
+2. 行数: innodb不存储数据行数,myisam存储,select count(*) 很快
+3. 索引不同:innodb是聚集索引,索引与数据存放在同一文件,
+4. 外键支持: innodb支持外键,mysiam不支持
+5. 锁不同: innodb支持行锁,mysiam只支持表锁

@@ -1,6 +1,6 @@
 ---
 title: SpringApplication源码解析
-description: SpringApplication源码解析,记录自己的理解
+description: SpringApplication源码解析
 date: 2018-03-31 13:59:00
 comments: true
 tags: 
@@ -11,7 +11,7 @@ categories:
     - SpringBoot
 ---
  
- SpringBoot启动流程源码解析，版本号为1.5.7
+SpringBoot启动流程源码解析，版本号为1.5.7
 
 # SpringApplication创建
 
@@ -386,7 +386,7 @@ public interface SpringApplicationRunListener {
 
 ## prepareEnvironment方法
 
-在Context创建前准备环境
+## 在Context创建前准备环境
 ```java
    //SpringApplication 
     private ConfigurableEnvironment prepareEnvironment(SpringApplicationRunListeners listeners, ApplicationArguments applicationArguments) {
@@ -458,6 +458,7 @@ public interface SpringApplicationRunListener {
 ```
 
 ###  listeners.environmentPrepared((ConfigurableEnvironment)environment)方法
+
 ```java
     //SpringApplicationRunListeners
     public void environmentPrepared(ConfigurableEnvironment environment) {
@@ -476,8 +477,8 @@ public interface SpringApplicationRunListener {
     }
 ```
 
-
 上面代码创建ApplicationEnvironmentPreparedEvent，ConfigFileApplicationListener监听响应这个事件
+
 ```java
     //ConfigFileApplicationListener
     public void onApplicationEvent(ApplicationEvent event) {
@@ -511,7 +512,9 @@ public interface SpringApplicationRunListener {
     }
 ```
 加载EnvironmentPostProcessor 
+
 ```properties
+
 # Environment Post Processors
 org.springframework.boot.env.EnvironmentPostProcessor=\
 org.springframework.boot.cloud.CloudFoundryVcapEnvironmentPostProcessor,\
@@ -520,6 +523,7 @@ org.springframework.boot.env.SpringApplicationJsonEnvironmentPostProcessor
 ```
 
 LoggingApplicationListener同样响应这个事件，对LogbackLoggingSystem初始化工作，具体未知
+
 ```java
     // LoggingApplicationListener  加载log日志打印，具体未知
     private void onApplicationStartingEvent(ApplicationStartingEvent event) {
@@ -548,7 +552,6 @@ LoggingApplicationListener同样响应这个事件，对LogbackLoggingSystem初�
         this.registerShutdownHookIfNecessary(environment, this.loggingSystem);
     }
 ```
-
 ## createApplicationContext() 创建上下文,判断是否为web环境，通常为web项目，只分析web环境及返回AnnotationConfigEmbeddedWebApplicationContext
 ```java
 

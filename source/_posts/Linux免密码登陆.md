@@ -24,6 +24,5 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-host
 
 # 清除服务端秘钥
 ```bash
-ssh-keygen -R remote-host ## user@remote-host
+ssh-keygen -R remote-host ## remote-host
 ```
-189 1145 3870 sy

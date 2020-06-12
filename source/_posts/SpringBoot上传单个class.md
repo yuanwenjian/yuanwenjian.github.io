@@ -1,7 +1,7 @@
 ---
 title: 服务器SpringBoot修改单个class
 description: springboot以jar包启动,当修改服务器bug时,需要将整个jar包上传,网速慢的话太耗时,本文为修改单个class,就能重新编译,避免整个jar上传
-date: 2019-09-31 13:59:00
+date: 2019-03-31 13:59:00
 comments: true
 tags: 
     - tool  
@@ -36,7 +36,7 @@ jar -cvfM0 xxx.jar BOOT-INF/ META-INF/ org/  # c 创建jar压缩文件 v输出�
 ```
 # jar命令详解
 ```bash
-用法: jar {ctxui}[vfmn0PMe] [jar-file] [manifest-file] [entry-point] [-C dir] files ...
+用法: jar {ctxui}[vfmn0PMe] [ ] [manifest-file] [entry-point] [-C dir] files ...
 选项:
     -c  创建新档案
     -t  列出档案目录

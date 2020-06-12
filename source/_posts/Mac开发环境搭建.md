@@ -129,3 +129,39 @@ onfig set requirepass passwords
 [jdk7下载地址]:http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
 [jdk8下载地址]:http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
 
+## 安装zookeeper
+```
+brew install zookeeper
+```bash 
+
+修改zookeeper配置
+```bash 
+vim /usr/local/etc/zookeeper/zoo.cfg
+```
+
+zookeeper 启动
+```bash
+zkServer start 
+```
+
+安装目录
+/usr/local/Cellar/zookeeper/
+
+配置目录
+/usr/local/etc/zookeeper
+
+## 安装nginx
+
+```bash 
+brew install nginx
+```
+安装目录
+/usr/local/var/www
+
+配置文件
+/usr/local/etc/nginx/nginx.conf
+
+日志目录
+/usr/local/var/log/nginx
+
+

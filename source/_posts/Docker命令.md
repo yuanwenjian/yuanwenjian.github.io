@@ -34,7 +34,16 @@ docker exec container # 进入容器  参数 -i :即使没有附加也保持STDI
 ```
 ## docker mysql 导入数据命令
 ```bash
-docker exec -i container mysql -uroot -p DATABASE < sql文件
+docker exec -i  db001 mysql -uroot -p12345  < /Users/yuanwenjian/github/xxl-job/doc/db/tables_xxl_job.sql #db001 容器名 
+```
+## docker 启动mysql 
+```bash
+docker run --name db001 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:5.7.22
+```
+
+## docker 进入容器
+```bash
+docker exec -it db001 bash # db001 容器名
 ```
 
 ## docker 配置Redis主从复制 挂载外部配置文件
