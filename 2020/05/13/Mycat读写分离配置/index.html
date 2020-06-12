@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,Mycat,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Mycat实现读取分离配置">
+<meta name="keywords" content="Java,Mycat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mycat实现读取分离">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/Mycat读写分离配置/index.html">
+<meta property="og:site_name" content="问问苑大宝">
+<meta property="og:description" content="Mycat实现读取分离配置">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-12T07:39:37.227Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mycat实现读取分离">
+<meta name="twitter:description" content="Mycat实现读取分离配置">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/13/Mycat读写分离配置/">
+
+
+
+
+
+  <title>Mycat实现读取分离 | 问问苑大宝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">问问苑大宝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/Mycat读写分离配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="问问苑大宝">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/sanguosha.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="问问苑大宝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mycat实现读取分离</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T20:40:00+08:00">
+                2020-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mycat/" itemprop="url" rel="index">
+                    <span itemprop="name">Mycat</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mycat/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/13/Mycat读写分离配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/05/13/Mycat读写分离配置/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Mycat实现读取分离配置
+              </div>
+          
+
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h1><p>使用docker安装三个数据库分别为db001,db002,db003<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name db001 -p <span class="number">3306</span>:<span class="number">3306</span> -e MYSQL_ROOT_PASSWORD=<span class="number">12345</span> -d mysql:<span class="number">5.7</span><span class="number">.22</span></span><br><span class="line">docker run --name db002 -p <span class="number">3307</span>:<span class="number">3306</span> -e MYSQL_ROOT_PASSWORD=<span class="number">12345</span> -d mysql:<span class="number">5.7</span><span class="number">.22</span></span><br><span class="line">docker run --name db003 -p <span class="number">3308</span>:<span class="number">3306</span> -e MYSQL_ROOT_PASSWORD=<span class="number">12345</span> -d mysql:<span class="number">5.7</span><span class="number">.22</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="Mycat配置"><a href="#Mycat配置" class="headerlink" title="Mycat配置"></a>Mycat配置</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mycat</span>:schema <span class="meta-keyword">SYSTEM</span> <span class="meta-string">"schema.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mycat:schema</span> <span class="attr">xmlns:mycat</span>=<span class="string">"http://io.mycat/"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">schema</span> <span class="attr">name</span>=<span class="string">"TESTDB"</span> <span class="attr">checkSQLschema</span>=<span class="string">"true"</span> <span class="attr">sqlMaxLimit</span>=<span class="string">"100"</span> <span class="attr">randomDataNode</span>=<span class="string">"dn1"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">table</span> <span class="attr">name</span>=<span class="string">"wms_phone_imei"</span>  <span class="attr">dataNode</span>=<span class="string">"dn1"</span> /&gt;</span> <span class="comment">&lt;!-- 表名数据库表 dataNode与&lt;dataNode&gt;节点对应 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">schema</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dataNode</span> <span class="attr">name</span>=<span class="string">"dn1"</span> <span class="attr">dataHost</span>=<span class="string">"localhost1"</span> <span class="attr">database</span>=<span class="string">"user"</span> /&gt;</span> <span class="comment">&lt;!-- dataHost与&lt;dataHost对应&gt; database物理数据库 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- balance 可选值为0,1,2,3 </span></span><br><span class="line"><span class="comment">    0表示禁止读写分离,所有读写请求落在主节点,</span></span><br><span class="line"><span class="comment">    1全部的readHost与stand by writeHost参与select语句的负载均衡，简单的说，当双主双从模式(M1-&gt;S1，M2-&gt;S2，并且M1与 M2互为主备)，正常情况下，M2,S1,S2都参与select语句的负载均衡。</span></span><br><span class="line"><span class="comment">    2表示所有读操作都随机的在 writeHost、readhost 上分发。</span></span><br><span class="line"><span class="comment">    3表示所有读操作落在readhost --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dataHost</span> <span class="attr">name</span>=<span class="string">"localhost1"</span> <span class="attr">maxCon</span>=<span class="string">"1000"</span> <span class="attr">minCon</span>=<span class="string">"10"</span> <span class="attr">balance</span>=<span class="string">"3"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">writeType</span>=<span class="string">"0"</span> <span class="attr">dbType</span>=<span class="string">"mysql"</span> <span class="attr">dbDriver</span>=<span class="string">"native"</span> <span class="attr">switchType</span>=<span class="string">"1"</span>  <span class="attr">slaveThreshold</span>=<span class="string">"100"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">heartbeat</span>&gt;</span>select user()<span class="tag">&lt;/<span class="name">heartbeat</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- can have multi write hosts --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">writeHost</span> <span class="attr">host</span>=<span class="string">"db001"</span> <span class="attr">url</span>=<span class="string">"127.0.0.1:3306"</span> <span class="attr">user</span>=<span class="string">"root"</span> <span class="attr">password</span>=<span class="string">"12345"</span>&gt;</span> <span class="comment">&lt;!-- 主数据库配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">readHost</span> <span class="attr">host</span>=<span class="string">"db002"</span> <span class="attr">url</span>=<span class="string">"127.0.0.1:3307"</span> <span class="attr">user</span>=<span class="string">"root"</span> <span class="attr">password</span>=<span class="string">"12345"</span> <span class="attr">weight</span>=<span class="string">"1"</span>/&gt;</span> <span class="comment">&lt;!-- 从节点配置 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">readHost</span> <span class="attr">host</span>=<span class="string">"db003"</span> <span class="attr">url</span>=<span class="string">"127.0.0.1:3308"</span> <span class="attr">user</span>=<span class="string">"root"</span> <span class="attr">password</span>=<span class="string">"12345"</span> <span class="attr">weight</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;/<span class="name">writeHost</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- &lt;writeHost host="hostM2" url="localhost:3316" user="root" password="123456"/&gt; --&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dataHost</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">mycat:schema</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="应用层SpringBoot配置"><a href="#应用层SpringBoot配置" class="headerlink" title="应用层SpringBoot配置"></a>应用层SpringBoot配置</h1><p>springboot 使用时与正常数据库连接一样,只是建数据库连接替换为Mycat连接即可</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:8066/TESTDB?useSSL=false</span></span><br><span class="line"><span class="attr">username:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">password:</span> <span class="number">123456</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+            <a href="/tags/Mycat/" rel="tag"><i class="fa fa-tag"></i> Mycat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/06/深入理解JAVA虚拟机笔记/" rel="next" title="这篇为读<<深入理解JAVA虚拟机>>笔记">
+                <i class="fa fa-chevron-left"></i> 这篇为读<<深入理解java虚拟机>>笔记
+              </深入理解java虚拟机></a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/27/Docker搭建Mysql主从集群/" rel="prev" title="Docker搭建mysql集群">
+                Docker搭建mysql集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: 'Mycat实现读取分离',
+      theme: myTheme,
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/sanguosha.jpg" alt="问问苑大宝">
+            
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
+              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装数据库"><span class="nav-number">1.</span> <span class="nav-text">安装数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mycat配置"><span class="nav-number">2.</span> <span class="nav-text">Mycat配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用层SpringBoot配置"><span class="nav-number">3.</span> <span class="nav-text">应用层SpringBoot配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: 'Mycat实现读取分离', 
+            owner: 'yuanwenjian',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
+            
+                client_id: '21bb0ade50d6f2c9707b'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+</body>
+</html>

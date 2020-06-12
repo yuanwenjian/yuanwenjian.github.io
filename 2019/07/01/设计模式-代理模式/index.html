@@ -6,12 +6,12 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU">
 
 
   
@@ -27,8 +27,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -47,7 +47,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -55,9 +55,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="设计模式,">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/设计模式-代理模式/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/设计模式-代理模式/">
 
 
 
@@ -162,7 +162,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -202,7 +202,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -212,7 +212,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -222,7 +222,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -232,7 +232,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -275,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
@@ -311,7 +311,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -389,7 +389,7 @@
 <li><p>获取mapper：当调用session.getMapper(Class<t> type)方法时，实际调用的是MapperRegisty注册工厂，通过class获取的MapperProxyFactory，并通过反射与session关联生成mapper代理类，所以调用mapper所有方法都会调用MapperProxy.invoke(),再根据sql配置进行对应sql执行</t></p>
 </li>
 </ol>
-<p>以下代码模拟mybatis mapper代理创建过程<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;Integer&gt; <span class="title">getAllIds</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// mapper代理类 实现InvocationHandler会拦截真实对象的所有方法，及真实对象的对象会调用invoke()</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapperProxy</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"===start===="</span>);</span><br><span class="line">        <span class="keyword">if</span> (Object.class.equals(method.getDeclaringClass())) &#123;</span><br><span class="line">            <span class="keyword">return</span> method.invoke(proxy, args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//mybais中会解析sql，最后调用jdbc执行sql</span></span><br><span class="line">        Object result = method.invoke(proxy, args);</span><br><span class="line">        System.out.println(<span class="string">"=======end=========="</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MapperProxy&lt;UserMapper&gt; mapperProxy = <span class="keyword">new</span> MapperProxy();<span class="comment">// mybatis 实际由反射创建</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//注释为模拟mybatis代码，</span></span><br><span class="line"><span class="comment">//        Map&lt;Class, MapperProxy&gt; registMapper = new HashMap&lt;&gt;();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        registMapper.put(UserMapper.class, mapperProxy);</span></span><br><span class="line"><span class="comment">//        Configuration configuration = new Configuration();</span></span><br><span class="line"><span class="comment">//        configuration.addMapper(registMapper);//解析xml并添加到configuration中</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        MapperProxy mapperProxy1 = configuration.getMapper(UserMapper.class);//mybatis实际由sqlSession获取</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        UserMapper userMapper =(UserMapper) Proxy.newProxyInstance(UserMapper.class.getClassLoader(),</span></span><br><span class="line"><span class="comment">//                new Class[]&#123;UserMapper.class&#125;, mapperProxy1);//创建代理对象</span></span><br><span class="line"></span><br><span class="line">        UserMapper userMapper =(UserMapper) Proxy.newProxyInstance(UserMapper.class.getClassLoader(),</span><br><span class="line">                <span class="keyword">new</span> Class[]&#123;UserMapper.class&#125;, mapperProxy);<span class="comment">//创建代理对象</span></span><br><span class="line">        userMapper.getAllIds();<span class="comment">//调用方法，实际调用jdbc</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟mybatis Configuration与代理模式无关</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Configuration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Class, MapperProxy&gt; registMapper;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMapper</span><span class="params">(Map&lt;Class,MapperProxy&gt; mapper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (registMapper == <span class="keyword">null</span>) &#123;</span><br><span class="line">            registMapper = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        registMapper.putAll(mapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MapperProxy <span class="title">getMapper</span><span class="params">(Class mapperClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (registMapper.containsKey(mapperClass)) &#123;</span><br><span class="line">            <span class="keyword">return</span> registMapper.get(mapperClass);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以下代码模拟mybatis mapper代理创建过程<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;Integer&gt; <span class="title">getAllIds</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// mapper代理类 实现InvocationHandler会拦截真实对象的所有方法，及真实对象的对象会调用invoke()</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapperProxy</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"===start===="</span>);</span><br><span class="line">        <span class="keyword">if</span> (Object<span class="class">.<span class="keyword">class</span>.<span class="title">equals</span>(<span class="title">method</span>.<span class="title">getDeclaringClass</span>())) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> method.invoke(proxy, args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//mybais中会解析sql，最后调用jdbc执行sql</span></span><br><span class="line">        Object result = method.invoke(proxy, args);</span><br><span class="line">        System.out.println(<span class="string">"=======end=========="</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MapperProxy&lt;UserMapper&gt; mapperProxy = <span class="keyword">new</span> MapperProxy();<span class="comment">// mybatis 实际由反射创建</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//注释为模拟mybatis代码，</span></span><br><span class="line"><span class="comment">//        Map&lt;Class, MapperProxy&gt; registMapper = new HashMap&lt;&gt;();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        registMapper.put(UserMapper.class, mapperProxy);</span></span><br><span class="line"><span class="comment">//        Configuration configuration = new Configuration();</span></span><br><span class="line"><span class="comment">//        configuration.addMapper(registMapper);//解析xml并添加到configuration中</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        MapperProxy mapperProxy1 = configuration.getMapper(UserMapper.class);//mybatis实际由sqlSession获取</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        UserMapper userMapper =(UserMapper) Proxy.newProxyInstance(UserMapper.class.getClassLoader(),</span></span><br><span class="line"><span class="comment">//                new Class[]&#123;UserMapper.class&#125;, mapperProxy1);//创建代理对象</span></span><br><span class="line"></span><br><span class="line">        UserMapper userMapper =(UserMapper) Proxy.newProxyInstance(UserMapper<span class="class">.<span class="keyword">class</span>.<span class="title">getClassLoader</span>(),</span></span><br><span class="line">                new Class[]&#123;UserMapper.class&#125;, mapperProxy);//创建代理对象</span><br><span class="line">        userMapper.getAllIds();<span class="comment">//调用方法，实际调用jdbc</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟mybatis Configuration与代理模式无关</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Configuration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Class, MapperProxy&gt; registMapper;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMapper</span><span class="params">(Map&lt;Class,MapperProxy&gt; mapper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (registMapper == <span class="keyword">null</span>) &#123;</span><br><span class="line">            registMapper = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        registMapper.putAll(mapper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MapperProxy <span class="title">getMapper</span><span class="params">(Class mapperClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (registMapper.containsKey(mapperClass)) &#123;</span><br><span class="line">            <span class="keyword">return</span> registMapper.get(mapperClass);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -420,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/01/设计模式-装饰器模式/" rel="next" title="设计模式之一 装饰模式">
-                <i class="fa fa-chevron-left"></i> 设计模式之一 装饰模式
+              <a href="/2019/06/24/Java多线程synchronized详解/" rel="next" title="Java synchronized关键字">
+                <i class="fa fa-chevron-left"></i> Java synchronized关键字
               </a>
             
           </div>
@@ -430,8 +430,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/01/Java线程池/" rel="prev" title="JAVA线程池创建及原理">
-                JAVA线程池创建及原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/01/设计模式-装饰器模式/" rel="prev" title="设计模式之一 装饰模式">
+                设计模式之一 装饰模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,9 +524,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/sanguosha.jpg"
-                alt="问问苑大宝" />
+              <img class="site-author-image" itemprop="image" src="/images/sanguosha.jpg" alt="问问苑大宝">
             
               <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
@@ -539,7 +537,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -550,7 +548,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -561,7 +559,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

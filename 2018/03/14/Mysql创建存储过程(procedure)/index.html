@@ -6,12 +6,12 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU">
 
 
   
@@ -27,8 +27,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -47,7 +47,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -55,9 +55,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Mysql,Procedure," />
+  <meta name="keywords" content="Mysql,Procedure,">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/14/Mysql创建存储过程(procedure)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/14/Mysql创建存储过程(procedure)/">
 
 
 
@@ -162,7 +162,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -202,7 +202,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -212,7 +212,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -222,7 +222,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -232,7 +232,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -275,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
@@ -311,7 +311,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -406,25 +406,25 @@
 <h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><h2 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h2><p>MySQL可以使用IF，CASE，ITERATE，LEAVE，LOOP，WHILE和REPEAT流程控制,此外还支持RETURN</p>
 <h2 id="IF流程控制"><a href="#IF流程控制" class="headerlink" title="IF流程控制"></a>IF流程控制</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><blockquote>
 <p>IF condition THEN statement(s)<br>[ELSEIF condition THEN statement(s)] …<br>[ELSE statement(s)]<br>END IF</p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DEFINER=<span class="string">`root`</span>@<span class="string">`127.0.0.1`</span> </span><br><span class="line"><span class="keyword">PROCEDURE</span> <span class="string">`GetUserName`</span>(INOUT user_name <span class="built_in">varchar</span>(<span class="number">16</span>),</span><br><span class="line"><span class="keyword">IN</span> user_id <span class="built_in">varchar</span>(<span class="number">16</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> uname <span class="built_in">varchar</span>(<span class="number">16</span>); //定义变量</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">INTO</span> uname</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">WHERE</span> userid = user_id;</span><br><span class="line">IF user_id = "scott123" </span><br><span class="line">THEN</span><br><span class="line"><span class="keyword">SET</span> user_name = <span class="string">"Scott"</span>;</span><br><span class="line">ELSEIF user_id = "ferp6734" </span><br><span class="line">THEN</span><br><span class="line"><span class="keyword">SET</span> user_name = <span class="string">"Palash"</span>;</span><br><span class="line">ELSEIF user_id = "diana094" </span><br><span class="line">THEN</span><br><span class="line"><span class="keyword">SET</span> user_name = <span class="string">"Diana"</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
 </blockquote>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DEFINER=<span class="string">`root`</span>@<span class="string">`127.0.0.1`</span> </span><br><span class="line"><span class="keyword">PROCEDURE</span> <span class="string">`GetUserName`</span>(INOUT user_name <span class="built_in">varchar</span>(<span class="number">16</span>),</span><br><span class="line"><span class="keyword">IN</span> user_id <span class="built_in">varchar</span>(<span class="number">16</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> uname <span class="built_in">varchar</span>(<span class="number">16</span>); //定义变量</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">INTO</span> uname</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">user</span></span><br><span class="line"><span class="keyword">WHERE</span> userid = user_id;</span><br><span class="line">IF user_id = "scott123" </span><br><span class="line">THEN</span><br><span class="line"><span class="keyword">SET</span> user_name = <span class="string">"Scott"</span>;</span><br><span class="line">ELSEIF user_id = "ferp6734" </span><br><span class="line">THEN</span><br><span class="line"><span class="keyword">SET</span> user_name = <span class="string">"Palash"</span>;</span><br><span class="line">ELSEIF user_id = "diana094" </span><br><span class="line">THEN</span><br><span class="line"><span class="keyword">SET</span> user_name = <span class="string">"Diana"</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
 <h2 id="Case流程控制"><a href="#Case流程控制" class="headerlink" title="Case流程控制"></a>Case流程控制</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><blockquote>
 <p>CASE case_value<br>WHEN when_value THEN statement_list<br>[WHEN when_value THEN statement_list] …<br>[ELSE statement_list] END CASE</p>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="string">`hr`</span>.<span class="string">`my_proc_CASE`</span> </span><br><span class="line">(INOUT no_employees <span class="built_in">INT</span>, <span class="keyword">IN</span> salary <span class="built_in">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line"><span class="keyword">WHEN</span> (salary&gt;<span class="number">10000</span>) </span><br><span class="line"><span class="keyword">THEN</span> (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(job_id) <span class="keyword">INTO</span> no_employees </span><br><span class="line"><span class="keyword">FROM</span> jobs </span><br><span class="line"><span class="keyword">WHERE</span> min_salary&gt;<span class="number">10000</span>);</span><br><span class="line">WHEN (salary&lt;10000) </span><br><span class="line">THEN (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(job_id) <span class="keyword">INTO</span> no_employees </span><br><span class="line"><span class="keyword">FROM</span> jobs </span><br><span class="line"><span class="keyword">WHERE</span> min_salary&lt;<span class="number">10000</span>);</span><br><span class="line">ELSE (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(job_id) <span class="keyword">INTO</span> no_employees </span><br><span class="line"><span class="keyword">FROM</span> jobs <span class="keyword">WHERE</span> min_salary=<span class="number">10000</span>);</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br></pre></td></tr></table></figure>
 </blockquote>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="string">`hr`</span>.<span class="string">`my_proc_CASE`</span> </span><br><span class="line">(INOUT no_employees <span class="built_in">INT</span>, <span class="keyword">IN</span> salary <span class="built_in">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line"><span class="keyword">WHEN</span> (salary&gt;<span class="number">10000</span>) </span><br><span class="line"><span class="keyword">THEN</span> (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(job_id) <span class="keyword">INTO</span> no_employees </span><br><span class="line"><span class="keyword">FROM</span> jobs </span><br><span class="line"><span class="keyword">WHERE</span> min_salary&gt;<span class="number">10000</span>);</span><br><span class="line">WHEN (salary&lt;10000) </span><br><span class="line">THEN (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(job_id) <span class="keyword">INTO</span> no_employees </span><br><span class="line"><span class="keyword">FROM</span> jobs </span><br><span class="line"><span class="keyword">WHERE</span> min_salary&lt;<span class="number">10000</span>);</span><br><span class="line">ELSE (<span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(job_id) <span class="keyword">INTO</span> no_employees </span><br><span class="line"><span class="keyword">FROM</span> jobs <span class="keyword">WHERE</span> min_salary=<span class="number">10000</span>);</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">CASE</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br></pre></td></tr></table></figure>
 <h2 id="ITERATE-Statement"><a href="#ITERATE-Statement" class="headerlink" title="ITERATE Statement"></a>ITERATE Statement</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>再次启动循环,ITERATE只能出现在LOOP，REPEAT和WHILE语句中</p>
 <h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p>ITERATE label</p>
 <h2 id="LEAVE-Statement"><a href="#LEAVE-Statement" class="headerlink" title="LEAVE Statement"></a>LEAVE Statement</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>LEAVE语句用于退出指定标签,如果LEAVE在语句最外面,则退出程序,LEAVE可用于BEGIN … END或循环结构（LOOP，REPEAT，WHILE）</p>
 <h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p>LEAVE label</p>
 <h2 id="LOOP-Statement"><a href="#LOOP-Statement" class="headerlink" title="LOOP Statement"></a>LOOP Statement</h2><h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><blockquote>
 <p>[begin_label:]<br>LOOP<br>statement_list<br>END LOOP<br>[end_label]</p>
+</blockquote>
 <h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>LOOP用于创建语句列表的重复执行,statement_list是一个或多个使用;结尾的语句,重复执行列表的语句,直至循环结束,通常，LEAVE语句用于退出循环结构。也可以使用RETURN，但它完全退出函数。 LOOP语句可以被标记</p>
 <h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="string">`my_proc_LOOP`</span> (<span class="keyword">IN</span> <span class="keyword">num</span> <span class="built_in">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> x <span class="built_in">INT</span>;</span><br><span class="line"><span class="keyword">SET</span> x = <span class="number">0</span>;</span><br><span class="line">loop_label: LOOP</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="built_in">number</span> <span class="keyword">VALUES</span> (<span class="keyword">rand</span>());</span><br><span class="line"><span class="keyword">SET</span> x = x + <span class="number">1</span>;</span><br><span class="line">IF x &gt;= num </span><br><span class="line">THEN</span><br><span class="line">LEAVE loop_label;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span> <span class="keyword">LOOP</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br></pre></td></tr></table></figure>
-</blockquote>
 <h2 id="WHILE-Statement"><a href="#WHILE-Statement" class="headerlink" title="WHILE Statement"></a>WHILE Statement</h2><h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><blockquote>
 <p>[begin_label:] WHILE search_condition DO<br>    statement_list<br>END WHILE [end_label]</p>
-<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> my_proc_WHILE(<span class="keyword">IN</span> n <span class="built_in">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">sum</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">SET</span> @x = <span class="number">1</span>;</span><br><span class="line">WHILE @x&lt;n </span><br><span class="line"><span class="keyword">DO</span></span><br><span class="line">   <span class="keyword">IF</span> <span class="keyword">mod</span>(@x, <span class="number">2</span>) &lt;&gt; <span class="number">0</span> <span class="keyword">THEN</span>   </span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">sum</span> = @<span class="keyword">sum</span> + @x;   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;   </span><br><span class="line"><span class="keyword">SET</span> @x = @x + <span class="number">1</span>;   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br></pre></td></tr></table></figure>
 </blockquote>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> my_proc_WHILE(<span class="keyword">IN</span> n <span class="built_in">INT</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">sum</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">SET</span> @x = <span class="number">1</span>;</span><br><span class="line">WHILE @x&lt;n </span><br><span class="line"><span class="keyword">DO</span></span><br><span class="line">   <span class="keyword">IF</span> <span class="keyword">mod</span>(@x, <span class="number">2</span>) &lt;&gt; <span class="number">0</span> <span class="keyword">THEN</span>   </span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">sum</span> = @<span class="keyword">sum</span> + @x;   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">IF</span>;   </span><br><span class="line"><span class="keyword">SET</span> @x = @x + <span class="number">1</span>;   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line"><span class="keyword">END</span>$$</span><br></pre></td></tr></table></figure>
 <h1 id="修改存储过程-ALTER-PROCEDURE"><a href="#修改存储过程-ALTER-PROCEDURE" class="headerlink" title="修改存储过程 ALTER PROCEDURE"></a>修改存储过程 ALTER PROCEDURE</h1><p>可以更改存储过程的特征,但是无法更改存储的实体及参数,如果想修改,可以使用drop再重新创建</p>
 <h1 id="存储过程权限"><a href="#存储过程权限" class="headerlink" title="存储过程权限"></a>存储过程权限</h1><p>存储过程及视图允许使用DEFINER属性指定所属用户<br>只有拥有SUPER权限时，才能指定除自己帐户以外的DEFINER值</p>
 <h1 id="Mysql-查看日志"><a href="#Mysql-查看日志" class="headerlink" title="Mysql 查看日志"></a>Mysql 查看日志</h1><h2 id="查看日志是否开启"><a href="#查看日志是否开启" class="headerlink" title="查看日志是否开启"></a>查看日志是否开启</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'general%'</span>;</span><br></pre></td></tr></table></figure>
@@ -575,9 +575,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/sanguosha.jpg"
-                alt="问问苑大宝" />
+              <img class="site-author-image" itemprop="image" src="/images/sanguosha.jpg" alt="问问苑大宝">
             
               <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
@@ -590,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -601,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -612,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
