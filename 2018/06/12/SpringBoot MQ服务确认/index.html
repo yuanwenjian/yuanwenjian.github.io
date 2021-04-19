@@ -6,12 +6,12 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
 
 
   
@@ -27,8 +27,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -47,7 +47,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -55,9 +55,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="RabbitMQ,后端,SpringBoot,">
+  <meta name="keywords" content="RabbitMQ,后端,SpringBoot," />
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/">
+  <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/"/>
 
 
 
@@ -162,7 +162,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -202,7 +202,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -212,7 +212,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -222,7 +222,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -232,7 +232,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -275,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
@@ -311,7 +311,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -413,11 +413,11 @@
 <p>RabbitMQ不会为未确认的消息设置过期时间，它判断此消息是否需要重新投递给消费者的唯一依据是消费该消息的消费者连接是否已经断开，这么设计的原因是RabbitMQ允许消费者消费一条消息的时间可以很久很久。</p>
 <p>如果消息消费失败，也可以调用Basic.Reject或者Basic.Nack来拒绝当前消息而不是确认，如果只是简单的拒绝那么消息会丢失，需要将相应的requeue参数设置为true，那么RabbitMQ会重新将这条消息存入队列，以便可以发送给下一个订阅的消费者。如果requeue参数设置为false的话，RabbitMQ立即会把消息从队列中移除，而不会把它发送给新的消费者。</p>
 <h1 id="spring-boot代码示例"><a href="#spring-boot代码示例" class="headerlink" title="spring boot代码示例"></a>spring boot代码示例</h1><p>confrim 分为两部分，一种情况为生产者到exchange,另一种为exchange到队列，以下为SpringBoot 代码</p>
-<p>spring boot配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">rabbitmq:</span></span><br><span class="line">        <span class="attr">addresses:</span> <span class="string">localhost</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">5672</span></span><br><span class="line">        <span class="attr">username:</span> <span class="string">guest</span></span><br><span class="line">        <span class="attr">password:</span> <span class="string">guest</span></span><br><span class="line">        <span class="attr">publisher-confirms:</span> <span class="literal">true</span> <span class="comment"># 开启消息至exchange确认</span></span><br><span class="line">        <span class="attr">publisherReturns:</span> <span class="literal">true</span> <span class="comment"># 开启消息到quene确认</span></span><br><span class="line">        <span class="attr">listener:</span></span><br><span class="line">          <span class="attr">simple:</span></span><br><span class="line">            <span class="attr">acknowledge-mode:</span> <span class="string">manual</span> <span class="comment"># 将消费者确认改为手动</span></span><br><span class="line">        <span class="attr">virtual-host:</span> <span class="string">/yuanwj</span></span><br></pre></td></tr></table></figure></p>
+<p>spring boot配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">    rabbitmq:</span></span><br><span class="line"><span class="attr">        addresses:</span> <span class="string">localhost</span></span><br><span class="line"><span class="attr">        port:</span> <span class="number">5672</span></span><br><span class="line"><span class="attr">        username:</span> <span class="string">guest</span></span><br><span class="line"><span class="attr">        password:</span> <span class="string">guest</span></span><br><span class="line"><span class="attr">        publisher-confirms:</span> <span class="literal">true</span> <span class="comment"># 开启消息至exchange确认</span></span><br><span class="line"><span class="attr">        publisherReturns:</span> <span class="literal">true</span> <span class="comment"># 开启消息到quene确认</span></span><br><span class="line"><span class="attr">        listener:</span></span><br><span class="line"><span class="attr">          simple:</span></span><br><span class="line"><span class="attr">            acknowledge-mode:</span> <span class="string">manual</span> <span class="comment"># 将消费者确认改为手动</span></span><br><span class="line"><span class="attr">        virtual-host:</span> <span class="string">/yuanwj</span></span><br></pre></td></tr></table></figure></p>
 <p>配置RabbitTemplate 注意将mandatory 设为ture.该标志设为true时,如果无法找到合适queue时,会将消息返回生成者,为false时,会直接丢弃<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> RabbitTemplate <span class="title">rabbitTemplate</span><span class="params">(CachingConnectionFactory connectionFactory)</span> </span>&#123;</span><br><span class="line">    RabbitTemplate template = <span class="keyword">new</span> RabbitTemplate(connectionFactory);</span><br><span class="line">    template.setConfirmCallback(confirmCallback);</span><br><span class="line">    template.setReturnCallback(returnCallback);</span><br><span class="line">    template.setMandatory(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">return</span> template;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>配置confirm</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqConfirmCallback</span> <span class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span class="title">ConfirmCallback</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqConfirmCallback<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">confirm</span><span class="params">(CorrelationData correlationData, <span class="keyword">boolean</span> ack, String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (ack)&#123;</span><br><span class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送成功"</span>,correlationData);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送失败,原因为&#123;&#125;"</span>,correlationData,s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置return<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqReturnCallback</span> <span class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span class="title">ReturnCallback</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqReturnCallback<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnedMessage</span><span class="params">(Message message, <span class="keyword">int</span> replyCode, String replyText, String exchange, String routingKey)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        LOG.info(<span class="string">"消息发送失败,replyCode:&#123;&#125;,replyText:&#123;&#125;,exchange:&#123;&#125;,routingKey:&#123;&#125;"</span>,</span><br><span class="line">                replyCode, replyText,exchange,routingKey);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqConfirmCallback</span> <span class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span class="title">ConfirmCallback</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqConfirmCallback.class);</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">confirm</span><span class="params">(CorrelationData correlationData, <span class="keyword">boolean</span> ack, String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (ack)&#123;</span><br><span class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送成功"</span>,correlationData);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送失败,原因为&#123;&#125;"</span>,correlationData,s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置return<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqReturnCallback</span> <span class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span class="title">ReturnCallback</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqReturnCallback.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnedMessage</span><span class="params">(Message message, <span class="keyword">int</span> replyCode, String replyText, String exchange, String routingKey)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        LOG.info(<span class="string">"消息发送失败,replyCode:&#123;&#125;,replyText:&#123;&#125;,exchange:&#123;&#125;,routingKey:&#123;&#125;"</span>,</span><br><span class="line">                replyCode, replyText,exchange,routingKey);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>消费者确认<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener</span>(queues = <span class="string">"yuanwj"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiver</span><span class="params">(Message message, Channel channel)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    System.out.println(Thread.currentThread().getName()+<span class="string">"============="</span>);</span><br><span class="line">    String key = message.getMessageProperties().getReceivedRoutingKey();</span><br><span class="line">    LOG.debug(<span class="string">"yuanwj消费成功,&#123;&#125;,&#123;&#125;"</span>, key,<span class="string">"aaaaaaa"</span>);</span><br><span class="line">    channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="keyword">true</span>); <span class="comment">//手动确认,参数一为消息tag,参数二为是否将这个tag之前标记,</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>测试方法,在发送消息前断点,然后通过mq管理台,删除exchange或队列,观察方法</p>
 <p>情况一 正常操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019-08-01 14:12:45.907 DEBUG 7340 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功</span><br></pre></td></tr></table></figure></p>
@@ -460,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/10/RabbitMQ笔记/" rel="next" title="RabbitMQ笔记">
-                <i class="fa fa-chevron-left"></i> RabbitMQ笔记
+              <a href="/2018/06/12/SpringAMQP文档/" rel="next" title="RabbitMQ消息确认">
+                <i class="fa fa-chevron-left"></i> RabbitMQ消息确认
               </a>
             
           </div>
@@ -470,7 +470,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/12/SpringAMQP文档/" rel="prev" title="RabbitMQ消息确认">
+              <a href="/2018/06/12/RabbitMQ确认机制/" rel="prev" title="RabbitMQ消息确认">
                 RabbitMQ消息确认 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -573,7 +573,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/sanguosha.jpg" alt="问问苑大宝">
+              <img class="site-author-image" itemprop="image"
+                src="/images/sanguosha.jpg"
+                alt="问问苑大宝" />
             
               <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
@@ -586,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -663,7 +665,7 @@
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

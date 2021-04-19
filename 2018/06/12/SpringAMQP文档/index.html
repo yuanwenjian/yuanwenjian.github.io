@@ -6,12 +6,12 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
 
 
   
@@ -27,8 +27,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -47,7 +47,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -55,9 +55,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="RabbitMQ,后端,Spring,">
+  <meta name="keywords" content="RabbitMQ,后端,Spring," />
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringAMQP文档/">
+  <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringAMQP文档/"/>
 
 
 
@@ -162,7 +162,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">问问苑大宝</span>
         <span class="logo-line-after"><i></i></span>
@@ -192,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -202,7 +202,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -212,7 +212,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -222,7 +222,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -232,7 +232,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -275,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
@@ -311,7 +311,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -411,7 +411,7 @@
 <p>通过<a href="http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd" target="_blank" rel="noopener">rabbitMq命名空间</a>，可以查看添加属性</p>
 <p>这里有一个自定义线程工厂的例子，它使用rabbitmq-作为线程名称的前缀。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">rabbit:connection-factory</span> <span class="attr">id</span>=<span class="string">"multiHost"</span> <span class="attr">virtual-host</span>=<span class="string">"/bar"</span> <span class="attr">addresses</span>=<span class="string">"host1:1234,host2,host3:4567"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">thread-factory</span>=<span class="string">"tf"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">channel-cache-size</span>=<span class="string">"10"</span> <span class="attr">username</span>=<span class="string">"user"</span> <span class="attr">password</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"tf"</span> <span class="attr">class</span>=<span class="string">"org.springframework.scheduling.concurrent.CustomizableThreadFactory"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"rabbitmq-"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>从版本1.7开始，为注入到AbstractionConnectionFactory中提供了一个ConnectionNameStrategy。生成的名称用于目标RabbitMQ连接的应用程序特定标识。如果RabbitMQ服务器支持，连接名称将显示在管理UI中。该值不必是唯一的，并且不能用作连接标识符,例如在HTTP API请求中。此值应该是人类可读的，并且是connection_name键下的ClientProperties的一部分</p>
-<p>ConnectionFactory参数可用于通过某种逻辑区分目标连接名称。默认情况下，使用AbstractConnectionFactory的beanName和内部计数器来生成connection_name,&lt;rabbit：connection-factory&gt;命名空间组件也随连接名称策略属性提供。</p>
+<p>ConnectionFactory参数可用于通过某种逻辑区分目标连接名称。默认情况下，使用AbstractConnectionFactory的beanName和内部计数器来生成connection_name,<rabbit：connection-factory>命名空间组件也随连接名称策略属性提供。</rabbit：connection-factory></p>
 <p>从版本1.7.7开始，提供了当SimpleConnection.createChannel（）不能创建一个Channel的AmqpResourceNotAvailableException，因为达到了通道最大限制，并且缓存中没有可用通道。这个异常可以在RetryPolicy中使用，以在一些退避后恢复操作。</p>
 <h2 id="Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂"><a href="#Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂" class="headerlink" title="Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂"></a>Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂</h2><h2 id="Routing-Connection-Factory"><a href="#Routing-Connection-Factory" class="headerlink" title="Routing Connection Factory"></a>Routing Connection Factory</h2><p>从1.3版本开始,引入了AbstractRoutingConnectionFactory.这提供了一种机制来配置多个ConnectionFactories的映射,并通过在运行时使用lookupKey来决定目标ConnectionFactory.</p>
 <p>通常,实现会检查线程绑定上下文. 为了方便, Spring AMQP提供了SimpleRoutingConnectionFactory, 它会从SimpleResourceHolder中获取当前线程绑定的lookupKey:</p>
@@ -421,7 +421,7 @@
 <p>从版本1.4开始，RabbitTemplate支持SpEL sendConnectionFactorySelectorExpression和receiveConnectionFactorySelectorExpression属性，用来对AMPQ操作时如send，sendAndReceive，receive或receiveAndReply,进行解析并提供AbstractRoutingConnectionFactory所需的lookupKey值，例如”@vHostResolver.getVHost(#root)”可以在表达式中使用，send操作，被发送的Message是评估的对象，对于revice操作，queueName是评估的对象</p>
 <p>路由算法是：如果选择器表达式为空，或者评估为null，或者提供的ConnectionFactory不是AbstractRoutingConnectionFactory的实例，则依赖于提供的ConnectionFactory实现，所有工作都像以前一样。如果评估结果不为null，但是没有该lookupKey指向的ConnectionFactory，并且AbstractRoutingConnectionFactory配置为lenientFallback = true，则会发生同样的情况，当然，在AbstractRoutingConnectionFactory的情况下，它会根据determineCurrentLookupKey（）回退到它的路由实现。但是，如果lenientFallback = false，则会引发IllegalStateException。源码如下所示</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//spring-rabbit-1.6.1.RELEASE.jar中</span></span><br><span class="line"><span class="comment">//\org\springframework\amqp\rabbit\connection\AbstractRoutingConnectionFactory.class</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> ConnectionFactory <span class="title">determineTargetConnectionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Object lookupKey = <span class="keyword">this</span>.determineCurrentLookupKey();</span><br><span class="line">        ConnectionFactory connectionFactory = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (lookupKey != <span class="keyword">null</span>) &#123;</span><br><span class="line">            connectionFactory = (ConnectionFactory)<span class="keyword">this</span>.targetConnectionFactories.get(lookupKey);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (connectionFactory == <span class="keyword">null</span> &amp;&amp; (<span class="keyword">this</span>.lenientFallback || lookupKey == <span class="keyword">null</span>)) &#123;</span><br><span class="line">            connectionFactory = <span class="keyword">this</span>.defaultTargetConnectionFactory;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (connectionFactory == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Cannot determine target ConnectionFactory for lookup key ["</span> + lookupKey + <span class="string">"]"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> connectionFactory;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>XML配置&lt;rabbit：template&gt;组件上提供了send-connection-factory-selector-expression和receive-connection-factory-selector-expression属性。</p>
+<p>XML配置<rabbit：template>组件上提供了send-connection-factory-selector-expression和receive-connection-factory-selector-expression属性。</rabbit：template></p>
 <p>从版本1.4开始，您可以在侦听器容器中配置路由连接工厂。在这种情况下，队列名称列表将用作查找键。例如，如果使用setQueueNames（“foo”，“bar”）配置容器，则查找键为“[foo，bar]”（不包含空格）。</p>
 <p>从版本1.6.9开始，您可以使用侦听器容器上的setLookupKeyQualifier将限定符添加到查找键，一旦这样启用，示例，将会监听相同名称的队列，即使不在同一虚拟主机<br>例如，当 qualifier设为foo,并且队列名为foo，您将注册目标连接工厂的查找键为foo [bar]。</p>
 <h2 id="Sending-messages"><a href="#Sending-messages" class="headerlink" title="Sending messages"></a>Sending messages</h2><h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p>可以使用以下任何一种方法用来发送消息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(Message message)</span> <span class="keyword">throws</span> AmqpException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(String routingKey, Message message)</span> <span class="keyword">throws</span> AmqpException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(String exchange, String routingKey, Message message)</span> <span class="keyword">throws</span> AmqpException</span>;</span><br></pre></td></tr></table></figure></p>
@@ -467,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/12/SpringBoot MQ服务确认/" rel="next" title="RabbitMQ确认机制">
-                <i class="fa fa-chevron-left"></i> RabbitMQ确认机制
+              <a href="/2018/06/10/RabbitMQ笔记/" rel="next" title="RabbitMQ笔记">
+                <i class="fa fa-chevron-left"></i> RabbitMQ笔记
               </a>
             
           </div>
@@ -477,8 +477,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/12/RabbitMQ确认机制/" rel="prev" title="RabbitMQ消息确认">
-                RabbitMQ消息确认 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/12/SpringBoot MQ服务确认/" rel="prev" title="RabbitMQ确认机制">
+                RabbitMQ确认机制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +580,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/sanguosha.jpg" alt="问问苑大宝">
+              <img class="site-author-image" itemprop="image"
+                src="/images/sanguosha.jpg"
+                alt="问问苑大宝" />
             
               <p class="site-author-name" itemprop="name">问问苑大宝</p>
               <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
@@ -593,7 +595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +606,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -615,7 +617,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -670,7 +672,7 @@
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
