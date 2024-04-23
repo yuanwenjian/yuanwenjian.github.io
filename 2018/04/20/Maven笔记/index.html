@@ -1,299 +1,252 @@
 <!DOCTYPE html>
 
 
-
-  
-
-
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="theme-color" content="#222">
+    <meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU"/>
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+    <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+    <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
 
+    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
+    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"/>
 
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
+    <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+    <meta name="keywords" content="tool,Maven,"/>
 
 
+    <meta name="description" content="maven问题记录汇总">
+    <meta name="keywords" content="tool,Maven">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Maven笔记">
+    <meta property="og:url" content="http://yoursite.com/2018/04/20/Maven笔记/index.html">
+    <meta property="og:site_name" content="问问苑大宝">
+    <meta property="og:description" content="maven问题记录汇总">
+    <meta property="og:locale" content="zh-Hans">
+    <meta property="og:image" content="http://yoursite.com/images/scope.jpg">
+    <meta property="og:updated_time" content="2021-04-10T03:19:18.329Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Maven笔记">
+    <meta name="twitter:description" content="maven问题记录汇总">
+    <meta name="twitter:image" content="http://yoursite.com/images/scope.jpg">
 
 
+    <script type="text/javascript" id="hexo.configurations">
+        var NexT = window.NexT || {};
+        var CONFIG = {
+            root: '/',
+            scheme: 'Muse',
+            version: '5.1.4',
+            sidebar: {
+                "position": "left",
+                "display": "post",
+                "offset": 12,
+                "b2t": false,
+                "scrollpercent": false,
+                "onmobile": false
+            },
+            fancybox: true,
+            tabs: true,
+            motion: {
+                "enable": true,
+                "async": false,
+                "transition": {
+                    "post_block": "fadeIn",
+                    "post_header": "slideDownIn",
+                    "post_body": "slideDownIn",
+                    "coll_header": "slideLeftIn",
+                    "sidebar": "slideUpIn"
+                }
+            },
+            duoshuo: {
+                userId: '0',
+                author: '博主'
+            },
+            algolia: {
+                applicationID: '',
+                apiKey: '',
+                indexName: '',
+                hits: {"per_page": 10},
+                labels: {
+                    "input_placeholder": "Search for Posts",
+                    "hits_empty": "We didn't find any results for the search: ${query}",
+                    "hits_stats": "${hits} results found in ${time} ms"
+                }
+            }
+        };
+    </script>
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="http://yoursite.com/2018/04/20/Maven笔记/"/>
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="tool,Maven," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="maven问题记录汇总">
-<meta name="keywords" content="tool,Maven">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Maven笔记">
-<meta property="og:url" content="http://yoursite.com/2018/04/20/Maven笔记/index.html">
-<meta property="og:site_name" content="问问苑大宝">
-<meta property="og:description" content="maven问题记录汇总">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/scope.jpg">
-<meta property="og:updated_time" content="2021-04-10T03:19:18.329Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maven笔记">
-<meta name="twitter:description" content="maven问题记录汇总">
-<meta name="twitter:image" content="http://yoursite.com/images/scope.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2018/04/20/Maven笔记/"/>
-
-
-
-
-
-  <title>Maven笔记 | 问问苑大宝</title>
-  
-
-
-
-
-
-
+    <title>Maven笔记 | 问问苑大宝</title>
 
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
 
-  <div class="container sidebar-position-left page-post-detail">
+<div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    <a href="https://github.com/yuanwenjian" target="_blank"><img
+            style="position: absolute; top: 0; right: 0; border: 0;"
+            src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+            alt="Fork me on GitHub"
+            data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">问问苑大宝</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
+        <div class="header-inner">
+            <div class="site-brand-wrapper">
+                <div class="site-meta ">
 
 
+                    <div class="custom-logo-site-title">
+                        <a href="/" class="brand" rel="start">
+                            <span class="logo-line-before"><i></i></span>
+                            <span class="site-title">问问苑大宝</span>
+                            <span class="logo-line-after"><i></i></span>
+                        </a>
+                    </div>
 
- </div>
+                    <p class="site-subtitle"></p>
+
+                </div>
+
+                <div class="site-nav-toggle">
+                    <button>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="site-nav">
+
+
+                <ul id="menu" class="menu">
+
+
+                    <li class="menu-item menu-item-home">
+                        <a href="/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
+
+                            首页
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-about">
+                        <a href="/about/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
+
+                            关于
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-tags">
+                        <a href="/tags/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
+
+                            标签
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-categories">
+                        <a href="/categories/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-th"></i> <br/>
+
+                            分类
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-archives">
+                        <a href="/archives/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
+
+                            归档
+                        </a>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+        </div>
     </header>
 
     <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+        <div class="main-inner">
+            <div class="content-wrap">
+                <div id="content" class="content">
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+                    <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/Maven笔记/">
+                        <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+                            <div class="post-block">
+                                <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/Maven笔记/">
+
+                                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="问问苑大宝">
     </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Maven笔记</h1>
-        
+                                <header class="post-header">
 
-        <div class="post-meta">
+
+                                    <h1 class="post-title" itemprop="name headline">Maven笔记</h1>
+
+
+                                    <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -312,8 +265,8 @@
             
           </span>
 
-          
-            <span class="post-category" >
+
+                                        <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -334,747 +287,808 @@
                 
               
             </span>
-          
 
-          
-            
-              <span class="post-comments-count">
+
+                                        <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/04/20/Maven笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/20/Maven笔记/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/04/20/Maven笔记/"
+                        itemprop="commentsCount"></span>
                 </a>
               </span>
-            
-          
 
-          
-          
 
-          
+                                        <div class="post-description">
+                                            maven问题记录汇总
+                                        </div>
 
-          
 
-          
-              <div class="post-description">
-                  maven问题记录汇总
-              </div>
-          
+                                    </div>
+                                </header>
 
-          
+
+                                <div class="post-body" itemprop="articleBody">
+
+
+                                    <h1 id="Maven记录汇总"><a href="#Maven记录汇总" class="headerlink" title="Maven记录汇总"></a>Maven记录汇总
+                                    </h1>
+                                    <h2 id="maven-生命周期"><a href="#maven-生命周期" class="headerlink" title="maven 生命周期"></a>maven
+                                        生命周期</h2>
+                                    <p>maven生命周期分为三个，分别为clean,default,site,每个生命周期包含多个阶段(phase),这些阶段是有顺序的，后面的依赖前面的</p>
+                                    <h3 id="clean包含阶段"><a href="#clean包含阶段" class="headerlink" title="clean包含阶段"></a>clean包含阶段
+                                    </h3>
+                                    <ul>
+                                        <li><strong>pre-clean</strong> 执行实际项目清理前所需的流程</li>
+                                        <li><strong>clean</strong> 删除以前版本生成的所有文件</li>
+                                        <li><strong>post-clean</strong> 执行完成项目清理所需的过程<h3 id="default包含阶段"><a
+                                                href="#default包含阶段" class="headerlink" title="default包含阶段"></a>default包含阶段
+                                        </h3></li>
+                                        <li><strong>validate</strong> 验证项目是否正确，并提供所有必要的信息。</li>
+                                        <li><strong>initialize</strong> 初始化构建状态，例如设置属性或创建目录。</li>
+                                        <li><strong>generate-sources</strong> 生成包含在编译中的所有源代码。</li>
+                                        <li><strong>process-sources</strong> 处理源代码，例如过滤任何值。（filter any value）。</li>
+                                        <li><strong>generate-resources</strong> 生成包含在包中的资源。</li>
+                                        <li><strong>process-resources</strong> 将资源复制并处理到目标目录中，准备打包。</li>
+                                        <li><strong>compile</strong> 编译工程源源码。</li>
+                                        <li><strong>process-classes</strong> 从编译后处理生成的文件，例如在Java类上进行字节码增强。</li>
+                                        <li><strong>generate-test-sources</strong> 生成包含在编译中的任何测试源代码。</li>
+                                        <li><strong>process-test-sources</strong> 处理测试源代码，例如过滤任何值。</li>
+                                        <li><strong>test-compile</strong> 将测试源代码编译到测试目标目录中</li>
+                                        <li><strong>process-test-classes</strong> 从测试编译后处理生成的文件，例如在Java类上进行字节码增强。对于Maven
+                                            2.0.5及以上版本。
+                                        </li>
+                                        <li><strong>test</strong> 使用合适的单元测试框架运行测试。这些测试不应该要求打包或部署代码。</li>
+                                        <li><strong>prepare-package</strong> 在实际包装之前执行任何必要的准备包装的操作。这通常会导致软件包的解压缩，处理版本。
+                                            （Maven 2.1及以上）。
+                                        </li>
+                                        <li><strong>package</strong> 接受编译的代码并将其打包为可分发的格式，例如JAR</li>
+                                        <li><strong>pre-integration-test</strong> 在集成测试执行之前执行所需的操作。这可能涉及诸如设置所需环境等事情。
+                                        </li>
+                                        <li><strong>integration-test</strong> 如果需要，可将程序包处理并部署到可运行集成测试的环境中。</li>
+                                        <li><strong>post-integration-test</strong> 执行集成测试后执行所需的操作。这可能包括清理环境。</li>
+                                        <li><strong>verify</strong> 运行任何检查来验证包是否有效并且符合质量标准。</li>
+                                        <li><strong>install</strong> 将软件包安装到本地存储库中，作为本地其他项目的依赖项。</li>
+                                        <li><strong>deploy</strong> 在集成或发行版环境中完成，将最终包复制到远程存储库，以便与其他开发人员和项目共享。</li>
+                                    </ul>
+                                    <h3 id="site包含阶段"><a href="#site包含阶段" class="headerlink" title="site包含阶段"></a>site包含阶段
+                                    </h3>
+                                    <ul>
+                                        <li><strong>pre-site</strong> 执行实际项目站点生成之前所需的流程</li>
+                                        <li><strong>site</strong> 生成项目的网站文档</li>
+                                        <li><strong>post-site</strong> 执行完成网站生成所需的流程，并为网站部署做好准备</li>
+                                        <li><strong>site-deploy</strong> 将生成的网站文档部署到指定的Web服务器<h3 id="源码"><a href="#源码"
+                                                                                                            class="headerlink"
+                                                                                                            title="源码"></a>源码
+                                        </h3>
+                                            <a href="https://github.com/apache/maven/blob/master/maven-core/src/main/resources/META-INF/plexus/components.xml"
+                                               target="_blank" rel="noopener">phase阶段</a></li>
+                                    </ul>
+                                    <h2 id="maven-插件"><a href="#maven-插件" class="headerlink" title="maven 插件"></a>maven
+                                        插件</h2>
+                                    <p>
+                                        插件本身为了复用代码，往往完成了多个任务。例如maven-dependency-plugin插件就能够分析项目依赖、列出依赖树、分析依赖来源、列出所有已解析依赖等等。这些功能里面有很多代码其实是复用的，所以为了复用，他们集成为了一个插件。每个插件的<font
+                                            color="red">目标</font>就是一个插件的功能。例如dependency:analyze的目标就是analyze，功能就是分析依赖。dependency:tree的目标tree的功能就是列出依赖树。
+                                    </p>
+                                    <h2 id="maven-插件内置绑定"><a href="#maven-插件内置绑定" class="headerlink"
+                                                             title="maven 插件内置绑定"></a>maven 插件内置绑定</h2>
+                                    <p>ejb / ejb3 / jar / par / rar / war 类型通用绑定</p>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>阶段</th>
+                                            <th>插件及目标</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>process-resources</td>
+                                            <td>resources:resources</td>
+                                        </tr>
+                                        <tr>
+                                            <td>compile</td>
+                                            <td>compiler:compile</td>
+                                        </tr>
+                                        <tr>
+                                            <td>process-test-resources</td>
+                                            <td>resources:testResources</td>
+                                        </tr>
+                                        <tr>
+                                            <td>test-compile</td>
+                                            <td>compiler:testCompile</td>
+                                        </tr>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>surefire:test</td>
+                                        </tr>
+                                        <tr>
+                                            <td>package</td>
+                                            <td>ejb:ejb or ejb3:ejb3 or jar:jar or par:par or rar:rar or war:war</td>
+                                        </tr>
+                                        <tr>
+                                            <td>install</td>
+                                            <td>install:install</td>
+                                        </tr>
+                                        <tr>
+                                            <td>deploy</td>
+                                            <td>deploy:deploy</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>ear 类型</p>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>阶段</th>
+                                            <th>插件及目标</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>generate-resources</td>
+                                            <td>ear:generate-application-xml</td>
+                                        </tr>
+                                        <tr>
+                                            <td>process-resources</td>
+                                            <td>resources:resources</td>
+                                        </tr>
+                                        <tr>
+                                            <td>package</td>
+                                            <td>ear:ear</td>
+                                        </tr>
+                                        <tr>
+                                            <td>install</td>
+                                            <td>install:install</td>
+                                        </tr>
+                                        <tr>
+                                            <td>deploy</td>
+                                            <td>deploy:deploy</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>maven-plugin 类型</p>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>阶段</th>
+                                            <th>插件及目标</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>generate-resources</td>
+                                            <td>plugin:descriptor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>process-resources</td>
+                                            <td>resources:resources</td>
+                                        </tr>
+                                        <tr>
+                                            <td>compile</td>
+                                            <td>compiler:compile</td>
+                                        </tr>
+                                        <tr>
+                                            <td>process-test-resources</td>
+                                            <td>resources:testResources</td>
+                                        </tr>
+                                        <tr>
+                                            <td>test-compile</td>
+                                            <td>compiler:testCompile</td>
+                                        </tr>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>surefire:test</td>
+                                        </tr>
+                                        <tr>
+                                            <td>package</td>
+                                            <td>jar:jar and plugin:addPluginArtifactMetadata</td>
+                                        </tr>
+                                        <tr>
+                                            <td>install</td>
+                                            <td>install:install</td>
+                                        </tr>
+                                        <tr>
+                                            <td>deploy</td>
+                                            <td>deploy:deploy</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>pom类型</p>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>阶段</th>
+                                            <th>插件及目标</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>package</td>
+                                            <td>site:attach-descriptor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>install</td>
+                                            <td>install:install</td>
+                                        </tr>
+                                        <tr>
+                                            <td>deploy</td>
+                                            <td>deploy:deploy</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>所有类型通用</p>
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>阶段</th>
+                                            <th>插件及目标</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>clean</td>
+                                            <td>clean:clean</td>
+                                        </tr>
+                                        <tr>
+                                            <td>site</td>
+                                            <td>site:site</td>
+                                        </tr>
+                                        <tr>
+                                            <td>site-deploy</td>
+                                            <td>site:deploy</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <h3 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h3>
+                                    <p>
+                                        <a href="https://github.com/apache/maven/blob/master/maven-core/src/main/resources/META-INF/plexus/default-bindings.xml"
+                                           target="_blank" rel="noopener">插件绑定源码</a></p>
+                                    <h2 id="maven依赖解决方案"><a href="#maven依赖解决方案" class="headerlink"
+                                                            title="maven依赖解决方案"></a>maven依赖解决方案</h2>
+                                    <ol>
+                                        <li><p>第一原则：路径最短者优先。<br>假设 X 是 A 的传递性依赖：A-&gt;B-&gt;C-&gt;X(1.0) 依赖路径长度为 3，A-&gt;D-&gt;X(2.0)
+                                            长度为 2，则 X(2.0) 会先被解析使用。</p>
+                                        </li>
+                                        <li><p>第二原则：第一声明者优先。<br>在依赖路径长度相等的前提下，在 POM 中，依赖声明的顺序决定了谁会先被解析使用。</p>
+                                        </li>
+                                    </ol>
+                                    <h2 id="maven-scope详解"><a href="#maven-scope详解" class="headerlink"
+                                                              title="maven scope详解"></a>maven scope详解</h2>
+                                    <p>指定当前包的依赖范围和依赖的传递性,可选值为以下</p>
+                                    <ol>
+                                        <li>complie 默认值 在编译、运行、测试时均有效</li>
+                                        <li>provided
+                                            在编译、测试时有效，但是在运行时无效，如servlet-api，运行时由容器提供，注意，idea有一个bug,使用idea启动SpringBoot，如果没有serlet-api会报错
+                                        </li>
+                                        <li>runtime 在运行、测试时有效</li>
+                                        <li>test 只在测试时有效，如JUnit</li>
+                                        <li>system 类似provided,在编译，测试时有效,但是不会在repository中查找，需要手动指定<br>可以使用如下配置
+                                            <figure class="highlight xml">
+                                                <table>
+                                                    <tr>
+                                                        <td class="gutter">
+                                                            <pre><span class="line">1</span><br><span
+                                                                    class="line">2</span><br><span class="line">3</span><br><span
+                                                                    class="line">4</span><br><span class="line">5</span><br><span
+                                                                    class="line">6</span><br><span class="line">7</span><br></pre>
+                                                        </td>
+                                                        <td class="code">
+                                                            <pre><span class="line"><span class="tag">&lt;<span
+                                                                    class="name">dependency</span>&gt;</span></span><br><span
+                                                                    class="line">    <span class="tag">&lt;<span
+                                                                    class="name">groupId</span>&gt;</span>javax.sql<span
+                                                                    class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span
+                                                                    class="line">    <span class="tag">&lt;<span
+                                                                    class="name">artifactId</span>&gt;</span>jdbc-stdext<span
+                                                                    class="tag">&lt;/<span
+                                                                    class="name">artifactId</span>&gt;</span></span><br><span
+                                                                    class="line">    <span class="tag">&lt;<span
+                                                                    class="name">version</span>&gt;</span>2.0<span
+                                                                    class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span
+                                                                    class="line">    <span class="tag">&lt;<span
+                                                                    class="name">scope</span>&gt;</span>system<span
+                                                                    class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span
+                                                                    class="line">    <span class="tag">&lt;<span
+                                                                    class="name">systemPath</span>&gt;</span>$&#123;java.home&#125;/lib/rt.jar<span
+                                                                    class="tag">&lt;/<span
+                                                                    class="name">systemPath</span>&gt;</span></span><br><span
+                                                                    class="line"><span class="tag">&lt;/<span
+                                                                    class="name">dependency</span>&gt;</span></span><br></pre>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </figure>
+                                        </li>
+                                    </ol>
+                                    <h3 id="scope-传递关系"><a href="#scope-传递关系" class="headerlink" title="scope 传递关系"></a>scope
+                                        传递关系</h3>
+                                    <p><img src="/images/scope.jpg" alt="scope"></p>
+                                    <p>项目B依赖于项目A<br>
+                                    <figure class="highlight xml">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br><span
+                                                            class="line">13</span><br><span
+                                                            class="line">14</span><br><span
+                                                            class="line">15</span><br><span
+                                                            class="line">16</span><br><span
+                                                            class="line">17</span><br><span
+                                                            class="line">18</span><br><span
+                                                            class="line">19</span><br><span
+                                                            class="line">20</span><br><span
+                                                            class="line">21</span><br><span
+                                                            class="line">22</span><br><span
+                                                            class="line">23</span><br><span
+                                                            class="line">24</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="comment">&lt;!-- 项目B配置 scope对应上图第一列--&gt;</span></span><br><span
+                                                            class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.yuanwj<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>project-A<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">version</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>complie<span
+                                                            class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span
+                                                            class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span
+                                                            class="line"></span><br><span class="line"><span
+                                                            class="comment">&lt;!-- 项目A配置 scope对应上图第一行--&gt;</span></span><br><span
+                                                            class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>*.4<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">version</span>&gt;</span></span><br><span
+                                                            class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span
+                                                            class="line"></span><br><span class="line"><span
+                                                            class="tag">&lt;<span
+                                                            class="name">dependency</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-codec<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">groupId</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-codec<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">artifactId</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>*.4<span
+                                                            class="tag">&lt;/<span
+                                                            class="name">version</span>&gt;</span></span><br><span
+                                                            class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span
+                                                            class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span
+                                                            class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span
+                                                            class="line"></span><br><span class="line">当mysql传递到项目B中，对应上图可知对应的scope为complie</span><br><span
+                                                            class="line">commons-codec传递项目B中，对应上图可知scope为runtime</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <p>
+                                        <a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope"
+                                           target="_blank" rel="noopener">官网传递</a></p>
+                                    <h2 id="maven-打包跳过测试编译"><a href="#maven-打包跳过测试编译" class="headerlink"
+                                                               title="maven 打包跳过测试编译"></a>maven 打包跳过测试编译</h2>
+                                    <figure class="highlight bash">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line">mvn clean install -Dmaven.test.skip=<span
+                                                            class="literal">true</span></span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+                                    <p><a href="https://maven.apache.org/" target="_blank"
+                                          rel="noopener">maven官网</a><br><a href="https://github.com/apache/maven"
+                                                                           target="_blank" rel="noopener">maven源码</a>
+                                    </p>
+
+
+                                </div>
+
+
+                                <footer class="post-footer">
+
+                                    <div class="post-tags">
+
+                                        <a href="/tags/tool/" rel="tag"><i class="fa fa-tag"></i> tool</a>
+
+                                        <a href="/tags/Maven/" rel="tag"><i class="fa fa-tag"></i> Maven</a>
+
+                                    </div>
+
+
+                                    <div class="post-nav">
+                                        <div class="post-nav-next post-nav-item">
+
+                                            <a href="/2018/04/09/SpringMVC 添加Swagger-ui/" rel="next"
+                                               title="SpringMVC配置Swagger构建Api文档">
+                                                <i class="fa fa-chevron-left"></i> SpringMVC配置Swagger构建Api文档
+                                            </a>
+
+                                        </div>
+
+                                        <span class="post-nav-divider"></span>
+
+                                        <div class="post-nav-prev post-nav-item">
+
+                                            <a href="/2018/04/24/java检测工具/" rel="prev" title="JAVA JDK内置检测工具">
+                                                JAVA JDK内置检测工具 <i class="fa fa-chevron-right"></i>
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+
+                                </footer>
+                            </div>
+
+
+                        </article>
+
+
+                        <div class="post-spread">
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+                <div id="container" style="display:none"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                    const myTheme = {
+                        render(state, instance) {
+                            const container = document.createElement('div');
+                            container.lang = "en-US";
+                            container.className = 'gitment-container gitment-root-container';
+                            container.appendChild(instance.renderHeader(state, instance));
+                            container.appendChild(instance.renderEditor(state, instance));
+                            container.appendChild(instance.renderComments(state, instance));
+                            container.appendChild(instance.renderFooter(state, instance));
+                            return container;
+                        }
+                    }
+
+                    function showGitment() {
+                        $("#gitment_title").attr("style", "display:none");
+                        $("#container").attr("style", "").addClass("gitment_container");
+                        var gitment = new Gitment({
+                            id: 'Maven笔记',
+                            theme: myTheme,
+                            owner: "yuanwenjian",
+                            repo: "gitment-comments",
+                            oauth: {
+                                client_id: '21bb0ade50d6f2c9707b',
+                                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+                            }
+                        });
+                        gitment.render('container');
+                    }
+                </script>
+
+
+            </div>
+
+
+            <div class="sidebar-toggle">
+                <div class="sidebar-toggle-line-wrap">
+                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+                </div>
+            </div>
+
+            <aside id="sidebar" class="sidebar">
+
+                <div class="sidebar-inner">
+
+
+                    <ul class="sidebar-nav motion-element">
+                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+                            站点概览
+                        </li>
+                    </ul>
+
+
+                    <section class="site-overview-wrap sidebar-panel">
+                        <div class="site-overview">
+                            <div class="site-author motion-element" itemprop="author" itemscope
+                                 itemtype="http://schema.org/Person">
+
+                                <img class="site-author-image" itemprop="image"
+                                     src="/images/sanguosha.jpg"
+                                     alt="问问苑大宝"/>
+
+                                <p class="site-author-name" itemprop="name">问问苑大宝</p>
+                                <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+                            </div>
+
+                            <nav class="site-state motion-element">
+
+
+                                <div class="site-state-item site-state-posts">
+
+                                    <a href="/archives/">
+
+                                        <span class="site-state-item-count">64</span>
+                                        <span class="site-state-item-name">日志</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="site-state-item site-state-categories">
+                                    <a href="/categories/index.html">
+                                        <span class="site-state-item-count">31</span>
+                                        <span class="site-state-item-name">分类</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="site-state-item site-state-tags">
+                                    <a href="/tags/index.html">
+                                        <span class="site-state-item-count">30</span>
+                                        <span class="site-state-item-name">标签</span>
+                                    </a>
+                                </div>
+
+
+                            </nav>
+
+
+                        </div>
+                    </section>
+
+
+                    <!--noindex-->
+                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+                        <div class="post-toc">
+
+
+                            <div class="post-toc-content">
+                                <ol class="nav">
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#Maven记录汇总"><span
+                                            class="nav-number">1.</span> <span class="nav-text">Maven记录汇总</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#maven-生命周期"><span
+                                                    class="nav-number">1.1.</span> <span
+                                                    class="nav-text">maven 生命周期</span></a>
+                                                <ol class="nav-child">
+                                                    <li class="nav-item nav-level-3"><a class="nav-link"
+                                                                                        href="#clean包含阶段"><span
+                                                            class="nav-number">1.1.1.</span> <span class="nav-text">clean包含阶段</span></a>
+                                                    </li>
+                                                    <li class="nav-item nav-level-3"><a class="nav-link"
+                                                                                        href="#default包含阶段"><span
+                                                            class="nav-number">1.1.2.</span> <span class="nav-text">default包含阶段</span></a>
+                                                    </li>
+                                                    <li class="nav-item nav-level-3"><a class="nav-link"
+                                                                                        href="#site包含阶段"><span
+                                                            class="nav-number">1.1.3.</span> <span class="nav-text">site包含阶段</span></a>
+                                                    </li>
+                                                    <li class="nav-item nav-level-3"><a class="nav-link"
+                                                                                        href="#源码"><span
+                                                            class="nav-number">1.1.4.</span> <span
+                                                            class="nav-text">源码</span></a></li>
+                                                </ol>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#maven-插件"><span
+                                                    class="nav-number">1.2.</span> <span
+                                                    class="nav-text">maven 插件</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#maven-插件内置绑定"><span
+                                                    class="nav-number">1.3.</span> <span
+                                                    class="nav-text">maven 插件内置绑定</span></a>
+                                                <ol class="nav-child">
+                                                    <li class="nav-item nav-level-3"><a class="nav-link"
+                                                                                        href="#源码-1"><span
+                                                            class="nav-number">1.3.1.</span> <span
+                                                            class="nav-text">源码</span></a></li>
+                                                </ol>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#maven依赖解决方案"><span
+                                                    class="nav-number">1.4.</span> <span
+                                                    class="nav-text">maven依赖解决方案</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#maven-scope详解"><span
+                                                    class="nav-number">1.5.</span> <span
+                                                    class="nav-text">maven scope详解</span></a>
+                                                <ol class="nav-child">
+                                                    <li class="nav-item nav-level-3"><a class="nav-link"
+                                                                                        href="#scope-传递关系"><span
+                                                            class="nav-number">1.5.1.</span> <span class="nav-text">scope 传递关系</span></a>
+                                                    </li>
+                                                </ol>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#maven-打包跳过测试编译"><span
+                                                    class="nav-number">1.6.</span> <span
+                                                    class="nav-text">maven 打包跳过测试编译</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span
+                                                    class="nav-number">1.7.</span> <span class="nav-text">参考</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+
+
+                        </div>
+                    </section>
+                    <!--/noindex-->
+
+
+                </div>
+            </aside>
+
+
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="Maven记录汇总"><a href="#Maven记录汇总" class="headerlink" title="Maven记录汇总"></a>Maven记录汇总</h1><h2 id="maven-生命周期"><a href="#maven-生命周期" class="headerlink" title="maven 生命周期"></a>maven 生命周期</h2><p>maven生命周期分为三个，分别为clean,default,site,每个生命周期包含多个阶段(phase),这些阶段是有顺序的，后面的依赖前面的</p>
-<h3 id="clean包含阶段"><a href="#clean包含阶段" class="headerlink" title="clean包含阶段"></a>clean包含阶段</h3><ul>
-<li><strong>pre-clean</strong>  执行实际项目清理前所需的流程</li>
-<li><strong>clean</strong>  删除以前版本生成的所有文件</li>
-<li><strong>post-clean</strong> 执行完成项目清理所需的过程<h3 id="default包含阶段"><a href="#default包含阶段" class="headerlink" title="default包含阶段"></a>default包含阶段</h3></li>
-<li><strong>validate</strong>    验证项目是否正确，并提供所有必要的信息。</li>
-<li><strong>initialize</strong>    初始化构建状态，例如设置属性或创建目录。</li>
-<li><strong>generate-sources</strong>    生成包含在编译中的所有源代码。</li>
-<li><strong>process-sources</strong>    处理源代码，例如过滤任何值。（filter any value）。</li>
-<li><strong>generate-resources</strong>    生成包含在包中的资源。</li>
-<li><strong>process-resources</strong>    将资源复制并处理到目标目录中，准备打包。</li>
-<li><strong>compile</strong>    编译工程源源码。</li>
-<li><strong>process-classes</strong>    从编译后处理生成的文件，例如在Java类上进行字节码增强。</li>
-<li><strong>generate-test-sources</strong>    生成包含在编译中的任何测试源代码。</li>
-<li><strong>process-test-sources</strong>    处理测试源代码，例如过滤任何值。</li>
-<li><strong>test-compile</strong>    将测试源代码编译到测试目标目录中</li>
-<li><strong>process-test-classes</strong>    从测试编译后处理生成的文件，例如在Java类上进行字节码增强。对于Maven 2.0.5及以上版本。</li>
-<li><strong>test</strong>    使用合适的单元测试框架运行测试。这些测试不应该要求打包或部署代码。</li>
-<li><strong>prepare-package</strong>    在实际包装之前执行任何必要的准备包装的操作。这通常会导致软件包的解压缩，处理版本。 （Maven 2.1及以上）。</li>
-<li><strong>package</strong>    接受编译的代码并将其打包为可分发的格式，例如JAR</li>
-<li><strong>pre-integration-test</strong>    在集成测试执行之前执行所需的操作。这可能涉及诸如设置所需环境等事情。</li>
-<li><strong>integration-test</strong>    如果需要，可将程序包处理并部署到可运行集成测试的环境中。</li>
-<li><strong>post-integration-test</strong>    执行集成测试后执行所需的操作。这可能包括清理环境。</li>
-<li><strong>verify</strong>    运行任何检查来验证包是否有效并且符合质量标准。</li>
-<li><strong>install</strong>    将软件包安装到本地存储库中，作为本地其他项目的依赖项。</li>
-<li><strong>deploy</strong>    在集成或发行版环境中完成，将最终包复制到远程存储库，以便与其他开发人员和项目共享。</li>
-</ul>
-<h3 id="site包含阶段"><a href="#site包含阶段" class="headerlink" title="site包含阶段"></a>site包含阶段</h3><ul>
-<li><strong>pre-site</strong> 执行实际项目站点生成之前所需的流程 </li>
-<li><strong>site</strong> 生成项目的网站文档</li>
-<li><strong>post-site</strong> 执行完成网站生成所需的流程，并为网站部署做好准备</li>
-<li><strong>site-deploy</strong> 将生成的网站文档部署到指定的Web服务器<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><a href="https://github.com/apache/maven/blob/master/maven-core/src/main/resources/META-INF/plexus/components.xml" target="_blank" rel="noopener">phase阶段</a></li>
-</ul>
-<h2 id="maven-插件"><a href="#maven-插件" class="headerlink" title="maven 插件"></a>maven 插件</h2><p>插件本身为了复用代码，往往完成了多个任务。例如maven-dependency-plugin插件就能够分析项目依赖、列出依赖树、分析依赖来源、列出所有已解析依赖等等。这些功能里面有很多代码其实是复用的，所以为了复用，他们集成为了一个插件。每个插件的<font color="red">目标</font>就是一个插件的功能。例如dependency:analyze的目标就是analyze，功能就是分析依赖。dependency:tree的目标tree的功能就是列出依赖树。</p>
-<h2 id="maven-插件内置绑定"><a href="#maven-插件内置绑定" class="headerlink" title="maven 插件内置绑定"></a>maven 插件内置绑定</h2><p>ejb / ejb3 / jar / par / rar / war 类型通用绑定</p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>插件及目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>process-resources</td>
-<td>resources:resources</td>
-</tr>
-<tr>
-<td>compile</td>
-<td>compiler:compile</td>
-</tr>
-<tr>
-<td>process-test-resources</td>
-<td>resources:testResources</td>
-</tr>
-<tr>
-<td>test-compile</td>
-<td>compiler:testCompile</td>
-</tr>
-<tr>
-<td>test</td>
-<td>surefire:test</td>
-</tr>
-<tr>
-<td>package</td>
-<td>ejb:ejb or ejb3:ejb3 or jar:jar or par:par or rar:rar or war:war</td>
-</tr>
-<tr>
-<td>install</td>
-<td>install:install</td>
-</tr>
-<tr>
-<td>deploy</td>
-<td>deploy:deploy</td>
-</tr>
-</tbody>
-</table>
-<p>ear 类型</p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>插件及目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>generate-resources</td>
-<td>ear:generate-application-xml</td>
-</tr>
-<tr>
-<td>process-resources</td>
-<td>resources:resources</td>
-</tr>
-<tr>
-<td>package</td>
-<td>ear:ear</td>
-</tr>
-<tr>
-<td>install</td>
-<td>install:install</td>
-</tr>
-<tr>
-<td>deploy</td>
-<td>deploy:deploy</td>
-</tr>
-</tbody>
-</table>
-<p>maven-plugin 类型</p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>插件及目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>generate-resources</td>
-<td>plugin:descriptor</td>
-</tr>
-<tr>
-<td>process-resources</td>
-<td>resources:resources</td>
-</tr>
-<tr>
-<td>compile</td>
-<td>compiler:compile</td>
-</tr>
-<tr>
-<td>process-test-resources</td>
-<td>resources:testResources</td>
-</tr>
-<tr>
-<td>test-compile</td>
-<td>compiler:testCompile</td>
-</tr>
-<tr>
-<td>test</td>
-<td>surefire:test</td>
-</tr>
-<tr>
-<td>package</td>
-<td>jar:jar and plugin:addPluginArtifactMetadata</td>
-</tr>
-<tr>
-<td>install</td>
-<td>install:install</td>
-</tr>
-<tr>
-<td>deploy</td>
-<td>deploy:deploy</td>
-</tr>
-</tbody>
-</table>
-<p>pom类型</p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>插件及目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>package</td>
-<td>site:attach-descriptor</td>
-</tr>
-<tr>
-<td>install</td>
-<td>install:install</td>
-</tr>
-<tr>
-<td>deploy</td>
-<td>deploy:deploy</td>
-</tr>
-</tbody>
-</table>
-<p>所有类型通用</p>
-<table>
-<thead>
-<tr>
-<th>阶段</th>
-<th>插件及目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>clean</td>
-<td>clean:clean</td>
-</tr>
-<tr>
-<td>site</td>
-<td>site:site</td>
-</tr>
-<tr>
-<td>site-deploy</td>
-<td>site:deploy</td>
-</tr>
-</tbody>
-</table>
-<h3 id="源码-1"><a href="#源码-1" class="headerlink" title="源码"></a>源码</h3><p><a href="https://github.com/apache/maven/blob/master/maven-core/src/main/resources/META-INF/plexus/default-bindings.xml" target="_blank" rel="noopener">插件绑定源码</a></p>
-<h2 id="maven依赖解决方案"><a href="#maven依赖解决方案" class="headerlink" title="maven依赖解决方案"></a>maven依赖解决方案</h2><ol>
-<li><p>第一原则：路径最短者优先。<br>假设 X 是 A 的传递性依赖：A-&gt;B-&gt;C-&gt;X(1.0) 依赖路径长度为 3，A-&gt;D-&gt;X(2.0) 长度为 2，则 X(2.0) 会先被解析使用。</p>
-</li>
-<li><p>第二原则：第一声明者优先。<br>在依赖路径长度相等的前提下，在 POM 中，依赖声明的顺序决定了谁会先被解析使用。</p>
-</li>
-</ol>
-<h2 id="maven-scope详解"><a href="#maven-scope详解" class="headerlink" title="maven scope详解"></a>maven scope详解</h2><p>指定当前包的依赖范围和依赖的传递性,可选值为以下</p>
-<ol>
-<li>complie 默认值 在编译、运行、测试时均有效</li>
-<li>provided 在编译、测试时有效，但是在运行时无效，如servlet-api，运行时由容器提供，注意，idea有一个bug,使用idea启动SpringBoot，如果没有serlet-api会报错</li>
-<li>runtime 在运行、测试时有效</li>
-<li>test 只在测试时有效，如JUnit</li>
-<li>system 类似provided,在编译，测试时有效,但是不会在repository中查找，需要手动指定<br>可以使用如下配置<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.sql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jdbc-stdext<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>$&#123;java.home&#125;/lib/rt.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="scope-传递关系"><a href="#scope-传递关系" class="headerlink" title="scope 传递关系"></a>scope 传递关系</h3><p><img src="/images/scope.jpg" alt="scope"></p>
-<p>项目B依赖于项目A<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 项目B配置 scope对应上图第一列--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.yuanwj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>project-A<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>complie<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 项目A配置 scope对应上图第一行--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>*.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>*.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">当mysql传递到项目B中，对应上图可知对应的scope为complie</span><br><span class="line">commons-codec传递项目B中，对应上图可知scope为runtime</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope" target="_blank" rel="noopener">官网传递</a></p>
-<h2 id="maven-打包跳过测试编译"><a href="#maven-打包跳过测试编译" class="headerlink" title="maven 打包跳过测试编译"></a>maven 打包跳过测试编译</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean install -Dmaven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://maven.apache.org/" target="_blank" rel="noopener">maven官网</a><br><a href="https://github.com/apache/maven" target="_blank" rel="noopener">maven源码</a></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/tool/" rel="tag"><i class="fa fa-tag"></i> tool</a>
-          
-            <a href="/tags/Maven/" rel="tag"><i class="fa fa-tag"></i> Maven</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/09/SpringMVC 添加Swagger-ui/" rel="next" title="SpringMVC配置Swagger构建Api文档">
-                <i class="fa fa-chevron-left"></i> SpringMVC配置Swagger构建Api文档
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/24/java检测工具/" rel="prev" title="JAVA JDK内置检测工具">
-                JAVA JDK内置检测工具 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-  <div id="container" style="display:none"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: 'Maven笔记',
-      theme: myTheme,
-      owner: "yuanwenjian",
-      repo: "gitment-comments",
-      oauth: {
-        client_id: '21bb0ade50d6f2c9707b',
-        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
-      }
-    });
-    gitment.render('container');
-  }
-  </script>
-
-
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/sanguosha.jpg"
-                alt="问问苑大宝" />
-            
-              <p class="site-author-name" itemprop="name">问问苑大宝</p>
-              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">64</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven记录汇总"><span class="nav-number">1.</span> <span class="nav-text">Maven记录汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-生命周期"><span class="nav-number">1.1.</span> <span class="nav-text">maven 生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#clean包含阶段"><span class="nav-number">1.1.1.</span> <span class="nav-text">clean包含阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#default包含阶段"><span class="nav-number">1.1.2.</span> <span class="nav-text">default包含阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#site包含阶段"><span class="nav-number">1.1.3.</span> <span class="nav-text">site包含阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码"><span class="nav-number">1.1.4.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-插件"><span class="nav-number">1.2.</span> <span class="nav-text">maven 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-插件内置绑定"><span class="nav-number">1.3.</span> <span class="nav-text">maven 插件内置绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源码-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven依赖解决方案"><span class="nav-number">1.4.</span> <span class="nav-text">maven依赖解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-scope详解"><span class="nav-number">1.5.</span> <span class="nav-text">maven scope详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#scope-传递关系"><span class="nav-number">1.5.1.</span> <span class="nav-text">scope 传递关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven-打包跳过测试编译"><span class="nav-number">1.6.</span> <span class="nav-text">maven 打包跳过测试编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.7.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
+        <div class="footer-inner">
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+            </script>
+            <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+                <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
-
-  
-</div>
-<!--
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+                <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
 
 
+            </div>
+            <!--
 
-  <span class="post-meta-divider">|</span>
-
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
--->
-
-
-        
+              <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
+              <span class="post-meta-divider">|</span>
+
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+
+              <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+            -->
 
 
-
-
-        
-      </div>
+        </div>
     </footer>
 
-    
-      <div class="back-to-top">
+
+    <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
-    
+    </div>
 
-  </div>
 
-  
+</div>
+
 
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+        window.Promise = null;
+    }
 </script>
 
 
+<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
+<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-
-  
-
-
-  
+<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+<script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
+<script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+<script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
+<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 <!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
+
+
+<link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+<script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+
 <!-- END LOCAL -->
 
-    
-      <style>
-        a.gitment-editor-footer-tip { display: none; }
-        .gitment-container.gitment-footer-container { display: none; }
-      </style>
-    
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
+<style>
+    a.gitment-editor-footer-tip {
+        display: none;
+    }
+
+    .gitment-container.gitment-footer-container {
+        display: none;
+    }
+</style>
+
+
+<script type="text/javascript">
+    function renderGitment() {
         var gitment = new Gitmint({
-            id: 'Maven笔记', 
+            id: 'Maven笔记',
             owner: 'yuanwenjian',
             repo: 'gitment-comments',
-            
+
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
+
             oauth: {
-            
-            
+
+
                 client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
-            
+
                 client_id: '21bb0ade50d6f2c9707b'
-            }});
+            }
+        });
         gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
+    }
 
 
+    renderGitment();
+
+</script>
 
 
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-  
-  
 </body>
 </html>

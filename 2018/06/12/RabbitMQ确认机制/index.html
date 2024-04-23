@@ -1,297 +1,250 @@
 <!DOCTYPE html>
 
 
-
-  
-
-
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="theme-color" content="#222">
+    <meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU"/>
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+    <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+    <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
 
+    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
+    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"/>
 
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
+    <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+    <meta name="keywords" content="RabbitMQ,后端,"/>
 
 
+    <meta name="description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
+    <meta name="keywords" content="RabbitMQ,后端">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="RabbitMQ消息确认">
+    <meta property="og:url" content="http://yoursite.com/2018/06/12/RabbitMQ确认机制/index.html">
+    <meta property="og:site_name" content="问问苑大宝">
+    <meta property="og:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
+    <meta property="og:locale" content="zh-Hans">
+    <meta property="og:updated_time" content="2019-05-26T12:10:14.313Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="RabbitMQ消息确认">
+    <meta name="twitter:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
 
 
+    <script type="text/javascript" id="hexo.configurations">
+        var NexT = window.NexT || {};
+        var CONFIG = {
+            root: '/',
+            scheme: 'Muse',
+            version: '5.1.4',
+            sidebar: {
+                "position": "left",
+                "display": "post",
+                "offset": 12,
+                "b2t": false,
+                "scrollpercent": false,
+                "onmobile": false
+            },
+            fancybox: true,
+            tabs: true,
+            motion: {
+                "enable": true,
+                "async": false,
+                "transition": {
+                    "post_block": "fadeIn",
+                    "post_header": "slideDownIn",
+                    "post_body": "slideDownIn",
+                    "coll_header": "slideLeftIn",
+                    "sidebar": "slideUpIn"
+                }
+            },
+            duoshuo: {
+                userId: '0',
+                author: '博主'
+            },
+            algolia: {
+                applicationID: '',
+                apiKey: '',
+                indexName: '',
+                hits: {"per_page": 10},
+                labels: {
+                    "input_placeholder": "Search for Posts",
+                    "hits_empty": "We didn't find any results for the search: ${query}",
+                    "hits_stats": "${hits} results found in ${time} ms"
+                }
+            }
+        };
+    </script>
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="http://yoursite.com/2018/06/12/RabbitMQ确认机制/"/>
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="RabbitMQ,后端," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
-<meta name="keywords" content="RabbitMQ,后端">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ消息确认">
-<meta property="og:url" content="http://yoursite.com/2018/06/12/RabbitMQ确认机制/index.html">
-<meta property="og:site_name" content="问问苑大宝">
-<meta property="og:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-26T12:10:14.313Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ消息确认">
-<meta name="twitter:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2018/06/12/RabbitMQ确认机制/"/>
-
-
-
-
-
-  <title>RabbitMQ消息确认 | 问问苑大宝</title>
-  
-
-
-
-
-
-
+    <title>RabbitMQ消息确认 | 问问苑大宝</title>
 
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
 
-  <div class="container sidebar-position-left page-post-detail">
+<div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    <a href="https://github.com/yuanwenjian" target="_blank"><img
+            style="position: absolute; top: 0; right: 0; border: 0;"
+            src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+            alt="Fork me on GitHub"
+            data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">问问苑大宝</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
+        <div class="header-inner">
+            <div class="site-brand-wrapper">
+                <div class="site-meta ">
 
 
+                    <div class="custom-logo-site-title">
+                        <a href="/" class="brand" rel="start">
+                            <span class="logo-line-before"><i></i></span>
+                            <span class="site-title">问问苑大宝</span>
+                            <span class="logo-line-after"><i></i></span>
+                        </a>
+                    </div>
 
- </div>
+                    <p class="site-subtitle"></p>
+
+                </div>
+
+                <div class="site-nav-toggle">
+                    <button>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="site-nav">
+
+
+                <ul id="menu" class="menu">
+
+
+                    <li class="menu-item menu-item-home">
+                        <a href="/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
+
+                            首页
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-about">
+                        <a href="/about/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
+
+                            关于
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-tags">
+                        <a href="/tags/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
+
+                            标签
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-categories">
+                        <a href="/categories/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-th"></i> <br/>
+
+                            分类
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-archives">
+                        <a href="/archives/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
+
+                            归档
+                        </a>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+        </div>
     </header>
 
     <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+        <div class="main-inner">
+            <div class="content-wrap">
+                <div id="content" class="content">
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+                    <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/RabbitMQ确认机制/">
+                        <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+                            <div class="post-block">
+                                <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/RabbitMQ确认机制/">
+
+                                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="问问苑大宝">
     </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">RabbitMQ消息确认</h1>
-        
+                                <header class="post-header">
 
-        <div class="post-meta">
+
+                                    <h1 class="post-title" itemprop="name headline">RabbitMQ消息确认</h1>
+
+
+                                    <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -310,8 +263,8 @@
             
           </span>
 
-          
-            <span class="post-category" >
+
+                                        <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -332,599 +285,773 @@
                 
               
             </span>
-          
 
-          
-            
-              <span class="post-comments-count">
+
+                                        <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/06/12/RabbitMQ确认机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/12/RabbitMQ确认机制/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/12/RabbitMQ确认机制/"
+                        itemprop="commentsCount"></span>
                 </a>
               </span>
-            
-          
 
-          
-          
 
-          
+                                        <div class="post-description">
+                                            RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。
+                                        </div>
 
-          
 
-          
-              <div class="post-description">
-                  RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。
-              </div>
-          
+                                    </div>
+                                </header>
 
-          
+
+                                <div class="post-body" itemprop="articleBody">
+
+
+                                    <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1>
+                                    <p>
+                                        从消费者到RabbitMQ的递送处理确认被称为消费确认;borker对生产者的确认称为生产者确认。这两个功能都基于相同的想法，并受TCP的启发。它们对于从发行商到RabbitMQ节点以及从RabbitMQ节点到消费者的可靠传送都是至关重要的</p>
+                                    <p>ReturnCallback 确认到队列</p>
+                                    <h1 id="消费端确认"><a href="#消费端确认" class="headerlink" title="消费端确认"></a>消费端确认</h1>
+                                    <h2 id="Delivery-Tags"><a href="#Delivery-Tags" class="headerlink"
+                                                              title="Delivery Tags"></a>Delivery Tags</h2>
+                                    <p>
+                                        在我们继续讨论其他主题之前，重要的是解释如何识别交付（并且确认指示它们各自的交付），当消费者或者订阅者被注册时，消息将由RabbitMQ的basic.deliver方法传递（推送）,该方法会携带一个channel唯一标识的deliberyTag，<br>DiliveryTags
+                                        是单方面增长的正整数，并由客户端库提供。确认交付的客户端库方法将交付标签作为参数。<br>由于DiliveryTag的范围为Channel,所以必须在同一channel确定，在不同的信道确认会导致unknown
+                                        delivery tag错误</p>
+                                    <h2 id="消费端确认模式与数据安全注意事项"><a href="#消费端确认模式与数据安全注意事项" class="headerlink"
+                                                                 title="消费端确认模式与数据安全注意事项"></a>消费端确认模式与数据安全注意事项</h2>
+                                    <p>
+                                        当节点向消费者传递消息时，它必须决定消息是否应该被消费者视为处理（或至少是接收到）。由于多种情况（客户端连接，消费者应用程序等）可能会失败，这种是一种注意数据安全的方案，消息传递协议通常提供一种确认机制，允许消费者确认交付给他们所连接的节点。该机制是否被使用是在消费者订阅时决定的。</p>
+                                    <p>
+                                        根据所使用的确认模式，RabbitMQ可以考虑将消息发送出去（写入TCP套接字）后立即或者在收到显式（“手动”）客户端确认后立即成功发送，数据确认可以是正向或反向，及确认接收或拒绝接收，通过以下协议完成</p>
+                                    <p><strong>basic.ack</strong>用于肯定确认 </p>
+                                    <p><strong>basic.nack</strong>用于否定确认（注意：这是对AMQP 0-9-1的RabbitMQ扩展） </p>
+                                    <p><strong>basic.reject</strong>用于否定确认，但与basic.nack相比有一个限制</p>
+                                    <p>下面将讨论如何在客户端库API中使用这些方法。</p>
+                                    <p>
+                                        积极的确认只是指示RabbitMQ记录已发送的消息并且可以放弃。使用basic.reject的否定确认具有相同的效果，差异主要在语义上：积极的承认假设一条消息被成功处理，而消极的对方认为交付没有被处理，但仍然应该被删除。</p>
+                                    <p>
+                                        在自动确认模式下，消息被认为在发送后立即成功发送。他的模式换来更高的吞吐量（只要消费者能够保持），以降低交付和消费者处理的安全性。这种模式通常被称为“即忘即忘”。与手动确认模型不同，如果消费者的TCP连接或频道在成功发送前关闭，则服务器发送的消息将会丢失。因此，自动消息确认应被<font
+                                            color="red"><strong>视为不安全</strong></font>并且不适用于所有工作负载。</p>
+                                    <p>
+                                        使用自动确认模式时需要考虑的另一件事是消费者过载,手动确认模式通常限制通道预取，限制通道上未完成（“正在进行中”）传送的次数,然而，自动确认没有这样的限制。因此，消费者可能会因交付速度而感到不知所措，可能积累了内存中的积压，堆积如山，或者由操作系统终止了进程，某些客户端库将应用TCP反压（在未处理的交付积压下降超过一定限制之前停止从套接字读取数据）。因此，仅建议可以高效且稳定处理交货的消费者使用自动交付方式。</p>
+                                    <h2 id="积极确认"><a href="#积极确认" class="headerlink" title="积极确认"></a>积极确认</h2>
+                                    <p>
+                                        用于传递确认的API方法通常作为客户端库中的通道的操作公开。Java客户端用户将分别使用Channel＃basicAck和Channel＃basicNack来执行basic.ack和basic.nack。以下是一个Java客户端示例，展示了一个积极的承认<br>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br><span
+                                                            class="line">13</span><br><span
+                                                            class="line">14</span><br><span
+                                                            class="line">15</span><br><span
+                                                            class="line">16</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="keyword">boolean</span> autoAck = <span
+                                                            class="keyword">false</span>;</span><br><span class="line">channel.basicConsume(queueName, autoAck, <span
+                                                            class="string">"a-consumer-tag"</span>,</span><br><span
+                                                            class="line">     <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span
+                                                            class="line">         <span
+                                                            class="meta">@Override</span></span><br><span class="line">         <span
+                                                            class="function"><span class="keyword">public</span> <span
+                                                            class="keyword">void</span> <span class="title">handleDelivery</span><span
+                                                            class="params">(String consumerTag,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    Envelope envelope,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    AMQP.BasicProperties properties,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    <span
+                                                            class="keyword">byte</span>[] body)</span></span></span><br><span
+                                                            class="line"><span class="function">             <span
+                                                            class="keyword">throws</span> IOException</span></span><br><span
+                                                            class="line"><span
+                                                            class="function">         </span>&#123;</span><br><span
+                                                            class="line">             <span class="keyword">long</span> deliveryTag = envelope.getDeliveryTag();</span><br><span
+                                                            class="line">             <span class="comment">// positively acknowledge a single delivery, the message will</span></span><br><span
+                                                            class="line">             <span class="comment">// be discarded</span></span><br><span
+                                                            class="line">             channel.basicAck(deliveryTag, <span
+                                                            class="keyword">false</span>);</span><br><span class="line">         &#125;</span><br><span
+                                                            class="line">     &#125;);</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <h2 id="一次确认多次"><a href="#一次确认多次" class="headerlink" title="一次确认多次"></a>一次确认多次</h2>
+                                    <p>
+                                        可以批量手动确认以减少网络流量。这是通过将确认方法的多个字段（见上文）设置为true来完成的。注意，basic.reject在历史上并没有这个字段，这就是为什么basic.nack被RabbitMQ作为协议扩展引入的原因。</p>
+                                    <p>
+                                        当多字段设置为true时，RabbitMQ将确认这个序列号之前的所有消息都已经得到了处理。，直至包括确认中指定的标签。与其他所有与确认相关的内容一样，这是每个channel的范围,比如ch信道中有5,6,7,8tag,当确认8时，mutiple设为true,该信道里所有tag状态全部变为acknowledged，如果设为false,5，6,7状态未unacknowledged</p>
+                                    <h2 id="消极确认和重新入队列"><a href="#消极确认和重新入队列" class="headerlink" title="消极确认和重新入队列"></a>消极确认和重新入队列
+                                    </h2>
+                                    <p>有时消费者不能立即处理交付，但其他实例可能能够处理交付。在这种情况下，可能需要重新安排并让其他消费者接收并处理它。
+                                        basic.reject和basic.nack是两种协议方法。</p>
+                                    <p>
+                                        这些方法通常用于否定确认交付。这种交付可以被broker丢弃或重新进入队列,此行为由requeue字段控制。当该字段设置为true时，代理将使用指定的交付标签重新进行交付（或多次交付，稍后将作解释）。</p>
+                                    <p>这两种方法通常在客户端库中作为频道的操作公开。
+                                        Java客户端用户将分别使用Channel＃basicReject和Channel＃basicNack来执行basic.reject和basic.nack：</p>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br><span
+                                                            class="line">13</span><br><span
+                                                            class="line">14</span><br><span
+                                                            class="line">15</span><br><span
+                                                            class="line">16</span><br><span
+                                                            class="line">17</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="keyword">boolean</span> autoAck = <span
+                                                            class="keyword">false</span>;</span><br><span class="line">channel.basicConsume(queueName, autoAck, <span
+                                                            class="string">"a-consumer-tag"</span>,</span><br><span
+                                                            class="line">     <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span
+                                                            class="line">         <span
+                                                            class="meta">@Override</span></span><br><span class="line">         <span
+                                                            class="function"><span class="keyword">public</span> <span
+                                                            class="keyword">void</span> <span class="title">handleDelivery</span><span
+                                                            class="params">(String consumerTag,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    Envelope envelope,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    AMQP.BasicProperties properties,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    <span
+                                                            class="keyword">byte</span>[] body)</span></span></span><br><span
+                                                            class="line"><span class="function">             <span
+                                                            class="keyword">throws</span> IOException</span></span><br><span
+                                                            class="line"><span
+                                                            class="function">         </span>&#123;</span><br><span
+                                                            class="line">             <span class="keyword">long</span> deliveryTag = envelope.getDeliveryTag();</span><br><span
+                                                            class="line">             <span class="comment">// negatively acknowledge, the message will be discarded</span></span><br><span
+                                                            class="line">             channel.basicReject(deliveryTag, <span
+                                                            class="keyword">false</span>);</span><br><span class="line">             <span
+                                                            class="comment">// requeue the delivery</span></span><br><span
+                                                            class="line">             channel.basicReject(deliveryTag, <span
+                                                            class="keyword">true</span>)</span><br><span class="line">         &#125;</span><br><span
+                                                            class="line">     &#125;);</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    <p>
+                                        如果可能，当消息被重新发送时，它将被放置在其队列中的原始位置,否则（由于多个消费者共享队列时来自其他消费者的并发递送和确认），则该消息将被重新排队到更接近队列头的位置</p>
+                                    <p>
+                                        已重新发送的消息可能会立即准备好重新发送，具体取决于它们在队列中的位置，以及具有活动使用者的通道使用的预取值。这意味着，如果所有消费者因为暂时状况而无法处理交货而需要处理，他们将创建一个重新发货/递送循环。就网络带宽和CPU资源而言，这样的循环可能是昂贵的。消费者实现可以跟踪重新传送的次数并拒绝好的消息（丢弃它们）或者延迟后计划重新计划</p>
+                                    <p>
+                                        使用basic.nack方法可以一次性拒绝或重新发送多个消息。这是区别于basic.reject的。它接受一个额外的参数，multiple。以下是一个Java客户端示例：<br>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br><span
+                                                            class="line">13</span><br><span
+                                                            class="line">14</span><br><span
+                                                            class="line">15</span><br><span
+                                                            class="line">16</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="keyword">boolean</span> autoAck = <span
+                                                            class="keyword">false</span>;</span><br><span class="line">channel.basicConsume(queueName, autoAck, <span
+                                                            class="string">"a-consumer-tag"</span>,</span><br><span
+                                                            class="line">     <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span
+                                                            class="line">         <span
+                                                            class="meta">@Override</span></span><br><span class="line">         <span
+                                                            class="function"><span class="keyword">public</span> <span
+                                                            class="keyword">void</span> <span class="title">handleDelivery</span><span
+                                                            class="params">(String consumerTag,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    Envelope envelope,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    AMQP.BasicProperties properties,</span></span></span><br><span
+                                                            class="line"><span class="function"><span class="params">                                    <span
+                                                            class="keyword">byte</span>[] body)</span></span></span><br><span
+                                                            class="line"><span class="function">             <span
+                                                            class="keyword">throws</span> IOException</span></span><br><span
+                                                            class="line"><span
+                                                            class="function">         </span>&#123;</span><br><span
+                                                            class="line">             <span class="keyword">long</span> deliveryTag = envelope.getDeliveryTag();</span><br><span
+                                                            class="line">             <span class="comment">// requeue all unacknowledged deliveries up to</span></span><br><span
+                                                            class="line">             <span class="comment">// this delivery tag</span></span><br><span
+                                                            class="line">             channel.basicNack(deliveryTag, <span
+                                                            class="keyword">true</span>, <span
+                                                            class="keyword">true</span>);</span><br><span class="line">         &#125;</span><br><span
+                                                            class="line">     &#125;);</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <h2 id="channel设置预读取限制"><a href="#channel设置预读取限制" class="headerlink"
+                                                               title="channel设置预读取限制"></a>channel设置预读取限制</h2>
+                                    <p>
+                                        由于消息是异步发送（推送）给客户端的，因此在任何给定时刻通常都有不止一条消息在信道上，此外，客户的手动确认本质上也是异步的。所以有一个未确认的交付标签的限制大小。开发人员通常会倾向于限制此窗口的大小，以避免消费者端无限制的缓冲区问题。这是通过使用basic.qos方法设置“预取计数”值完成的。该值定义了通道上允许的最大未确认递送数量,一旦数字达到配置的计数，RabbitMQ将停止在通道上传送更多消息，除非至少有一个未确认的消息被确认。</p>
+                                    <p>
+                                        例如，假设在通道Ch上未确认的递送标签5,6,7和8以及通道Ch的预取计数设置为4，除非至少有一个未完成交付得到确认，否则RabbitMQ将不会再推送更多交付。当确认帧在delivery_tag设置为8的频道上到达时，RabbitMQ将会注意到并再发送一条消息。</p>
+                                    <p>
+                                        值得重申的是，交付流程和手动客户确认完全是异步的。因此，如果在飞行中已经有交付事件的情况下预取值发生变化，则会出现自然的竞争状况，并且暂时可能比预取计数通道上未确认的消息更多。</p>
+                                    <p>QoS预取设置对使用basic.get（“pull API”）获取的消息没有影响，即使在手动确认模式下也是如此。</p>
+                                    <p>QoS设置可以为频道或消费者配置。有关详细信息，请参阅<a
+                                            href="https://www.rabbitmq.com/consumer-prefetch.html" target="_blank"
+                                            rel="noopener">消费预取</a>。</p>
+                                    <h2 id="消费者确认模式，预取和吞吐量"><a href="#消费者确认模式，预取和吞吐量" class="headerlink"
+                                                               title="消费者确认模式，预取和吞吐量"></a>消费者确认模式，预取和吞吐量</h2>
+                                    <p>
+                                        确认模式和QoS预取值对消费者吞吐量有显着影响。一般来说，增加预取将提高向消费者传递消息的速度.自动确认模式可以产生最佳的传送速率。但是，在这两种情况下，交付但尚未处理的消息数量也会增加，从而增加消费者RAM消耗。</p>
+                                    <p>
+                                        自动确认模式或带无限预取的手动确认模式应谨慎使用。消费者在没有确认的情况下消耗大量消息将导致其所连接的节点上的内存消耗增长。寻找合适的预取值是一个试验和错误的问题，并且会因工作负载而异。
+                                        100到300范围内的值通常提供最佳的吞吐量，并且不会面临压倒性消费者的重大风险.更高的价值往往会遇到<a
+                                            href="https://www.rabbitmq.com/blog/2014/04/14/finding-bottlenecks-with-rabbitmq-3-3/"
+                                            target="_blank" rel="noopener">收益递减的规律</a>。</p>
+                                    <p>1的预取值是最保守的。这将显着降低吞吐量，特别是在消费者连接延迟较高的环境中。对于许多应用来说，更高的价值是合适和最佳的。</p>
+                                    <h2 id="消费者失败或失去连接时：自动重新进入队列"><a href="#消费者失败或失去连接时：自动重新进入队列" class="headerlink"
+                                                                     title="消费者失败或失去连接时：自动重新进入队列"></a>消费者失败或失去连接时：自动重新进入队列
+                                    </h2>
+                                    <p>
+                                        使用手动确认时，任何未收到的递送（消息）将在发送递送的通道（或连接）关闭时自动重新发送。这包括客户端的TCP连接丢失，消费者应用程序（进程）失败以及通道级别的协议例外（如下所述）。</p>
+                                    <p>注意，<a href="https://www.rabbitmq.com/heartbeats.html" target="_blank"
+                                             rel="noopener">检测不可用客户端</a>需要一段时间。</p>
+                                    <p>由于这种行为，消费者必须做好准备来处理重新购买决策，否则就必须考虑<a
+                                            href="https://baike.baidu.com/item/%E5%B9%82%E7%AD%89/8600688?fr=aladdin"
+                                            target="_blank" rel="noopener">幂等</a><br>Redeliveries将有一个特殊的布尔属性，重新传递，由RabbitMQ设置为true。首次发货时，它将被设置为false。请注意，消费者可以收到先前传送给其他消费者的消息。
+                                    </p>
+                                    <h2 id="客户端错误：双重确认和未知标签"><a href="#客户端错误：双重确认和未知标签" class="headerlink"
+                                                                title="客户端错误：双重确认和未知标签"></a>客户端错误：双重确认和未知标签</h2>
+                                    <p>如果客户不止一次确认同一个递送标签，RabbitMQ将导致通道错误,如PRECONDITION_FAILED - unknown delivery tag
+                                        100. 如果使用未知的交付标签，则会抛出相同的异常。</p>
+                                    <p>broker报unknown delivery tag异常的另一种情况为尝试在不同于信道中确认。确认必须在同一信道</p>
+                                    <h1 id="生产端确认"><a href="#生产端确认" class="headerlink" title="生产端确认"></a>生产端确认</h1>
+                                    <p>
+                                        网络可能以不甚明显的方式失败，并且检测到某些故障需要时间。因此，向其套接字写入协议帧或一组帧（例如发布的消息）的客户端不能认为该消息已到达服务器并且已成功处理。它可能一直在丢失，或者它的消费可能会显着延迟。</p>
+                                    <p>使用标准的AMQP 0-9-1，保证消息不会丢失的唯一方法是使用事务 -
+                                        使通道事务化，然后为每个消息或消息集发布，提交。在这种情况下，交易不必要地增加重量并将吞吐量降低250倍。为了解决这个问题，引入了确认机制。它模仿协议中已经存在的消费者确认机制。</p>
+                                    <p>
+                                        要启用确认，客户端会发送confirm.select方法。根据是否设置不等待，代理可以用confirm.select-ok进行响应.一旦在通道上使用confirm.select方法，就说它处于确认模式。事务通道不能进入确认模式，一旦通道处于确认模式，就不能进行事务处理。两者只能使用一种</p>
+                                    <p>
+                                        一旦通道处于确认模式，代理和客户端都会对消息进行计数（在第一个confirm.select中从1开始计数）.然后，broker通过在相同频道上发送basic.ack来处理消息，从而确认消息。投放标签字段包含确认消息的序列号。代理也可以在basic.ack中设置多个字段，以指示所有消息直到并包括具有序列号的消息都已被处理。</p>
+                                    <h2 id="反向确认"><a href="#反向确认" class="headerlink" title="反向确认"></a>反向确认</h2>
+                                    <p>
+                                        在特殊情况下，broker无法成功处理消息，而不是basic.ack，经纪人将发送一个basic.nack。在这种情况下，basic.nack的字段与basic.ack中的相应字段具有相同的含义，并且应忽略requeue字段。通过隐藏一条或多条消息，broker表示无法处理消息并拒绝对他们负责;那时，客户可以选择重新发布消息。</p>
+                                    <p>通道进入确认模式后，所有随后发布的消息都将被确认或删除一次.无法保证消息的确认时间。没有一条信息既是confirmed又是 nack’d.</p>
+                                    <p>只有在负责队列的Erlang进程中发生内部错误时才会传递basic.nack。</p>
+                                    <h2 id="broker将何时确定消息？"><a href="#broker将何时确定消息？" class="headerlink"
+                                                               title="broker将何时确定消息？"></a>broker将何时确定消息？</h2>
+                                    <p>
+                                        对于不可路由的消息，一旦交换验证消息不会路由到任何队列（返回空的队列列表），代理将发出确认。如果该消息也是强制发布的，basic.return会在basic.ack之前发送给客户端。对于否定确认（basic.nack）也是如此。</p>
+                                    <p>
+                                        对于可路由消息，当消息被所有队列接受时发送basic.ack。对于路由到持久队列的持久消息，这意味着持久化到磁盘.对于镜像队列，这意味着所有镜像都接受了该消息。</p>
+                                    <p>broker 将在下面的情况中对消息进行 confirm ：</p>
+                                    <ul>
+                                        <li>broker 发现当前消息无法被路由到指定的 queues 中 （如果设置了 mandatory 属性，则 broker 会先发送
+                                            basic.return ）
+                                        </li>
+                                        <li>非持久属性的消息到达了其所应该到达的所有 queue 中（和镜像 queue 中）</li>
+                                        <li>持久消息 到达了其所应该到达的所有 queue 中（和镜像 queue 中），并被持久化到了磁盘（被 fsync）</li>
+                                        <li>持久消息从其所在的所有 queue 中被 consume 了 （如果必要则会被 acknowledge）</li>
+                                    </ul>
+                                    <p>broker 会丢失持久化消息，如果 broker 在将上述消息写入磁盘前异常。在一定条件下，这种情况会导致 broker 以一种奇怪的方式运行。
+                                        例如，考虑下述情景：</p>
+                                    <ol>
+                                        <li>一个 client 将持久消息 publish 到持久 queue 中</li>
+                                        <li>另一个 client 从 queue 中 consume 消息（注意：该消息具有持久属性，并且 queue 是持久化的），当尚未对其进行 ack
+                                        </li>
+                                        <li>broker 异常重启</li>
+                                        <li>client 重连并开始 consume 消息</li>
+                                    </ol>
+                                    <h2 id="持久化信息延迟"><a href="#持久化信息延迟" class="headerlink" title="持久化信息延迟"></a>持久化信息延迟
+                                    </h2>
+                                    <p>
+                                        将消息保存到磁盘后，将发送路由到持久队列的持久消息的basic.ack。RabbitMQ消息存储在间隔（几百毫秒）后将消息持久保存到磁盘，以最大限度地减少fsync（2）调用的次数，或者当一个队列处于空闲状态时。这意味着在恒定负载下，basic.ack的延迟可能会达到几百毫秒。为了提高吞吐量，强烈建议应用程序异步处理确认（作为流）或发布批量消息并等待未完成的确认。客户端库的确切API不尽相同。</p>
+                                    <h2 id="生产者确认顺序"><a href="#生产者确认顺序" class="headerlink" title="生产者确认顺序"></a>生产者确认顺序
+                                    </h2>
+                                    <p>
+                                        在大多数情况下，RabbitMQ将按发布顺序向生产者确认消息（这适用于在单个频道上发布的消息）。但是，发布者确认是异步发出的，并且可以确认一条消息或一组消息。发出确认的确切时刻取决于消息的传递模式（持久性与瞬态）以及消息被路由到的队列的属性（请参见上文）。也就是说不同的消息可以被认为准备好在不同的时间进行确认。这意味着，与各自的消息相比，确认可以以不同的顺序到达。应用程序应尽可能不取决于确认的顺序。</p>
+                                    <h2 id="确认并保证投放"><a href="#确认并保证投放" class="headerlink" title="确认并保证投放"></a>确认并保证投放
+                                    </h2>
+                                    <p>如果代理在所述消息写入磁盘之前崩溃，代理将丢失持久性消息。在某些情况下，这会导致broker以令人惊讶的方式行事。</p>
+                                    <p>考虑这种情况：</p>
+                                    <ol>
+                                        <li>客户端发布持久消息给持久队列</li>
+                                        <li>客户端使用队列中的消息（注意消息是持久的并且队列持久），但还没有确认，</li>
+                                        <li>broker死亡并重新启动</li>
+                                        <li>客户端重新连接并开始消费消息。</li>
+                                    </ol>
+                                    <p>
+                                        此时，客户可以合理地认为该消息将再次发送。但是重新启动导致代理丢失消息。为了保证持久性，客户应该使用确认,如果发布者的频道处于确认模式，则发布者不会收到丢失消息的确认（因为消息尚未写入磁盘）。</p>
+                                    <h1 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h1>
+                                    <h2 id="Delivery-Tag"><a href="#Delivery-Tag" class="headerlink"
+                                                             title="Delivery Tag"></a>Delivery Tag</h2>
+                                    <p>递送标签是一个64位长的值，因此其最大值为9223372036854775807.由于Delivery
+                                        Tag的范围是按每个通道划分的，因此发布商或消费者在实践中不太可能运行该值。</p>
+                                    <h1 id="确认机制总结"><a href="#确认机制总结" class="headerlink" title="确认机制总结"></a>确认机制总结</h1>
+                                    <h2 id="生产者确认-ConfirmCallback"><a href="#生产者确认-ConfirmCallback" class="headerlink"
+                                                                      title="生产者确认 ConfirmCallback"></a>生产者确认
+                                        ConfirmCallback</h2>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"></span><br><span
+                                                            class="line"></span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    <p>生产者发送至exchange或者queue成功后</p>
+                                    <h2 id="消费者确认-ReturnCallback"><a href="#消费者确认-ReturnCallback" class="headerlink"
+                                                                     title="消费者确认 ReturnCallback"></a>消费者确认
+                                        ReturnCallback</h2>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"></span><br><span
+                                                            class="line"></span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1>
+                                    <p><a href="https://www.rabbitmq.com/confirms.html" target="_blank" rel="noopener">RabbitMQ确认机制</a>
+                                    </p>
+
+
+                                </div>
+
+
+                                <footer class="post-footer">
+
+                                    <div class="post-tags">
+
+                                        <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
+
+                                        <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+
+                                    </div>
+
+
+                                    <div class="post-nav">
+                                        <div class="post-nav-next post-nav-item">
+
+                                            <a href="/2018/06/12/SpringBoot MQ服务确认/" rel="next" title="RabbitMQ确认机制">
+                                                <i class="fa fa-chevron-left"></i> RabbitMQ确认机制
+                                            </a>
+
+                                        </div>
+
+                                        <span class="post-nav-divider"></span>
+
+                                        <div class="post-nav-prev post-nav-item">
+
+                                            <a href="/2018/06/12/SpringAMQP文档/" rel="prev" title="RabbitMQ消息确认">
+                                                RabbitMQ消息确认 <i class="fa fa-chevron-right"></i>
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+
+                                </footer>
+                            </div>
+
+
+                        </article>
+
+
+                        <div class="post-spread">
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+                <div id="container" style="display:none"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                    const myTheme = {
+                        render(state, instance) {
+                            const container = document.createElement('div');
+                            container.lang = "en-US";
+                            container.className = 'gitment-container gitment-root-container';
+                            container.appendChild(instance.renderHeader(state, instance));
+                            container.appendChild(instance.renderEditor(state, instance));
+                            container.appendChild(instance.renderComments(state, instance));
+                            container.appendChild(instance.renderFooter(state, instance));
+                            return container;
+                        }
+                    }
+
+                    function showGitment() {
+                        $("#gitment_title").attr("style", "display:none");
+                        $("#container").attr("style", "").addClass("gitment_container");
+                        var gitment = new Gitment({
+                            id: 'RabbitMQ消息确认',
+                            theme: myTheme,
+                            owner: "yuanwenjian",
+                            repo: "gitment-comments",
+                            oauth: {
+                                client_id: '21bb0ade50d6f2c9707b',
+                                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+                            }
+                        });
+                        gitment.render('container');
+                    }
+                </script>
+
+
+            </div>
+
+
+            <div class="sidebar-toggle">
+                <div class="sidebar-toggle-line-wrap">
+                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+                </div>
+            </div>
+
+            <aside id="sidebar" class="sidebar">
+
+                <div class="sidebar-inner">
+
+
+                    <ul class="sidebar-nav motion-element">
+                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+                            站点概览
+                        </li>
+                    </ul>
+
+
+                    <section class="site-overview-wrap sidebar-panel">
+                        <div class="site-overview">
+                            <div class="site-author motion-element" itemprop="author" itemscope
+                                 itemtype="http://schema.org/Person">
+
+                                <img class="site-author-image" itemprop="image"
+                                     src="/images/sanguosha.jpg"
+                                     alt="问问苑大宝"/>
+
+                                <p class="site-author-name" itemprop="name">问问苑大宝</p>
+                                <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+                            </div>
+
+                            <nav class="site-state motion-element">
+
+
+                                <div class="site-state-item site-state-posts">
+
+                                    <a href="/archives/">
+
+                                        <span class="site-state-item-count">64</span>
+                                        <span class="site-state-item-name">日志</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="site-state-item site-state-categories">
+                                    <a href="/categories/index.html">
+                                        <span class="site-state-item-count">31</span>
+                                        <span class="site-state-item-name">分类</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="site-state-item site-state-tags">
+                                    <a href="/tags/index.html">
+                                        <span class="site-state-item-count">30</span>
+                                        <span class="site-state-item-name">标签</span>
+                                    </a>
+                                </div>
+
+
+                            </nav>
+
+
+                        </div>
+                    </section>
+
+
+                    <!--noindex-->
+                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+                        <div class="post-toc">
+
+
+                            <div class="post-toc-content">
+                                <ol class="nav">
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span
+                                            class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#消费端确认"><span
+                                            class="nav-number">2.</span> <span class="nav-text">消费端确认</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#Delivery-Tags"><span
+                                                    class="nav-number">2.1.</span> <span
+                                                    class="nav-text">Delivery Tags</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#消费端确认模式与数据安全注意事项"><span
+                                                    class="nav-number">2.2.</span> <span class="nav-text">消费端确认模式与数据安全注意事项</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#积极确认"><span
+                                                    class="nav-number">2.3.</span> <span
+                                                    class="nav-text">积极确认</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#一次确认多次"><span
+                                                    class="nav-number">2.4.</span> <span class="nav-text">一次确认多次</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#消极确认和重新入队列"><span
+                                                    class="nav-number">2.5.</span> <span
+                                                    class="nav-text">消极确认和重新入队列</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#channel设置预读取限制"><span
+                                                    class="nav-number">2.6.</span> <span
+                                                    class="nav-text">channel设置预读取限制</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#消费者确认模式，预取和吞吐量"><span
+                                                    class="nav-number">2.7.</span> <span
+                                                    class="nav-text">消费者确认模式，预取和吞吐量</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#消费者失败或失去连接时：自动重新进入队列"><span
+                                                    class="nav-number">2.8.</span> <span class="nav-text">消费者失败或失去连接时：自动重新进入队列</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#客户端错误：双重确认和未知标签"><span
+                                                    class="nav-number">2.9.</span> <span class="nav-text">客户端错误：双重确认和未知标签</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#生产端确认"><span
+                                            class="nav-number">3.</span> <span class="nav-text">生产端确认</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#反向确认"><span
+                                                    class="nav-number">3.1.</span> <span
+                                                    class="nav-text">反向确认</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#broker将何时确定消息？"><span
+                                                    class="nav-number">3.2.</span> <span
+                                                    class="nav-text">broker将何时确定消息？</span></a></li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#持久化信息延迟"><span
+                                                    class="nav-number">3.3.</span> <span class="nav-text">持久化信息延迟</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#生产者确认顺序"><span
+                                                    class="nav-number">3.4.</span> <span class="nav-text">生产者确认顺序</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#确认并保证投放"><span
+                                                    class="nav-number">3.5.</span> <span class="nav-text">确认并保证投放</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#限制"><span
+                                            class="nav-number">4.</span> <span class="nav-text">限制</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#Delivery-Tag"><span
+                                                    class="nav-number">4.1.</span> <span
+                                                    class="nav-text">Delivery Tag</span></a></li>
+                                        </ol>
+                                    </li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#确认机制总结"><span
+                                            class="nav-number">5.</span> <span class="nav-text">确认机制总结</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#生产者确认-ConfirmCallback"><span
+                                                    class="nav-number">5.1.</span> <span class="nav-text">生产者确认 ConfirmCallback</span></a>
+                                            </li>
+                                            <li class="nav-item nav-level-2"><a class="nav-link"
+                                                                                href="#消费者确认-ReturnCallback"><span
+                                                    class="nav-number">5.2.</span> <span class="nav-text">消费者确认 ReturnCallback</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span
+                                            class="nav-number">6.</span> <span class="nav-text">参考</span></a></li>
+                                </ol>
+                            </div>
+
+
+                        </div>
+                    </section>
+                    <!--/noindex-->
+
+
+                </div>
+            </aside>
+
+
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>从消费者到RabbitMQ的递送处理确认被称为消费确认;borker对生产者的确认称为生产者确认。这两个功能都基于相同的想法，并受TCP的启发。它们对于从发行商到RabbitMQ节点以及从RabbitMQ节点到消费者的可靠传送都是至关重要的</p>
-<p>ReturnCallback 确认到队列</p>
-<h1 id="消费端确认"><a href="#消费端确认" class="headerlink" title="消费端确认"></a>消费端确认</h1><h2 id="Delivery-Tags"><a href="#Delivery-Tags" class="headerlink" title="Delivery Tags"></a>Delivery Tags</h2><p>在我们继续讨论其他主题之前，重要的是解释如何识别交付（并且确认指示它们各自的交付），当消费者或者订阅者被注册时，消息将由RabbitMQ的basic.deliver方法传递（推送）,该方法会携带一个channel唯一标识的deliberyTag，<br>DiliveryTags 是单方面增长的正整数，并由客户端库提供。确认交付的客户端库方法将交付标签作为参数。<br>由于DiliveryTag的范围为Channel,所以必须在同一channel确定，在不同的信道确认会导致unknown delivery tag错误</p>
-<h2 id="消费端确认模式与数据安全注意事项"><a href="#消费端确认模式与数据安全注意事项" class="headerlink" title="消费端确认模式与数据安全注意事项"></a>消费端确认模式与数据安全注意事项</h2><p>当节点向消费者传递消息时，它必须决定消息是否应该被消费者视为处理（或至少是接收到）。由于多种情况（客户端连接，消费者应用程序等）可能会失败，这种是一种注意数据安全的方案，消息传递协议通常提供一种确认机制，允许消费者确认交付给他们所连接的节点。该机制是否被使用是在消费者订阅时决定的。</p>
-<p>根据所使用的确认模式，RabbitMQ可以考虑将消息发送出去（写入TCP套接字）后立即或者在收到显式（“手动”）客户端确认后立即成功发送，数据确认可以是正向或反向，及确认接收或拒绝接收，通过以下协议完成</p>
-<p><strong>basic.ack</strong>用于肯定确认 </p>
-<p><strong>basic.nack</strong>用于否定确认（注意：这是对AMQP 0-9-1的RabbitMQ扩展） </p>
-<p><strong>basic.reject</strong>用于否定确认，但与basic.nack相比有一个限制</p>
-<p>下面将讨论如何在客户端库API中使用这些方法。</p>
-<p>积极的确认只是指示RabbitMQ记录已发送的消息并且可以放弃。使用basic.reject的否定确认具有相同的效果，差异主要在语义上：积极的承认假设一条消息被成功处理，而消极的对方认为交付没有被处理，但仍然应该被删除。</p>
-<p>在自动确认模式下，消息被认为在发送后立即成功发送。他的模式换来更高的吞吐量（只要消费者能够保持），以降低交付和消费者处理的安全性。这种模式通常被称为“即忘即忘”。与手动确认模型不同，如果消费者的TCP连接或频道在成功发送前关闭，则服务器发送的消息将会丢失。因此，自动消息确认应被<font color="red"><strong>视为不安全</strong></font>并且不适用于所有工作负载。</p>
-<p>使用自动确认模式时需要考虑的另一件事是消费者过载,手动确认模式通常限制通道预取，限制通道上未完成（“正在进行中”）传送的次数,然而，自动确认没有这样的限制。因此，消费者可能会因交付速度而感到不知所措，可能积累了内存中的积压，堆积如山，或者由操作系统终止了进程，某些客户端库将应用TCP反压（在未处理的交付积压下降超过一定限制之前停止从套接字读取数据）。因此，仅建议可以高效且稳定处理交货的消费者使用自动交付方式。</p>
-<h2 id="积极确认"><a href="#积极确认" class="headerlink" title="积极确认"></a>积极确认</h2><p>用于传递确认的API方法通常作为客户端库中的通道的操作公开。Java客户端用户将分别使用Channel＃basicAck和Channel＃basicNack来执行basic.ack和basic.nack。以下是一个Java客户端示例，展示了一个积极的承认<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> autoAck = <span class="keyword">false</span>;</span><br><span class="line">channel.basicConsume(queueName, autoAck, <span class="string">"a-consumer-tag"</span>,</span><br><span class="line">     <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    Envelope envelope,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    AMQP.BasicProperties properties,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">byte</span>[] body)</span></span></span><br><span class="line"><span class="function">             <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">         </span>&#123;</span><br><span class="line">             <span class="keyword">long</span> deliveryTag = envelope.getDeliveryTag();</span><br><span class="line">             <span class="comment">// positively acknowledge a single delivery, the message will</span></span><br><span class="line">             <span class="comment">// be discarded</span></span><br><span class="line">             channel.basicAck(deliveryTag, <span class="keyword">false</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="一次确认多次"><a href="#一次确认多次" class="headerlink" title="一次确认多次"></a>一次确认多次</h2><p>可以批量手动确认以减少网络流量。这是通过将确认方法的多个字段（见上文）设置为true来完成的。注意，basic.reject在历史上并没有这个字段，这就是为什么basic.nack被RabbitMQ作为协议扩展引入的原因。</p>
-<p>当多字段设置为true时，RabbitMQ将确认这个序列号之前的所有消息都已经得到了处理。，直至包括确认中指定的标签。与其他所有与确认相关的内容一样，这是每个channel的范围,比如ch信道中有5,6,7,8tag,当确认8时，mutiple设为true,该信道里所有tag状态全部变为acknowledged，如果设为false,5，6,7状态未unacknowledged</p>
-<h2 id="消极确认和重新入队列"><a href="#消极确认和重新入队列" class="headerlink" title="消极确认和重新入队列"></a>消极确认和重新入队列</h2><p>有时消费者不能立即处理交付，但其他实例可能能够处理交付。在这种情况下，可能需要重新安排并让其他消费者接收并处理它。 basic.reject和basic.nack是两种协议方法。</p>
-<p>这些方法通常用于否定确认交付。这种交付可以被broker丢弃或重新进入队列,此行为由requeue字段控制。当该字段设置为true时，代理将使用指定的交付标签重新进行交付（或多次交付，稍后将作解释）。</p>
-<p>这两种方法通常在客户端库中作为频道的操作公开。 Java客户端用户将分别使用Channel＃basicReject和Channel＃basicNack来执行basic.reject和basic.nack：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> autoAck = <span class="keyword">false</span>;</span><br><span class="line">channel.basicConsume(queueName, autoAck, <span class="string">"a-consumer-tag"</span>,</span><br><span class="line">     <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    Envelope envelope,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    AMQP.BasicProperties properties,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">byte</span>[] body)</span></span></span><br><span class="line"><span class="function">             <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">         </span>&#123;</span><br><span class="line">             <span class="keyword">long</span> deliveryTag = envelope.getDeliveryTag();</span><br><span class="line">             <span class="comment">// negatively acknowledge, the message will be discarded</span></span><br><span class="line">             channel.basicReject(deliveryTag, <span class="keyword">false</span>);</span><br><span class="line">             <span class="comment">// requeue the delivery</span></span><br><span class="line">             channel.basicReject(deliveryTag, <span class="keyword">true</span>)</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
-<p>如果可能，当消息被重新发送时，它将被放置在其队列中的原始位置,否则（由于多个消费者共享队列时来自其他消费者的并发递送和确认），则该消息将被重新排队到更接近队列头的位置</p>
-<p>已重新发送的消息可能会立即准备好重新发送，具体取决于它们在队列中的位置，以及具有活动使用者的通道使用的预取值。这意味着，如果所有消费者因为暂时状况而无法处理交货而需要处理，他们将创建一个重新发货/递送循环。就网络带宽和CPU资源而言，这样的循环可能是昂贵的。消费者实现可以跟踪重新传送的次数并拒绝好的消息（丢弃它们）或者延迟后计划重新计划</p>
-<p>使用basic.nack方法可以一次性拒绝或重新发送多个消息。这是区别于basic.reject的。它接受一个额外的参数，multiple。以下是一个Java客户端示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> autoAck = <span class="keyword">false</span>;</span><br><span class="line">channel.basicConsume(queueName, autoAck, <span class="string">"a-consumer-tag"</span>,</span><br><span class="line">     <span class="keyword">new</span> DefaultConsumer(channel) &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    Envelope envelope,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    AMQP.BasicProperties properties,</span></span></span><br><span class="line"><span class="function"><span class="params">                                    <span class="keyword">byte</span>[] body)</span></span></span><br><span class="line"><span class="function">             <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">         </span>&#123;</span><br><span class="line">             <span class="keyword">long</span> deliveryTag = envelope.getDeliveryTag();</span><br><span class="line">             <span class="comment">// requeue all unacknowledged deliveries up to</span></span><br><span class="line">             <span class="comment">// this delivery tag</span></span><br><span class="line">             channel.basicNack(deliveryTag, <span class="keyword">true</span>, <span class="keyword">true</span>);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="channel设置预读取限制"><a href="#channel设置预读取限制" class="headerlink" title="channel设置预读取限制"></a>channel设置预读取限制</h2><p>由于消息是异步发送（推送）给客户端的，因此在任何给定时刻通常都有不止一条消息在信道上，此外，客户的手动确认本质上也是异步的。所以有一个未确认的交付标签的限制大小。开发人员通常会倾向于限制此窗口的大小，以避免消费者端无限制的缓冲区问题。这是通过使用basic.qos方法设置“预取计数”值完成的。该值定义了通道上允许的最大未确认递送数量,一旦数字达到配置的计数，RabbitMQ将停止在通道上传送更多消息，除非至少有一个未确认的消息被确认。</p>
-<p>例如，假设在通道Ch上未确认的递送标签5,6,7和8以及通道Ch的预取计数设置为4，除非至少有一个未完成交付得到确认，否则RabbitMQ将不会再推送更多交付。当确认帧在delivery_tag设置为8的频道上到达时，RabbitMQ将会注意到并再发送一条消息。</p>
-<p>值得重申的是，交付流程和手动客户确认完全是异步的。因此，如果在飞行中已经有交付事件的情况下预取值发生变化，则会出现自然的竞争状况，并且暂时可能比预取计数通道上未确认的消息更多。</p>
-<p>QoS预取设置对使用basic.get（“pull API”）获取的消息没有影响，即使在手动确认模式下也是如此。</p>
-<p>QoS设置可以为频道或消费者配置。有关详细信息，请参阅<a href="https://www.rabbitmq.com/consumer-prefetch.html" target="_blank" rel="noopener">消费预取</a>。</p>
-<h2 id="消费者确认模式，预取和吞吐量"><a href="#消费者确认模式，预取和吞吐量" class="headerlink" title="消费者确认模式，预取和吞吐量"></a>消费者确认模式，预取和吞吐量</h2><p>确认模式和QoS预取值对消费者吞吐量有显着影响。一般来说，增加预取将提高向消费者传递消息的速度.自动确认模式可以产生最佳的传送速率。但是，在这两种情况下，交付但尚未处理的消息数量也会增加，从而增加消费者RAM消耗。</p>
-<p>自动确认模式或带无限预取的手动确认模式应谨慎使用。消费者在没有确认的情况下消耗大量消息将导致其所连接的节点上的内存消耗增长。寻找合适的预取值是一个试验和错误的问题，并且会因工作负载而异。 100到300范围内的值通常提供最佳的吞吐量，并且不会面临压倒性消费者的重大风险.更高的价值往往会遇到<a href="https://www.rabbitmq.com/blog/2014/04/14/finding-bottlenecks-with-rabbitmq-3-3/" target="_blank" rel="noopener">收益递减的规律</a>。</p>
-<p>1的预取值是最保守的。这将显着降低吞吐量，特别是在消费者连接延迟较高的环境中。对于许多应用来说，更高的价值是合适和最佳的。</p>
-<h2 id="消费者失败或失去连接时：自动重新进入队列"><a href="#消费者失败或失去连接时：自动重新进入队列" class="headerlink" title="消费者失败或失去连接时：自动重新进入队列"></a>消费者失败或失去连接时：自动重新进入队列</h2><p>使用手动确认时，任何未收到的递送（消息）将在发送递送的通道（或连接）关闭时自动重新发送。这包括客户端的TCP连接丢失，消费者应用程序（进程）失败以及通道级别的协议例外（如下所述）。</p>
-<p>注意，<a href="https://www.rabbitmq.com/heartbeats.html" target="_blank" rel="noopener">检测不可用客户端</a>需要一段时间。</p>
-<p>由于这种行为，消费者必须做好准备来处理重新购买决策，否则就必须考虑<a href="https://baike.baidu.com/item/%E5%B9%82%E7%AD%89/8600688?fr=aladdin" target="_blank" rel="noopener">幂等</a><br>Redeliveries将有一个特殊的布尔属性，重新传递，由RabbitMQ设置为true。首次发货时，它将被设置为false。请注意，消费者可以收到先前传送给其他消费者的消息。</p>
-<h2 id="客户端错误：双重确认和未知标签"><a href="#客户端错误：双重确认和未知标签" class="headerlink" title="客户端错误：双重确认和未知标签"></a>客户端错误：双重确认和未知标签</h2><p>如果客户不止一次确认同一个递送标签，RabbitMQ将导致通道错误,如PRECONDITION_FAILED - unknown delivery tag 100. 如果使用未知的交付标签，则会抛出相同的异常。</p>
-<p>broker报unknown delivery tag异常的另一种情况为尝试在不同于信道中确认。确认必须在同一信道</p>
-<h1 id="生产端确认"><a href="#生产端确认" class="headerlink" title="生产端确认"></a>生产端确认</h1><p>网络可能以不甚明显的方式失败，并且检测到某些故障需要时间。因此，向其套接字写入协议帧或一组帧（例如发布的消息）的客户端不能认为该消息已到达服务器并且已成功处理。它可能一直在丢失，或者它的消费可能会显着延迟。</p>
-<p>使用标准的AMQP 0-9-1，保证消息不会丢失的唯一方法是使用事务 - 使通道事务化，然后为每个消息或消息集发布，提交。在这种情况下，交易不必要地增加重量并将吞吐量降低250倍。为了解决这个问题，引入了确认机制。它模仿协议中已经存在的消费者确认机制。</p>
-<p>要启用确认，客户端会发送confirm.select方法。根据是否设置不等待，代理可以用confirm.select-ok进行响应.一旦在通道上使用confirm.select方法，就说它处于确认模式。事务通道不能进入确认模式，一旦通道处于确认模式，就不能进行事务处理。两者只能使用一种</p>
-<p>一旦通道处于确认模式，代理和客户端都会对消息进行计数（在第一个confirm.select中从1开始计数）.然后，broker通过在相同频道上发送basic.ack来处理消息，从而确认消息。投放标签字段包含确认消息的序列号。代理也可以在basic.ack中设置多个字段，以指示所有消息直到并包括具有序列号的消息都已被处理。</p>
-<h2 id="反向确认"><a href="#反向确认" class="headerlink" title="反向确认"></a>反向确认</h2><p>在特殊情况下，broker无法成功处理消息，而不是basic.ack，经纪人将发送一个basic.nack。在这种情况下，basic.nack的字段与basic.ack中的相应字段具有相同的含义，并且应忽略requeue字段。通过隐藏一条或多条消息，broker表示无法处理消息并拒绝对他们负责;那时，客户可以选择重新发布消息。</p>
-<p>通道进入确认模式后，所有随后发布的消息都将被确认或删除一次.无法保证消息的确认时间。没有一条信息既是confirmed又是 nack’d.</p>
-<p>只有在负责队列的Erlang进程中发生内部错误时才会传递basic.nack。</p>
-<h2 id="broker将何时确定消息？"><a href="#broker将何时确定消息？" class="headerlink" title="broker将何时确定消息？"></a>broker将何时确定消息？</h2><p>对于不可路由的消息，一旦交换验证消息不会路由到任何队列（返回空的队列列表），代理将发出确认。如果该消息也是强制发布的，basic.return会在basic.ack之前发送给客户端。对于否定确认（basic.nack）也是如此。</p>
-<p>对于可路由消息，当消息被所有队列接受时发送basic.ack。对于路由到持久队列的持久消息，这意味着持久化到磁盘.对于镜像队列，这意味着所有镜像都接受了该消息。</p>
-<p>broker 将在下面的情况中对消息进行 confirm ：</p>
-<ul>
-<li>broker 发现当前消息无法被路由到指定的 queues 中 （如果设置了  mandatory 属性，则 broker 会先发送   basic.return ）</li>
-<li>非持久属性的消息到达了其所应该到达的所有 queue 中（和镜像 queue 中）</li>
-<li>持久消息 到达了其所应该到达的所有 queue 中（和镜像 queue 中），并被持久化到了磁盘（被 fsync）</li>
-<li>持久消息从其所在的所有 queue 中被 consume 了 （如果必要则会被 acknowledge）</li>
-</ul>
-<p>broker 会丢失持久化消息，如果 broker 在将上述消息写入磁盘前异常。在一定条件下，这种情况会导致 broker 以一种奇怪的方式运行。 例如，考虑下述情景：</p>
-<ol>
-<li>一个 client 将持久消息 publish 到持久 queue 中 </li>
-<li>另一个 client 从 queue 中 consume 消息（注意：该消息具有持久属性，并且 queue 是持久化的），当尚未对其进行 ack </li>
-<li>broker 异常重启 </li>
-<li>client 重连并开始 consume 消息</li>
-</ol>
-<h2 id="持久化信息延迟"><a href="#持久化信息延迟" class="headerlink" title="持久化信息延迟"></a>持久化信息延迟</h2><p>将消息保存到磁盘后，将发送路由到持久队列的持久消息的basic.ack。RabbitMQ消息存储在间隔（几百毫秒）后将消息持久保存到磁盘，以最大限度地减少fsync（2）调用的次数，或者当一个队列处于空闲状态时。这意味着在恒定负载下，basic.ack的延迟可能会达到几百毫秒。为了提高吞吐量，强烈建议应用程序异步处理确认（作为流）或发布批量消息并等待未完成的确认。客户端库的确切API不尽相同。</p>
-<h2 id="生产者确认顺序"><a href="#生产者确认顺序" class="headerlink" title="生产者确认顺序"></a>生产者确认顺序</h2><p>在大多数情况下，RabbitMQ将按发布顺序向生产者确认消息（这适用于在单个频道上发布的消息）。但是，发布者确认是异步发出的，并且可以确认一条消息或一组消息。发出确认的确切时刻取决于消息的传递模式（持久性与瞬态）以及消息被路由到的队列的属性（请参见上文）。也就是说不同的消息可以被认为准备好在不同的时间进行确认。这意味着，与各自的消息相比，确认可以以不同的顺序到达。应用程序应尽可能不取决于确认的顺序。</p>
-<h2 id="确认并保证投放"><a href="#确认并保证投放" class="headerlink" title="确认并保证投放"></a>确认并保证投放</h2><p>如果代理在所述消息写入磁盘之前崩溃，代理将丢失持久性消息。在某些情况下，这会导致broker以令人惊讶的方式行事。</p>
-<p>考虑这种情况：</p>
-<ol>
-<li>客户端发布持久消息给持久队列</li>
-<li>客户端使用队列中的消息（注意消息是持久的并且队列持久），但还没有确认，</li>
-<li>broker死亡并重新启动</li>
-<li>客户端重新连接并开始消费消息。</li>
-</ol>
-<p>此时，客户可以合理地认为该消息将再次发送。但是重新启动导致代理丢失消息。为了保证持久性，客户应该使用确认,如果发布者的频道处于确认模式，则发布者不会收到丢失消息的确认（因为消息尚未写入磁盘）。</p>
-<h1 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h1><h2 id="Delivery-Tag"><a href="#Delivery-Tag" class="headerlink" title="Delivery Tag"></a>Delivery Tag</h2><p>递送标签是一个64位长的值，因此其最大值为9223372036854775807.由于Delivery Tag的范围是按每个通道划分的，因此发布商或消费者在实践中不太可能运行该值。</p>
-<h1 id="确认机制总结"><a href="#确认机制总结" class="headerlink" title="确认机制总结"></a>确认机制总结</h1><h2 id="生产者确认-ConfirmCallback"><a href="#生产者确认-ConfirmCallback" class="headerlink" title="生产者确认 ConfirmCallback"></a>生产者确认 ConfirmCallback</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>生产者发送至exchange或者queue成功后</p>
-<h2 id="消费者确认-ReturnCallback"><a href="#消费者确认-ReturnCallback" class="headerlink" title="消费者确认 ReturnCallback"></a>消费者确认 ReturnCallback</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.rabbitmq.com/confirms.html" target="_blank" rel="noopener">RabbitMQ确认机制</a></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
-          
-            <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/06/12/SpringBoot MQ服务确认/" rel="next" title="RabbitMQ确认机制">
-                <i class="fa fa-chevron-left"></i> RabbitMQ确认机制
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/12/SpringAMQP文档/" rel="prev" title="RabbitMQ消息确认">
-                RabbitMQ消息确认 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-  <div id="container" style="display:none"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: 'RabbitMQ消息确认',
-      theme: myTheme,
-      owner: "yuanwenjian",
-      repo: "gitment-comments",
-      oauth: {
-        client_id: '21bb0ade50d6f2c9707b',
-        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
-      }
-    });
-    gitment.render('container');
-  }
-  </script>
-
-
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/sanguosha.jpg"
-                alt="问问苑大宝" />
-            
-              <p class="site-author-name" itemprop="name">问问苑大宝</p>
-              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">64</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消费端确认"><span class="nav-number">2.</span> <span class="nav-text">消费端确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Delivery-Tags"><span class="nav-number">2.1.</span> <span class="nav-text">Delivery Tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费端确认模式与数据安全注意事项"><span class="nav-number">2.2.</span> <span class="nav-text">消费端确认模式与数据安全注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#积极确认"><span class="nav-number">2.3.</span> <span class="nav-text">积极确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一次确认多次"><span class="nav-number">2.4.</span> <span class="nav-text">一次确认多次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消极确认和重新入队列"><span class="nav-number">2.5.</span> <span class="nav-text">消极确认和重新入队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#channel设置预读取限制"><span class="nav-number">2.6.</span> <span class="nav-text">channel设置预读取限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者确认模式，预取和吞吐量"><span class="nav-number">2.7.</span> <span class="nav-text">消费者确认模式，预取和吞吐量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者失败或失去连接时：自动重新进入队列"><span class="nav-number">2.8.</span> <span class="nav-text">消费者失败或失去连接时：自动重新进入队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端错误：双重确认和未知标签"><span class="nav-number">2.9.</span> <span class="nav-text">客户端错误：双重确认和未知标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生产端确认"><span class="nav-number">3.</span> <span class="nav-text">生产端确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反向确认"><span class="nav-number">3.1.</span> <span class="nav-text">反向确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#broker将何时确定消息？"><span class="nav-number">3.2.</span> <span class="nav-text">broker将何时确定消息？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久化信息延迟"><span class="nav-number">3.3.</span> <span class="nav-text">持久化信息延迟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者确认顺序"><span class="nav-number">3.4.</span> <span class="nav-text">生产者确认顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#确认并保证投放"><span class="nav-number">3.5.</span> <span class="nav-text">确认并保证投放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#限制"><span class="nav-number">4.</span> <span class="nav-text">限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Delivery-Tag"><span class="nav-number">4.1.</span> <span class="nav-text">Delivery Tag</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确认机制总结"><span class="nav-number">5.</span> <span class="nav-text">确认机制总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者确认-ConfirmCallback"><span class="nav-number">5.1.</span> <span class="nav-text">生产者确认 ConfirmCallback</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者确认-ReturnCallback"><span class="nav-number">5.2.</span> <span class="nav-text">消费者确认 ReturnCallback</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
+        <div class="footer-inner">
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+            </script>
+            <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+                <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
-
-  
-</div>
-<!--
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+                <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
 
 
+            </div>
+            <!--
 
-  <span class="post-meta-divider">|</span>
-
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
--->
-
-
-        
+              <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
+              <span class="post-meta-divider">|</span>
+
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+
+              <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+            -->
 
 
-
-
-        
-      </div>
+        </div>
     </footer>
 
-    
-      <div class="back-to-top">
+
+    <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
-    
+    </div>
 
-  </div>
 
-  
+</div>
+
 
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+        window.Promise = null;
+    }
 </script>
 
 
+<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
+<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-
-  
-
-
-  
+<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+<script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
+<script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+<script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
+<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 <!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
+
+
+<link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+<script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+
 <!-- END LOCAL -->
 
-    
-      <style>
-        a.gitment-editor-footer-tip { display: none; }
-        .gitment-container.gitment-footer-container { display: none; }
-      </style>
-    
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
+<style>
+    a.gitment-editor-footer-tip {
+        display: none;
+    }
+
+    .gitment-container.gitment-footer-container {
+        display: none;
+    }
+</style>
+
+
+<script type="text/javascript">
+    function renderGitment() {
         var gitment = new Gitmint({
-            id: 'RabbitMQ消息确认', 
+            id: 'RabbitMQ消息确认',
             owner: 'yuanwenjian',
             repo: 'gitment-comments',
-            
+
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
+
             oauth: {
-            
-            
+
+
                 client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
-            
+
                 client_id: '21bb0ade50d6f2c9707b'
-            }});
+            }
+        });
         gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
+    }
 
 
+    renderGitment();
+
+</script>
 
 
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-  
-  
 </body>
 </html>

@@ -1,297 +1,254 @@
 <!DOCTYPE html>
 
 
-
-  
-
-
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="theme-color" content="#222">
+    <meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU"/>
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+    <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+    <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
 
+    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
+    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"/>
 
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
 
 
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
+    <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
+    <meta name="keywords" content="RabbitMQ,后端,SpringBoot,"/>
 
 
+    <meta name="description"
+          content="RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。">
+    <meta name="keywords" content="RabbitMQ,后端,SpringBoot">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="RabbitMQ确认机制">
+    <meta property="og:url" content="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/index.html">
+    <meta property="og:site_name" content="问问苑大宝">
+    <meta property="og:description"
+          content="RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。">
+    <meta property="og:locale" content="zh-Hans">
+    <meta property="og:updated_time" content="2019-08-01T15:03:17.856Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="RabbitMQ确认机制">
+    <meta name="twitter:description"
+          content="RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。">
 
 
+    <script type="text/javascript" id="hexo.configurations">
+        var NexT = window.NexT || {};
+        var CONFIG = {
+            root: '/',
+            scheme: 'Muse',
+            version: '5.1.4',
+            sidebar: {
+                "position": "left",
+                "display": "post",
+                "offset": 12,
+                "b2t": false,
+                "scrollpercent": false,
+                "onmobile": false
+            },
+            fancybox: true,
+            tabs: true,
+            motion: {
+                "enable": true,
+                "async": false,
+                "transition": {
+                    "post_block": "fadeIn",
+                    "post_header": "slideDownIn",
+                    "post_body": "slideDownIn",
+                    "coll_header": "slideLeftIn",
+                    "sidebar": "slideUpIn"
+                }
+            },
+            duoshuo: {
+                userId: '0',
+                author: '博主'
+            },
+            algolia: {
+                applicationID: '',
+                apiKey: '',
+                indexName: '',
+                hits: {"per_page": 10},
+                labels: {
+                    "input_placeholder": "Search for Posts",
+                    "hits_empty": "We didn't find any results for the search: ${query}",
+                    "hits_stats": "${hits} results found in ${time} ms"
+                }
+            }
+        };
+    </script>
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/"/>
 
 
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="RabbitMQ,后端,SpringBoot," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。">
-<meta name="keywords" content="RabbitMQ,后端,SpringBoot">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ确认机制">
-<meta property="og:url" content="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/index.html">
-<meta property="og:site_name" content="问问苑大宝">
-<meta property="og:description" content="RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-01T15:03:17.856Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ确认机制">
-<meta name="twitter:description" content="RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/"/>
-
-
-
-
-
-  <title>RabbitMQ确认机制 | 问问苑大宝</title>
-  
-
-
-
-
-
-
+    <title>RabbitMQ确认机制 | 问问苑大宝</title>
 
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-  
-    
-  
 
-  <div class="container sidebar-position-left page-post-detail">
+<div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+    <a href="https://github.com/yuanwenjian" target="_blank"><img
+            style="position: absolute; top: 0; right: 0; border: 0;"
+            src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+            alt="Fork me on GitHub"
+            data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">问问苑大宝</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
+        <div class="header-inner">
+            <div class="site-brand-wrapper">
+                <div class="site-meta ">
 
 
+                    <div class="custom-logo-site-title">
+                        <a href="/" class="brand" rel="start">
+                            <span class="logo-line-before"><i></i></span>
+                            <span class="site-title">问问苑大宝</span>
+                            <span class="logo-line-after"><i></i></span>
+                        </a>
+                    </div>
 
- </div>
+                    <p class="site-subtitle"></p>
+
+                </div>
+
+                <div class="site-nav-toggle">
+                    <button>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                        <span class="btn-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="site-nav">
+
+
+                <ul id="menu" class="menu">
+
+
+                    <li class="menu-item menu-item-home">
+                        <a href="/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
+
+                            首页
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-about">
+                        <a href="/about/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
+
+                            关于
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-tags">
+                        <a href="/tags/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
+
+                            标签
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-categories">
+                        <a href="/categories/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-th"></i> <br/>
+
+                            分类
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item menu-item-archives">
+                        <a href="/archives/" rel="section">
+
+                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
+
+                            归档
+                        </a>
+                    </li>
+
+
+                </ul>
+
+
+            </nav>
+
+
+        </div>
     </header>
 
     <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+        <div class="main-inner">
+            <div class="content-wrap">
+                <div id="content" class="content">
 
-  <div id="posts" class="posts-expand">
-    
 
-  
+                    <div id="posts" class="posts-expand">
 
-  
-  
-  
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/">
+                        <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+                            <div class="post-block">
+                                <link itemprop="mainEntityOfPage"
+                                      href="http://yoursite.com/2018/06/12/SpringBoot MQ服务确认/">
+
+                                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="问问苑大宝">
     </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">RabbitMQ确认机制</h1>
-        
+                                <header class="post-header">
 
-        <div class="post-meta">
+
+                                    <h1 class="post-title" itemprop="name headline">RabbitMQ确认机制</h1>
+
+
+                                    <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -310,8 +267,8 @@
             
           </span>
 
-          
-            <span class="post-category" >
+
+                                        <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -354,556 +311,668 @@
                 
               
             </span>
-          
 
-          
-            
-              <span class="post-comments-count">
+
+                                        <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/06/12/SpringBoot MQ服务确认/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/12/SpringBoot MQ服务确认/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/12/SpringBoot MQ服务确认/"
+                        itemprop="commentsCount"></span>
                 </a>
               </span>
-            
-          
 
-          
-          
 
-          
+                                        <div class="post-description">
+                                            RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。
+                                            。
+                                        </div>
 
-          
 
-          
-              <div class="post-description">
-                  RabbitMQ提供了transaction、confirm两种消息确认机制。transaction即事务机制，手动提交和回滚；confirm机制提供了Confirmlistener和waitForConfirms两种方式。confirm机制效率明显会高于transaction机制，但后者的优势在于强一致性。建议使用conrim机制。 。
-              </div>
-          
+                                    </div>
+                                </header>
 
-          
+
+                                <div class="post-body" itemprop="articleBody">
+
+
+                                    <h1 id="RabbitMQ消息发送流程"><a href="#RabbitMQ消息发送流程" class="headerlink"
+                                                               title="RabbitMQ消息发送流程"></a>RabbitMQ消息发送流程</h1>
+                                    <p>RabbMQ里面有几个重要概念 producer(生产者),binding(绑定),exchange(交换机),queue(队列),routing
+                                        key(路由键),Consumer(消费者) 下面mq发送流程及各个组件是如何关联的</p>
+                                    <ol>
+                                        <li>producer发送消息</li>
+                                        <li>发送消息至queue,mq发送消息至exchange,发送消息由exchange完成,mq根据routing key 将queue绑定到exchange
+                                            ,这个关系称为为binding.消息发送会携带routing key(包括空的key).然后mq根据bingings 匹配routing key
+                                            ,如果匹配成功发送至queue中
+                                        </li>
+                                        <li>消费者从queue获取消息消费</li>
+                                    </ol>
+                                    <h1 id="消息保证准确性"><a href="#消息保证准确性" class="headerlink" title="消息保证准确性"></a>消息保证准确性
+                                    </h1>
+                                    <p>从上面可知消息发送过程中存在丢失的隐患,比如消息发送exchange失败,exchange发送queue失败,消费者消费时失败.所以需要保证消息不丢失<br>消费者确认在MQ叫做
+                                        acknowlegements 机制；生产确认则叫做 publisher confirms。<br>只包括confrim 机制</p>
+                                    <h1 id="生产者确认"><a href="#生产者确认" class="headerlink" title="生产者确认"></a>生产者确认</h1>
+                                    <p>
+                                        生产者将channel设置成confirm模式，一旦channel进入confirm模式，所有在该channel上面发布的消息都会被指派一个唯一的ID(Correlation
+                                        Id从1开始)。一旦消息被投递到所匹配的队列之后，broker就会发送一个确认给生产者（包含消息的唯一ID）。这就使得生产者知道消息已经正确到达目的队列了，如果消息和队列是可持久化的，那么确认消息会将消息写入磁盘之后发出。broker回传给生产者的确认消息中deliver-tag域包含了确认消息的序列号，此外broker也可以设置basic.ack的multiple域，表示到这个序列号之前的所有消息都已经得到了处理。</p>
+                                    <p>
+                                        confirm模式最大的好处在于他是异步的，一旦发布一条消息，生产者应用程序就可以在等channel返回确认的同时继续发送下一条消息，当消息最终得到确认之后，生产者应用便可以通过回调方法来处理该确认消息，如果RabbitMQ因为自身内部错误导致消息丢失，就会发送一条nack消息，生产者应用程序同样可以在回调方法中处理该nack消息。</p>
+                                    <p>在channel 被设置成 confirm 模式之后，所有被 publish 的后续消息都将被 confirm（即 ack） 或者被nack一次。但是没有对消息被
+                                        confirm 的快慢做任何保证，并且同一条消息不会既被 confirm又被nack
+                                        （注：已经在transaction事务模式的channel是不能再设置成confirm模式的，即这两种模式是不能共存的）</p>
+                                    <h1 id="消费者确认"><a href="#消费者确认" class="headerlink" title="消费者确认"></a>消费者确认</h1>
+                                    <p>
+                                        为了确保消息或者任务不会丢失，RabbitMQ支持消息确认–ACK。ACK机制是消费端从RabbitMQ收到消息并处理完成后，反馈给RabbitMQ，RabbitMQ收到反馈后才将此消息从队列中删除。如果一个消费者在处理消息时挂掉（网络不稳定、服务器异常、网站故障等原因导致频道、连接关闭或者TCP连接丢失等），那么他就不会有ACK反馈，RabbitMQ会认为这个消息没有正常消费，会将此消息重新放入队列中。如果有其他消费者同时在线，RabbitMQ会立即将这个消息推送给这个在线的消费者。这种机制保证了在消费者服务器故障的时候，能不丢失任何消息和任务。</p>
+                                    <p>
+                                        忘记通过basicAck返回确认信息是常见的错误。这个错误非常严重，将导致消费者客户端退出或者关闭后，消息会被退回RabbitMQ服务器，这会使RabbitMQ服务器内存爆满，而且RabbitMQ也不会主动删除这些被退回的消息。如果要监控这种错误，可以使用rabbitmqctl
+                                        messages_unacknowledged命令打印出出相关的信息。</p>
+                                    <h2 id="消费者忘记确认"><a href="#消费者忘记确认" class="headerlink" title="消费者忘记确认"></a>消费者忘记确认
+                                    </h2>
+                                    <p>
+                                        当autoAck参数置为false，对于RabbitMQ服务端而言，队列中的消息分成了两个部分：一部分是等待投递给消费者的消息；一部分是已经投递给消费者，但是还没有收到消费者ack的消息。如果RabbitMQ一直没有收到消费者的确认信号，并且消费此消息的消费者已经断开连接，则RabbitMQ会安排该消息重新进入队列，等待投递给下一个消费者，当然也有可能还是原来的那个消费者。</p>
+                                    <p>
+                                        RabbitMQ不会为未确认的消息设置过期时间，它判断此消息是否需要重新投递给消费者的唯一依据是消费该消息的消费者连接是否已经断开，这么设计的原因是RabbitMQ允许消费者消费一条消息的时间可以很久很久。</p>
+                                    <p>
+                                        如果消息消费失败，也可以调用Basic.Reject或者Basic.Nack来拒绝当前消息而不是确认，如果只是简单的拒绝那么消息会丢失，需要将相应的requeue参数设置为true，那么RabbitMQ会重新将这条消息存入队列，以便可以发送给下一个订阅的消费者。如果requeue参数设置为false的话，RabbitMQ立即会把消息从队列中移除，而不会把它发送给新的消费者。</p>
+                                    <h1 id="spring-boot代码示例"><a href="#spring-boot代码示例" class="headerlink"
+                                                                title="spring boot代码示例"></a>spring boot代码示例</h1>
+                                    <p>confrim 分为两部分，一种情况为生产者到exchange,另一种为exchange到队列，以下为SpringBoot 代码</p>
+                                    <p>spring boot配置<br>
+                                    <figure class="highlight yml">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="attr">spring:</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">    rabbitmq:</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">        addresses:</span> <span class="string">localhost</span></span><br><span
+                                                            class="line"><span class="attr">        port:</span> <span
+                                                            class="number">5672</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">        username:</span> <span class="string">guest</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">        password:</span> <span class="string">guest</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">        publisher-confirms:</span> <span
+                                                            class="literal">true</span> <span class="comment"># 开启消息至exchange确认</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">        publisherReturns:</span> <span
+                                                            class="literal">true</span> <span class="comment"># 开启消息到quene确认</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">        listener:</span></span><br><span
+                                                            class="line"><span
+                                                            class="attr">          simple:</span></span><br><span
+                                                            class="line"><span class="attr">            acknowledge-mode:</span> <span
+                                                            class="string">manual</span> <span class="comment"># 将消费者确认改为手动</span></span><br><span
+                                                            class="line"><span class="attr">        virtual-host:</span> <span
+                                                            class="string">/yuanwj</span></span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <p>配置RabbitTemplate 注意将mandatory
+                                        设为ture.该标志设为true时,如果无法找到合适queue时,会将消息返回生成者,为false时,会直接丢弃<br>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span
+                                                            class="meta">@Bean</span> </span><br><span
+                                                            class="line"><span class="function"><span class="keyword">public</span> RabbitTemplate <span
+                                                            class="title">rabbitTemplate</span><span class="params">(CachingConnectionFactory connectionFactory)</span> </span>&#123;</span><br><span
+                                                            class="line">    RabbitTemplate template = <span
+                                                            class="keyword">new</span> RabbitTemplate(connectionFactory);</span><br><span
+                                                            class="line">    template.setConfirmCallback(confirmCallback);</span><br><span
+                                                            class="line">    template.setReturnCallback(returnCallback);</span><br><span
+                                                            class="line">    template.setMandatory(<span
+                                                            class="keyword">true</span>);</span><br><span class="line">    <span
+                                                            class="keyword">return</span> template;</span><br><span
+                                                            class="line">&#125;</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <p>配置confirm</p>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="keyword">public</span> <span
+                                                            class="class"><span class="keyword">class</span> <span
+                                                            class="title">MqConfirmCallback</span> <span
+                                                            class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span
+                                                            class="title">ConfirmCallback</span> </span>&#123;</span><br><span
+                                                            class="line">    <span class="keyword">private</span> <span
+                                                            class="keyword">static</span> <span
+                                                            class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqConfirmCallback.class);</span><br><span
+                                                            class="line">    <span
+                                                            class="meta">@Override</span></span><br><span class="line">    <span
+                                                            class="function"><span class="keyword">public</span> <span
+                                                            class="keyword">void</span> <span
+                                                            class="title">confirm</span><span class="params">(CorrelationData correlationData, <span
+                                                            class="keyword">boolean</span> ack, String s)</span> </span>&#123;</span><br><span
+                                                            class="line">        <span class="keyword">if</span> (ack)&#123;</span><br><span
+                                                            class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送成功"</span>,correlationData);</span><br><span
+                                                            class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span
+                                                            class="line"></span><br><span class="line">            LOG.debug(<span
+                                                            class="string">"消息id为&#123;&#125;发送失败,原因为&#123;&#125;"</span>,correlationData,s);</span><br><span
+                                                            class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span
+                                                            class="line">&#125;</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    <p>配置return<br>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br><span
+                                                            class="line">9</span><br><span
+                                                            class="line">10</span><br><span
+                                                            class="line">11</span><br><span
+                                                            class="line">12</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="keyword">public</span> <span
+                                                            class="class"><span class="keyword">class</span> <span
+                                                            class="title">MqReturnCallback</span> <span class="keyword">implements</span> <span
+                                                            class="title">RabbitTemplate</span>.<span class="title">ReturnCallback</span> </span>&#123;</span><br><span
+                                                            class="line">    <span class="keyword">private</span> <span
+                                                            class="keyword">static</span> <span
+                                                            class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqReturnCallback.class);</span><br><span
+                                                            class="line"></span><br><span class="line">    <span
+                                                            class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span
+                                                            class="line"></span><br><span class="line">    <span
+                                                            class="meta">@Override</span></span><br><span class="line">    <span
+                                                            class="function"><span class="keyword">public</span> <span
+                                                            class="keyword">void</span> <span class="title">returnedMessage</span><span
+                                                            class="params">(Message message, <span
+                                                            class="keyword">int</span> replyCode, String replyText, String exchange, String routingKey)</span> </span>&#123;</span><br><span
+                                                            class="line"></span><br><span class="line">        LOG.info(<span
+                                                            class="string">"消息发送失败,replyCode:&#123;&#125;,replyText:&#123;&#125;,exchange:&#123;&#125;,routingKey:&#123;&#125;"</span>,</span><br><span
+                                                            class="line">                replyCode, replyText,exchange,routingKey);</span><br><span
+                                                            class="line">    &#125;</span><br><span
+                                                            class="line">&#125;</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <p>消费者确认<br>
+                                    <figure class="highlight java">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span
+                                                            class="line">2</span><br><span
+                                                            class="line">3</span><br><span
+                                                            class="line">4</span><br><span
+                                                            class="line">5</span><br><span
+                                                            class="line">6</span><br><span
+                                                            class="line">7</span><br><span
+                                                            class="line">8</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line"><span class="meta">@RabbitListener</span>(queues = <span
+                                                            class="string">"yuanwj"</span>)</span><br><span
+                                                            class="line"><span class="function"><span class="keyword">public</span> <span
+                                                            class="keyword">void</span> <span
+                                                            class="title">receiver</span><span class="params">(Message message, Channel channel)</span> <span
+                                                            class="keyword">throws</span> Exception</span>&#123;</span><br><span
+                                                            class="line">    System.out.println(Thread.currentThread().getName()+<span
+                                                            class="string">"============="</span>);</span><br><span
+                                                            class="line">    String key = message.getMessageProperties().getReceivedRoutingKey();</span><br><span
+                                                            class="line">    LOG.debug(<span class="string">"yuanwj消费成功,&#123;&#125;,&#123;&#125;"</span>, key,<span
+                                                            class="string">"aaaaaaa"</span>);</span><br><span
+                                                            class="line">    channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span
+                                                            class="keyword">true</span>); <span class="comment">//手动确认,参数一为消息tag,参数二为是否将这个tag之前标记,</span></span><br><span
+                                                            class="line"></span><br><span class="line">&#125;</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>
+                                    <p>测试方法,在发送消息前断点,然后通过mq管理台,删除exchange或队列,观察方法</p>
+                                    <p>情况一 正常操作<br>
+                                    <figure class="highlight plain">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line">2019-08-01 14:12:45.907 DEBUG 7340 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <p>到达exchange,并且ack 为true,并且队列确认没有执行</p>
+                                    <p>情况一 删除交换机</p>
+                                    <figure class="highlight plain">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line">2019-08-01 14:11:43.708 DEBUG 7009 --- [nectionFactory1] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送失败,原因为channel error; protocol method: #method&lt;channel.close&gt;(reply-code=404, reply-text=NOT_FOUND - no exchange &apos;yuanwj&apos; in vhost &apos;/yuanwj&apos;, class-id=60, method-id=40)</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    <p>未到达exchange ,ack为false<br>情况二 删除队列<br>
+                                    <figure class="highlight plain">
+                                        <table>
+                                            <tr>
+                                                <td class="gutter">
+                                                    <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                                                </td>
+                                                <td class="code">
+                                                    <pre><span class="line">2019-08-01 14:00:12.563  INFO 3927 --- [ 127.0.0.1:5672] c.y.springmq.config.MqReturnCallback     : 消息发送失败,replyCode:312,replyText:NO_ROUTE,exchange:yuanwj,routingKey:lazy.orange.fox</span><br><span
+                                                            class="line">2019-08-01 14:00:12.568 DEBUG 3927 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功</span><br></pre>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </figure>
+                                    </p>
+                                    <p>说明消息到达exchange,但是并未到达队列</p>
+
+
+                                </div>
+
+
+                                <footer class="post-footer">
+
+                                    <div class="post-tags">
+
+                                        <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
+
+                                        <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+
+                                        <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+
+                                    </div>
+
+
+                                    <div class="post-nav">
+                                        <div class="post-nav-next post-nav-item">
+
+                                            <a href="/2018/06/10/RabbitMQ笔记/" rel="next" title="RabbitMQ笔记">
+                                                <i class="fa fa-chevron-left"></i> RabbitMQ笔记
+                                            </a>
+
+                                        </div>
+
+                                        <span class="post-nav-divider"></span>
+
+                                        <div class="post-nav-prev post-nav-item">
+
+                                            <a href="/2018/06/12/RabbitMQ确认机制/" rel="prev" title="RabbitMQ消息确认">
+                                                RabbitMQ消息确认 <i class="fa fa-chevron-right"></i>
+                                            </a>
+
+                                        </div>
+                                    </div>
+
+
+                                </footer>
+                            </div>
+
+
+                        </article>
+
+
+                        <div class="post-spread">
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+                <div id="container" style="display:none"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                    const myTheme = {
+                        render(state, instance) {
+                            const container = document.createElement('div');
+                            container.lang = "en-US";
+                            container.className = 'gitment-container gitment-root-container';
+                            container.appendChild(instance.renderHeader(state, instance));
+                            container.appendChild(instance.renderEditor(state, instance));
+                            container.appendChild(instance.renderComments(state, instance));
+                            container.appendChild(instance.renderFooter(state, instance));
+                            return container;
+                        }
+                    }
+
+                    function showGitment() {
+                        $("#gitment_title").attr("style", "display:none");
+                        $("#container").attr("style", "").addClass("gitment_container");
+                        var gitment = new Gitment({
+                            id: 'RabbitMQ确认机制',
+                            theme: myTheme,
+                            owner: "yuanwenjian",
+                            repo: "gitment-comments",
+                            oauth: {
+                                client_id: '21bb0ade50d6f2c9707b',
+                                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+                            }
+                        });
+                        gitment.render('container');
+                    }
+                </script>
+
+
+            </div>
+
+
+            <div class="sidebar-toggle">
+                <div class="sidebar-toggle-line-wrap">
+                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+                </div>
+            </div>
+
+            <aside id="sidebar" class="sidebar">
+
+                <div class="sidebar-inner">
+
+
+                    <ul class="sidebar-nav motion-element">
+                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+                            站点概览
+                        </li>
+                    </ul>
+
+
+                    <section class="site-overview-wrap sidebar-panel">
+                        <div class="site-overview">
+                            <div class="site-author motion-element" itemprop="author" itemscope
+                                 itemtype="http://schema.org/Person">
+
+                                <img class="site-author-image" itemprop="image"
+                                     src="/images/sanguosha.jpg"
+                                     alt="问问苑大宝"/>
+
+                                <p class="site-author-name" itemprop="name">问问苑大宝</p>
+                                <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+                            </div>
+
+                            <nav class="site-state motion-element">
+
+
+                                <div class="site-state-item site-state-posts">
+
+                                    <a href="/archives/">
+
+                                        <span class="site-state-item-count">64</span>
+                                        <span class="site-state-item-name">日志</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="site-state-item site-state-categories">
+                                    <a href="/categories/index.html">
+                                        <span class="site-state-item-count">31</span>
+                                        <span class="site-state-item-name">分类</span>
+                                    </a>
+                                </div>
+
+
+                                <div class="site-state-item site-state-tags">
+                                    <a href="/tags/index.html">
+                                        <span class="site-state-item-count">30</span>
+                                        <span class="site-state-item-name">标签</span>
+                                    </a>
+                                </div>
+
+
+                            </nav>
+
+
+                        </div>
+                    </section>
+
+
+                    <!--noindex-->
+                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+                        <div class="post-toc">
+
+
+                            <div class="post-toc-content">
+                                <ol class="nav">
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#RabbitMQ消息发送流程"><span
+                                            class="nav-number">1.</span> <span
+                                            class="nav-text">RabbitMQ消息发送流程</span></a></li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#消息保证准确性"><span
+                                            class="nav-number">2.</span> <span class="nav-text">消息保证准确性</span></a></li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#生产者确认"><span
+                                            class="nav-number">3.</span> <span class="nav-text">生产者确认</span></a></li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#消费者确认"><span
+                                            class="nav-number">4.</span> <span class="nav-text">消费者确认</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#消费者忘记确认"><span
+                                                    class="nav-number">4.1.</span> <span class="nav-text">消费者忘记确认</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#spring-boot代码示例"><span
+                                            class="nav-number">5.</span> <span
+                                            class="nav-text">spring boot代码示例</span></a>
+                                        <ol class="nav-child">
+                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span
+                                                    class="nav-number">5.1.</span> <span class="nav-text">测试</span></a>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+
+
+                        </div>
+                    </section>
+                    <!--/noindex-->
+
+
+                </div>
+            </aside>
+
+
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="RabbitMQ消息发送流程"><a href="#RabbitMQ消息发送流程" class="headerlink" title="RabbitMQ消息发送流程"></a>RabbitMQ消息发送流程</h1><p>RabbMQ里面有几个重要概念 producer(生产者),binding(绑定),exchange(交换机),queue(队列),routing key(路由键),Consumer(消费者) 下面mq发送流程及各个组件是如何关联的</p>
-<ol>
-<li>producer发送消息</li>
-<li>发送消息至queue,mq发送消息至exchange,发送消息由exchange完成,mq根据routing key 将queue绑定到exchange ,这个关系称为为binding.消息发送会携带routing key(包括空的key).然后mq根据bingings 匹配routing key ,如果匹配成功发送至queue中</li>
-<li>消费者从queue获取消息消费</li>
-</ol>
-<h1 id="消息保证准确性"><a href="#消息保证准确性" class="headerlink" title="消息保证准确性"></a>消息保证准确性</h1><p>从上面可知消息发送过程中存在丢失的隐患,比如消息发送exchange失败,exchange发送queue失败,消费者消费时失败.所以需要保证消息不丢失<br>消费者确认在MQ叫做 acknowlegements 机制；生产确认则叫做 publisher confirms。<br>只包括confrim 机制</p>
-<h1 id="生产者确认"><a href="#生产者确认" class="headerlink" title="生产者确认"></a>生产者确认</h1><p>生产者将channel设置成confirm模式，一旦channel进入confirm模式，所有在该channel上面发布的消息都会被指派一个唯一的ID(Correlation Id从1开始)。一旦消息被投递到所匹配的队列之后，broker就会发送一个确认给生产者（包含消息的唯一ID）。这就使得生产者知道消息已经正确到达目的队列了，如果消息和队列是可持久化的，那么确认消息会将消息写入磁盘之后发出。broker回传给生产者的确认消息中deliver-tag域包含了确认消息的序列号，此外broker也可以设置basic.ack的multiple域，表示到这个序列号之前的所有消息都已经得到了处理。</p>
-<p>confirm模式最大的好处在于他是异步的，一旦发布一条消息，生产者应用程序就可以在等channel返回确认的同时继续发送下一条消息，当消息最终得到确认之后，生产者应用便可以通过回调方法来处理该确认消息，如果RabbitMQ因为自身内部错误导致消息丢失，就会发送一条nack消息，生产者应用程序同样可以在回调方法中处理该nack消息。</p>
-<p>在channel 被设置成 confirm 模式之后，所有被 publish 的后续消息都将被 confirm（即 ack） 或者被nack一次。但是没有对消息被 confirm 的快慢做任何保证，并且同一条消息不会既被 confirm又被nack （注：已经在transaction事务模式的channel是不能再设置成confirm模式的，即这两种模式是不能共存的）</p>
-<h1 id="消费者确认"><a href="#消费者确认" class="headerlink" title="消费者确认"></a>消费者确认</h1><p>为了确保消息或者任务不会丢失，RabbitMQ支持消息确认–ACK。ACK机制是消费端从RabbitMQ收到消息并处理完成后，反馈给RabbitMQ，RabbitMQ收到反馈后才将此消息从队列中删除。如果一个消费者在处理消息时挂掉（网络不稳定、服务器异常、网站故障等原因导致频道、连接关闭或者TCP连接丢失等），那么他就不会有ACK反馈，RabbitMQ会认为这个消息没有正常消费，会将此消息重新放入队列中。如果有其他消费者同时在线，RabbitMQ会立即将这个消息推送给这个在线的消费者。这种机制保证了在消费者服务器故障的时候，能不丢失任何消息和任务。</p>
-<p>忘记通过basicAck返回确认信息是常见的错误。这个错误非常严重，将导致消费者客户端退出或者关闭后，消息会被退回RabbitMQ服务器，这会使RabbitMQ服务器内存爆满，而且RabbitMQ也不会主动删除这些被退回的消息。如果要监控这种错误，可以使用rabbitmqctl messages_unacknowledged命令打印出出相关的信息。</p>
-<h2 id="消费者忘记确认"><a href="#消费者忘记确认" class="headerlink" title="消费者忘记确认"></a>消费者忘记确认</h2><p>当autoAck参数置为false，对于RabbitMQ服务端而言，队列中的消息分成了两个部分：一部分是等待投递给消费者的消息；一部分是已经投递给消费者，但是还没有收到消费者ack的消息。如果RabbitMQ一直没有收到消费者的确认信号，并且消费此消息的消费者已经断开连接，则RabbitMQ会安排该消息重新进入队列，等待投递给下一个消费者，当然也有可能还是原来的那个消费者。</p>
-<p>RabbitMQ不会为未确认的消息设置过期时间，它判断此消息是否需要重新投递给消费者的唯一依据是消费该消息的消费者连接是否已经断开，这么设计的原因是RabbitMQ允许消费者消费一条消息的时间可以很久很久。</p>
-<p>如果消息消费失败，也可以调用Basic.Reject或者Basic.Nack来拒绝当前消息而不是确认，如果只是简单的拒绝那么消息会丢失，需要将相应的requeue参数设置为true，那么RabbitMQ会重新将这条消息存入队列，以便可以发送给下一个订阅的消费者。如果requeue参数设置为false的话，RabbitMQ立即会把消息从队列中移除，而不会把它发送给新的消费者。</p>
-<h1 id="spring-boot代码示例"><a href="#spring-boot代码示例" class="headerlink" title="spring boot代码示例"></a>spring boot代码示例</h1><p>confrim 分为两部分，一种情况为生产者到exchange,另一种为exchange到队列，以下为SpringBoot 代码</p>
-<p>spring boot配置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">    rabbitmq:</span></span><br><span class="line"><span class="attr">        addresses:</span> <span class="string">localhost</span></span><br><span class="line"><span class="attr">        port:</span> <span class="number">5672</span></span><br><span class="line"><span class="attr">        username:</span> <span class="string">guest</span></span><br><span class="line"><span class="attr">        password:</span> <span class="string">guest</span></span><br><span class="line"><span class="attr">        publisher-confirms:</span> <span class="literal">true</span> <span class="comment"># 开启消息至exchange确认</span></span><br><span class="line"><span class="attr">        publisherReturns:</span> <span class="literal">true</span> <span class="comment"># 开启消息到quene确认</span></span><br><span class="line"><span class="attr">        listener:</span></span><br><span class="line"><span class="attr">          simple:</span></span><br><span class="line"><span class="attr">            acknowledge-mode:</span> <span class="string">manual</span> <span class="comment"># 将消费者确认改为手动</span></span><br><span class="line"><span class="attr">        virtual-host:</span> <span class="string">/yuanwj</span></span><br></pre></td></tr></table></figure></p>
-<p>配置RabbitTemplate 注意将mandatory 设为ture.该标志设为true时,如果无法找到合适queue时,会将消息返回生成者,为false时,会直接丢弃<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span> </span><br><span class="line"><span class="function"><span class="keyword">public</span> RabbitTemplate <span class="title">rabbitTemplate</span><span class="params">(CachingConnectionFactory connectionFactory)</span> </span>&#123;</span><br><span class="line">    RabbitTemplate template = <span class="keyword">new</span> RabbitTemplate(connectionFactory);</span><br><span class="line">    template.setConfirmCallback(confirmCallback);</span><br><span class="line">    template.setReturnCallback(returnCallback);</span><br><span class="line">    template.setMandatory(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">return</span> template;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>配置confirm</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqConfirmCallback</span> <span class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span class="title">ConfirmCallback</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqConfirmCallback.class);</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">confirm</span><span class="params">(CorrelationData correlationData, <span class="keyword">boolean</span> ack, String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (ack)&#123;</span><br><span class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送成功"</span>,correlationData);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            LOG.debug(<span class="string">"消息id为&#123;&#125;发送失败,原因为&#123;&#125;"</span>,correlationData,s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置return<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqReturnCallback</span> <span class="keyword">implements</span> <span class="title">RabbitTemplate</span>.<span class="title">ReturnCallback</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(MqReturnCallback.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnedMessage</span><span class="params">(Message message, <span class="keyword">int</span> replyCode, String replyText, String exchange, String routingKey)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        LOG.info(<span class="string">"消息发送失败,replyCode:&#123;&#125;,replyText:&#123;&#125;,exchange:&#123;&#125;,routingKey:&#123;&#125;"</span>,</span><br><span class="line">                replyCode, replyText,exchange,routingKey);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>消费者确认<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RabbitListener</span>(queues = <span class="string">"yuanwj"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiver</span><span class="params">(Message message, Channel channel)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    System.out.println(Thread.currentThread().getName()+<span class="string">"============="</span>);</span><br><span class="line">    String key = message.getMessageProperties().getReceivedRoutingKey();</span><br><span class="line">    LOG.debug(<span class="string">"yuanwj消费成功,&#123;&#125;,&#123;&#125;"</span>, key,<span class="string">"aaaaaaa"</span>);</span><br><span class="line">    channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="keyword">true</span>); <span class="comment">//手动确认,参数一为消息tag,参数二为是否将这个tag之前标记,</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>测试方法,在发送消息前断点,然后通过mq管理台,删除exchange或队列,观察方法</p>
-<p>情况一 正常操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019-08-01 14:12:45.907 DEBUG 7340 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功</span><br></pre></td></tr></table></figure></p>
-<p>到达exchange,并且ack 为true,并且队列确认没有执行</p>
-<p>情况一 删除交换机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019-08-01 14:11:43.708 DEBUG 7009 --- [nectionFactory1] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送失败,原因为channel error; protocol method: #method&lt;channel.close&gt;(reply-code=404, reply-text=NOT_FOUND - no exchange &apos;yuanwj&apos; in vhost &apos;/yuanwj&apos;, class-id=60, method-id=40)</span><br></pre></td></tr></table></figure>
-<p>未到达exchange ,ack为false<br>情况二 删除队列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-08-01 14:00:12.563  INFO 3927 --- [ 127.0.0.1:5672] c.y.springmq.config.MqReturnCallback     : 消息发送失败,replyCode:312,replyText:NO_ROUTE,exchange:yuanwj,routingKey:lazy.orange.fox</span><br><span class="line">2019-08-01 14:00:12.568 DEBUG 3927 --- [ 127.0.0.1:5672] c.y.springmq.config.MqConfirmCallback    : 消息id为null发送成功</span><br></pre></td></tr></table></figure></p>
-<p>说明消息到达exchange,但是并未到达队列</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
-          
-            <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
-          
-            <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/06/10/RabbitMQ笔记/" rel="next" title="RabbitMQ笔记">
-                <i class="fa fa-chevron-left"></i> RabbitMQ笔记
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/12/RabbitMQ确认机制/" rel="prev" title="RabbitMQ消息确认">
-                RabbitMQ消息确认 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-  <div id="container" style="display:none"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const myTheme = {
-    render(state, instance) {
-      const container = document.createElement('div');
-      container.lang = "en-US";
-      container.className = 'gitment-container gitment-root-container';
-      container.appendChild(instance.renderHeader(state, instance));
-      container.appendChild(instance.renderEditor(state, instance));
-      container.appendChild(instance.renderComments(state, instance));
-      container.appendChild(instance.renderFooter(state, instance));
-      return container;
-    }
-  }
-  function showGitment() {
-    $("#gitment_title").attr("style", "display:none");
-    $("#container").attr("style", "").addClass("gitment_container");
-    var gitment = new Gitment({
-      id: 'RabbitMQ确认机制',
-      theme: myTheme,
-      owner: "yuanwenjian",
-      repo: "gitment-comments",
-      oauth: {
-        client_id: '21bb0ade50d6f2c9707b',
-        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
-      }
-    });
-    gitment.render('container');
-  }
-  </script>
-
-
-  
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/sanguosha.jpg"
-                alt="问问苑大宝" />
-            
-              <p class="site-author-name" itemprop="name">问问苑大宝</p>
-              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">64</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">31</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RabbitMQ消息发送流程"><span class="nav-number">1.</span> <span class="nav-text">RabbitMQ消息发送流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消息保证准确性"><span class="nav-number">2.</span> <span class="nav-text">消息保证准确性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生产者确认"><span class="nav-number">3.</span> <span class="nav-text">生产者确认</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消费者确认"><span class="nav-number">4.</span> <span class="nav-text">消费者确认</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#消费者忘记确认"><span class="nav-number">4.1.</span> <span class="nav-text">消费者忘记确认</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-boot代码示例"><span class="nav-number">5.</span> <span class="nav-text">spring boot代码示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">5.1.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
+        <div class="footer-inner">
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+            </script>
+            <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+                <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
-
-  
-</div>
-<!--
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+                <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
 
 
+            </div>
+            <!--
 
-  <span class="post-meta-divider">|</span>
-
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
--->
-
-
-        
+              <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
+              <span class="post-meta-divider">|</span>
+
+            <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+
+              <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+            -->
 
 
-
-
-        
-      </div>
+        </div>
     </footer>
 
-    
-      <div class="back-to-top">
+
+    <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
-    
+    </div>
 
-  </div>
 
-  
+</div>
+
 
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+        window.Promise = null;
+    }
 </script>
 
 
+<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
+<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
+<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-
-  
-
-
-  
+<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
+<script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
+<script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+<script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
+<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 <!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
+
+
+<link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+<script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+
 <!-- END LOCAL -->
 
-    
-      <style>
-        a.gitment-editor-footer-tip { display: none; }
-        .gitment-container.gitment-footer-container { display: none; }
-      </style>
-    
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
+<style>
+    a.gitment-editor-footer-tip {
+        display: none;
+    }
+
+    .gitment-container.gitment-footer-container {
+        display: none;
+    }
+</style>
+
+
+<script type="text/javascript">
+    function renderGitment() {
         var gitment = new Gitmint({
-            id: 'RabbitMQ确认机制', 
+            id: 'RabbitMQ确认机制',
             owner: 'yuanwenjian',
             repo: 'gitment-comments',
-            
+
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
+
             oauth: {
-            
-            
+
+
                 client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
-            
+
                 client_id: '21bb0ade50d6f2c9707b'
-            }});
+            }
+        });
         gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
+    }
 
 
+    renderGitment();
+
+</script>
 
 
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-  
-  
 </body>
 </html>
