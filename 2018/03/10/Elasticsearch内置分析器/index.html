@@ -1,254 +1,297 @@
 <!DOCTYPE html>
 
 
+
+  
+
+
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta name="theme-color" content="#222">
-    <meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU"/>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
 
 
-    <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-    <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
-    <meta http-equiv="Cache-Control" content="no-transform"/>
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
 
-    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
 
-    <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"/>
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-    <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
-    <meta name="keywords" content="elasticsearch,"/>
 
 
-    <meta name="description"
-          content="分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。">
-    <meta name="keywords" content="elasticsearch">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Elasticsearch内置分析器">
-    <meta property="og:url" content="http://yoursite.com/2018/03/10/Elasticsearch内置分析器/index.html">
-    <meta property="og:site_name" content="问问苑大宝">
-    <meta property="og:description"
-          content="分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。">
-    <meta property="og:locale" content="zh-Hans">
-    <meta property="og:updated_time" content="2020-06-12T11:23:47.950Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Elasticsearch内置分析器">
-    <meta name="twitter:description"
-          content="分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。">
 
 
-    <script type="text/javascript" id="hexo.configurations">
-        var NexT = window.NexT || {};
-        var CONFIG = {
-            root: '/',
-            scheme: 'Muse',
-            version: '5.1.4',
-            sidebar: {
-                "position": "left",
-                "display": "post",
-                "offset": 12,
-                "b2t": false,
-                "scrollpercent": false,
-                "onmobile": false
-            },
-            fancybox: true,
-            tabs: true,
-            motion: {
-                "enable": true,
-                "async": false,
-                "transition": {
-                    "post_block": "fadeIn",
-                    "post_header": "slideDownIn",
-                    "post_body": "slideDownIn",
-                    "coll_header": "slideLeftIn",
-                    "sidebar": "slideUpIn"
-                }
-            },
-            duoshuo: {
-                userId: '0',
-                author: '博主'
-            },
-            algolia: {
-                applicationID: '',
-                apiKey: '',
-                indexName: '',
-                hits: {"per_page": 10},
-                labels: {
-                    "input_placeholder": "Search for Posts",
-                    "hits_empty": "We didn't find any results for the search: ${query}",
-                    "hits_stats": "${hits} results found in ${time} ms"
-                }
-            }
-        };
-    </script>
 
 
-    <link rel="canonical" href="http://yoursite.com/2018/03/10/Elasticsearch内置分析器/"/>
 
 
-    <title>Elasticsearch内置分析器 | 问问苑大宝</title>
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="elasticsearch," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。">
+<meta name="keywords" content="elasticsearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch内置分析器">
+<meta property="og:url" content="http://yoursite.com/2018/03/10/Elasticsearch内置分析器/index.html">
+<meta property="og:site_name" content="问问苑大宝">
+<meta property="og:description" content="分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-12T11:23:47.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Elasticsearch内置分析器">
+<meta name="twitter:description" content="分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/10/Elasticsearch内置分析器/"/>
+
+
+
+
+
+  <title>Elasticsearch内置分析器 | 问问苑大宝</title>
+  
+
+
+
+
+
+
 
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+  
+  
+    
+  
 
-<div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-    <a href="https://github.com/yuanwenjian" target="_blank"><img
-            style="position: absolute; top: 0; right: 0; border: 0;"
-            src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
-            alt="Fork me on GitHub"
-            data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner">
-            <div class="site-brand-wrapper">
-                <div class="site-meta ">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">问问苑大宝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
 
 
-                    <div class="custom-logo-site-title">
-                        <a href="/" class="brand" rel="start">
-                            <span class="logo-line-before"><i></i></span>
-                            <span class="site-title">问问苑大宝</span>
-                            <span class="logo-line-after"><i></i></span>
-                        </a>
-                    </div>
 
-                    <p class="site-subtitle"></p>
-
-                </div>
-
-                <div class="site-nav-toggle">
-                    <button>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                    </button>
-                </div>
-            </div>
-
-            <nav class="site-nav">
-
-
-                <ul id="menu" class="menu">
-
-
-                    <li class="menu-item menu-item-home">
-                        <a href="/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
-
-                            首页
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-about">
-                        <a href="/about/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
-
-                            关于
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-tags">
-                        <a href="/tags/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
-
-                            标签
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-categories">
-                        <a href="/categories/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-th"></i> <br/>
-
-                            分类
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-archives">
-                        <a href="/archives/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
-
-                            归档
-                        </a>
-                    </li>
-
-
-                </ul>
-
-
-            </nav>
-
-
-        </div>
+ </div>
     </header>
 
     <main id="main" class="main">
-        <div class="main-inner">
-            <div class="content-wrap">
-                <div id="content" class="content">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
+  <div id="posts" class="posts-expand">
+    
 
-                    <div id="posts" class="posts-expand">
+  
 
+  
+  
+  
 
-                        <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/10/Elasticsearch内置分析器/">
 
-
-                            <div class="post-block">
-                                <link itemprop="mainEntityOfPage"
-                                      href="http://yoursite.com/2018/03/10/Elasticsearch内置分析器/">
-
-                                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
-                                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="问问苑大宝">
     </span>
 
+    
+      <header class="post-header">
 
-                                <header class="post-header">
+        
+        
+          <h1 class="post-title" itemprop="name headline">Elasticsearch内置分析器</h1>
+        
 
-
-                                    <h1 class="post-title" itemprop="name headline">Elasticsearch内置分析器</h1>
-
-
-                                    <div class="post-meta">
+        <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -267,8 +310,8 @@
             
           </span>
 
-
-                                        <span class="post-category">
+          
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -300,1056 +343,624 @@
                 
               
             </span>
+          
 
-
-                                        <span class="post-comments-count">
+          
+            
+              <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/03/10/Elasticsearch内置分析器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/10/Elasticsearch内置分析器/"
-                        itemprop="commentsCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/03/10/Elasticsearch内置分析器/" itemprop="commentsCount"></span>
                 </a>
               </span>
-
-
-                                        <div class="post-description">
-                                            分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。
-                                        </div>
-
-
-                                    </div>
-                                </header>
-
-
-                                <div class="post-body" itemprop="articleBody">
-
-
-                                    <h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1>
-                                    <p>具体请参考[elasticsearch内置分词器及字符过滤器][概念介绍]</p>
-                                    <h1 id="es内置分析器"><a href="#es内置分析器" class="headerlink" title="es内置分析器"></a>es内置分析器
-                                    </h1>
-                                    <p>内置分析器可以直接使用，无需任何配置。然而，其中一些配置选项用来改变其行为</p>
-                                    <h2 id="Standard-Analyzer"><a href="#Standard-Analyzer" class="headerlink"
-                                                                  title="Standard Analyzer"></a>Standard Analyzer</h2>
-                                    <p>standard（标准）分析器划分文本是通过词语来界定的，由Unicode文本分割算法定义。它删除大多数标点符号，将词语转换为小写，并支持删除停止词。<br>standard(标准)分析器是默认分析器，如果没有指定分析器，则使用该分析器
-                                    </p>
-                                    <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3>
-                                    <ul>
-                                        <li>分词器
-                                            <ul>
-                                                <li>标准分词器 standard</li>
-                                            </ul>
-                                        </li>
-                                        <li>过滤器
-                                            <ul>
-                                                <li>标准过滤器 standard</li>
-                                                <li>小写过滤器 lowercase</li>
-                                                <li>停词过滤器 stop 默认情况禁用</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3 id="配置可选项"><a href="#配置可选项" class="headerlink" title="配置可选项"></a>配置可选项</h3>
-                                    <ol>
-                                        <li>max_token_length //token最大长度,如果超多最大限度使用max_token_length间隔进行拆分,默认为255</li>
-                                        <li>stopwords // 预定义的停止词列表，如_english或包含停止词列表的数组。默认为_none_。</li>
-                                        <li>stopwords_path 停词路径 每个字单独一行,编码格式为UTF-8</li>
-                                    </ol>
-                                    <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br><span
-                                                            class="line">22</span><br><span
-                                                            class="line">23</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;settings&quot;: &#123;</span><br><span
-                                                            class="line">    &quot;analysis&quot;: &#123;</span><br><span
-                                                            class="line">      &quot;analyzer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;my_english_analyzer&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;standard&quot;,</span><br><span
-                                                            class="line">          &quot;max_token_length&quot;: 5,</span><br><span
-                                                            class="line">          &quot;stopwords&quot;: &quot;_english_&quot;</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span
-                                                            class="line">&#125;</span><br><span class="line"></span><br><span
-                                                            class="line">POST my_index/_analyze</span><br><span
-                                                            class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_english_analyzer&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span class="line"></span><br><span
-                                                            class="line">结果</span><br><span class="line">[ 2, quick, brown, foxes, jumpe, d, over, lazy, dog&apos;s, bone ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Simple-Analyzer"><a href="#Simple-Analyzer" class="headerlink"
-                                                                title="Simple Analyzer"></a>Simple Analyzer</h2>
-                                    <p>simple（简单）分析器每当遇到不是字母的字符时，将文本分割为词语。它将所有词语转换为小写。</p>
-                                    <h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3>
-                                    <ul>
-                                        <li>分词器
-                                            <ul>
-                                                <li>小写分词器 lowercase</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;analyzer&quot;: &quot;simple&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line">结果</span><br><span class="line">[ the, quick, brown, foxes, jumped, over, the, lazy, dog, s, bone ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Whitespace-Analyzer"><a href="#Whitespace-Analyzer" class="headerlink"
-                                                                    title="Whitespace Analyzer"></a>Whitespace Analyzer
-                                    </h2>
-                                    <p>whitespace（空白）分析器每当遇到任何空白字符时，都将文本划分为词语。它不会将词语转换为小写。</p>
-                                    <h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3>
-                                    <ul>
-                                        <li>分词器
-                                            <ul>
-                                                <li>空白分词器 whitespace</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;analyzer&quot;: &quot;whitespace&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span class="line"></span><br><span
-                                                            class="line">结果</span><br><span class="line">[ The, 2, QUICK, Brown-Foxes, jumped, over, the, lazy, dog&apos;s, bone. ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Stop-Analyzer"><a href="#Stop-Analyzer" class="headerlink"
-                                                              title="Stop Analyzer"></a>Stop Analyzer</h2>
-                                    <p>stop（停止）分析器类似simple(简单)分析器，默认添加<em>english</em>停用词</p>
-                                    <h3 id="配置可选项-1"><a href="#配置可选项-1" class="headerlink" title="配置可选项"></a>配置可选项</h3>
-                                    <ol>
-                                        <li>stopwords 停用词列表</li>
-                                        <li>stopwords_path 停用词路径</li>
-                                    </ol>
-                                    <h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;settings&quot;: &#123;</span><br><span
-                                                            class="line">    &quot;analysis&quot;: &#123;</span><br><span
-                                                            class="line">      &quot;analyzer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;my_stop_analyzer&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;stop&quot;,</span><br><span
-                                                            class="line">          &quot;stopwords&quot;: [&quot;the&quot;, &quot;over&quot;]</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line">  </span><br><span class="line">POST my_index/_analyze</span><br><span
-                                                            class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_stop_analyzer&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line">结果</span><br><span class="line">[ quick, brown, foxes, jumped, lazy, dog, s, bone ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Keyword-Analyzer"><a href="#Keyword-Analyzer" class="headerlink"
-                                                                 title="Keyword Analyzer"></a>Keyword Analyzer</h2>
-                                    <p>keyword（关键字）分析器是一个noop（空）分析器，可以接受任何给定的文本，并输出与单个词语相同的文本。</p>
-                                    <h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3>
-                                    <ul>
-                                        <li>分词器
-                                            <ul>
-                                                <li>keyword</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;analyzer&quot;: &quot;keyword&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span class="line"></span><br><span
-                                                            class="line">结果</span><br><span class="line">[ The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone. ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Pattern-Analyzer"><a href="#Pattern-Analyzer" class="headerlink"
-                                                                 title="Pattern Analyzer"></a>Pattern Analyzer</h2>
-                                    <p>pattern（模式）分析器使用正则表达式将文本拆分为词语，它支持小写和停止字。</p>
-                                    <h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3>
-                                    <ul>
-                                        <li>分词器
-                                            <ul>
-                                                <li>pattern</li>
-                                            </ul>
-                                        </li>
-                                        <li>过滤器
-                                            <ul>
-                                                <li>小写过滤器</li>
-                                                <li>停词过滤器 默认禁用</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3 id="配置可选项-2"><a href="#配置可选项-2" class="headerlink" title="配置可选项"></a>配置可选项</h3>
-                                    <ol>
-                                        <li>pattern java正则表达式 默认 \w</li>
-                                        <li>flags</li>
-                                        <li>lowercase 是否转为小写 默认为true</li>
-                                        <li>stopwords 预先定义的停用词列表，如<em>english</em>或包含停用词列表的数组,默认为<em>none</em></li>
-                                        <li>stopwords_path 停词文件列表</li>
-                                    </ol>
-                                    <h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br><span
-                                                            class="line">22</span><br><span
-                                                            class="line">23</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;settings&quot;: &#123;</span><br><span
-                                                            class="line">    &quot;analysis&quot;: &#123;</span><br><span
-                                                            class="line">      &quot;analyzer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;my_email_analyzer&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;:      &quot;pattern&quot;,</span><br><span
-                                                            class="line">          &quot;pattern&quot;:   &quot;\\W|_&quot;, </span><br><span
-                                                            class="line">          &quot;lowercase&quot;: true</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span
-                                                            class="line">&#125;</span><br><span class="line"></span><br><span
-                                                            class="line">POST my_index/_analyze</span><br><span
-                                                            class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_email_analyzer&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;John_Smith@foo-bar.com&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span class="line"></span><br><span
-                                                            class="line">结果</span><br><span class="line">[ john, smith, foo, bar, com ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Language-Analyzers"><a href="#Language-Analyzers" class="headerlink"
-                                                                   title="Language Analyzers"></a>Language Analyzers
-                                    </h2>
-                                    <p>Elasticsearch提供许多特定语言的分析器，例如english(英语)或french(法语)。</p>
-                                    <h2 id="Fingerprint-Analyzer"><a href="#Fingerprint-Analyzer" class="headerlink"
-                                                                     title="Fingerprint Analyzer"></a>Fingerprint
-                                        Analyzer</h2>
-                                    <p>fingerprint（指纹）分析器是专门的分析器，可以创建用于重复检测的指纹。将重复的token删掉并重新排序生成一个新的token</p>
-                                    <h3 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h3>
-                                    <ul>
-                                        <li>分词器
-                                            <ul>
-                                                <li>标准分词器</li>
-                                            </ul>
-                                        </li>
-                                        <li>过滤器
-                                            <ul>
-                                                <li>小写过滤器</li>
-                                                <li>asciifolding 过滤器</li>
-                                                <li>停词过滤器</li>
-                                                <li>fingerprint 过滤器</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3 id="配置可选项-3"><a href="#配置可选项-3" class="headerlink" title="配置可选项"></a>配置可选项</h3>
-                                    <ol>
-                                        <li>separator 用于拼接的字符,默认为空格</li>
-                                        <li>max_output_size token最大长度,默认255,大于该值的token丢弃</li>
-                                        <li>stopwords 停词列表,默认禁用</li>
-                                        <li>stopwords_path 停词文件路径</li>
-                                    </ol>
-                                    <h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;settings&quot;: &#123;</span><br><span
-                                                            class="line">    &quot;analysis&quot;: &#123;</span><br><span
-                                                            class="line">      &quot;analyzer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;my_fingerprint_analyzer&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;fingerprint&quot;,</span><br><span
-                                                            class="line">          &quot;stopwords&quot;: &quot;_english_&quot;</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line"> </span><br><span class="line">POST my_index/_analyze</span><br><span
-                                                            class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_fingerprint_analyzer&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;Yes yes, Gödel said this sentence is consistent and.&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line">结果</span><br><span class="line">[ consistent godel said sentence yes ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h2 id="Custom-Analyzer"><a href="#Custom-Analyzer" class="headerlink"
-                                                                title="Custom Analyzer"></a>Custom Analyzer</h2>
-                                    <p>如果你没有找到适合你需求的分析器，则可以创建一个自定义分析器，结合适当的字符过滤器，分词器和词语过滤器。</p>
-                                    <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3>
-                                    <ol>
-                                        <li>tokenizer 分词器,内置或者自定义的tokenizer 必需</li>
-                                        <li>char_filter 内置或自定义的字符过滤器</li>
-                                        <li>filter 内置或自定义的token过滤器</li>
-                                    </ol>
-                                    <h3 id="内置tokenizer和filter-char-filter示例"><a
-                                            href="#内置tokenizer和filter-char-filter示例" class="headerlink"
-                                            title="内置tokenizer和filter,char_filter示例"></a>内置tokenizer和filter,char_filter示例
-                                    </h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br><span
-                                                            class="line">22</span><br><span
-                                                            class="line">23</span><br><span
-                                                            class="line">24</span><br><span
-                                                            class="line">25</span><br><span
-                                                            class="line">26</span><br><span
-                                                            class="line">27</span><br><span
-                                                            class="line">28</span><br><span
-                                                            class="line">29</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;settings&quot;: &#123;</span><br><span
-                                                            class="line">    &quot;analysis&quot;: &#123;</span><br><span
-                                                            class="line">      &quot;analyzer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;my_custom_analyzer&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;:      &quot;custom&quot;,</span><br><span
-                                                            class="line">          &quot;tokenizer&quot;: &quot;standard&quot;,</span><br><span
-                                                            class="line">          &quot;char_filter&quot;: [</span><br><span
-                                                            class="line">            &quot;html_strip&quot;</span><br><span
-                                                            class="line">          ],</span><br><span class="line">          &quot;filter&quot;: [</span><br><span
-                                                            class="line">            &quot;lowercase&quot;,</span><br><span
-                                                            class="line">            &quot;asciifolding&quot;</span><br><span
-                                                            class="line">          ]</span><br><span class="line">        &#125;</span><br><span
-                                                            class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span
-                                                            class="line">  &#125;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line"> </span><br><span class="line">POST my_index/_analyze</span><br><span
-                                                            class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_custom_analyzer&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;: &quot;Is this &lt;b&gt;déjà vu&lt;/b&gt;?&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line">结果</span><br><span
-                                                            class="line"></span><br><span class="line">[ is, this, deja, vu ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <h3 id="自定义tokenizer和filter-char-filter示例"><a
-                                            href="#自定义tokenizer和filter-char-filter示例" class="headerlink"
-                                            title="自定义tokenizer和filter,char_filter示例"></a>自定义tokenizer和filter,char_filter示例
-                                    </h3>
-                                    <figure class="highlight plain">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br><span
-                                                            class="line">22</span><br><span
-                                                            class="line">23</span><br><span
-                                                            class="line">24</span><br><span
-                                                            class="line">25</span><br><span
-                                                            class="line">26</span><br><span
-                                                            class="line">27</span><br><span
-                                                            class="line">28</span><br><span
-                                                            class="line">29</span><br><span
-                                                            class="line">30</span><br><span
-                                                            class="line">31</span><br><span
-                                                            class="line">32</span><br><span
-                                                            class="line">33</span><br><span
-                                                            class="line">34</span><br><span
-                                                            class="line">35</span><br><span
-                                                            class="line">36</span><br><span
-                                                            class="line">37</span><br><span
-                                                            class="line">38</span><br><span
-                                                            class="line">39</span><br><span
-                                                            class="line">40</span><br><span
-                                                            class="line">41</span><br><span
-                                                            class="line">42</span><br><span
-                                                            class="line">43</span><br><span
-                                                            class="line">44</span><br><span
-                                                            class="line">45</span><br><span
-                                                            class="line">46</span><br><span
-                                                            class="line">47</span><br><span
-                                                            class="line">48</span><br><span
-                                                            class="line">49</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span
-                                                            class="line">  &quot;settings&quot;: &#123;</span><br><span
-                                                            class="line">    &quot;analysis&quot;: &#123;</span><br><span
-                                                            class="line">      &quot;analyzer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;my_custom_analyzer&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;custom&quot;,</span><br><span
-                                                            class="line">          &quot;char_filter&quot;: [</span><br><span
-                                                            class="line">            &quot;emoticons&quot;</span><br><span
-                                                            class="line">          ],</span><br><span class="line">          &quot;tokenizer&quot;: &quot;punctuation&quot;,</span><br><span
-                                                            class="line">          &quot;filter&quot;: [</span><br><span
-                                                            class="line">            &quot;lowercase&quot;,</span><br><span
-                                                            class="line">            &quot;english_stop&quot;</span><br><span
-                                                            class="line">          ]</span><br><span class="line">        &#125;</span><br><span
-                                                            class="line">      &#125;,</span><br><span class="line">      &quot;tokenizer&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;punctuation&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;pattern&quot;,</span><br><span
-                                                            class="line">          &quot;pattern&quot;: &quot;[ .,!?]&quot;</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span
-                                                            class="line">      &quot;char_filter&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;emoticons&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;mapping&quot;,</span><br><span
-                                                            class="line">          &quot;mappings&quot;: [</span><br><span
-                                                            class="line">            &quot;:) =&gt; _happy_&quot;,</span><br><span
-                                                            class="line">            &quot;:( =&gt; _sad_&quot;</span><br><span
-                                                            class="line">          ]</span><br><span class="line">        &#125;</span><br><span
-                                                            class="line">      &#125;,</span><br><span class="line">      &quot;filter&quot;: &#123;</span><br><span
-                                                            class="line">        &quot;english_stop&quot;: &#123;</span><br><span
-                                                            class="line">          &quot;type&quot;: &quot;stop&quot;,</span><br><span
-                                                            class="line">          &quot;stopwords&quot;: &quot;_english_&quot;</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line"> </span><br><span class="line">POST my_index/_analyze</span><br><span
-                                                            class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_custom_analyzer&quot;,</span><br><span
-                                                            class="line">  &quot;text&quot;:     &quot;I&apos;m a :) person, and you?&quot;</span><br><span
-                                                            class="line">&#125;</span><br><span
-                                                            class="line">结果</span><br><span class="line">[ i&apos;m, _happy_, person, you ]</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-
-
-                                </div>
-
-
-                                <footer class="post-footer">
-
-                                    <div class="post-tags">
-
-                                        <a href="/tags/elasticsearch/" rel="tag"><i class="fa fa-tag"></i> elasticsearch</a>
-
-                                    </div>
-
-
-                                    <div class="post-nav">
-                                        <div class="post-nav-next post-nav-item">
-
-                                            <a href="/2018/03/09/Elasticsearch内置分词器及字符过滤器/" rel="next"
-                                               title="Elasticsearch内置分词器及字符过滤器">
-                                                <i class="fa fa-chevron-left"></i> Elasticsearch内置分词器及字符过滤器
-                                            </a>
-
-                                        </div>
-
-                                        <span class="post-nav-divider"></span>
-
-                                        <div class="post-nav-prev post-nav-item">
-
-                                            <a href="/2018/03/12/Elasticsearch内置过滤器/" rel="prev"
-                                               title="Elasticsearch内置过滤器">
-                                                Elasticsearch内置过滤器 <i class="fa fa-chevron-right"></i>
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-
-                                </footer>
-                            </div>
-
-
-                        </article>
-
-
-                        <div class="post-spread">
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-                <div id="container" style="display:none"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-                <script>
-                    const myTheme = {
-                        render(state, instance) {
-                            const container = document.createElement('div');
-                            container.lang = "en-US";
-                            container.className = 'gitment-container gitment-root-container';
-                            container.appendChild(instance.renderHeader(state, instance));
-                            container.appendChild(instance.renderEditor(state, instance));
-                            container.appendChild(instance.renderComments(state, instance));
-                            container.appendChild(instance.renderFooter(state, instance));
-                            return container;
-                        }
-                    }
-
-                    function showGitment() {
-                        $("#gitment_title").attr("style", "display:none");
-                        $("#container").attr("style", "").addClass("gitment_container");
-                        var gitment = new Gitment({
-                            id: 'Elasticsearch内置分析器',
-                            theme: myTheme,
-                            owner: "yuanwenjian",
-                            repo: "gitment-comments",
-                            oauth: {
-                                client_id: '21bb0ade50d6f2c9707b',
-                                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
-                            }
-                        });
-                        gitment.render('container');
-                    }
-                </script>
-
-
-            </div>
-
-
-            <div class="sidebar-toggle">
-                <div class="sidebar-toggle-line-wrap">
-                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-                </div>
-            </div>
-
-            <aside id="sidebar" class="sidebar">
-
-                <div class="sidebar-inner">
-
-
-                    <ul class="sidebar-nav motion-element">
-                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-                            文章目录
-                        </li>
-                        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-                            站点概览
-                        </li>
-                    </ul>
-
-
-                    <section class="site-overview-wrap sidebar-panel">
-                        <div class="site-overview">
-                            <div class="site-author motion-element" itemprop="author" itemscope
-                                 itemtype="http://schema.org/Person">
-
-                                <img class="site-author-image" itemprop="image"
-                                     src="/images/sanguosha.jpg"
-                                     alt="问问苑大宝"/>
-
-                                <p class="site-author-name" itemprop="name">问问苑大宝</p>
-                                <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
-                            </div>
-
-                            <nav class="site-state motion-element">
-
-
-                                <div class="site-state-item site-state-posts">
-
-                                    <a href="/archives/">
-
-                                        <span class="site-state-item-count">64</span>
-                                        <span class="site-state-item-name">日志</span>
-                                    </a>
-                                </div>
-
-
-                                <div class="site-state-item site-state-categories">
-                                    <a href="/categories/index.html">
-                                        <span class="site-state-item-count">31</span>
-                                        <span class="site-state-item-name">分类</span>
-                                    </a>
-                                </div>
-
-
-                                <div class="site-state-item site-state-tags">
-                                    <a href="/tags/index.html">
-                                        <span class="site-state-item-count">30</span>
-                                        <span class="site-state-item-name">标签</span>
-                                    </a>
-                                </div>
-
-
-                            </nav>
-
-
-                        </div>
-                    </section>
-
-
-                    <!--noindex-->
-                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-                        <div class="post-toc">
-
-
-                            <div class="post-toc-content">
-                                <ol class="nav">
-                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#概念介绍"><span
-                                            class="nav-number">1.</span> <span class="nav-text">概念介绍</span></a></li>
-                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#es内置分析器"><span
-                                            class="nav-number">2.</span> <span class="nav-text">es内置分析器</span></a>
-                                        <ol class="nav-child">
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Standard-Analyzer"><span
-                                                    class="nav-number">2.1.</span> <span class="nav-text">Standard Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#定义"><span
-                                                            class="nav-number">2.1.1.</span> <span
-                                                            class="nav-text">定义</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#配置可选项"><span
-                                                            class="nav-number">2.1.2.</span> <span class="nav-text">配置可选项</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例"><span
-                                                            class="nav-number">2.1.3.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Simple-Analyzer"><span
-                                                    class="nav-number">2.2.</span> <span class="nav-text">Simple Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#定义-1"><span
-                                                            class="nav-number">2.2.1.</span> <span
-                                                            class="nav-text">定义</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例-1"><span
-                                                            class="nav-number">2.2.2.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Whitespace-Analyzer"><span
-                                                    class="nav-number">2.3.</span> <span class="nav-text">Whitespace Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#定义-2"><span
-                                                            class="nav-number">2.3.1.</span> <span
-                                                            class="nav-text">定义</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例-2"><span
-                                                            class="nav-number">2.3.2.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Stop-Analyzer"><span
-                                                    class="nav-number">2.4.</span> <span
-                                                    class="nav-text">Stop Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#配置可选项-1"><span
-                                                            class="nav-number">2.4.1.</span> <span class="nav-text">配置可选项</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例-3"><span
-                                                            class="nav-number">2.4.2.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Keyword-Analyzer"><span
-                                                    class="nav-number">2.5.</span> <span class="nav-text">Keyword Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#定义-3"><span
-                                                            class="nav-number">2.5.1.</span> <span
-                                                            class="nav-text">定义</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例-4"><span
-                                                            class="nav-number">2.5.2.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Pattern-Analyzer"><span
-                                                    class="nav-number">2.6.</span> <span class="nav-text">Pattern Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#定义-4"><span
-                                                            class="nav-number">2.6.1.</span> <span
-                                                            class="nav-text">定义</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#配置可选项-2"><span
-                                                            class="nav-number">2.6.2.</span> <span class="nav-text">配置可选项</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例-5"><span
-                                                            class="nav-number">2.6.3.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Language-Analyzers"><span
-                                                    class="nav-number">2.7.</span> <span class="nav-text">Language Analyzers</span></a>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Fingerprint-Analyzer"><span
-                                                    class="nav-number">2.8.</span> <span class="nav-text">Fingerprint Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#定义-5"><span
-                                                            class="nav-number">2.8.1.</span> <span
-                                                            class="nav-text">定义</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#配置可选项-3"><span
-                                                            class="nav-number">2.8.2.</span> <span class="nav-text">配置可选项</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#示例-6"><span
-                                                            class="nav-number">2.8.3.</span> <span
-                                                            class="nav-text">示例</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Custom-Analyzer"><span
-                                                    class="nav-number">2.9.</span> <span class="nav-text">Custom Analyzer</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#配置"><span
-                                                            class="nav-number">2.9.1.</span> <span
-                                                            class="nav-text">配置</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#内置tokenizer和filter-char-filter示例"><span
-                                                            class="nav-number">2.9.2.</span> <span class="nav-text">内置tokenizer和filter,char_filter示例</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#自定义tokenizer和filter-char-filter示例"><span
-                                                            class="nav-number">2.9.3.</span> <span class="nav-text">自定义tokenizer和filter,char_filter示例</span></a>
-                                                    </li>
-                                                </ol>
-                                            </li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </div>
-
-
-                        </div>
-                    </section>
-                    <!--/noindex-->
-
-
-                </div>
-            </aside>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  分析器（无论是内置还是自定义）只是一个包含三个较底层组件的包：字符过滤器，分词器，和令牌过滤器。内置分析器将这些组件预先封装成适用于不同语言和文本类型的分析器。Elasticsearch还暴露了各个组件，以便它们可以组合起来定义新的定制分析器。
+              </div>
+          
+
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><p>具体请参考[elasticsearch内置分词器及字符过滤器][概念介绍]</p>
+<h1 id="es内置分析器"><a href="#es内置分析器" class="headerlink" title="es内置分析器"></a>es内置分析器</h1><p>内置分析器可以直接使用，无需任何配置。然而，其中一些配置选项用来改变其行为</p>
+<h2 id="Standard-Analyzer"><a href="#Standard-Analyzer" class="headerlink" title="Standard Analyzer"></a>Standard Analyzer</h2><p>standard（标准）分析器划分文本是通过词语来界定的，由Unicode文本分割算法定义。它删除大多数标点符号，将词语转换为小写，并支持删除停止词。<br>standard(标准)分析器是默认分析器，如果没有指定分析器，则使用该分析器</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>分词器<ul>
+<li>标准分词器 standard</li>
+</ul>
+</li>
+<li>过滤器<ul>
+<li>标准过滤器 standard</li>
+<li>小写过滤器 lowercase</li>
+<li>停词过滤器 stop  默认情况禁用</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置可选项"><a href="#配置可选项" class="headerlink" title="配置可选项"></a>配置可选项</h3><ol>
+<li>max_token_length  //token最大长度,如果超多最大限度使用max_token_length间隔进行拆分,默认为255</li>
+<li>stopwords // 预定义的停止词列表，如_english或包含停止词列表的数组。默认为_none_。</li>
+<li>stopwords_path 停词路径 每个字单独一行,编码格式为UTF-8</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;my_english_analyzer&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;standard&quot;,</span><br><span class="line">          &quot;max_token_length&quot;: 5,</span><br><span class="line">          &quot;stopwords&quot;: &quot;_english_&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST my_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_english_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">[ 2, quick, brown, foxes, jumpe, d, over, lazy, dog&apos;s, bone ]</span><br></pre></td></tr></table></figure>
+<h2 id="Simple-Analyzer"><a href="#Simple-Analyzer" class="headerlink" title="Simple Analyzer"></a>Simple Analyzer</h2><p>simple（简单）分析器每当遇到不是字母的字符时，将文本分割为词语。它将所有词语转换为小写。</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>分词器<ul>
+<li>小写分词器 lowercase</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;simple&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">[ the, quick, brown, foxes, jumped, over, the, lazy, dog, s, bone ]</span><br></pre></td></tr></table></figure>
+<h2 id="Whitespace-Analyzer"><a href="#Whitespace-Analyzer" class="headerlink" title="Whitespace Analyzer"></a>Whitespace Analyzer</h2><p>whitespace（空白）分析器每当遇到任何空白字符时，都将文本划分为词语。它不会将词语转换为小写。</p>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>分词器<ul>
+<li>空白分词器 whitespace</li>
+</ul>
+</li>
+</ul>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;whitespace&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">[ The, 2, QUICK, Brown-Foxes, jumped, over, the, lazy, dog&apos;s, bone. ]</span><br></pre></td></tr></table></figure>
+<h2 id="Stop-Analyzer"><a href="#Stop-Analyzer" class="headerlink" title="Stop Analyzer"></a>Stop Analyzer</h2><p>stop（停止）分析器类似simple(简单)分析器，默认添加<em>english</em>停用词</p>
+<h3 id="配置可选项-1"><a href="#配置可选项-1" class="headerlink" title="配置可选项"></a>配置可选项</h3><ol>
+<li>stopwords 停用词列表</li>
+<li>stopwords_path 停用词路径</li>
+</ol>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;my_stop_analyzer&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;stop&quot;,</span><br><span class="line">          &quot;stopwords&quot;: [&quot;the&quot;, &quot;over&quot;]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">POST my_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_stop_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">[ quick, brown, foxes, jumped, lazy, dog, s, bone ]</span><br></pre></td></tr></table></figure>
+<h2 id="Keyword-Analyzer"><a href="#Keyword-Analyzer" class="headerlink" title="Keyword Analyzer"></a>Keyword Analyzer</h2><p>keyword（关键字）分析器是一个noop（空）分析器，可以接受任何给定的文本，并输出与单个词语相同的文本。</p>
+<h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>分词器<ul>
+<li>keyword </li>
+</ul>
+</li>
+</ul>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;keyword&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">[ The 2 QUICK Brown-Foxes jumped over the lazy dog&apos;s bone. ]</span><br></pre></td></tr></table></figure>
+<h2 id="Pattern-Analyzer"><a href="#Pattern-Analyzer" class="headerlink" title="Pattern Analyzer"></a>Pattern Analyzer</h2><p>pattern（模式）分析器使用正则表达式将文本拆分为词语，它支持小写和停止字。</p>
+<h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>分词器<ul>
+<li>pattern</li>
+</ul>
+</li>
+<li>过滤器<ul>
+<li>小写过滤器</li>
+<li>停词过滤器 默认禁用</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置可选项-2"><a href="#配置可选项-2" class="headerlink" title="配置可选项"></a>配置可选项</h3><ol>
+<li>pattern java正则表达式 默认 \w</li>
+<li>flags </li>
+<li>lowercase 是否转为小写 默认为true</li>
+<li>stopwords 预先定义的停用词列表，如<em>english</em>或包含停用词列表的数组,默认为<em>none</em></li>
+<li>stopwords_path 停词文件列表</li>
+</ol>
+<h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;my_email_analyzer&quot;: &#123;</span><br><span class="line">          &quot;type&quot;:      &quot;pattern&quot;,</span><br><span class="line">          &quot;pattern&quot;:   &quot;\\W|_&quot;, </span><br><span class="line">          &quot;lowercase&quot;: true</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">POST my_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_email_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;John_Smith@foo-bar.com&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">[ john, smith, foo, bar, com ]</span><br></pre></td></tr></table></figure>
+<h2 id="Language-Analyzers"><a href="#Language-Analyzers" class="headerlink" title="Language Analyzers"></a>Language Analyzers</h2><p>Elasticsearch提供许多特定语言的分析器，例如english(英语)或french(法语)。</p>
+<h2 id="Fingerprint-Analyzer"><a href="#Fingerprint-Analyzer" class="headerlink" title="Fingerprint Analyzer"></a>Fingerprint Analyzer</h2><p>fingerprint（指纹）分析器是专门的分析器，可以创建用于重复检测的指纹。将重复的token删掉并重新排序生成一个新的token</p>
+<h3 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>分词器<ul>
+<li>标准分词器</li>
+</ul>
+</li>
+<li>过滤器<ul>
+<li>小写过滤器</li>
+<li>asciifolding 过滤器</li>
+<li>停词过滤器</li>
+<li>fingerprint 过滤器</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置可选项-3"><a href="#配置可选项-3" class="headerlink" title="配置可选项"></a>配置可选项</h3><ol>
+<li>separator 用于拼接的字符,默认为空格</li>
+<li>max_output_size token最大长度,默认255,大于该值的token丢弃</li>
+<li>stopwords 停词列表,默认禁用</li>
+<li>stopwords_path 停词文件路径</li>
+</ol>
+<h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;my_fingerprint_analyzer&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;fingerprint&quot;,</span><br><span class="line">          &quot;stopwords&quot;: &quot;_english_&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">POST my_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_fingerprint_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;Yes yes, Gödel said this sentence is consistent and.&quot;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">[ consistent godel said sentence yes ]</span><br></pre></td></tr></table></figure>
+<h2 id="Custom-Analyzer"><a href="#Custom-Analyzer" class="headerlink" title="Custom Analyzer"></a>Custom Analyzer</h2><p>如果你没有找到适合你需求的分析器，则可以创建一个自定义分析器，结合适当的字符过滤器，分词器和词语过滤器。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
+<li>tokenizer 分词器,内置或者自定义的tokenizer 必需</li>
+<li>char_filter 内置或自定义的字符过滤器</li>
+<li>filter 内置或自定义的token过滤器</li>
+</ol>
+<h3 id="内置tokenizer和filter-char-filter示例"><a href="#内置tokenizer和filter-char-filter示例" class="headerlink" title="内置tokenizer和filter,char_filter示例"></a>内置tokenizer和filter,char_filter示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;my_custom_analyzer&quot;: &#123;</span><br><span class="line">          &quot;type&quot;:      &quot;custom&quot;,</span><br><span class="line">          &quot;tokenizer&quot;: &quot;standard&quot;,</span><br><span class="line">          &quot;char_filter&quot;: [</span><br><span class="line">            &quot;html_strip&quot;</span><br><span class="line">          ],</span><br><span class="line">          &quot;filter&quot;: [</span><br><span class="line">            &quot;lowercase&quot;,</span><br><span class="line">            &quot;asciifolding&quot;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">POST my_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_custom_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;Is this &lt;b&gt;déjà vu&lt;/b&gt;?&quot;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line"></span><br><span class="line">[ is, this, deja, vu ]</span><br></pre></td></tr></table></figure>
+<h3 id="自定义tokenizer和filter-char-filter示例"><a href="#自定义tokenizer和filter-char-filter示例" class="headerlink" title="自定义tokenizer和filter,char_filter示例"></a>自定义tokenizer和filter,char_filter示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;analysis&quot;: &#123;</span><br><span class="line">      &quot;analyzer&quot;: &#123;</span><br><span class="line">        &quot;my_custom_analyzer&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;custom&quot;,</span><br><span class="line">          &quot;char_filter&quot;: [</span><br><span class="line">            &quot;emoticons&quot;</span><br><span class="line">          ],</span><br><span class="line">          &quot;tokenizer&quot;: &quot;punctuation&quot;,</span><br><span class="line">          &quot;filter&quot;: [</span><br><span class="line">            &quot;lowercase&quot;,</span><br><span class="line">            &quot;english_stop&quot;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;tokenizer&quot;: &#123;</span><br><span class="line">        &quot;punctuation&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;pattern&quot;,</span><br><span class="line">          &quot;pattern&quot;: &quot;[ .,!?]&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;char_filter&quot;: &#123;</span><br><span class="line">        &quot;emoticons&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;mapping&quot;,</span><br><span class="line">          &quot;mappings&quot;: [</span><br><span class="line">            &quot;:) =&gt; _happy_&quot;,</span><br><span class="line">            &quot;:( =&gt; _sad_&quot;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;filter&quot;: &#123;</span><br><span class="line">        &quot;english_stop&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;stop&quot;,</span><br><span class="line">          &quot;stopwords&quot;: &quot;_english_&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">POST my_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;my_custom_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;:     &quot;I&apos;m a :) person, and you?&quot;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">[ i&apos;m, _happy_, person, you ]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/elasticsearch/" rel="tag"><i class="fa fa-tag"></i> elasticsearch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/09/Elasticsearch内置分词器及字符过滤器/" rel="next" title="Elasticsearch内置分词器及字符过滤器">
+                <i class="fa fa-chevron-left"></i> Elasticsearch内置分词器及字符过滤器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/12/Elasticsearch内置过滤器/" rel="prev" title="Elasticsearch内置过滤器">
+                Elasticsearch内置过滤器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: 'Elasticsearch内置分析器',
+      theme: myTheme,
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+  
 
 
         </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/sanguosha.jpg"
+                alt="问问苑大宝" />
+            
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
+              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念介绍"><span class="nav-number">1.</span> <span class="nav-text">概念介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#es内置分析器"><span class="nav-number">2.</span> <span class="nav-text">es内置分析器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Standard-Analyzer"><span class="nav-number">2.1.</span> <span class="nav-text">Standard Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置可选项"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置可选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.1.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simple-Analyzer"><span class="nav-number">2.2.</span> <span class="nav-text">Simple Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Whitespace-Analyzer"><span class="nav-number">2.3.</span> <span class="nav-text">Whitespace Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stop-Analyzer"><span class="nav-number">2.4.</span> <span class="nav-text">Stop Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置可选项-1"><span class="nav-number">2.4.1.</span> <span class="nav-text">配置可选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Keyword-Analyzer"><span class="nav-number">2.5.</span> <span class="nav-text">Keyword Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-3"><span class="nav-number">2.5.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-4"><span class="nav-number">2.5.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pattern-Analyzer"><span class="nav-number">2.6.</span> <span class="nav-text">Pattern Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-4"><span class="nav-number">2.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置可选项-2"><span class="nav-number">2.6.2.</span> <span class="nav-text">配置可选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-5"><span class="nav-number">2.6.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Analyzers"><span class="nav-number">2.7.</span> <span class="nav-text">Language Analyzers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fingerprint-Analyzer"><span class="nav-number">2.8.</span> <span class="nav-text">Fingerprint Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-5"><span class="nav-number">2.8.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置可选项-3"><span class="nav-number">2.8.2.</span> <span class="nav-text">配置可选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例-6"><span class="nav-number">2.8.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Custom-Analyzer"><span class="nav-number">2.9.</span> <span class="nav-text">Custom Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">2.9.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置tokenizer和filter-char-filter示例"><span class="nav-number">2.9.2.</span> <span class="nav-text">内置tokenizer和filter,char_filter示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义tokenizer和filter-char-filter示例"><span class="nav-number">2.9.3.</span> <span class="nav-text">自定义tokenizer和filter,char_filter示例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-        <div class="footer-inner">
-            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-            </script>
-            <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-                <span class="with-love">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-                <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
-            </div>
-            <!--
 
-              <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
 
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
 
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
-              <span class="post-meta-divider">|</span>
-
-            <span id="busuanzi_container_site_pv">
-                本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-
-              <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-            -->
+-->
 
 
-        </div>
+        
+
+
+
+
+
+
+
+        
+      </div>
     </footer>
 
-
-    <div class="back-to-top">
+    
+      <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
-    </div>
+    
 
+  </div>
 
-</div>
-
+  
 
 <script type="text/javascript">
-    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-        window.Promise = null;
-    }
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
-<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
-<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-<script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-<script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-<script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
-<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
 
 
 <!-- LOCAL: You can save these files to your site and update links -->
-
-
-<link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-<script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
 <!-- END LOCAL -->
 
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
 
-<style>
-    a.gitment-editor-footer-tip {
-        display: none;
-    }
-
-    .gitment-container.gitment-footer-container {
-        display: none;
-    }
-</style>
-
-
-<script type="text/javascript">
-    function renderGitment() {
+    
+      <script type="text/javascript">
+      function renderGitment(){
         var gitment = new Gitmint({
-            id: 'Elasticsearch内置分析器',
+            id: 'Elasticsearch内置分析器', 
             owner: 'yuanwenjian',
             repo: 'gitment-comments',
-
+            
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-
+            
             oauth: {
-
-
+            
+            
                 client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
-
+            
                 client_id: '21bb0ade50d6f2c9707b'
-            }
-        });
+            }});
         gitment.render('gitment-container');
-    }
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
-    renderGitment();
-
-</script>
 
 
-<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
 </body>
 </html>

@@ -1,250 +1,297 @@
 <!DOCTYPE html>
 
 
+
+  
+
+
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta name="theme-color" content="#222">
-    <meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU"/>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="mtcPxgu7dngx94l_3Lo41vqUNQxHgj7vMtg7LSQvKvU" />
 
 
-    <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-    <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
-    <meta http-equiv="Cache-Control" content="no-transform"/>
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
 
 
-    <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
-    <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"/>
 
-    <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"/>
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
 
 
-    <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
-    <meta name="keywords" content="RabbitMQ,后端,Spring,"/>
 
 
-    <meta name="description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
-    <meta name="keywords" content="RabbitMQ,后端,Spring">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="RabbitMQ消息确认">
-    <meta property="og:url" content="http://yoursite.com/2018/06/12/SpringAMQP文档/index.html">
-    <meta property="og:site_name" content="问问苑大宝">
-    <meta property="og:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
-    <meta property="og:locale" content="zh-Hans">
-    <meta property="og:updated_time" content="2018-07-15T05:45:04.690Z">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="RabbitMQ消息确认">
-    <meta name="twitter:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
 
 
-    <script type="text/javascript" id="hexo.configurations">
-        var NexT = window.NexT || {};
-        var CONFIG = {
-            root: '/',
-            scheme: 'Muse',
-            version: '5.1.4',
-            sidebar: {
-                "position": "left",
-                "display": "post",
-                "offset": 12,
-                "b2t": false,
-                "scrollpercent": false,
-                "onmobile": false
-            },
-            fancybox: true,
-            tabs: true,
-            motion: {
-                "enable": true,
-                "async": false,
-                "transition": {
-                    "post_block": "fadeIn",
-                    "post_header": "slideDownIn",
-                    "post_body": "slideDownIn",
-                    "coll_header": "slideLeftIn",
-                    "sidebar": "slideUpIn"
-                }
-            },
-            duoshuo: {
-                userId: '0',
-                author: '博主'
-            },
-            algolia: {
-                applicationID: '',
-                apiKey: '',
-                indexName: '',
-                hits: {"per_page": 10},
-                labels: {
-                    "input_placeholder": "Search for Posts",
-                    "hits_empty": "We didn't find any results for the search: ${query}",
-                    "hits_stats": "${hits} results found in ${time} ms"
-                }
-            }
-        };
-    </script>
 
 
-    <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringAMQP文档/"/>
 
 
-    <title>RabbitMQ消息确认 | 问问苑大宝</title>
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RabbitMQ,后端,Spring," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
+<meta name="keywords" content="RabbitMQ,后端,Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ消息确认">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/SpringAMQP文档/index.html">
+<meta property="og:site_name" content="问问苑大宝">
+<meta property="og:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T05:45:04.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RabbitMQ消息确认">
+<meta name="twitter:description" content="RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/12/SpringAMQP文档/"/>
+
+
+
+
+
+  <title>RabbitMQ消息确认 | 问问苑大宝</title>
+  
+
+
+
+
+
+
 
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
+  
+  
+    
+  
 
-<div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
-    <a href="https://github.com/yuanwenjian" target="_blank"><img
-            style="position: absolute; top: 0; right: 0; border: 0;"
-            src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
-            alt="Fork me on GitHub"
-            data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+	<a href="https://github.com/yuanwenjian" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-        <div class="header-inner">
-            <div class="site-brand-wrapper">
-                <div class="site-meta ">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">问问苑大宝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
 
 
-                    <div class="custom-logo-site-title">
-                        <a href="/" class="brand" rel="start">
-                            <span class="logo-line-before"><i></i></span>
-                            <span class="site-title">问问苑大宝</span>
-                            <span class="logo-line-after"><i></i></span>
-                        </a>
-                    </div>
 
-                    <p class="site-subtitle"></p>
-
-                </div>
-
-                <div class="site-nav-toggle">
-                    <button>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                        <span class="btn-bar"></span>
-                    </button>
-                </div>
-            </div>
-
-            <nav class="site-nav">
-
-
-                <ul id="menu" class="menu">
-
-
-                    <li class="menu-item menu-item-home">
-                        <a href="/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-home"></i> <br/>
-
-                            首页
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-about">
-                        <a href="/about/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-user"></i> <br/>
-
-                            关于
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-tags">
-                        <a href="/tags/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>
-
-                            标签
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-categories">
-                        <a href="/categories/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-th"></i> <br/>
-
-                            分类
-                        </a>
-                    </li>
-
-
-                    <li class="menu-item menu-item-archives">
-                        <a href="/archives/" rel="section">
-
-                            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>
-
-                            归档
-                        </a>
-                    </li>
-
-
-                </ul>
-
-
-            </nav>
-
-
-        </div>
+ </div>
     </header>
 
     <main id="main" class="main">
-        <div class="main-inner">
-            <div class="content-wrap">
-                <div id="content" class="content">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
+  <div id="posts" class="posts-expand">
+    
 
-                    <div id="posts" class="posts-expand">
+  
 
+  
+  
+  
 
-                        <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/SpringAMQP文档/">
 
-
-                            <div class="post-block">
-                                <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/SpringAMQP文档/">
-
-                                <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="问问苑大宝">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/sanguosha.jpg">
     </span>
 
-                                <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="问问苑大宝">
     </span>
 
+    
+      <header class="post-header">
 
-                                <header class="post-header">
+        
+        
+          <h1 class="post-title" itemprop="name headline">RabbitMQ消息确认</h1>
+        
 
-
-                                    <h1 class="post-title" itemprop="name headline">RabbitMQ消息确认</h1>
-
-
-                                    <div class="post-meta">
+        <div class="post-meta">
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -263,8 +310,8 @@
             
           </span>
 
-
-                                        <span class="post-category">
+          
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -296,1074 +343,574 @@
                 
               
             </span>
+          
 
-
-                                        <span class="post-comments-count">
+          
+            
+              <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/06/12/SpringAMQP文档/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/12/SpringAMQP文档/"
-                        itemprop="commentsCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/12/SpringAMQP文档/" itemprop="commentsCount"></span>
                 </a>
               </span>
-
-
-                                        <div class="post-description">
-                                            RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。
-                                        </div>
-
-
-                                    </div>
-                                </header>
-
-
-                                <div class="post-body" itemprop="articleBody">
-
-
-                                    <h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1>
-                                    <h2 id="AMPQ抽象"><a href="#AMPQ抽象" class="headerlink" title="AMPQ抽象"></a>AMPQ抽象</h2>
-                                    <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3>
-                                    <p>Spring
-                                        AMQP由少数几个模块组成，每个模块在分发中都由JAR表示。这些模块是：spring-amqp和spring-rabbit。spring-amqp模块包含org.springframework.amqp.core包。在该软件包中，您将找到代表核心AMQP“模型”的类，我们的目的是提供不依赖任何特定AMQP代理实施或客户端库的通用抽象，最终用户代码在供应商实现中将更具可移植性，因为它可以仅针对抽象层进行开发。这些抽象然后由broker-specific专用模块（例如spring-rabbit）实施。目前只有RabbitMQ实现;但是除了RabbitMQ之外，抽象已经在.NET中使用Apache
-                                        Qpid进行了验证。由于AMQP原则上在协议级别运行，RabbitMQ客户端可以与支持相同协议版本的任何代理一起使用，但目前我们不测试任何其他代理。</p>
-                                    <h3 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message
-                                    </h3>
-                                    <p>0-9-1
-                                        AMQP规范没有定义Message类或接口。但是在执行诸如basicPublish（）之类的操作时，内容将作为字节数组参数传递，而其他属性作为单独的参数传递。Spring
-                                        AMQP将Message类定义为更一般的AMQP域模型表示的一部分，Message类的目的是简单地将主体和属性封装在单个实例中，以便API可以变得更简单。
-                                        Message类的定义非常简单。<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">class</span> <span
-                                                            class="title">Message</span> </span>&#123;</span><br><span
-                                                            class="line"></span><br><span class="line"></span><br><span
-                                                            class="line">    <span class="keyword">private</span> <span
-                                                            class="keyword">final</span> MessageProperties messageProperties;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">final</span> <span
-                                                            class="keyword">byte</span>[] body;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function"><span class="keyword">public</span> <span
-                                                            class="title">Message</span><span class="params">(<span
-                                                            class="keyword">byte</span>[] body, MessageProperties messageProperties)</span> </span>&#123;</span><br><span
-                                                            class="line">        <span class="keyword">this</span>.body = body;</span><br><span
-                                                            class="line">        <span class="keyword">this</span>.messageProperties = messageProperties;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line"></span><br><span
-                                                            class="line">    <span class="keyword">public</span> <span
-                                                            class="keyword">byte</span>[] getBody() &#123;</span><br><span
-                                                            class="line">        <span
-                                                            class="keyword">return</span> <span
-                                                            class="keyword">this</span>.body;</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line"></span><br><span
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> MessageProperties <span
-                                                            class="title">getMessageProperties</span><span
-                                                            class="params">()</span> </span>&#123;</span><br><span
-                                                            class="line">        <span
-                                                            class="keyword">return</span> <span
-                                                            class="keyword">this</span>.messageProperties;</span><br><span
-                                                            class="line">    &#125;</span><br><span
-                                                            class="line">&#125;</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>
-                                        MessageProperties接口定义了几个通用属性，如messageId，timestamp，contentType等等。这些属性也可以通过调用setHeader（String
-                                        key，Object value）方法用用户定义的标头进行扩展</p>
-                                    <h3 id="Exchange"><a href="#Exchange" class="headerlink" title="Exchange"></a>Exchange
-                                    </h3>
-                                    <p>Exchange接口代表AMQP Exchange，这是消息生产者发送到的东西。broker的虚拟主机中的每个交易都将具有唯一的名称以及一些其他属性<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">interface</span> <span
-                                                            class="title">Exchange</span> </span>&#123;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function">String <span
-                                                            class="title">getName</span><span
-                                                            class="params">()</span></span>;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function">String <span
-                                                            class="title">getExchangeType</span><span
-                                                            class="params">()</span></span>;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function"><span class="keyword">boolean</span> <span
-                                                            class="title">isDurable</span><span class="params">()</span></span>;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function"><span class="keyword">boolean</span> <span
-                                                            class="title">isAutoDelete</span><span
-                                                            class="params">()</span></span>;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function">Map&lt;String, Object&gt; <span
-                                                            class="title">getArguments</span><span
-                                                            class="params">()</span></span>;</span><br><span
-                                                            class="line"></span><br><span class="line">&#125;</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>
-                                        如您所见，Exchange还具有由ExchangeTypes中定义的常量表示的类型。基本类型有：Direct，Topic，Fanout和Headers,在核心软件包中，您可以找到每种类型的Exchange接口的实现。</p>
-                                    <h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3>
-                                    <p>Queue类表示Message Consumer从中接收消息的组件。像各种Exchange类一样，我们的实现旨在成为此核心AMQP类型的抽象表示。</p>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br><span
-                                                            class="line">20</span><br><span
-                                                            class="line">21</span><br><span
-                                                            class="line">22</span><br><span
-                                                            class="line">23</span><br><span
-                                                            class="line">24</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">class</span> <span
-                                                            class="title">Queue</span>  </span>&#123;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="keyword">private</span> <span
-                                                            class="keyword">final</span> String name;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="keyword">private</span> <span class="keyword">volatile</span> <span
-                                                            class="keyword">boolean</span> durable;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="keyword">private</span> <span class="keyword">volatile</span> <span
-                                                            class="keyword">boolean</span> exclusive;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="keyword">private</span> <span class="keyword">volatile</span> <span
-                                                            class="keyword">boolean</span> autoDelete;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="keyword">private</span> <span class="keyword">volatile</span> Map&lt;String, Object&gt; arguments;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="comment">/**</span></span><br><span
-                                                            class="line"><span class="comment">     * The queue is durable, non-exclusive and non auto-delete.</span></span><br><span
-                                                            class="line"><span
-                                                            class="comment">     *</span></span><br><span
-                                                            class="line"><span class="comment">     * <span
-                                                            class="doctag">@param</span> name the name of the queue.</span></span><br><span
-                                                            class="line"><span class="comment">     */</span></span><br><span
-                                                            class="line">    <span class="function"><span
-                                                            class="keyword">public</span> <span
-                                                            class="title">Queue</span><span
-                                                            class="params">(String name)</span> </span>&#123;</span><br><span
-                                                            class="line">        <span class="keyword">this</span>(name, <span
-                                                            class="keyword">true</span>, <span
-                                                            class="keyword">false</span>, <span
-                                                            class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="comment">// Getters and Setters omitted for brevity</span></span><br><span
-                                                            class="line"></span><br><span class="line">&#125;</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <p>请注意，构造函数接受队列名称,根据实施情况，admin
-                                        template可能会提供用于生成唯一命名队列的方法。这种队列可以用作“回复”地址或其他临时情况,因此，自动生成的Queue的exclusive和autoDelete属性都将设置为true。</p>
-                                    <h3 id="Binding"><a href="#Binding" class="headerlink" title="Binding"></a>Binding
-                                    </h3>
-                                    <p>考虑到生产者发送到Exchange并且消费者从队列接收到，将队列连接到Exchange的绑定对于通过消息传递连接这些生产者和消费者至关重要。在Spring
-                                        AMQP中，我们定义了一个Binding类来表示这些连接。</p>
-                                    <p>
-                                        就其本身而言，Binding类的一个实例只是保存关于连接的数据。换句话说，它不是一个“主动”组件,绑定实例可以被AmqpAdmin类用来实际触发代理上的绑定操作。另外，你会在同一节中看到，Binding实例可以在@Configuration类中使用Spring的@
-                                        Bean风格来定义。还有一个方便的基类，它进一步简化了生成与AMQP相关的bean定义并识别队列，交换和绑定的方法以便它们将在应用程序启动时在AMQP代理上声明。使用分离的连接在某些环境中非常有用，比如连接负载均衡中的不同集团成员，将cacheMode设置为CacheMode.CONNECTION。</p>
-                                    <h2 id="Connection-and-Resource-Management-连接及资源管理"><a
-                                            href="#Connection-and-Resource-Management-连接及资源管理" class="headerlink"
-                                            title="Connection and Resource Management 连接及资源管理"></a>Connection and
-                                        Resource Management 连接及资源管理</h2>
-                                    <h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3>
-                                    <p>连接 RabbitMQ
-                                        broker的核心组件是ConnectionFactory接口，ConnectionFactory实现的责任是提供一个org.springframework.amqp.rabbit.connection.Connection实例，它是com.rabbitmq.client.Connection的一个包装。我们提供的唯一具体实现是CachingConnectionFactory，默认情况下，它将建立可由应用程序共享的单个连接代理。由于使用AMQP进行消息传递的“工作单元”实际上是一个“channel”（在某些方面，这与JMS中的Connection和Session之间的关系相似），因此可以共享连接。如你所想，连接实例提供了一个createChannel方法。
-                                        CachingConnectionFactory实现支持这些通道的缓存,并根据它们是否是事务处理来维护通道的单独缓存。在创建CachingConnectionFactory的实例时，可以通过构造函数提供主机名。用户名和密码属性也应该提供。如果您想配置通道缓存的大小（默认值为25），那么您也可以在这里调用setChannelCacheSize（）方法。</p>
-                                    <p>
-                                        从版本1.3开始，可以将CachingConnectionFactory配置为缓存连接以及通道。在这种情况下，每次调用createConnection（）都会创建一个新连接（或从缓存中检索一个空闲连接）关闭连接会将其返回到缓存（如果尚未达到缓存大小）。在这种连接上创建的通道也被缓存</p>
-                                    <p>并不限制连接数量，它指定允许多少空闲打开的连接。</p>
-                                    <p>
-                                        从版本1.5.5开始，提供了一个新的属性connectionLimit。设置此项时，会限制允许的连接总数,设置后，如果达到限制，则使用channelCheckoutTimeLimit等待连接变为空闲状态。如果超过该时间，则抛出AmqpTimeoutException。</p>
-                                    <p>
-                                        当缓存模式为CONNECTION时，不支持自动声明队列等（请参见“自动声明交换，队列和绑定”一节）。此外，在撰写本文时，rabbitmq-client库默认为每个连接（5个线程）创建一个固定的线程池。在使用大量连接时，应考虑在CachingConnectionFactory上设置自定义执行程序,然后，所有连接将使用相同的执行程序，并且它的线程可以共享。执行程序的线程池应该是无界的，或者为预期的利用率设置适当的值（通常每个连接至少有一个线程）,如果在每个连接上创建多个通道，则池大小将影响并发性，因此可变的（或简单缓存）的线程池执行程序将是最合适的。</p>
-                                    <p>重要的是理解cache size不是限制，而是可以缓存通道的数量，
-                                        客户可以使用更多的频道，但是超过这个数字的话他们不会被缓存，比如设置为10，如果信道超过10，10个进入缓存，其他的不会被缓存</p>
-                                    <p>
-                                        从版本1.6开始，默认通道高速缓存大小从1增加到25.在大容量，多线程环境中，小型高速缓存意味着以高速率创建和关闭通道。增加默认缓存大小可以避免这种开销。您应该通过RabbitMQ
-                                        Admin用户界面监控正在使用的频道，并且如果看到许多频道正在创建和关闭，请考虑进一步增加缓存大小。缓存只会按需增长（以适应应用程序的并发需求），因此这种更改不会影响现有的低容量应用程序。</p>
-                                    <p>
-                                        从版本1.4.2开始，CachingConnectionFactory具有一个属性channelCheckoutTimeout。当此属性大于零时，channelCacheSize将成为可在连接上创建的通道数的限制。如果达到限制，调用线程将会阻塞，直到有一个通道可用或达到此超时为止，在这种情况下会引发AmqpTimeoutException。</p>
-                                    <p>
-                                        框架内使用的通道（例如RabbitTemplate）将可靠地返回到缓存。如果您在框架之外创建通道（例如，直接访问连接并调用createChannel（）），您必须可靠地返回它们（通过关闭），也许在最后一个块中，以避免用尽频道。</p>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">CachingConnectionFactory connectionFactory = <span
-                                                            class="keyword">new</span> CachingConnectionFactory(<span
-                                                            class="string">"somehost"</span>);</span><br><span
-                                                            class="line">connectionFactory.setUsername(<span
-                                                            class="string">"guest"</span>);</span><br><span
-                                                            class="line">connectionFactory.setPassword(<span
-                                                            class="string">"guest"</span>);</span><br><span
-                                                            class="line">Connection connection = connectionFactory.createConnection();</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <figure class="highlight xml">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span
-                                                            class="attr">id</span>=<span class="string">"connectionFactory"</span></span></span><br><span
-                                                            class="line"><span class="tag">      <span class="attr">class</span>=<span
-                                                            class="string">"org.springframework.amqp.rabbit.connection.CachingConnectionFactory"</span>&gt;</span></span><br><span
-                                                            class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span
-                                                            class="attr">value</span>=<span
-                                                            class="string">"somehost"</span>/&gt;</span></span><br><span
-                                                            class="line">    <span class="tag">&lt;<span class="name">property</span> <span
-                                                            class="attr">name</span>=<span
-                                                            class="string">"username"</span> <span
-                                                            class="attr">value</span>=<span
-                                                            class="string">"guest"</span>/&gt;</span></span><br><span
-                                                            class="line">    <span class="tag">&lt;<span class="name">property</span> <span
-                                                            class="attr">name</span>=<span
-                                                            class="string">"password"</span> <span
-                                                            class="attr">value</span>=<span
-                                                            class="string">"guest"</span>/&gt;</span></span><br><span
-                                                            class="line"><span class="tag">&lt;/<span
-                                                            class="name">bean</span>&gt;</span></span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <p>
-                                        还有一个SingleConnectionFactory实现，它只在框架的单元测试代码中可用，它比CachingConnectionFactory简单，因为它不会缓存频道，但由于缺乏性能和弹性，它不适用于简单测试之外的实际应用。如果由于某种原因需要实现自己的ConnectionFactory，那么AbstractConnectionFactory基类可能会提供一个很好的起点。</p>
-                                    <p>通过<a href="http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd"
-                                            target="_blank" rel="noopener">rabbitMq命名空间</a>，可以查看添加属性</p>
-                                    <p>这里有一个自定义线程工厂的例子，它使用rabbitmq-作为线程名称的前缀。<br>
-                                    <figure class="highlight xml">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="tag">&lt;<span class="name">rabbit:connection-factory</span> <span
-                                                            class="attr">id</span>=<span
-                                                            class="string">"multiHost"</span> <span class="attr">virtual-host</span>=<span
-                                                            class="string">"/bar"</span> <span
-                                                            class="attr">addresses</span>=<span class="string">"host1:1234,host2,host3:4567"</span></span></span><br><span
-                                                            class="line"><span class="tag">    <span class="attr">thread-factory</span>=<span
-                                                            class="string">"tf"</span></span></span><br><span
-                                                            class="line"><span class="tag">    <span class="attr">channel-cache-size</span>=<span
-                                                            class="string">"10"</span> <span
-                                                            class="attr">username</span>=<span
-                                                            class="string">"user"</span> <span
-                                                            class="attr">password</span>=<span
-                                                            class="string">"password"</span> /&gt;</span></span><br><span
-                                                            class="line"></span><br><span class="line"><span
-                                                            class="tag">&lt;<span class="name">bean</span> <span
-                                                            class="attr">id</span>=<span
-                                                            class="string">"tf"</span> <span
-                                                            class="attr">class</span>=<span class="string">"org.springframework.scheduling.concurrent.CustomizableThreadFactory"</span>&gt;</span></span><br><span
-                                                            class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span
-                                                            class="attr">value</span>=<span
-                                                            class="string">"rabbitmq-"</span> /&gt;</span></span><br><span
-                                                            class="line"><span class="tag">&lt;/<span
-                                                            class="name">bean</span>&gt;</span></span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>
-                                        从版本1.7开始，为注入到AbstractionConnectionFactory中提供了一个ConnectionNameStrategy。生成的名称用于目标RabbitMQ连接的应用程序特定标识。如果RabbitMQ服务器支持，连接名称将显示在管理UI中。该值不必是唯一的，并且不能用作连接标识符,例如在HTTP
-                                        API请求中。此值应该是人类可读的，并且是connection_name键下的ClientProperties的一部分</p>
-                                    <p>
-                                        ConnectionFactory参数可用于通过某种逻辑区分目标连接名称。默认情况下，使用AbstractConnectionFactory的beanName和内部计数器来生成connection_name,
-                                        <rabbit
-                                        ：connection-factory>命名空间组件也随连接名称策略属性提供。</rabbit：connection-factory>
-                                    </p>
-                                    <p>
-                                        从版本1.7.7开始，提供了当SimpleConnection.createChannel（）不能创建一个Channel的AmqpResourceNotAvailableException，因为达到了通道最大限制，并且缓存中没有可用通道。这个异常可以在RetryPolicy中使用，以在一些退避后恢复操作。</p>
-                                    <h2 id="Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂"><a
-                                            href="#Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂"
-                                            class="headerlink"
-                                            title="Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂"></a>Configuring
-                                        the Underlying Client Connection Factory 配置基础客户端连接工厂</h2>
-                                    <h2 id="Routing-Connection-Factory"><a href="#Routing-Connection-Factory"
-                                                                           class="headerlink"
-                                                                           title="Routing Connection Factory"></a>Routing
-                                        Connection Factory</h2>
-                                    <p>
-                                        从1.3版本开始,引入了AbstractRoutingConnectionFactory.这提供了一种机制来配置多个ConnectionFactories的映射,并通过在运行时使用lookupKey来决定目标ConnectionFactory.</p>
-                                    <p>通常,实现会检查线程绑定上下文. 为了方便, Spring AMQP提供了SimpleRoutingConnectionFactory,
-                                        它会从SimpleResourceHolder中获取当前线程绑定的lookupKey:</p>
-                                    <figure class="highlight xml">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span
-                                                            class="attr">id</span>=<span class="string">"connectionFactory"</span></span></span><br><span
-                                                            class="line"><span class="tag">      <span class="attr">class</span>=<span
-                                                            class="string">"org.springframework.amqp.rabbit.connection.SimpleRoutingConnectionFactory"</span>&gt;</span></span><br><span
-                                                            class="line">	<span class="tag">&lt;<span class="name">property</span> <span
-                                                            class="attr">name</span>=<span class="string">"targetConnectionFactories"</span>&gt;</span></span><br><span
-                                                            class="line">		<span class="tag">&lt;<span
-                                                            class="name">map</span>&gt;</span></span><br><span
-                                                            class="line">			<span class="tag">&lt;<span
-                                                            class="name">entry</span> <span
-                                                            class="attr">key</span>=<span class="string">"#&#123;connectionFactory1.virtualHost&#125;"</span> <span
-                                                            class="attr">ref</span>=<span class="string">"connectionFactory1"</span>/&gt;</span></span><br><span
-                                                            class="line">			<span class="tag">&lt;<span
-                                                            class="name">entry</span> <span
-                                                            class="attr">key</span>=<span class="string">"#&#123;connectionFactory2.virtualHost&#125;"</span> <span
-                                                            class="attr">ref</span>=<span class="string">"connectionFactory2"</span>/&gt;</span></span><br><span
-                                                            class="line">		<span class="tag">&lt;/<span
-                                                            class="name">map</span>&gt;</span></span><br><span
-                                                            class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span
-                                                            class="line"><span class="tag">&lt;/<span
-                                                            class="name">bean</span>&gt;</span></span><br><span
-                                                            class="line"></span><br><span class="line"><span
-                                                            class="tag">&lt;<span
-                                                            class="name">rabbit:template</span> <span
-                                                            class="attr">id</span>=<span
-                                                            class="string">"template"</span> <span class="attr">connection-factory</span>=<span
-                                                            class="string">"connectionFactory"</span> /&gt;</span></span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="keyword">public</span> <span
-                                                            class="class"><span class="keyword">class</span> <span
-                                                            class="title">MyService</span> </span>&#123;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="meta">@Autowired</span></span><br><span class="line">    <span
-                                                            class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span
-                                                            class="line"></span><br><span class="line">    <span
-                                                            class="function"><span class="keyword">public</span> <span
-                                                            class="keyword">void</span> <span
-                                                            class="title">service</span><span class="params">(String vHost, String payload)</span> </span>&#123;</span><br><span
-                                                            class="line">        SimpleResourceHolder.bind(rabbitTemplate.getConnectionFactory(), vHost);</span><br><span
-                                                            class="line">        rabbitTemplate.convertAndSend(payload);</span><br><span
-                                                            class="line">        SimpleResourceHolder.unbind(rabbitTemplate.getConnectionFactory());</span><br><span
-                                                            class="line">    &#125;</span><br><span class="line"></span><br><span
-                                                            class="line">&#125;</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <p>使用后解除资源绑定很重要。有关更多信息，请参阅AbstractRoutingConnectionFactory的JavaDocs。</p>
-                                    <p>从版本1.4开始，RabbitTemplate支持SpEL
-                                        sendConnectionFactorySelectorExpression和receiveConnectionFactorySelectorExpression属性，用来对AMPQ操作时如send，sendAndReceive，receive或receiveAndReply,进行解析并提供AbstractRoutingConnectionFactory所需的lookupKey值，例如”@vHostResolver.getVHost(#root)”可以在表达式中使用，send操作，被发送的Message是评估的对象，对于revice操作，queueName是评估的对象</p>
-                                    <p>
-                                        路由算法是：如果选择器表达式为空，或者评估为null，或者提供的ConnectionFactory不是AbstractRoutingConnectionFactory的实例，则依赖于提供的ConnectionFactory实现，所有工作都像以前一样。如果评估结果不为null，但是没有该lookupKey指向的ConnectionFactory，并且AbstractRoutingConnectionFactory配置为lenientFallback
-                                        =
-                                        true，则会发生同样的情况，当然，在AbstractRoutingConnectionFactory的情况下，它会根据determineCurrentLookupKey（）回退到它的路由实现。但是，如果lenientFallback
-                                        = false，则会引发IllegalStateException。源码如下所示</p>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br><span
-                                                            class="line">6</span><br><span
-                                                            class="line">7</span><br><span
-                                                            class="line">8</span><br><span
-                                                            class="line">9</span><br><span
-                                                            class="line">10</span><br><span
-                                                            class="line">11</span><br><span
-                                                            class="line">12</span><br><span
-                                                            class="line">13</span><br><span
-                                                            class="line">14</span><br><span
-                                                            class="line">15</span><br><span
-                                                            class="line">16</span><br><span
-                                                            class="line">17</span><br><span
-                                                            class="line">18</span><br><span
-                                                            class="line">19</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="comment">//spring-rabbit-1.6.1.RELEASE.jar中</span></span><br><span
-                                                            class="line"><span class="comment">//\org\springframework\amqp\rabbit\connection\AbstractRoutingConnectionFactory.class</span></span><br><span
-                                                            class="line"><span class="function"><span class="keyword">protected</span> ConnectionFactory <span
-                                                            class="title">determineTargetConnectionFactory</span><span
-                                                            class="params">()</span> </span>&#123;</span><br><span
-                                                            class="line">        Object lookupKey = <span
-                                                            class="keyword">this</span>.determineCurrentLookupKey();</span><br><span
-                                                            class="line">        ConnectionFactory connectionFactory = <span
-                                                            class="keyword">null</span>;</span><br><span class="line">        <span
-                                                            class="keyword">if</span> (lookupKey != <span
-                                                            class="keyword">null</span>) &#123;</span><br><span
-                                                            class="line">            connectionFactory = (ConnectionFactory)<span
-                                                            class="keyword">this</span>.targetConnectionFactories.get(lookupKey);</span><br><span
-                                                            class="line">        &#125;</span><br><span
-                                                            class="line"></span><br><span class="line">        <span
-                                                            class="keyword">if</span> (connectionFactory == <span
-                                                            class="keyword">null</span> &amp;&amp; (<span
-                                                            class="keyword">this</span>.lenientFallback || lookupKey == <span
-                                                            class="keyword">null</span>)) &#123;</span><br><span
-                                                            class="line">            connectionFactory = <span
-                                                            class="keyword">this</span>.defaultTargetConnectionFactory;</span><br><span
-                                                            class="line">        &#125;</span><br><span
-                                                            class="line"></span><br><span class="line">        <span
-                                                            class="keyword">if</span> (connectionFactory == <span
-                                                            class="keyword">null</span>) &#123;</span><br><span
-                                                            class="line">            <span class="keyword">throw</span> <span
-                                                            class="keyword">new</span> IllegalStateException(<span
-                                                            class="string">"Cannot determine target ConnectionFactory for lookup key ["</span> + lookupKey + <span
-                                                            class="string">"]"</span>);</span><br><span class="line">        &#125; <span
-                                                            class="keyword">else</span> &#123;</span><br><span
-                                                            class="line">            <span class="keyword">return</span> connectionFactory;</span><br><span
-                                                            class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    <p>XML配置
-                                        <rabbit
-                                        ：template>组件上提供了send-connection-factory-selector-expression和receive-connection-factory-selector-expression属性。</rabbit
-                                        ：template>
-                                    </p>
-                                    <p>
-                                        从版本1.4开始，您可以在侦听器容器中配置路由连接工厂。在这种情况下，队列名称列表将用作查找键。例如，如果使用setQueueNames（“foo”，“bar”）配置容器，则查找键为“[foo，bar]”（不包含空格）。</p>
-                                    <p>
-                                        从版本1.6.9开始，您可以使用侦听器容器上的setLookupKeyQualifier将限定符添加到查找键，一旦这样启用，示例，将会监听相同名称的队列，即使不在同一虚拟主机<br>例如，当
-                                        qualifier设为foo,并且队列名为foo，您将注册目标连接工厂的查找键为foo [bar]。</p>
-                                    <h2 id="Sending-messages"><a href="#Sending-messages" class="headerlink"
-                                                                 title="Sending messages"></a>Sending messages</h2>
-                                    <h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3>
-                                    <p>可以使用以下任何一种方法用来发送消息<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br><span
-                                                            class="line">4</span><br><span
-                                                            class="line">5</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line"><span class="function"><span
-                                                            class="keyword">void</span> <span
-                                                            class="title">send</span><span class="params">(Message message)</span> <span
-                                                            class="keyword">throws</span> AmqpException</span>;</span><br><span
-                                                            class="line"></span><br><span class="line"><span
-                                                            class="function"><span class="keyword">void</span> <span
-                                                            class="title">send</span><span class="params">(String routingKey, Message message)</span> <span
-                                                            class="keyword">throws</span> AmqpException</span>;</span><br><span
-                                                            class="line"></span><br><span class="line"><span
-                                                            class="function"><span class="keyword">void</span> <span
-                                                            class="title">send</span><span class="params">(String exchange, String routingKey, Message message)</span> <span
-                                                            class="keyword">throws</span> AmqpException</span>;</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>我们可以用上面列出的最后一种方法开始讨论，因为它实际上是最明确的。它允许在运行时提供AMQP Exchange及routing
-                                        key。最后一个参数是负责实际创建Message实例的回调。使用此方法发送消息的示例可能如下所示<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">amqpTemplate.send(<span class="string">"marketData.topic"</span>, <span
-                                                            class="string">"quotes.nasdaq.FOO"</span>,<span
-                                                            class="keyword">new</span> Message(<span class="string">"12.34"</span>.getBytes(), someProperties));</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>如果您计划使用该模板实例在大多数或所有时间发送到同一个交换，则可以在模板上设置“exchange”属性。如下所示<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">amqpTemplate.setExchange(<span
-                                                            class="string">"marketData.topic"</span>);</span><br><span
-                                                            class="line">amqpTemplate.send(<span class="string">"quotes.nasdaq.FOO"</span>, <span
-                                                            class="keyword">new</span> Message(<span class="string">"12.34"</span>.getBytes(), someProperties));</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>如果在模板上设置了“exchange”和“routingKey”属性，则可以使用仅接受消息的方法<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">amqpTemplate.setExchange(<span
-                                                            class="string">"marketData.topic"</span>);</span><br><span
-                                                            class="line">amqpTemplate.setRoutingKey(<span
-                                                            class="string">"quotes.nasdaq.FOO"</span>);</span><br><span
-                                                            class="line">amqpTemplate.send(<span
-                                                            class="keyword">new</span> Message(<span class="string">"12.34"</span>.getBytes(), someProperties));</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>
-                                        比较好的想法是显示指定方法参数属性覆盖提供的默认值，实际上，即使您没有明确地在模板上设置这些属性，也总是有默认值。在这两种情况下，默认都是空字符串，但这实际上是一个合理的默认值。就routing
-                                        key而言，首先并不总是必需的（例如扇出交换）。此外，队列可能会绑定到一个空字符串的Exchange。这些都是依赖于模板的路由关键字属性的默认空字符串值的合法方案。就交换名称而言，空字符串是非常常用的，因为AMQP规范将“默认交换”定义为没有名称.由于所有队列都使用其名称作为绑定值自动绑定到默认Exchange（它是一个Direct
-                                        Exchange），因此上述第二种方法可用于通过默认Exchange进行的任何队列的简单点对点消息传递。只需通过在运行时提供method参数，将队列名称作为“routingKey”提供：<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">RabbitTemplate template = <span
-                                                            class="keyword">new</span> RabbitTemplate(); <span
-                                                            class="comment">// using default no-name Exchange</span></span><br><span
-                                                            class="line">template.send(<span class="string">"queue.helloWorld"</span>, <span
-                                                            class="keyword">new</span> Message(<span class="string">"Hello World"</span>.getBytes(), someProperties));</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <p>或者，如果您更愿意创建将用于主要或专门发布到单个队列的模板，则以下内容非常合理：<br>
-                                    <figure class="highlight java">
-                                        <table>
-                                            <tr>
-                                                <td class="gutter">
-                                                    <pre><span class="line">1</span><br><span
-                                                            class="line">2</span><br><span
-                                                            class="line">3</span><br></pre>
-                                                </td>
-                                                <td class="code">
-                                                    <pre><span class="line">RabbitTemplate template = <span
-                                                            class="keyword">new</span> RabbitTemplate(); <span
-                                                            class="comment">// using default no-name Exchange</span></span><br><span
-                                                            class="line">template.setRoutingKey(<span class="string">"queue.helloWorld"</span>); <span
-                                                            class="comment">// but we'll always send to this Queue</span></span><br><span
-                                                            class="line">template.send(<span class="keyword">new</span> Message(<span
-                                                            class="string">"Hello World"</span>.getBytes(), someProperties));</span><br></pre>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </figure>
-                                    </p>
-                                    <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1>
-                                    <p>
-                                        <a href="https://docs.spring.io/spring-amqp/docs/1.7.8.RELEASE/reference/html/_reference.html"
-                                           target="_blank" rel="noopener">SpringAMPQ官方文档</a></p>
-                                    <p><a href="https://docs.spring.io/spring-amqp/docs/1.7.8.RELEASE/api/"
-                                          target="_blank" rel="noopener">SpringAMPQ官方API</a></p>
-                                    <p><a href="https://www.aliyun.com/jiaocheng/820430.html" target="_blank"
-                                          rel="noopener">中文翻译</a></p>
-
-
-                                </div>
-
-
-                                <footer class="post-footer">
-
-                                    <div class="post-tags">
-
-                                        <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
-
-                                        <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
-
-                                        <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-
-                                    </div>
-
-
-                                    <div class="post-nav">
-                                        <div class="post-nav-next post-nav-item">
-
-                                            <a href="/2018/06/12/RabbitMQ确认机制/" rel="next" title="RabbitMQ消息确认">
-                                                <i class="fa fa-chevron-left"></i> RabbitMQ消息确认
-                                            </a>
-
-                                        </div>
-
-                                        <span class="post-nav-divider"></span>
-
-                                        <div class="post-nav-prev post-nav-item">
-
-                                            <a href="/2018/07/15/Mac快捷键/" rel="prev" title="Mac快捷键">
-                                                Mac快捷键 <i class="fa fa-chevron-right"></i>
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-
-                                </footer>
-                            </div>
-
-
-                        </article>
-
-
-                        <div class="post-spread">
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
-                <div id="container" style="display:none"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-                <script>
-                    const myTheme = {
-                        render(state, instance) {
-                            const container = document.createElement('div');
-                            container.lang = "en-US";
-                            container.className = 'gitment-container gitment-root-container';
-                            container.appendChild(instance.renderHeader(state, instance));
-                            container.appendChild(instance.renderEditor(state, instance));
-                            container.appendChild(instance.renderComments(state, instance));
-                            container.appendChild(instance.renderFooter(state, instance));
-                            return container;
-                        }
-                    }
-
-                    function showGitment() {
-                        $("#gitment_title").attr("style", "display:none");
-                        $("#container").attr("style", "").addClass("gitment_container");
-                        var gitment = new Gitment({
-                            id: 'RabbitMQ消息确认',
-                            theme: myTheme,
-                            owner: "yuanwenjian",
-                            repo: "gitment-comments",
-                            oauth: {
-                                client_id: '21bb0ade50d6f2c9707b',
-                                client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
-                            }
-                        });
-                        gitment.render('container');
-                    }
-                </script>
-
-
-            </div>
-
-
-            <div class="sidebar-toggle">
-                <div class="sidebar-toggle-line-wrap">
-                    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-                    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-                </div>
-            </div>
-
-            <aside id="sidebar" class="sidebar">
-
-                <div class="sidebar-inner">
-
-
-                    <ul class="sidebar-nav motion-element">
-                        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-                            文章目录
-                        </li>
-                        <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-                            站点概览
-                        </li>
-                    </ul>
-
-
-                    <section class="site-overview-wrap sidebar-panel">
-                        <div class="site-overview">
-                            <div class="site-author motion-element" itemprop="author" itemscope
-                                 itemtype="http://schema.org/Person">
-
-                                <img class="site-author-image" itemprop="image"
-                                     src="/images/sanguosha.jpg"
-                                     alt="问问苑大宝"/>
-
-                                <p class="site-author-name" itemprop="name">问问苑大宝</p>
-                                <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
-                            </div>
-
-                            <nav class="site-state motion-element">
-
-
-                                <div class="site-state-item site-state-posts">
-
-                                    <a href="/archives/">
-
-                                        <span class="site-state-item-count">64</span>
-                                        <span class="site-state-item-name">日志</span>
-                                    </a>
-                                </div>
-
-
-                                <div class="site-state-item site-state-categories">
-                                    <a href="/categories/index.html">
-                                        <span class="site-state-item-count">31</span>
-                                        <span class="site-state-item-name">分类</span>
-                                    </a>
-                                </div>
-
-
-                                <div class="site-state-item site-state-tags">
-                                    <a href="/tags/index.html">
-                                        <span class="site-state-item-count">30</span>
-                                        <span class="site-state-item-name">标签</span>
-                                    </a>
-                                </div>
-
-
-                            </nav>
-
-
-                        </div>
-                    </section>
-
-
-                    <!--noindex-->
-                    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-                        <div class="post-toc">
-
-
-                            <div class="post-toc-content">
-                                <ol class="nav">
-                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#文档"><span
-                                            class="nav-number">1.</span> <span class="nav-text">文档</span></a>
-                                        <ol class="nav-child">
-                                            <li class="nav-item nav-level-2"><a class="nav-link" href="#AMPQ抽象"><span
-                                                    class="nav-number">1.1.</span> <span class="nav-text">AMPQ抽象</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#介绍"><span
-                                                            class="nav-number">1.1.1.</span> <span
-                                                            class="nav-text">介绍</span></a></li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#Message"><span
-                                                            class="nav-number">1.1.2.</span> <span class="nav-text">Message</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#Exchange"><span
-                                                            class="nav-number">1.1.3.</span> <span class="nav-text">Exchange</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#Queue"><span
-                                                            class="nav-number">1.1.4.</span> <span class="nav-text">Queue</span></a>
-                                                    </li>
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#Binding"><span
-                                                            class="nav-number">1.1.5.</span> <span class="nav-text">Binding</span></a>
-                                                    </li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Connection-and-Resource-Management-连接及资源管理"><span
-                                                    class="nav-number">1.2.</span> <span class="nav-text">Connection and Resource Management 连接及资源管理</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#介绍-1"><span
-                                                            class="nav-number">1.2.1.</span> <span
-                                                            class="nav-text">介绍</span></a></li>
-                                                </ol>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂"><span
-                                                    class="nav-number">1.3.</span> <span class="nav-text">Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂</span></a>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Routing-Connection-Factory"><span
-                                                    class="nav-number">1.4.</span> <span class="nav-text">Routing Connection Factory</span></a>
-                                            </li>
-                                            <li class="nav-item nav-level-2"><a class="nav-link"
-                                                                                href="#Sending-messages"><span
-                                                    class="nav-number">1.5.</span> <span class="nav-text">Sending messages</span></a>
-                                                <ol class="nav-child">
-                                                    <li class="nav-item nav-level-3"><a class="nav-link"
-                                                                                        href="#介绍-2"><span
-                                                            class="nav-number">1.5.1.</span> <span
-                                                            class="nav-text">介绍</span></a></li>
-                                                </ol>
-                                            </li>
-                                        </ol>
-                                    </li>
-                                    <li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span
-                                            class="nav-number">2.</span> <span class="nav-text">参考</span></a></li>
-                                </ol>
-                            </div>
-
-
-                        </div>
-                    </section>
-                    <!--/noindex-->
-
-
-                </div>
-            </aside>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  RabbitMQ是一个消息代理 - 一个消息系统的媒介。它可以为你的应用提供一个通用的消息发送和接收平台，并且保证消息在传输过程中的安全。
+              </div>
+          
+
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><h2 id="AMPQ抽象"><a href="#AMPQ抽象" class="headerlink" title="AMPQ抽象"></a>AMPQ抽象</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Spring AMQP由少数几个模块组成，每个模块在分发中都由JAR表示。这些模块是：spring-amqp和spring-rabbit。spring-amqp模块包含org.springframework.amqp.core包。在该软件包中，您将找到代表核心AMQP“模型”的类，我们的目的是提供不依赖任何特定AMQP代理实施或客户端库的通用抽象，最终用户代码在供应商实现中将更具可移植性，因为它可以仅针对抽象层进行开发。这些抽象然后由broker-specific专用模块（例如spring-rabbit）实施。目前只有RabbitMQ实现;但是除了RabbitMQ之外，抽象已经在.NET中使用Apache Qpid进行了验证。由于AMQP原则上在协议级别运行，RabbitMQ客户端可以与支持相同协议版本的任何代理一起使用，但目前我们不测试任何其他代理。</p>
+<h3 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h3><p>0-9-1 AMQP规范没有定义Message类或接口。但是在执行诸如basicPublish（）之类的操作时，内容将作为字节数组参数传递，而其他属性作为单独的参数传递。Spring AMQP将Message类定义为更一般的AMQP域模型表示的一部分，Message类的目的是简单地将主体和属性封装在单个实例中，以便API可以变得更简单。 Message类的定义非常简单。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Message</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> MessageProperties messageProperties;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">byte</span>[] body;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Message</span><span class="params">(<span class="keyword">byte</span>[] body, MessageProperties messageProperties)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.body = body;</span><br><span class="line">        <span class="keyword">this</span>.messageProperties = messageProperties;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] getBody() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.body;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MessageProperties <span class="title">getMessageProperties</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.messageProperties;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>MessageProperties接口定义了几个通用属性，如messageId，timestamp，contentType等等。这些属性也可以通过调用setHeader（String key，Object value）方法用用户定义的标头进行扩展</p>
+<h3 id="Exchange"><a href="#Exchange" class="headerlink" title="Exchange"></a>Exchange</h3><p>Exchange接口代表AMQP Exchange，这是消息生产者发送到的东西。broker的虚拟主机中的每个交易都将具有唯一的名称以及一些其他属性<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Exchange</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">getExchangeType</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDurable</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isAutoDelete</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Map&lt;String, Object&gt; <span class="title">getArguments</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如您所见，Exchange还具有由ExchangeTypes中定义的常量表示的类型。基本类型有：Direct，Topic，Fanout和Headers,在核心软件包中，您可以找到每种类型的Exchange接口的实现。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>Queue类表示Message Consumer从中接收消息的组件。像各种Exchange类一样，我们的实现旨在成为此核心AMQP类型的抽象表示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Queue</span>  </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> durable;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> exclusive;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> autoDelete;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Map&lt;String, Object&gt; arguments;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The queue is durable, non-exclusive and non auto-delete.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name the name of the queue.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Queue</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(name, <span class="keyword">true</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getters and Setters omitted for brevity</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请注意，构造函数接受队列名称,根据实施情况，admin template可能会提供用于生成唯一命名队列的方法。这种队列可以用作“回复”地址或其他临时情况,因此，自动生成的Queue的exclusive和autoDelete属性都将设置为true。</p>
+<h3 id="Binding"><a href="#Binding" class="headerlink" title="Binding"></a>Binding</h3><p>考虑到生产者发送到Exchange并且消费者从队列接收到，将队列连接到Exchange的绑定对于通过消息传递连接这些生产者和消费者至关重要。在Spring AMQP中，我们定义了一个Binding类来表示这些连接。</p>
+<p>就其本身而言，Binding类的一个实例只是保存关于连接的数据。换句话说，它不是一个“主动”组件,绑定实例可以被AmqpAdmin类用来实际触发代理上的绑定操作。另外，你会在同一节中看到，Binding实例可以在@Configuration类中使用Spring的@ Bean风格来定义。还有一个方便的基类，它进一步简化了生成与AMQP相关的bean定义并识别队列，交换和绑定的方法以便它们将在应用程序启动时在AMQP代理上声明。使用分离的连接在某些环境中非常有用，比如连接负载均衡中的不同集团成员，将cacheMode设置为CacheMode.CONNECTION。</p>
+<h2 id="Connection-and-Resource-Management-连接及资源管理"><a href="#Connection-and-Resource-Management-连接及资源管理" class="headerlink" title="Connection and Resource Management 连接及资源管理"></a>Connection and Resource Management 连接及资源管理</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>连接 RabbitMQ broker的核心组件是ConnectionFactory接口，ConnectionFactory实现的责任是提供一个org.springframework.amqp.rabbit.connection.Connection实例，它是com.rabbitmq.client.Connection的一个包装。我们提供的唯一具体实现是CachingConnectionFactory，默认情况下，它将建立可由应用程序共享的单个连接代理。由于使用AMQP进行消息传递的“工作单元”实际上是一个“channel”（在某些方面，这与JMS中的Connection和Session之间的关系相似），因此可以共享连接。如你所想，连接实例提供了一个createChannel方法。 CachingConnectionFactory实现支持这些通道的缓存,并根据它们是否是事务处理来维护通道的单独缓存。在创建CachingConnectionFactory的实例时，可以通过构造函数提供主机名。用户名和密码属性也应该提供。如果您想配置通道缓存的大小（默认值为25），那么您也可以在这里调用setChannelCacheSize（）方法。</p>
+<p>从版本1.3开始，可以将CachingConnectionFactory配置为缓存连接以及通道。在这种情况下，每次调用createConnection（）都会创建一个新连接（或从缓存中检索一个空闲连接）关闭连接会将其返回到缓存（如果尚未达到缓存大小）。在这种连接上创建的通道也被缓存</p>
+<p>并不限制连接数量，它指定允许多少空闲打开的连接。</p>
+<p>从版本1.5.5开始，提供了一个新的属性connectionLimit。设置此项时，会限制允许的连接总数,设置后，如果达到限制，则使用channelCheckoutTimeLimit等待连接变为空闲状态。如果超过该时间，则抛出AmqpTimeoutException。</p>
+<p>当缓存模式为CONNECTION时，不支持自动声明队列等（请参见“自动声明交换，队列和绑定”一节）。此外，在撰写本文时，rabbitmq-client库默认为每个连接（5个线程）创建一个固定的线程池。在使用大量连接时，应考虑在CachingConnectionFactory上设置自定义执行程序,然后，所有连接将使用相同的执行程序，并且它的线程可以共享。执行程序的线程池应该是无界的，或者为预期的利用率设置适当的值（通常每个连接至少有一个线程）,如果在每个连接上创建多个通道，则池大小将影响并发性，因此可变的（或简单缓存）的线程池执行程序将是最合适的。</p>
+<p>重要的是理解cache size不是限制，而是可以缓存通道的数量， 客户可以使用更多的频道，但是超过这个数字的话他们不会被缓存，比如设置为10，如果信道超过10，10个进入缓存，其他的不会被缓存</p>
+<p>从版本1.6开始，默认通道高速缓存大小从1增加到25.在大容量，多线程环境中，小型高速缓存意味着以高速率创建和关闭通道。增加默认缓存大小可以避免这种开销。您应该通过RabbitMQ Admin用户界面监控正在使用的频道，并且如果看到许多频道正在创建和关闭，请考虑进一步增加缓存大小。缓存只会按需增长（以适应应用程序的并发需求），因此这种更改不会影响现有的低容量应用程序。</p>
+<p>从版本1.4.2开始，CachingConnectionFactory具有一个属性channelCheckoutTimeout。当此属性大于零时，channelCacheSize将成为可在连接上创建的通道数的限制。如果达到限制，调用线程将会阻塞，直到有一个通道可用或达到此超时为止，在这种情况下会引发AmqpTimeoutException。</p>
+<p>框架内使用的通道（例如RabbitTemplate）将可靠地返回到缓存。如果您在框架之外创建通道（例如，直接访问连接并调用createChannel（）），您必须可靠地返回它们（通过关闭），也许在最后一个块中，以避免用尽频道。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CachingConnectionFactory connectionFactory = <span class="keyword">new</span> CachingConnectionFactory(<span class="string">"somehost"</span>);</span><br><span class="line">connectionFactory.setUsername(<span class="string">"guest"</span>);</span><br><span class="line">connectionFactory.setPassword(<span class="string">"guest"</span>);</span><br><span class="line">Connection connection = connectionFactory.createConnection();</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"connectionFactory"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"org.springframework.amqp.rabbit.connection.CachingConnectionFactory"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"somehost"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"guest"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"guest"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>还有一个SingleConnectionFactory实现，它只在框架的单元测试代码中可用，它比CachingConnectionFactory简单，因为它不会缓存频道，但由于缺乏性能和弹性，它不适用于简单测试之外的实际应用。如果由于某种原因需要实现自己的ConnectionFactory，那么AbstractConnectionFactory基类可能会提供一个很好的起点。</p>
+<p>通过<a href="http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd" target="_blank" rel="noopener">rabbitMq命名空间</a>，可以查看添加属性</p>
+<p>这里有一个自定义线程工厂的例子，它使用rabbitmq-作为线程名称的前缀。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">rabbit:connection-factory</span> <span class="attr">id</span>=<span class="string">"multiHost"</span> <span class="attr">virtual-host</span>=<span class="string">"/bar"</span> <span class="attr">addresses</span>=<span class="string">"host1:1234,host2,host3:4567"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">thread-factory</span>=<span class="string">"tf"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">channel-cache-size</span>=<span class="string">"10"</span> <span class="attr">username</span>=<span class="string">"user"</span> <span class="attr">password</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"tf"</span> <span class="attr">class</span>=<span class="string">"org.springframework.scheduling.concurrent.CustomizableThreadFactory"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"rabbitmq-"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>从版本1.7开始，为注入到AbstractionConnectionFactory中提供了一个ConnectionNameStrategy。生成的名称用于目标RabbitMQ连接的应用程序特定标识。如果RabbitMQ服务器支持，连接名称将显示在管理UI中。该值不必是唯一的，并且不能用作连接标识符,例如在HTTP API请求中。此值应该是人类可读的，并且是connection_name键下的ClientProperties的一部分</p>
+<p>ConnectionFactory参数可用于通过某种逻辑区分目标连接名称。默认情况下，使用AbstractConnectionFactory的beanName和内部计数器来生成connection_name,<rabbit：connection-factory>命名空间组件也随连接名称策略属性提供。</rabbit：connection-factory></p>
+<p>从版本1.7.7开始，提供了当SimpleConnection.createChannel（）不能创建一个Channel的AmqpResourceNotAvailableException，因为达到了通道最大限制，并且缓存中没有可用通道。这个异常可以在RetryPolicy中使用，以在一些退避后恢复操作。</p>
+<h2 id="Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂"><a href="#Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂" class="headerlink" title="Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂"></a>Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂</h2><h2 id="Routing-Connection-Factory"><a href="#Routing-Connection-Factory" class="headerlink" title="Routing Connection Factory"></a>Routing Connection Factory</h2><p>从1.3版本开始,引入了AbstractRoutingConnectionFactory.这提供了一种机制来配置多个ConnectionFactories的映射,并通过在运行时使用lookupKey来决定目标ConnectionFactory.</p>
+<p>通常,实现会检查线程绑定上下文. 为了方便, Spring AMQP提供了SimpleRoutingConnectionFactory, 它会从SimpleResourceHolder中获取当前线程绑定的lookupKey:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"connectionFactory"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"org.springframework.amqp.rabbit.connection.SimpleRoutingConnectionFactory"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"targetConnectionFactories"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"#&#123;connectionFactory1.virtualHost&#125;"</span> <span class="attr">ref</span>=<span class="string">"connectionFactory1"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"#&#123;connectionFactory2.virtualHost&#125;"</span> <span class="attr">ref</span>=<span class="string">"connectionFactory2"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">rabbit:template</span> <span class="attr">id</span>=<span class="string">"template"</span> <span class="attr">connection-factory</span>=<span class="string">"connectionFactory"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RabbitTemplate rabbitTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(String vHost, String payload)</span> </span>&#123;</span><br><span class="line">        SimpleResourceHolder.bind(rabbitTemplate.getConnectionFactory(), vHost);</span><br><span class="line">        rabbitTemplate.convertAndSend(payload);</span><br><span class="line">        SimpleResourceHolder.unbind(rabbitTemplate.getConnectionFactory());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用后解除资源绑定很重要。有关更多信息，请参阅AbstractRoutingConnectionFactory的JavaDocs。</p>
+<p>从版本1.4开始，RabbitTemplate支持SpEL sendConnectionFactorySelectorExpression和receiveConnectionFactorySelectorExpression属性，用来对AMPQ操作时如send，sendAndReceive，receive或receiveAndReply,进行解析并提供AbstractRoutingConnectionFactory所需的lookupKey值，例如”@vHostResolver.getVHost(#root)”可以在表达式中使用，send操作，被发送的Message是评估的对象，对于revice操作，queueName是评估的对象</p>
+<p>路由算法是：如果选择器表达式为空，或者评估为null，或者提供的ConnectionFactory不是AbstractRoutingConnectionFactory的实例，则依赖于提供的ConnectionFactory实现，所有工作都像以前一样。如果评估结果不为null，但是没有该lookupKey指向的ConnectionFactory，并且AbstractRoutingConnectionFactory配置为lenientFallback = true，则会发生同样的情况，当然，在AbstractRoutingConnectionFactory的情况下，它会根据determineCurrentLookupKey（）回退到它的路由实现。但是，如果lenientFallback = false，则会引发IllegalStateException。源码如下所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//spring-rabbit-1.6.1.RELEASE.jar中</span></span><br><span class="line"><span class="comment">//\org\springframework\amqp\rabbit\connection\AbstractRoutingConnectionFactory.class</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> ConnectionFactory <span class="title">determineTargetConnectionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Object lookupKey = <span class="keyword">this</span>.determineCurrentLookupKey();</span><br><span class="line">        ConnectionFactory connectionFactory = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (lookupKey != <span class="keyword">null</span>) &#123;</span><br><span class="line">            connectionFactory = (ConnectionFactory)<span class="keyword">this</span>.targetConnectionFactories.get(lookupKey);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (connectionFactory == <span class="keyword">null</span> &amp;&amp; (<span class="keyword">this</span>.lenientFallback || lookupKey == <span class="keyword">null</span>)) &#123;</span><br><span class="line">            connectionFactory = <span class="keyword">this</span>.defaultTargetConnectionFactory;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (connectionFactory == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Cannot determine target ConnectionFactory for lookup key ["</span> + lookupKey + <span class="string">"]"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> connectionFactory;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>XML配置<rabbit：template>组件上提供了send-connection-factory-selector-expression和receive-connection-factory-selector-expression属性。</rabbit：template></p>
+<p>从版本1.4开始，您可以在侦听器容器中配置路由连接工厂。在这种情况下，队列名称列表将用作查找键。例如，如果使用setQueueNames（“foo”，“bar”）配置容器，则查找键为“[foo，bar]”（不包含空格）。</p>
+<p>从版本1.6.9开始，您可以使用侦听器容器上的setLookupKeyQualifier将限定符添加到查找键，一旦这样启用，示例，将会监听相同名称的队列，即使不在同一虚拟主机<br>例如，当 qualifier设为foo,并且队列名为foo，您将注册目标连接工厂的查找键为foo [bar]。</p>
+<h2 id="Sending-messages"><a href="#Sending-messages" class="headerlink" title="Sending messages"></a>Sending messages</h2><h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p>可以使用以下任何一种方法用来发送消息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(Message message)</span> <span class="keyword">throws</span> AmqpException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(String routingKey, Message message)</span> <span class="keyword">throws</span> AmqpException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">send</span><span class="params">(String exchange, String routingKey, Message message)</span> <span class="keyword">throws</span> AmqpException</span>;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以用上面列出的最后一种方法开始讨论，因为它实际上是最明确的。它允许在运行时提供AMQP Exchange及routing key。最后一个参数是负责实际创建Message实例的回调。使用此方法发送消息的示例可能如下所示<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">amqpTemplate.send(<span class="string">"marketData.topic"</span>, <span class="string">"quotes.nasdaq.FOO"</span>,<span class="keyword">new</span> Message(<span class="string">"12.34"</span>.getBytes(), someProperties));</span><br></pre></td></tr></table></figure></p>
+<p>如果您计划使用该模板实例在大多数或所有时间发送到同一个交换，则可以在模板上设置“exchange”属性。如下所示<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">amqpTemplate.setExchange(<span class="string">"marketData.topic"</span>);</span><br><span class="line">amqpTemplate.send(<span class="string">"quotes.nasdaq.FOO"</span>, <span class="keyword">new</span> Message(<span class="string">"12.34"</span>.getBytes(), someProperties));</span><br></pre></td></tr></table></figure></p>
+<p>如果在模板上设置了“exchange”和“routingKey”属性，则可以使用仅接受消息的方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">amqpTemplate.setExchange(<span class="string">"marketData.topic"</span>);</span><br><span class="line">amqpTemplate.setRoutingKey(<span class="string">"quotes.nasdaq.FOO"</span>);</span><br><span class="line">amqpTemplate.send(<span class="keyword">new</span> Message(<span class="string">"12.34"</span>.getBytes(), someProperties));</span><br></pre></td></tr></table></figure></p>
+<p>比较好的想法是显示指定方法参数属性覆盖提供的默认值，实际上，即使您没有明确地在模板上设置这些属性，也总是有默认值。在这两种情况下，默认都是空字符串，但这实际上是一个合理的默认值。就routing key而言，首先并不总是必需的（例如扇出交换）。此外，队列可能会绑定到一个空字符串的Exchange。这些都是依赖于模板的路由关键字属性的默认空字符串值的合法方案。就交换名称而言，空字符串是非常常用的，因为AMQP规范将“默认交换”定义为没有名称.由于所有队列都使用其名称作为绑定值自动绑定到默认Exchange（它是一个Direct Exchange），因此上述第二种方法可用于通过默认Exchange进行的任何队列的简单点对点消息传递。只需通过在运行时提供method参数，将队列名称作为“routingKey”提供：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RabbitTemplate template = <span class="keyword">new</span> RabbitTemplate(); <span class="comment">// using default no-name Exchange</span></span><br><span class="line">template.send(<span class="string">"queue.helloWorld"</span>, <span class="keyword">new</span> Message(<span class="string">"Hello World"</span>.getBytes(), someProperties));</span><br></pre></td></tr></table></figure></p>
+<p>或者，如果您更愿意创建将用于主要或专门发布到单个队列的模板，则以下内容非常合理：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RabbitTemplate template = <span class="keyword">new</span> RabbitTemplate(); <span class="comment">// using default no-name Exchange</span></span><br><span class="line">template.setRoutingKey(<span class="string">"queue.helloWorld"</span>); <span class="comment">// but we'll always send to this Queue</span></span><br><span class="line">template.send(<span class="keyword">new</span> Message(<span class="string">"Hello World"</span>.getBytes(), someProperties));</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.spring.io/spring-amqp/docs/1.7.8.RELEASE/reference/html/_reference.html" target="_blank" rel="noopener">SpringAMPQ官方文档</a></p>
+<p><a href="https://docs.spring.io/spring-amqp/docs/1.7.8.RELEASE/api/" target="_blank" rel="noopener">SpringAMPQ官方API</a></p>
+<p><a href="https://www.aliyun.com/jiaocheng/820430.html" target="_blank" rel="noopener">中文翻译</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RabbitMQ/" rel="tag"><i class="fa fa-tag"></i> RabbitMQ</a>
+          
+            <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+          
+            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/10/RabbitMQ笔记/" rel="next" title="RabbitMQ笔记">
+                <i class="fa fa-chevron-left"></i> RabbitMQ笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/12/SpringBoot MQ服务确认/" rel="prev" title="RabbitMQ确认机制">
+                RabbitMQ确认机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+  <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+  <div id="container" style="display:none"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const myTheme = {
+    render(state, instance) {
+      const container = document.createElement('div');
+      container.lang = "en-US";
+      container.className = 'gitment-container gitment-root-container';
+      container.appendChild(instance.renderHeader(state, instance));
+      container.appendChild(instance.renderEditor(state, instance));
+      container.appendChild(instance.renderComments(state, instance));
+      container.appendChild(instance.renderFooter(state, instance));
+      return container;
+    }
+  }
+  function showGitment() {
+    $("#gitment_title").attr("style", "display:none");
+    $("#container").attr("style", "").addClass("gitment_container");
+    var gitment = new Gitment({
+      id: 'RabbitMQ消息确认',
+      theme: myTheme,
+      owner: "yuanwenjian",
+      repo: "gitment-comments",
+      oauth: {
+        client_id: '21bb0ade50d6f2c9707b',
+        client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639'
+      }
+    });
+    gitment.render('container');
+  }
+  </script>
+
+
+  
 
 
         </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/sanguosha.jpg"
+                alt="问问苑大宝" />
+            
+              <p class="site-author-name" itemprop="name">问问苑大宝</p>
+              <p class="site-description motion-element" itemprop="description">策谋本天成，妙手偶得之</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文档"><span class="nav-number">1.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AMPQ抽象"><span class="nav-number">1.1.</span> <span class="nav-text">AMPQ抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Message"><span class="nav-number">1.1.2.</span> <span class="nav-text">Message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exchange"><span class="nav-number">1.1.3.</span> <span class="nav-text">Exchange</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue"><span class="nav-number">1.1.4.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binding"><span class="nav-number">1.1.5.</span> <span class="nav-text">Binding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connection-and-Resource-Management-连接及资源管理"><span class="nav-number">1.2.</span> <span class="nav-text">Connection and Resource Management 连接及资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuring-the-Underlying-Client-Connection-Factory-配置基础客户端连接工厂"><span class="nav-number">1.3.</span> <span class="nav-text">Configuring the Underlying Client Connection Factory 配置基础客户端连接工厂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Routing-Connection-Factory"><span class="nav-number">1.4.</span> <span class="nav-text">Routing Connection Factory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sending-messages"><span class="nav-number">1.5.</span> <span class="nav-text">Sending messages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-2"><span class="nav-number">1.5.1.</span> <span class="nav-text">介绍</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-        <div class="footer-inner">
-            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-            </script>
-            <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-                <span class="with-love">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-                <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
+  <span class="author" itemprop="copyrightHolder">问问苑大宝</span>
+
+  
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
-            </div>
-            <!--
 
-              <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  <span class="post-meta-divider">|</span>
 
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
 
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
-              <span class="post-meta-divider">|</span>
-
-            <span id="busuanzi_container_site_pv">
-                本站总访问量<span id="busuanzi_value_site_pv"></span>次
-            </span>
-
-              <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-            -->
+-->
 
 
-        </div>
+        
+
+
+
+
+
+
+
+        
+      </div>
     </footer>
 
-
-    <div class="back-to-top">
+    
+      <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
-    </div>
+    
 
+  </div>
 
-</div>
-
+  
 
 <script type="text/javascript">
-    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-        window.Promise = null;
-    }
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-<script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
 
-<script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
 
-<script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
 
 
-<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
-<script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-<script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
-<script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-<script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-<script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
 
 
-<script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
 
 
 <!-- LOCAL: You can save these files to your site and update links -->
-
-
-<link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-<script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
 <!-- END LOCAL -->
 
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
 
-<style>
-    a.gitment-editor-footer-tip {
-        display: none;
-    }
-
-    .gitment-container.gitment-footer-container {
-        display: none;
-    }
-</style>
-
-
-<script type="text/javascript">
-    function renderGitment() {
+    
+      <script type="text/javascript">
+      function renderGitment(){
         var gitment = new Gitmint({
-            id: 'RabbitMQ消息确认',
+            id: 'RabbitMQ消息确认', 
             owner: 'yuanwenjian',
             repo: 'gitment-comments',
-
+            
             lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-
+            
             oauth: {
-
-
+            
+            
                 client_secret: '903e69fae75a4c67e11677d996fbf77c4a6f0639',
-
+            
                 client_id: '21bb0ade50d6f2c9707b'
-            }
-        });
+            }});
         gitment.render('gitment-container');
-    }
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
-    renderGitment();
-
-</script>
 
 
-<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
 </body>
 </html>
