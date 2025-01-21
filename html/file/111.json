@@ -53,7 +53,6 @@
     },
     {"key": "新6V","name": "🧲┃新6V┃磁力","type": 3,"api": "csp_SixV","searchable": 1,"quickSearch": 1,"changeable": 0,"ext": "https://www.xb6v.com/"
     },
-//
 {"key":"csp_nkvlog","name":"💢┃耐看┃电影","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"jar": "./libs/jar/HCCX.jar","ext":"./libs/hccx/nkvlog.json"},
 {"key":"csp_Free","name":"💰️┃Free┃影院","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"jar": "./libs/jar/HCCX.jar","ext":"./libs/hccx/Free影视.json"},
     {"key": "csp_KmeiJu","name": "🌎┃美剧┃影视","type": 3,"api": "csp_KmeiJu","playerType": 2,"jar": "./libs/jar/Panda.jar"
