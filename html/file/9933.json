@@ -211,6 +211,7 @@
             "quickSearch": 1,
             "filterable": 1
         },
+        {"key":"didizy.com","name":"♥滴滴(直连)","type":1,"api":"https://api.ddapi.cc/api.php/provide/vod/?ac=list","searchable":1,"filterable":1},
         {
             "key": "❤色猫资源",
             "name": "❤色猫资源",
